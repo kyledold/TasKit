@@ -1,0 +1,12 @@
+/* 
+  Localizable.strings
+  TaskIt
+
+  Created by Kyle Dold on 31/01/2021.
+  
+*/
+
+"welcome.welcome" = "Welcome";
+"welcome.crate_account" = "Create account";
+"welcome.sign_in" = "Sign in";
+"welcome.terms_and_conditions" = "By continuing you agree to Task Its Terms of Service and Privacy Policy";
