@@ -11,6 +11,7 @@
 		D1529C3F25C70457003FC9D6 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1529C3E25C70457003FC9D6 /* ContentView.swift */; };
 		D1529C4125C70460003FC9D6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D1529C4025C70460003FC9D6 /* Assets.xcassets */; };
 		D1529C4425C70460003FC9D6 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D1529C4325C70460003FC9D6 /* Preview Assets.xcassets */; };
+		D1529C5925C723C2003FC9D6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D1529C5825C723C2003FC9D6 /* LaunchScreen.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -20,6 +21,7 @@
 		D1529C4025C70460003FC9D6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D1529C4325C70460003FC9D6 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		D1529C4525C70460003FC9D6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D1529C5825C723C2003FC9D6 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,6 +81,7 @@
 		D1529C4D25C70F10003FC9D6 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				D1529C5825C723C2003FC9D6 /* LaunchScreen.storyboard */,
 				D1529C4025C70460003FC9D6 /* Assets.xcassets */,
 				D1529C4525C70460003FC9D6 /* Info.plist */,
 			);
@@ -142,6 +145,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D1529C5925C723C2003FC9D6 /* LaunchScreen.storyboard in Resources */,
 				D1529C4425C70460003FC9D6 /* Preview Assets.xcassets in Resources */,
 				D1529C4125C70460003FC9D6 /* Assets.xcassets in Resources */,
 			);
@@ -296,7 +300,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.kyledold.TaskIt;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -318,7 +322,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.kyledold.TaskIt;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
