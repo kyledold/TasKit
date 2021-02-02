@@ -7,6 +7,6 @@
 */
 
 "welcome.welcome" = "Welcome";
-"welcome.crate_account" = "Create account";
+"welcome.create_account" = "Create account";
 "welcome.sign_in" = "Sign in";
 "welcome.terms_and_conditions" = "By continuing you agree to Task Its Terms of Service and Privacy Policy";
