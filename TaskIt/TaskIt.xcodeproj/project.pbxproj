@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		D13A6E3225C73586003A6759 /* FilledButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = D13A6E3125C73586003A6759 /* FilledButtonStyle.swift */; };
+		D14E118A25D2FCDD00FC27E3 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D14E118925D2FCDD00FC27E3 /* CloudKit.framework */; };
 		D1529C3D25C70457003FC9D6 /* TaskItApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1529C3C25C70457003FC9D6 /* TaskItApp.swift */; };
 		D1529C4125C70460003FC9D6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D1529C4025C70460003FC9D6 /* Assets.xcassets */; };
 		D1529C4425C70460003FC9D6 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D1529C4325C70460003FC9D6 /* Preview Assets.xcassets */; };
@@ -25,6 +26,7 @@
 
 /* Begin PBXFileReference section */
 		D13A6E3125C73586003A6759 /* FilledButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilledButtonStyle.swift; sourceTree = "<group>"; };
+		D14E118925D2FCDD00FC27E3 /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
 		D1529C3925C70457003FC9D6 /* TaskIt.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TaskIt.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D1529C3C25C70457003FC9D6 /* TaskItApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskItApp.swift; sourceTree = "<group>"; };
 		D1529C4025C70460003FC9D6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -48,6 +50,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D14E118A25D2FCDD00FC27E3 /* CloudKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -72,11 +75,20 @@
 			path = Styles;
 			sourceTree = "<group>";
 		};
+		D14E118825D2FCDD00FC27E3 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				D14E118925D2FCDD00FC27E3 /* CloudKit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		D1529C3025C70457003FC9D6 = {
 			isa = PBXGroup;
 			children = (
 				D1529C3B25C70457003FC9D6 /* TaskIt */,
 				D1529C3A25C70457003FC9D6 /* Products */,
+				D14E118825D2FCDD00FC27E3 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
