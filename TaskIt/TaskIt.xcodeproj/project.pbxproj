@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -14,6 +14,7 @@
 		D14E11A325D3004D00FC27E3 /* NetworkKit.h in Headers */ = {isa = PBXBuildFile; fileRef = D14E119325D3004C00FC27E3 /* NetworkKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D14E11A625D3004D00FC27E3 /* NetworkKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D14E119125D3004C00FC27E3 /* NetworkKit.framework */; };
 		D14E11A725D3004D00FC27E3 /* NetworkKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D14E119125D3004C00FC27E3 /* NetworkKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		D14E11B325D300BC00FC27E3 /* IceCream in Frameworks */ = {isa = PBXBuildFile; productRef = D14E11B225D300BC00FC27E3 /* IceCream */; };
 		D1529C3D25C70457003FC9D6 /* TaskItApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1529C3C25C70457003FC9D6 /* TaskItApp.swift */; };
 		D1529C4125C70460003FC9D6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D1529C4025C70460003FC9D6 /* Assets.xcassets */; };
 		D1529C4425C70460003FC9D6 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D1529C4325C70460003FC9D6 /* Preview Assets.xcassets */; };
@@ -99,6 +100,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D14E11B325D300BC00FC27E3 /* IceCream in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -284,6 +286,9 @@
 			dependencies = (
 			);
 			name = NetworkKit;
+			packageProductDependencies = (
+				D14E11B225D300BC00FC27E3 /* IceCream */,
+			);
 			productName = NetworkKit;
 			productReference = D14E119125D3004C00FC27E3 /* NetworkKit.framework */;
 			productType = "com.apple.product-type.framework";
@@ -356,6 +361,9 @@
 				Base,
 			);
 			mainGroup = D1529C3025C70457003FC9D6;
+			packageReferences = (
+				D14E11B125D300BC00FC27E3 /* XCRemoteSwiftPackageReference "IceCream" */,
+			);
 			productRefGroup = D1529C3A25C70457003FC9D6 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -469,6 +477,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.kyledold.NetworkKit;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
@@ -496,6 +505,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.kyledold.NetworkKit;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
@@ -751,6 +761,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		D14E11B125D300BC00FC27E3 /* XCRemoteSwiftPackageReference "IceCream" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/caiyue1993/IceCream.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		D14E11B225D300BC00FC27E3 /* IceCream */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D14E11B125D300BC00FC27E3 /* XCRemoteSwiftPackageReference "IceCream" */;
+			productName = IceCream;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = D1529C3125C70457003FC9D6 /* Project object */;
 }
