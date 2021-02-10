@@ -9,12 +9,14 @@ import SwiftUI
 
 struct WelcomeView: View {
     
+    var viewModel: WelcomeViewModel
+    
     var body: some View {
         NavigationView {
             VStack(spacing: Layout.Padding.cozy) {
                 Spacer()
                 
-                Text(LocalizedStringKey("welcome.welcome"))
+                Text(viewModel.welcomeText)
                     .font(.title)
                     .foregroundColor(.white)
                 
@@ -25,10 +27,13 @@ struct WelcomeView: View {
                 Spacer()
 
                 NavigationLink(destination: TabBarView()) {
-                   Text(LocalizedStringKey("welcome.get_started"))
-                }.buttonStyle(FilledButtonStyle())
+                   Text(viewModel.getStartedButtonText)
+                }.simultaneousGesture(TapGesture().onEnded {
+                    viewModel.onGetStartedTapped()
+                })
+                .buttonStyle(FilledButtonStyle())
                 
-                Text(LocalizedStringKey("welcome.terms_and_conditions"))
+                Text(viewModel.disclaimerText)
                     .modifier(FootnoteTextStyle())
                 
                 Spacer()
@@ -41,6 +46,6 @@ struct WelcomeView: View {
 
 struct WelcomeView_Previews: PreviewProvider {
     static var previews: some View {
-        WelcomeView()
+        WelcomeView(viewModel: .init())
     }
 }
