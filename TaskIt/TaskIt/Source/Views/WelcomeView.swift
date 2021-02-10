@@ -24,13 +24,9 @@ struct WelcomeView: View {
                 
                 Spacer()
 
-                NavigationLink(destination: SignInView()) {
-                   Text(LocalizedStringKey("welcome.sign_in"))
+                NavigationLink(destination: TabBarView()) {
+                   Text(LocalizedStringKey("welcome.get_started"))
                 }.buttonStyle(FilledButtonStyle())
-                
-                NavigationLink(destination: CreateAccountView()) {
-                   Text(LocalizedStringKey("welcome.create_account"))
-                }.buttonStyle(OutlinedButtonStyle())
                 
                 Text(LocalizedStringKey("welcome.terms_and_conditions"))
                     .modifier(FootnoteTextStyle())
