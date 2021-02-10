@@ -13,7 +13,7 @@
 		D14E11A125D3004D00FC27E3 /* NetworkKitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D14E11A025D3004D00FC27E3 /* NetworkKitTests.swift */; };
 		D14E11A325D3004D00FC27E3 /* NetworkKit.h in Headers */ = {isa = PBXBuildFile; fileRef = D14E119325D3004C00FC27E3 /* NetworkKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D14E11A625D3004D00FC27E3 /* NetworkKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D14E119125D3004C00FC27E3 /* NetworkKit.framework */; };
-		D14E11A725D3004D00FC27E3 /* NetworkKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D14E119125D3004C00FC27E3 /* NetworkKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		D14E11A725D3004D00FC27E3 /* NetworkKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D14E119125D3004C00FC27E3 /* NetworkKit.framework */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		D14E11B325D300BC00FC27E3 /* IceCream in Frameworks */ = {isa = PBXBuildFile; productRef = D14E11B225D300BC00FC27E3 /* IceCream */; };
 		D1529C3D25C70457003FC9D6 /* TaskItApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1529C3C25C70457003FC9D6 /* TaskItApp.swift */; };
 		D1529C4125C70460003FC9D6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D1529C4025C70460003FC9D6 /* Assets.xcassets */; };
@@ -192,7 +192,6 @@
 		D1529C3B25C70457003FC9D6 /* TaskIt */ = {
 			isa = PBXGroup;
 			children = (
-				D1BB6D4A25D0104F00B1ED10 /* TaskIt.entitlements */,
 				D1529C4C25C70F0B003FC9D6 /* Source */,
 				D1529C4D25C70F10003FC9D6 /* Resources */,
 				D1529C4225C70460003FC9D6 /* Preview Content */,
@@ -228,6 +227,7 @@
 				D1529C6925C72886003FC9D6 /* Localizable.strings */,
 				D1529C4025C70460003FC9D6 /* Assets.xcassets */,
 				D1529C4525C70460003FC9D6 /* Info.plist */,
+				D1BB6D4A25D0104F00B1ED10 /* TaskIt.entitlements */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -460,15 +460,19 @@
 		D14E11A925D3004D00FC27E3 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
+				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
-				DEVELOPMENT_TEAM = NPHFRGDN5J;
+				DEVELOPMENT_TEAM = "";
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = NetworkKit/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
+				"IPHONEOS_DEPLOYMENT_TARGET[sdk=macosx*]" = 14.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -476,6 +480,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.kyledold.NetworkKit;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=macosx*]" = "";
 				SKIP_INSTALL = YES;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_VERSION = 5.0;
@@ -488,15 +494,19 @@
 		D14E11AA25D3004D00FC27E3 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
+				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
-				DEVELOPMENT_TEAM = NPHFRGDN5J;
+				DEVELOPMENT_TEAM = "";
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = NetworkKit/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
+				"IPHONEOS_DEPLOYMENT_TARGET[sdk=macosx*]" = 14.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -504,6 +514,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.kyledold.NetworkKit;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=macosx*]" = "";
 				SKIP_INSTALL = YES;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_VERSION = 5.0;
@@ -520,11 +532,13 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = NPHFRGDN5J;
 				INFOPLIST_FILE = NetworkKitTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
+				MACOSX_DEPLOYMENT_TARGET = 11.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.kyledold.NetworkKitTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -540,11 +554,13 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = NPHFRGDN5J;
 				INFOPLIST_FILE = NetworkKitTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
+				MACOSX_DEPLOYMENT_TARGET = 11.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.kyledold.NetworkKitTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -674,13 +690,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = TaskIt/TaskIt.entitlements;
+				CODE_SIGN_ENTITLEMENTS = TaskIt/Resources/TaskIt.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"TaskIt/Preview Content\"";
 				DEVELOPMENT_TEAM = NPHFRGDN5J;
+				"ENABLE_HARDENED_RUNTIME[sdk=macosx*]" = NO;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = TaskIt/Resources/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -700,13 +717,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = TaskIt/TaskIt.entitlements;
+				CODE_SIGN_ENTITLEMENTS = TaskIt/Resources/TaskIt.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"TaskIt/Preview Content\"";
 				DEVELOPMENT_TEAM = NPHFRGDN5J;
+				"ENABLE_HARDENED_RUNTIME[sdk=macosx*]" = NO;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = TaskIt/Resources/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
