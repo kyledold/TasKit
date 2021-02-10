@@ -153,8 +153,8 @@
 		D14E119225D3004C00FC27E3 /* NetworkKit */ = {
 			isa = PBXGroup;
 			children = (
-				D14E119325D3004C00FC27E3 /* NetworkKit.h */,
-				D14E119425D3004C00FC27E3 /* Info.plist */,
+				D14E11C525D44D5200FC27E3 /* Source */,
+				D14E11C625D44D5700FC27E3 /* Resources */,
 			);
 			path = NetworkKit;
 			sourceTree = "<group>";
@@ -162,10 +162,42 @@
 		D14E119F25D3004D00FC27E3 /* NetworkKitTests */ = {
 			isa = PBXGroup;
 			children = (
+				D14E11C725D44D6300FC27E3 /* Source */,
+				D14E11C825D44D6800FC27E3 /* Resources */,
+			);
+			path = NetworkKitTests;
+			sourceTree = "<group>";
+		};
+		D14E11C525D44D5200FC27E3 /* Source */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Source;
+			sourceTree = "<group>";
+		};
+		D14E11C625D44D5700FC27E3 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				D14E119325D3004C00FC27E3 /* NetworkKit.h */,
+				D14E119425D3004C00FC27E3 /* Info.plist */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		D14E11C725D44D6300FC27E3 /* Source */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Source;
+			sourceTree = "<group>";
+		};
+		D14E11C825D44D6800FC27E3 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
 				D14E11A025D3004D00FC27E3 /* NetworkKitTests.swift */,
 				D14E11A225D3004D00FC27E3 /* Info.plist */,
 			);
-			path = NetworkKitTests;
+			path = Resources;
 			sourceTree = "<group>";
 		};
 		D1529C3025C70457003FC9D6 = {
@@ -211,7 +243,7 @@
 			isa = PBXGroup;
 			children = (
 				D1529C3C25C70457003FC9D6 /* TaskItApp.swift */,
-				D1529C6425C727CA003FC9D6 /* Login */,
+				D1529C6425C727CA003FC9D6 /* Views */,
 				D13A6E3025C73559003A6759 /* Styles */,
 				D13A6E2625C72E0C003A6759 /* Extensions */,
 				D1D74EF725C96E5A00E8EC77 /* Utilities */,
@@ -232,14 +264,14 @@
 			path = Resources;
 			sourceTree = "<group>";
 		};
-		D1529C6425C727CA003FC9D6 /* Login */ = {
+		D1529C6425C727CA003FC9D6 /* Views */ = {
 			isa = PBXGroup;
 			children = (
 				D1529C6525C72810003FC9D6 /* WelcomeView.swift */,
 				D1783EB925C9C9E500D8EFC3 /* SignInView.swift */,
 				D1783EBC25C9C9F100D8EFC3 /* CreateAccountView.swift */,
 			);
-			path = Login;
+			path = Views;
 			sourceTree = "<group>";
 		};
 		D1529C6D25C72982003FC9D6 /* Fonts */ = {
@@ -469,7 +501,7 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = NetworkKit/Info.plist;
+				INFOPLIST_FILE = NetworkKit/Resources/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
 				"IPHONEOS_DEPLOYMENT_TARGET[sdk=macosx*]" = 14.2;
@@ -503,7 +535,7 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = NetworkKit/Info.plist;
+				INFOPLIST_FILE = NetworkKit/Resources/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
 				"IPHONEOS_DEPLOYMENT_TARGET[sdk=macosx*]" = 14.2;
