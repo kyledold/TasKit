@@ -9,9 +9,18 @@ import SwiftUI
 
 @main
 struct TaskItApp: App {
+    
+    private var welcomeHasBeenViewed: Bool {
+        return UserDefaults.standard.bool(forKey: Constants.UserDefaults.welcomeViewedKey)
+    }
+    
     var body: some Scene {
         WindowGroup {
-            WelcomeView()
+            if welcomeHasBeenViewed {
+                TabBarView()
+            } else {
+                WelcomeView(viewModel: .init())
+            }
         }
     }
 }
