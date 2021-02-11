@@ -38,6 +38,26 @@
                ReferencedContainer = "container:TaskIt/TaskIt.xcodeproj">
             </BuildableReference>
          </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "D1BC33DD25D594DE0068A57A"
+               BuildableName = "TaskItTests.xctest"
+               BlueprintName = "TaskItTests"
+               ReferencedContainer = "container:TaskIt/TaskIt.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "D1BC341125D59E2C0068A57A"
+               BuildableName = "FoundationKitTests.xctest"
+               BlueprintName = "FoundationKitTests"
+               ReferencedContainer = "container:TaskIt/TaskIt.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
    </TestAction>
    <LaunchAction

@@ -17,9 +17,9 @@ struct TaskItApp: App {
     var body: some Scene {
         WindowGroup {
             if welcomeHasBeenViewed {
-                TabBarView()
+                TabBarView(viewModel: TabBarViewModel())
             } else {
-                WelcomeView(viewModel: .init())
+                WelcomeView<WelcomeViewModel>(viewModel: WelcomeViewModel())
             }
         }
     }
