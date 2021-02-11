@@ -8,13 +8,17 @@
 import SwiftUI
 import Foundation
 
-class WelcomeViewModel {
+class WelcomeViewModel: WelcomeViewModelProtocol {
 
-    let welcomeText = LocalizedStringKey("welcome.welcome")
-    let getStartedButtonText = LocalizedStringKey("welcome.get_started")
-    let disclaimerText = LocalizedStringKey("welcome.terms_and_conditions")
+    var welcomeTextKey = "welcome.welcome"
+    var getStartedButtonTextKey = "welcome.get_started"
+    var disclaimerTextKey = "welcome.terms_and_conditions"
     
-    private let userDefaults = UserDefaults.standard
+    private let userDefaults: UserDefaults
+    
+    public init(userDefaults: UserDefaults = UserDefaults.standard) {
+        self.userDefaults = userDefaults
+    }
     
     func onGetStartedTapped() {
         userDefaults.set(true, forKey: Constants.UserDefaults.welcomeViewedKey)

@@ -19,7 +19,7 @@ struct TaskItApp: App {
             if welcomeHasBeenViewed {
                 TabBarView()
             } else {
-                WelcomeView(viewModel: .init())
+                WelcomeView<WelcomeViewModel>(viewModel: WelcomeViewModel())
             }
         }
     }
