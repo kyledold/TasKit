@@ -33,6 +33,10 @@
 		D1BC33E125D594DE0068A57A /* TaskItTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1BC33E025D594DE0068A57A /* TaskItTests.swift */; };
 		D1BC33FB25D595EB0068A57A /* WelcomeViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1BC33FA25D595EB0068A57A /* WelcomeViewModelTests.swift */; };
 		D1BC346625D5A11E0068A57A /* Closure.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1BC346525D5A11E0068A57A /* Closure.swift */; };
+		D1BC346B25D5A2720068A57A /* TabBarViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1BC346A25D5A2720068A57A /* TabBarViewModel.swift */; };
+		D1BC347025D5A2A20068A57A /* TabBarViewModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1BC346F25D5A2A20068A57A /* TabBarViewModelProtocol.swift */; };
+		D1BC347525D5A32D0068A57A /* FakeTabBarViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1BC347425D5A32D0068A57A /* FakeTabBarViewModel.swift */; };
+		D1BC347A25D5A4AA0068A57A /* TabBarViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1BC347925D5A4AA0068A57A /* TabBarViewModelTests.swift */; };
 		D1D74EF425C96DA400E8EC77 /* Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1D74EF325C96DA400E8EC77 /* Layout.swift */; };
 		D1D74EFD25C9733700E8EC77 /* OutlinedButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1D74EFC25C9733700E8EC77 /* OutlinedButtonStyle.swift */; };
 		D1D74F0225C9753800E8EC77 /* FootnoteTextStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1D74F0125C9753800E8EC77 /* FootnoteTextStyle.swift */; };
@@ -115,6 +119,10 @@
 		D1BC33E225D594DE0068A57A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D1BC33FA25D595EB0068A57A /* WelcomeViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewModelTests.swift; sourceTree = "<group>"; };
 		D1BC346525D5A11E0068A57A /* Closure.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Closure.swift; sourceTree = "<group>"; };
+		D1BC346A25D5A2720068A57A /* TabBarViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewModel.swift; sourceTree = "<group>"; };
+		D1BC346F25D5A2A20068A57A /* TabBarViewModelProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewModelProtocol.swift; sourceTree = "<group>"; };
+		D1BC347425D5A32D0068A57A /* FakeTabBarViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeTabBarViewModel.swift; sourceTree = "<group>"; };
+		D1BC347925D5A4AA0068A57A /* TabBarViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewModelTests.swift; sourceTree = "<group>"; };
 		D1D74EF325C96DA400E8EC77 /* Layout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Layout.swift; sourceTree = "<group>"; };
 		D1D74EFC25C9733700E8EC77 /* OutlinedButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OutlinedButtonStyle.swift; sourceTree = "<group>"; };
 		D1D74F0125C9753800E8EC77 /* FootnoteTextStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FootnoteTextStyle.swift; sourceTree = "<group>"; };
@@ -325,6 +333,7 @@
 				D1BC33CA25D58AD70068A57A /* Fakes */,
 				D1BC33D125D58B3D0068A57A /* Protocols */,
 				D1BC33B925D453980068A57A /* WelcomeViewModel.swift */,
+				D1BC346A25D5A2720068A57A /* TabBarViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -333,6 +342,7 @@
 			isa = PBXGroup;
 			children = (
 				D1BC33D225D58B630068A57A /* FakeWelcomeViewModel.swift */,
+				D1BC347425D5A32D0068A57A /* FakeTabBarViewModel.swift */,
 			);
 			path = Fakes;
 			sourceTree = "<group>";
@@ -341,6 +351,7 @@
 			isa = PBXGroup;
 			children = (
 				D1BC33CB25D58B370068A57A /* WelcomeViewModelProtocol.swift */,
+				D1BC346F25D5A2A20068A57A /* TabBarViewModelProtocol.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -375,6 +386,7 @@
 			isa = PBXGroup;
 			children = (
 				D1BC33FA25D595EB0068A57A /* WelcomeViewModelTests.swift */,
+				D1BC347925D5A4AA0068A57A /* TabBarViewModelTests.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -592,6 +604,9 @@
 				D1783EBD25C9C9F100D8EFC3 /* CalendarView.swift in Sources */,
 				D1529C6625C72810003FC9D6 /* WelcomeView.swift in Sources */,
 				D1D74EFD25C9733700E8EC77 /* OutlinedButtonStyle.swift in Sources */,
+				D1BC347025D5A2A20068A57A /* TabBarViewModelProtocol.swift in Sources */,
+				D1BC347525D5A32D0068A57A /* FakeTabBarViewModel.swift in Sources */,
+				D1BC346B25D5A2720068A57A /* TabBarViewModel.swift in Sources */,
 				D1BC33BA25D453980068A57A /* WelcomeViewModel.swift in Sources */,
 				D1BC33CC25D58B370068A57A /* WelcomeViewModelProtocol.swift in Sources */,
 				D1529C3D25C70457003FC9D6 /* TaskItApp.swift in Sources */,
@@ -606,6 +621,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D1BC347A25D5A4AA0068A57A /* TabBarViewModelTests.swift in Sources */,
 				D1BC33E125D594DE0068A57A /* TaskItTests.swift in Sources */,
 				D1BC33FB25D595EB0068A57A /* WelcomeViewModelTests.swift in Sources */,
 			);

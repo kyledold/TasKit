@@ -5,7 +5,6 @@
 //  Created by Kyle Dold on 10/02/2021.
 //
 
-import SwiftUI
 import Foundation
 
 class WelcomeViewModel: WelcomeViewModelProtocol {

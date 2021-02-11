@@ -26,7 +26,7 @@ struct WelcomeView<ViewModel: WelcomeViewModelProtocol>: View {
                 
                 Spacer()
 
-                NavigationLink(destination: TabBarView()) {
+                NavigationLink(destination: TabBarView(viewModel: TabBarViewModel())) {
                     Text(LocalizedStringKey(viewModel.getStartedButtonTextKey))
                 }.simultaneousGesture(TapGesture().onEnded {
                     viewModel.onGetStartedTapped()
@@ -46,6 +46,6 @@ struct WelcomeView<ViewModel: WelcomeViewModelProtocol>: View {
 
 struct WelcomeView_Previews: PreviewProvider {
     static var previews: some View {
-        WelcomeView<FakeWelcomeViewModel>(viewModel: FakeWelcomeViewModel())
+        WelcomeView(viewModel: FakeWelcomeViewModel())
     }
 }

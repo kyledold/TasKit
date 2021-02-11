@@ -7,19 +7,21 @@
 
 import SwiftUI
 
-struct TabBarView: View {
+struct TabBarView<ViewModel: TabBarViewModelProtocol>: View {
+    
+    var viewModel: ViewModel
     
     var body: some View {
         TabView {
             TasksView()
                 .tabItem {
                     Image(systemName: "list.dash")
-                    Text(LocalizedStringKey("tab_bar.tasks"))
+                    Text(LocalizedStringKey(viewModel.tasksTextKey))
                 }
             CalendarView()
                 .tabItem {
                     Image(systemName: "calendar")
-                    Text(LocalizedStringKey("tab_bar.calendar"))
+                    Text(LocalizedStringKey(viewModel.calendarTextKey))
                 }
         }
     }
@@ -27,6 +29,6 @@ struct TabBarView: View {
 
 struct TabBarView_Previews: PreviewProvider {
     static var previews: some View {
-        TabBarView()
+        TabBarView(viewModel: FakeTabBarViewModel())
     }
 }
