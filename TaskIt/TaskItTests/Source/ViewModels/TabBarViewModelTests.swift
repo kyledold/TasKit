@@ -19,4 +19,8 @@ class TabBarViewModelTests: XCTestCase {
     func test_calendarTextKey() {
         XCTAssertEqual(sut.calendarTextKey, "tab_bar.calendar")
     }
+    
+    func test_settingsTextKey() {
+        XCTAssertEqual(sut.settingsTextKey, "tab_bar.settings")
+    }
 }

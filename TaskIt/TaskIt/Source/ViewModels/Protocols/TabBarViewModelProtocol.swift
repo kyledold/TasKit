@@ -11,4 +11,5 @@ protocol TabBarViewModelProtocol {
     
     var tasksTextKey: String { get set }
     var calendarTextKey: String { get set }
+    var settingsTextKey: String { get set }
 }

@@ -23,6 +23,11 @@ struct TabBarView<ViewModel: TabBarViewModelProtocol>: View {
                     Image(systemName: "calendar")
                     Text(LocalizedStringKey(viewModel.calendarTextKey))
                 }
+            SettingsView()
+                .tabItem {
+                    Image(systemName: "gearshape.fill")
+                    Text(LocalizedStringKey(viewModel.settingsTextKey))
+                }
         }
     }
 }
