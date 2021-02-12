@@ -8,12 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		D13A6E3225C73586003A6759 /* FilledButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = D13A6E3125C73586003A6759 /* FilledButtonStyle.swift */; };
-		D14E118A25D2FCDD00FC27E3 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D14E118925D2FCDD00FC27E3 /* CloudKit.framework */; };
 		D14E119A25D3004D00FC27E3 /* NetworkKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D14E119125D3004C00FC27E3 /* NetworkKit.framework */; };
 		D14E11A125D3004D00FC27E3 /* NetworkKitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D14E11A025D3004D00FC27E3 /* NetworkKitTests.swift */; };
 		D14E11A325D3004D00FC27E3 /* NetworkKit.h in Headers */ = {isa = PBXBuildFile; fileRef = D14E119325D3004C00FC27E3 /* NetworkKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D14E11A625D3004D00FC27E3 /* NetworkKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D14E119125D3004C00FC27E3 /* NetworkKit.framework */; };
-		D14E11A725D3004D00FC27E3 /* NetworkKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D14E119125D3004C00FC27E3 /* NetworkKit.framework */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		D14E11A725D3004D00FC27E3 /* NetworkKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D14E119125D3004C00FC27E3 /* NetworkKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		D14E11B325D300BC00FC27E3 /* IceCream in Frameworks */ = {isa = PBXBuildFile; productRef = D14E11B225D300BC00FC27E3 /* IceCream */; };
 		D14E11CE25D44E6600FC27E3 /* TabBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D14E11CD25D44E6600FC27E3 /* TabBarView.swift */; };
 		D1529C3D25C70457003FC9D6 /* TaskItApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1529C3C25C70457003FC9D6 /* TaskItApp.swift */; };
@@ -26,6 +25,7 @@
 		D1529C7525C72C76003FC9D6 /* ColorExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1529C7425C72C76003FC9D6 /* ColorExtensions.swift */; };
 		D1783EBA25C9C9E500D8EFC3 /* TasksView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1783EB925C9C9E500D8EFC3 /* TasksView.swift */; };
 		D1783EBD25C9C9F100D8EFC3 /* CalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1783EBC25C9C9F100D8EFC3 /* CalendarView.swift */; };
+		D17FC98625D6E814002A5501 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D14E118925D2FCDD00FC27E3 /* CloudKit.framework */; };
 		D1BC33BA25D453980068A57A /* WelcomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1BC33B925D453980068A57A /* WelcomeViewModel.swift */; };
 		D1BC33C225D455F50068A57A /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1BC33C125D455F50068A57A /* Constants.swift */; };
 		D1BC33CC25D58B370068A57A /* WelcomeViewModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1BC33CB25D58B370068A57A /* WelcomeViewModelProtocol.swift */; };
@@ -150,7 +150,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D14E11A625D3004D00FC27E3 /* NetworkKit.framework in Frameworks */,
-				D14E118A25D2FCDD00FC27E3 /* CloudKit.framework in Frameworks */,
+				D17FC98625D6E814002A5501 /* CloudKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -658,7 +658,7 @@
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "Apple Development";
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
-				CODE_SIGN_STYLE = Manual;
+				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = "";
@@ -692,7 +692,7 @@
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "Apple Development";
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
-				CODE_SIGN_STYLE = Manual;
+				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = "";
@@ -884,7 +884,6 @@
 		D1529C4925C70460003FC9D6 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = TaskIt/Resources/TaskIt.entitlements;
@@ -912,7 +911,6 @@
 		D1529C4A25C70460003FC9D6 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = TaskIt/Resources/TaskIt.entitlements;

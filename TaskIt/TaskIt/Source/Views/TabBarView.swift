@@ -9,7 +9,7 @@ import SwiftUI
 
 struct TabBarView<ViewModel: TabBarViewModelProtocol>: View {
     
-    var viewModel: ViewModel
+    @ObservedObject var viewModel: ViewModel
     
     var body: some View {
         TabView {
@@ -29,6 +29,10 @@ struct TabBarView<ViewModel: TabBarViewModelProtocol>: View {
                     Text(LocalizedStringKey(viewModel.settingsTextKey))
                 }
         }
+        .sheet(isPresented: $viewModel.showWelcomeView) {
+            WelcomeView(viewModel: WelcomeViewModel())
+        }
+        .navigationBarBackButtonHidden(true)
     }
 }
 

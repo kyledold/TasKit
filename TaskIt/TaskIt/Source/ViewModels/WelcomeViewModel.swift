@@ -10,7 +10,7 @@ import Foundation
 class WelcomeViewModel: WelcomeViewModelProtocol {
 
     var welcomeTextKey = "welcome.welcome"
-    var getStartedButtonTextKey = "welcome.get_started"
+    var gotItButtonTextKey = "welcome.got_it"
     var disclaimerTextKey = "welcome.terms_and_conditions"
     
     private let userDefaults: UserDefaults
@@ -19,7 +19,7 @@ class WelcomeViewModel: WelcomeViewModelProtocol {
         self.userDefaults = userDefaults
     }
     
-    func onGetStartedTapped() {
+    func onGotItTapped() {
         userDefaults.set(true, forKey: Constants.UserDefaults.welcomeViewedKey)
     }
 }

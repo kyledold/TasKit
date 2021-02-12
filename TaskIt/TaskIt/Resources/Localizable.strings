@@ -7,7 +7,7 @@
 */
 
 "welcome.welcome" = "Welcome";
-"welcome.get_started" = "Get started";
+"welcome.got_it" = "Got it";
 "welcome.terms_and_conditions" = "By continuing you agree to Task Its Terms of Service and Privacy Policy";
 "tab_bar.tasks" = "Tasks";
 "tab_bar.calendar" = "Calendar";

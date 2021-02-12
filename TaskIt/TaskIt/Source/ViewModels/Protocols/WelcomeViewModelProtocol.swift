@@ -10,8 +10,8 @@ import Foundation
 protocol WelcomeViewModelProtocol {
     
     var welcomeTextKey: String { get set }
-    var getStartedButtonTextKey: String { get set }
+    var gotItButtonTextKey: String { get set }
     var disclaimerTextKey: String { get set }
     
-    func onGetStartedTapped()
+    func onGotItTapped()
 }
