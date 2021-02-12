@@ -17,7 +17,7 @@ class WelcomeViewModelTests: XCTestCase {
     }
     
     func test_getStartedButtonTextKey() {
-        XCTAssertEqual(sut.getStartedButtonTextKey, "welcome.get_started")
+        XCTAssertEqual(sut.gotItButtonTextKey, "welcome.got_it")
     }
     
     func test_disclaimerTextKey() {

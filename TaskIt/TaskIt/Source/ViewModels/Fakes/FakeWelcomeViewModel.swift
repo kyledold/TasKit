@@ -8,8 +8,8 @@
 class FakeWelcomeViewModel: WelcomeViewModelProtocol {
     
     var welcomeTextKey = "welcome.welcome"
-    var getStartedButtonTextKey = "welcome.get_started"
+    var gotItButtonTextKey = "welcome.got_it"
     var disclaimerTextKey = "welcome.terms_and_conditions"
     
-    func onGetStartedTapped() {}
+    func onGotItTapped() {}
 }
