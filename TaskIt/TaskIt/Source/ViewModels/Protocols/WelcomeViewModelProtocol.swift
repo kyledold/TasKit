@@ -5,13 +5,11 @@
 //  Created by Kyle Dold on 11/02/2021.
 //
 
-import Foundation
-
 protocol WelcomeViewModelProtocol {
     
-    var welcomeTextKey: String { get set }
-    var gotItButtonTextKey: String { get set }
-    var disclaimerTextKey: String { get set }
+    var welcomeTextKey: String { get }
+    var gotItButtonTextKey: String { get }
+    var disclaimerTextKey: String { get }
     
     func onGotItTapped()
 }

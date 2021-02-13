@@ -6,9 +6,17 @@
   
 */
 
-"welcome.welcome" = "Welcome";
-"welcome.got_it" = "Got it";
-"welcome.terms_and_conditions" = "By continuing you agree to Task Its Terms of Service and Privacy Policy";
+"app.version.%@" = "Version %@";
+"calendar.title" = "Calendar";
+"settings.title" = "Settings";
+"settings.feedback.title" = "Feedback";
+"settings.feedback.subtitle" = "kdold02@gmail.com";
+"settings.open_source.title" = "Source code";
+"settings.open_source.subtitle" = "Feel free to browse or contribute";
 "tab_bar.tasks" = "Tasks";
 "tab_bar.calendar" = "Calendar";
 "tab_bar.settings" = "Settings";
+"tasks.title" = "Tasks";
+"welcome.welcome" = "Welcome";
+"welcome.got_it" = "Got it";
+"welcome.terms_and_conditions" = "By continuing you agree to Task Its Terms of Service and Privacy Policy";
