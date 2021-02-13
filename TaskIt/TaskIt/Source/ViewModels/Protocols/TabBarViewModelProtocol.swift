@@ -10,8 +10,8 @@ import Combine
 
 protocol TabBarViewModelProtocol: ObservableObject {
     
-    var tasksTextKey: String { get set }
-    var calendarTextKey: String { get set }
-    var settingsTextKey: String { get set }
+    var tasksTextKey: String { get }
+    var calendarTextKey: String { get }
+    var settingsTextKey: String { get }
     var showWelcomeView: Bool { get set }
 }
