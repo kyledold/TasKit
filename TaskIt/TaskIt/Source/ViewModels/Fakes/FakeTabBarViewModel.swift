@@ -9,8 +9,8 @@ import Combine
 
 class FakeTabBarViewModel: TabBarViewModelProtocol, ObservableObject {
     
-    var tasksTextKey = "tab_bar.tasks"
-    var calendarTextKey = "tab_bar.calendar"
-    var settingsTextKey = "tab_bar.settings"
+    var tasksText = "Tasks"
+    var calendarText = "Calendar"
+    var settingsText = "Settings"
     var showWelcomeView = false
 }

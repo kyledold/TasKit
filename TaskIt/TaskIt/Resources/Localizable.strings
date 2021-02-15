@@ -6,6 +6,8 @@
   
 */
 
+"add_task.task_name_placeholder" = "Task name";
+"add_task.add_task" = "Add task";
 "app.version.%@" = "Version %@";
 "calendar.title" = "Calendar";
 "settings.title" = "Settings";

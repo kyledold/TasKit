@@ -9,7 +9,7 @@ import Foundation
 
 class SettingsViewModel: SettingsViewModelProtocol {
     
-    let titleTextKey = "settings.title"
+    let titleText = NSLocalizedString("settings.title", comment: "title")
     var versionNumber = Bundle.version
     
     private(set) var rowViewModels: [SettingsRowViewModel] = [

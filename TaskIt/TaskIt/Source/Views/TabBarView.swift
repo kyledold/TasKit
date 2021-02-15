@@ -13,20 +13,20 @@ struct TabBarView<ViewModel: TabBarViewModelProtocol>: View {
     
     var body: some View {
         TabView {
-            TasksView()
+            TasksView(viewModel: TasksViewModel())
                 .tabItem {
                     Image(systemName: "list.dash")
-                    Text(LocalizedStringKey(viewModel.tasksTextKey))
+                    Text(viewModel.tasksText)
                 }
             CalendarView()
                 .tabItem {
                     Image(systemName: "calendar")
-                    Text(LocalizedStringKey(viewModel.calendarTextKey))
+                    Text(viewModel.calendarText)
                 }
             SettingsView(viewModel: SettingsViewModel())
                 .tabItem {
                     Image(systemName: "gearshape.fill")
-                    Text(LocalizedStringKey(viewModel.settingsTextKey))
+                    Text(viewModel.settingsText)
                 }
         }
         .sheet(isPresented: $viewModel.showWelcomeView) {

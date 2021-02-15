@@ -12,15 +12,15 @@ class WelcomeViewModelTests: XCTestCase {
     
     private lazy var sut = WelcomeViewModel()
     
-    func test_welcomeTextKey() {
-        XCTAssertEqual(sut.welcomeTextKey, "welcome.welcome")
+    func test_welcomeText() {
+        XCTAssertEqual(sut.welcomeText, "Welcome")
     }
     
-    func test_getStartedButtonTextKey() {
-        XCTAssertEqual(sut.gotItButtonTextKey, "welcome.got_it")
+    func test_getStartedButtonText() {
+        XCTAssertEqual(sut.gotItButtonText, "Got it")
     }
     
-    func test_disclaimerTextKey() {
-        XCTAssertEqual(sut.disclaimerTextKey, "welcome.terms_and_conditions")
+    func test_disclaimerText() {
+        XCTAssertEqual(sut.disclaimerText, "By continuing you agree to Task Its Terms of Service and Privacy Policy")
     }
 }

@@ -17,11 +17,11 @@ struct SettingsRowView<ViewModel: SettingsRowViewModelProtocol>: View {
                 .thumbnailImageModifier(tintColor: viewModel.settingsItem.color)
 
             VStack(alignment: .leading, spacing: 3.0) {
-                Text(LocalizedStringKey(viewModel.titleTextKey))
+                Text(viewModel.titleText)
                     .font(.body)
                     .foregroundColor(.primary)
 
-                Text(LocalizedStringKey(viewModel.subtitleTextKey))
+                Text(viewModel.subtitleText)
                     .modifier(SubTitleStyle())
             }
         }

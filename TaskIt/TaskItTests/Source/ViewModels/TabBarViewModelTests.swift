@@ -12,15 +12,15 @@ class TabBarViewModelTests: XCTestCase {
     
     private lazy var sut = TabBarViewModel()
     
-    func test_tasksTextKey() {
-        XCTAssertEqual(sut.tasksTextKey, "tab_bar.tasks")
+    func test_tasksText() {
+        XCTAssertEqual(sut.tasksText, "Tasks")
     }
     
-    func test_calendarTextKey() {
-        XCTAssertEqual(sut.calendarTextKey, "tab_bar.calendar")
+    func test_calendarText() {
+        XCTAssertEqual(sut.calendarText, "Calendar")
     }
     
-    func test_settingsTextKey() {
-        XCTAssertEqual(sut.settingsTextKey, "tab_bar.settings")
+    func test_settingsText() {
+        XCTAssertEqual(sut.settingsText, "Settings")
     }
 }

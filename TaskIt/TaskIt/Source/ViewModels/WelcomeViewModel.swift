@@ -9,9 +9,9 @@ import Foundation
 
 class WelcomeViewModel: WelcomeViewModelProtocol {
 
-    var welcomeTextKey = "welcome.welcome"
-    var gotItButtonTextKey = "welcome.got_it"
-    var disclaimerTextKey = "welcome.terms_and_conditions"
+    var welcomeText = NSLocalizedString("welcome.welcome", comment: "Welcome page heading")
+    var gotItButtonText = NSLocalizedString("welcome.got_it", comment: "Got it button text")
+    var disclaimerText = NSLocalizedString("welcome.terms_and_conditions", comment: "disclaimer text")
     
     private let userDefaults: UserDefaults
     

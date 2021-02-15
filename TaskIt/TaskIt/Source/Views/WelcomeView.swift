@@ -17,7 +17,7 @@ struct WelcomeView<ViewModel: WelcomeViewModelProtocol>: View {
         VStack(spacing: Layout.Padding.cozy) {
             Spacer()
             
-            Text(LocalizedStringKey(viewModel.welcomeTextKey))
+            Text(viewModel.welcomeText)
                 .font(.title)
                 .foregroundColor(.white)
             
@@ -30,14 +30,14 @@ struct WelcomeView<ViewModel: WelcomeViewModelProtocol>: View {
             Button(action: {
                 presentationMode.wrappedValue.dismiss()
             }, label: {
-                Text(LocalizedStringKey(viewModel.gotItButtonTextKey))
+                Text(viewModel.gotItButtonText)
             })
             .simultaneousGesture(TapGesture().onEnded {
                 viewModel.onGotItTapped()
             })
             .buttonStyle(FilledButtonStyle())
             
-            Text(LocalizedStringKey(viewModel.disclaimerTextKey))
+            Text(viewModel.disclaimerText)
                 .modifier(FootnoteTextStyle())
             
             Spacer()

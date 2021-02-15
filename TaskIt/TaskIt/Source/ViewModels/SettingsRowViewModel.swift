@@ -11,17 +11,17 @@ class SettingsRowViewModel: SettingsRowViewModelProtocol {
     
     var id: Int { return settingsItem.rawValue }
     
-    var titleTextKey: String {
+    var titleText: String {
         switch settingsItem {
-        case .feedback: return "settings.feedback.title"
-        case .openSource: return "settings.open_source.title"
+        case .feedback: return NSLocalizedString("settings.feedback.title", comment: "feedback title")
+        case .openSource: return NSLocalizedString("settings.open_source.title", comment: "open source title")
         }
     }
 
-    var subtitleTextKey: String {
+    var subtitleText: String {
         switch settingsItem {
-        case .feedback: return "settings.feedback.subtitle"
-        case .openSource: return "settings.open_source.subtitle"
+        case .feedback: return NSLocalizedString("settings.feedback.subtitle", comment: "feedback subtitle")
+        case .openSource: return NSLocalizedString("settings.open_source.subtitle", comment: "open source subtitle")
         }
     }
 

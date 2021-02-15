@@ -12,8 +12,8 @@ class SettingsViewModelTests: XCTestCase {
     
     private lazy var sut = SettingsViewModel()
     
-    func test_titleTextKey() {
-        XCTAssertEqual(sut.titleTextKey, "settings.title")
+    func test_titleText() {
+        XCTAssertEqual(sut.titleText, "Settings")
     }
     
     func test_versionNumber() {
