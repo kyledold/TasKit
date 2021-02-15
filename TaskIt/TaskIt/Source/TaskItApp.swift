@@ -11,14 +11,14 @@ import NetworkKit
 @main
 struct TaskItApp: App {
     
-    let persistenceController = PersistenceController.shared
+    static let persistenceController = PersistenceController.shared
     
     @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
     
     var body: some Scene {
         WindowGroup {
             TabBarView(viewModel: TabBarViewModel())
-                .environment(\.managedObjectContext, persistenceController.container.viewContext)
+                .environment(\.managedObjectContext, TaskItApp.persistenceController.container.viewContext)
         }
     }
 }

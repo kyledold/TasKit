@@ -5,8 +5,6 @@
 //  Created by Kyle Dold on 13/02/2021.
 //
 
-import Foundation
-
 class FakeSettingsViewModel: SettingsViewModelProtocol {
     
     var titleTextKey = "settings.title"

@@ -6,17 +6,8 @@
 //
 
 import Foundation
-import NetworkKit
 
-class TasksViewModel {
+class TasksViewModel: TasksViewModelProtocol {
     
-    //private(set) var tasks: [Task]
-    
-    init() {
-      //  tasks = []
-    }
-    
-    func fetchTasks() {
-        
-    }
+    let titleTextKey = "tasks.title"
 }

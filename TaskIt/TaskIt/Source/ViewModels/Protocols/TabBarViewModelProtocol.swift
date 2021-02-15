@@ -5,7 +5,6 @@
 //  Created by Kyle Dold on 11/02/2021.
 //
 
-import Foundation
 import Combine
 
 protocol TabBarViewModelProtocol: ObservableObject {

@@ -13,7 +13,7 @@ struct TabBarView<ViewModel: TabBarViewModelProtocol>: View {
     
     var body: some View {
         TabView {
-            TasksView()
+            TasksView(viewModel: TasksViewModel())
                 .tabItem {
                     Image(systemName: "list.dash")
                     Text(LocalizedStringKey(viewModel.tasksTextKey))
