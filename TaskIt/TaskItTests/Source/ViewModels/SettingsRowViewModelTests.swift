@@ -10,14 +10,14 @@ import XCTest
 
 class SettingsRowViewModelTests: XCTestCase {
     
-    func test_feedbackRow_titleTextKey() {
+    func test_feedbackRow_titleText() {
         let sut = SettingsRowViewModel(settingItem: .feedback)
-        XCTAssertEqual(sut.titleTextKey, "settings.feedback.title")
+        XCTAssertEqual(sut.titleText, "Feedback")
     }
     
-    func test_feedbackRow_subtitleTextKey() {
+    func test_feedbackRow_subtitleText() {
         let sut = SettingsRowViewModel(settingItem: .feedback)
-        XCTAssertEqual(sut.subtitleTextKey, "settings.feedback.subtitle")
+        XCTAssertEqual(sut.subtitleText, "kdold02@gmail.com")
     }
     
     func test_feedbackRow_systemImageName() {
@@ -30,14 +30,14 @@ class SettingsRowViewModelTests: XCTestCase {
         XCTAssertEqual(sut.url, URL(string: "mailto:kdold02@gmail.com")!)
     }
     
-    func test_openSourceRow_titleTextKey() {
+    func test_openSourceRow_titleText() {
         let sut = SettingsRowViewModel(settingItem: .openSource)
-        XCTAssertEqual(sut.titleTextKey, "settings.open_source.title")
+        XCTAssertEqual(sut.titleText, "Source code")
     }
     
-    func test_openSourceRow_subtitleTextKey() {
+    func test_openSourceRow_subtitleText() {
         let sut = SettingsRowViewModel(settingItem: .openSource)
-        XCTAssertEqual(sut.subtitleTextKey, "settings.open_source.subtitle")
+        XCTAssertEqual(sut.subtitleText, "Feel free to browse or contribute")
     }
     
     func test_openSourceRow_systemImageName() {

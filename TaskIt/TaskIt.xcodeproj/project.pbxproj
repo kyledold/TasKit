@@ -32,6 +32,7 @@
 		D17DA9EA25DAC53700ED4A8C /* FakeAddTaskViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D17DA9E925DAC53700ED4A8C /* FakeAddTaskViewModel.swift */; };
 		D17DA9F025DADA1A00ED4A8C /* FloatingLabelTextFieldSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = D17DA9EF25DADA1A00ED4A8C /* FloatingLabelTextFieldSwiftUI */; };
 		D17DA9F525DADA7700ED4A8C /* InputTextFieldStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = D17DA9F425DADA7700ED4A8C /* InputTextFieldStyle.swift */; };
+		D17DA9FA25DAE35C00ED4A8C /* TasksViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D17DA9F925DAE35C00ED4A8C /* TasksViewModelTests.swift */; };
 		D17FC98625D6E814002A5501 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D14E118925D2FCDD00FC27E3 /* CloudKit.framework */; };
 		D17FC98F25D8106F002A5501 /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D17FC98E25D8106F002A5501 /* SettingsViewModel.swift */; };
 		D17FC99425D8107C002A5501 /* SettingsViewModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = D17FC99325D8107C002A5501 /* SettingsViewModelProtocol.swift */; };
@@ -142,6 +143,7 @@
 		D17DA9E425DAC51700ED4A8C /* AddTaskViewModelProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTaskViewModelProtocol.swift; sourceTree = "<group>"; };
 		D17DA9E925DAC53700ED4A8C /* FakeAddTaskViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeAddTaskViewModel.swift; sourceTree = "<group>"; };
 		D17DA9F425DADA7700ED4A8C /* InputTextFieldStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputTextFieldStyle.swift; sourceTree = "<group>"; };
+		D17DA9F925DAE35C00ED4A8C /* TasksViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasksViewModelTests.swift; sourceTree = "<group>"; };
 		D17FC98E25D8106F002A5501 /* SettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
 		D17FC99325D8107C002A5501 /* SettingsViewModelProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModelProtocol.swift; sourceTree = "<group>"; };
 		D17FC99825D8108B002A5501 /* FakeSettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeSettingsViewModel.swift; sourceTree = "<group>"; };
@@ -481,6 +483,7 @@
 				D1BC347925D5A4AA0068A57A /* TabBarViewModelTests.swift */,
 				D17FC9F025D82AC7002A5501 /* SettingsViewModelTests.swift */,
 				D17FC9F525D82B9C002A5501 /* SettingsRowViewModelTests.swift */,
+				D17DA9F925DAE35C00ED4A8C /* TasksViewModelTests.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -747,6 +750,7 @@
 				D1BC33FB25D595EB0068A57A /* WelcomeViewModelTests.swift in Sources */,
 				D17FC9F625D82B9C002A5501 /* SettingsRowViewModelTests.swift in Sources */,
 				D17FC9F125D82AC7002A5501 /* SettingsViewModelTests.swift in Sources */,
+				D17DA9FA25DAE35C00ED4A8C /* TasksViewModelTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

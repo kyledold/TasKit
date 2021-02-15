@@ -17,7 +17,7 @@ struct TasksView<ViewModel: TasksViewModelProtocol>: View {
         NavigationView {
             Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
                 
-            .navigationBarTitle(LocalizedStringKey(viewModel.titleTextKey), displayMode: .inline)
+            .navigationBarTitle(viewModel.titleText, displayMode: .inline)
             .navigationBarItems(trailing:
                 Button(action: {
                     showAddTaskView.toggle()

@@ -7,7 +7,7 @@
 
 protocol SettingsViewModelProtocol {
     
-    var titleTextKey: String { get }
+    var titleText: String { get }
     var versionNumber: String? { get }
     var rowViewModels: [SettingsRowViewModel] { get }
 }

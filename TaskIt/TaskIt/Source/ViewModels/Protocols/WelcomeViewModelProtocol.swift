@@ -7,9 +7,9 @@
 
 protocol WelcomeViewModelProtocol {
     
-    var welcomeTextKey: String { get }
-    var gotItButtonTextKey: String { get }
-    var disclaimerTextKey: String { get }
+    var welcomeText: String { get }
+    var gotItButtonText: String { get }
+    var disclaimerText: String { get }
     
     func onGotItTapped()
 }

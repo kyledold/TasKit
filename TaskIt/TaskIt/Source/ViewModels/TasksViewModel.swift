@@ -9,5 +9,5 @@ import Foundation
 
 class TasksViewModel: TasksViewModelProtocol {
     
-    let titleTextKey = "tasks.title"
+    let titleText = NSLocalizedString("tasks.title", comment: "Tasks title")
 }

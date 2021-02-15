@@ -9,5 +9,5 @@ import Combine
 
 protocol TasksViewModelProtocol: ObservableObject {
     
-    var titleTextKey: String { get }
+    var titleText: String { get }
 }

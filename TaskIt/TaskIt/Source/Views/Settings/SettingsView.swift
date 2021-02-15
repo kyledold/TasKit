@@ -26,7 +26,7 @@ struct SettingsView<ViewModel: SettingsViewModelProtocol>: View {
                 }
                 .listStyle(InsetGroupedListStyle())
             }
-            .navigationBarTitle(LocalizedStringKey(viewModel.titleTextKey), displayMode: .inline)
+            .navigationBarTitle(viewModel.titleText, displayMode: .inline)
         }
     }
     

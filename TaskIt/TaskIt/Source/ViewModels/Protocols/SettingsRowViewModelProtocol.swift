@@ -10,8 +10,8 @@ import Foundation
 protocol SettingsRowViewModelProtocol {
     
     var id: Int { get }
-    var titleTextKey: String { get }
-    var subtitleTextKey: String { get }
+    var titleText: String { get }
+    var subtitleText: String { get }
     var systemImageName: String { get }
     var url: URL { get }
     var settingsItem: SettingsItem { get }

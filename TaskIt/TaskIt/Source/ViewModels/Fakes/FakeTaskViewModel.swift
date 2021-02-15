@@ -7,5 +7,5 @@
 
 class FakeTaskViewModel: TasksViewModelProtocol {
     
-    var titleTextKey = "tasks.title"
+    var titleText = "Tasks"
 }

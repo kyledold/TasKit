@@ -6,12 +6,13 @@
 //
 
 import Combine
+import Foundation
 
 class TabBarViewModel: TabBarViewModelProtocol {
 
-    var tasksTextKey = "tab_bar.tasks"
-    var calendarTextKey = "tab_bar.calendar"
-    var settingsTextKey = "tab_bar.settings"
+    var tasksText = NSLocalizedString("tab_bar.tasks", comment: "tasks tab name")
+    var calendarText = NSLocalizedString("tab_bar.calendar", comment: "calendar tab name")
+    var settingsText = NSLocalizedString("tab_bar.settings", comment: "settings tab name")
     
     @Published var showWelcomeView: Bool
     
