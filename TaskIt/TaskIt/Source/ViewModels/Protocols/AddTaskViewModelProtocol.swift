@@ -9,4 +9,6 @@ import Combine
 
 protocol AddTaskViewModelProtocol: ObservableObject {
     
+    var taskName: String { get set }
+    var taskNamePlaceholder: String { get }
 }

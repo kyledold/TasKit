@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import FloatingLabelTextFieldSwiftUI
 
 struct AddTaskView<ViewModel: AddTaskViewModelProtocol>: View {
     
@@ -14,14 +15,21 @@ struct AddTaskView<ViewModel: AddTaskViewModelProtocol>: View {
     @Environment(\.presentationMode) var presentationMode
     
     var body: some View {
-        VStack {
+        VStack(spacing: Layout.Padding.cozy) {
+            Spacer()
             
+            FloatingLabelTextField($viewModel.taskName, placeholder: viewModel.taskNamePlaceholder)
+                .floatingStyle(InputTextFieldStyle())
+                .frame(height: 40)
+            
+            Spacer()
             Button(action: {
                 presentationMode.wrappedValue.dismiss()
             }, label: {
                 Text("Add Task")
             })
         }
+        .padding(.horizontal, Layout.Padding.spacious)
     }
 }
 

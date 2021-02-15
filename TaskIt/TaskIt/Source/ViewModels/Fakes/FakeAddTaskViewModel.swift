@@ -7,4 +7,6 @@
 
 class FakeAddTaskViewModel: AddTaskViewModelProtocol {
 
+    var taskName = ""
+    var taskNamePlaceholder = "Task name"
 }
