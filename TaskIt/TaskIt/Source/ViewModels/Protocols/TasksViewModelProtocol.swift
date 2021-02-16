@@ -6,8 +6,12 @@
 //
 
 import Combine
+import NetworkKit
 
 protocol TasksViewModelProtocol: ObservableObject {
     
     var titleText: String { get }
+    var tasks: [Task] { get }
+    
+    func fetchTasks()
 }

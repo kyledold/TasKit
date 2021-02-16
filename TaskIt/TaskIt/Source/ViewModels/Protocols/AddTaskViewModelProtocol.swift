@@ -11,4 +11,6 @@ protocol AddTaskViewModelProtocol: ObservableObject {
     
     var taskName: String { get set }
     var taskNamePlaceholder: String { get }
+    
+    func addNewTaskTapped(_ completion: @escaping EmptyClosure)
 }

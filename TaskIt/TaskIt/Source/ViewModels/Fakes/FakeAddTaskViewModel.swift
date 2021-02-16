@@ -7,6 +7,8 @@
 
 class FakeAddTaskViewModel: AddTaskViewModelProtocol {
 
-    var taskName = ""
+    var taskName = String.empty
     var taskNamePlaceholder = "Task name"
+    
+    func addNewTaskTapped(_ completion: @escaping EmptyClosure) { }
 }

@@ -24,7 +24,9 @@ struct AddTaskView<ViewModel: AddTaskViewModelProtocol>: View {
             
             Spacer()
             Button(action: {
-                presentationMode.wrappedValue.dismiss()
+                viewModel.addNewTaskTapped() {
+                    presentationMode.wrappedValue.dismiss()
+                }
             }, label: {
                 Text("Add Task")
             })
