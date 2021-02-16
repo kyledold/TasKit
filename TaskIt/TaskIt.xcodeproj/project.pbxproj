@@ -32,6 +32,8 @@
 		D17DAA9A25DBDF5300ED4A8C /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = D187C07025DA6B4D00A5B09A /* Persistence.swift */; };
 		D17DAAA125DBDF8400ED4A8C /* TaskIt.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D17DAA4E25DB039000ED4A8C /* TaskIt.xcdatamodeld */; };
 		D17DAAA525DBE04900ED4A8C /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D17DAAA425DBE04900ED4A8C /* StringExtension.swift */; };
+		D17DAAA925DBF10300ED4A8C /* Status.swift in Sources */ = {isa = PBXBuildFile; fileRef = D17DAAA825DBF10300ED4A8C /* Status.swift */; };
+		D17DAAAD25DBF2A100ED4A8C /* Priority.swift in Sources */ = {isa = PBXBuildFile; fileRef = D17DAAAC25DBF2A100ED4A8C /* Priority.swift */; };
 		D17FC98625D6E814002A5501 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D14E118925D2FCDD00FC27E3 /* CloudKit.framework */; };
 		D17FC98F25D8106F002A5501 /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D17FC98E25D8106F002A5501 /* SettingsViewModel.swift */; };
 		D17FC99425D8107C002A5501 /* SettingsViewModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = D17FC99325D8107C002A5501 /* SettingsViewModelProtocol.swift */; };
@@ -115,6 +117,8 @@
 		D17DA9FF25DAE50300ED4A8C /* Task.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Task.swift; sourceTree = "<group>"; };
 		D17DAA4F25DB039000ED4A8C /* TaskIt.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = TaskIt.xcdatamodel; sourceTree = "<group>"; };
 		D17DAAA425DBE04900ED4A8C /* StringExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
+		D17DAAA825DBF10300ED4A8C /* Status.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Status.swift; sourceTree = "<group>"; };
+		D17DAAAC25DBF2A100ED4A8C /* Priority.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Priority.swift; sourceTree = "<group>"; };
 		D17FC98E25D8106F002A5501 /* SettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
 		D17FC99325D8107C002A5501 /* SettingsViewModelProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModelProtocol.swift; sourceTree = "<group>"; };
 		D17FC99825D8108B002A5501 /* FakeSettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeSettingsViewModel.swift; sourceTree = "<group>"; };
@@ -305,6 +309,8 @@
 				D17DAA4E25DB039000ED4A8C /* TaskIt.xcdatamodeld */,
 				D187C07025DA6B4D00A5B09A /* Persistence.swift */,
 				D17DA9FF25DAE50300ED4A8C /* Task.swift */,
+				D17DAAA825DBF10300ED4A8C /* Status.swift */,
+				D17DAAAC25DBF2A100ED4A8C /* Priority.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -535,6 +541,7 @@
 				D1D74EFD25C9733700E8EC77 /* OutlinedButtonStyle.swift in Sources */,
 				D17FCA5B25D98986002A5501 /* TasksViewModel.swift in Sources */,
 				D17DAAA525DBE04900ED4A8C /* StringExtension.swift in Sources */,
+				D17DAAAD25DBF2A100ED4A8C /* Priority.swift in Sources */,
 				D1BC347025D5A2A20068A57A /* TabBarViewModelProtocol.swift in Sources */,
 				D1BC347525D5A32D0068A57A /* FakeTabBarViewModel.swift in Sources */,
 				D17FC9FB25D82E28002A5501 /* FooterStyle.swift in Sources */,
@@ -555,6 +562,7 @@
 				D14E11CE25D44E6600FC27E3 /* TabBarView.swift in Sources */,
 				D13A6E3225C73586003A6759 /* FilledButtonStyle.swift in Sources */,
 				D1BC33C225D455F50068A57A /* Constants.swift in Sources */,
+				D17DAAA925DBF10300ED4A8C /* Status.swift in Sources */,
 				D1BC348925D5A92A0068A57A /* SettingsView.swift in Sources */,
 				D17FC9D125D81EBB002A5501 /* UIApplicationExtension.swift in Sources */,
 				D17FC9A325D815EE002A5501 /* BundleExtension.swift in Sources */,

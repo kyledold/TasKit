@@ -7,7 +7,6 @@
 
 import CoreData
 import Foundation
-import NetworkKit
 
 class TasksViewModel: TasksViewModelProtocol {
     
@@ -18,6 +17,8 @@ class TasksViewModel: TasksViewModelProtocol {
     
     init(managedObjectContext: NSManagedObjectContext) {
         self.managedObjectContext = managedObjectContext
+        
+        Task.deleteAll(viewContext: self.managedObjectContext)
     }
     
     func fetchTasks() {

@@ -16,18 +16,18 @@ struct TasksView<ViewModel: TasksViewModelProtocol>: View {
     
     var body: some View {
         NavigationView {
-            VStack(alignment: .leading, spacing: 20) {
-                List {
-                    Section() {
-                        ForEach(viewModel.tasks, id: \.id) { task in
-                            Text(task.entity.name ?? "NA")
-                                
-                        }
+            
+            List {
+                Section() {
+                    ForEach(viewModel.tasks, id: \.id) { task in
+                        Text(task.title ?? String.empty)
+                            .modifier(SubTitleStyle())
+                            
                     }
-                    
                 }
-                .listStyle(InsetGroupedListStyle())
+                
             }
+            .listStyle(InsetGroupedListStyle())
                 
             .navigationBarTitle(viewModel.titleText, displayMode: .inline)
             .navigationBarItems(trailing:
@@ -42,7 +42,14 @@ struct TasksView<ViewModel: TasksViewModelProtocol>: View {
                 viewModel.fetchTasks()
             }
             .sheet(isPresented: $showAddTaskView) {
-                AddTaskView(viewModel: AddTaskViewModel(managedObjectContext: managedObjectContext))
+                AddTaskView(
+                    viewModel: AddTaskViewModel(
+                        managedObjectContext: managedObjectContext,
+                        onTaskAdded: {
+                            viewModel.fetchTasks()
+                        }
+                    )
+                )
             }
         }
     }

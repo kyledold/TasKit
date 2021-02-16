@@ -6,7 +6,6 @@
 //
 
 import SwiftUI
-import NetworkKit
 
 @main
 struct TaskItApp: App {
