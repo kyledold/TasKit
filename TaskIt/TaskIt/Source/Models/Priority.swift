@@ -8,5 +8,5 @@
 import Foundation
 
 enum Priority: Int32 {
-    case low, medium, high
+    case none, low, medium, high
 }

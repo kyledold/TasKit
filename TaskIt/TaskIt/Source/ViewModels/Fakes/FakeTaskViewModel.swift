@@ -6,9 +6,12 @@
 //
 
 class FakeTaskViewModel: TasksViewModelProtocol {
-    
     var titleText = "Tasks"
-    var tasks: [Task] = []
+    var taskViewModels: [TaskRowViewModelProtocol] = [
+        FakeTaskRowViewModel(),
+        FakeTaskRowViewModel(),
+        FakeTaskRowViewModel()
+    ]
     
     func fetchTasks() {}
 }

@@ -33,5 +33,6 @@ struct SettingsRowView<ViewModel: SettingsRowViewModelProtocol>: View {
 struct SettingsRowView_Previews: PreviewProvider {
     static var previews: some View {
         SettingsRowView(viewModel: FakeSettingsRowViewModel())
+                .previewLayout(.fixed(width: 300, height: 80))
     }
 }

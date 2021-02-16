@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 52;
+	objectVersion = 50;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -25,8 +25,6 @@
 		D17DA9D725DABECB00ED4A8C /* FakeTaskViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D17DA9D625DABECB00ED4A8C /* FakeTaskViewModel.swift */; };
 		D17DA9E525DAC51700ED4A8C /* AddTaskViewModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = D17DA9E425DAC51700ED4A8C /* AddTaskViewModelProtocol.swift */; };
 		D17DA9EA25DAC53700ED4A8C /* FakeAddTaskViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D17DA9E925DAC53700ED4A8C /* FakeAddTaskViewModel.swift */; };
-		D17DA9F025DADA1A00ED4A8C /* FloatingLabelTextFieldSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = D17DA9EF25DADA1A00ED4A8C /* FloatingLabelTextFieldSwiftUI */; };
-		D17DA9F525DADA7700ED4A8C /* InputTextFieldStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = D17DA9F425DADA7700ED4A8C /* InputTextFieldStyle.swift */; };
 		D17DA9FA25DAE35C00ED4A8C /* TasksViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D17DA9F925DAE35C00ED4A8C /* TasksViewModelTests.swift */; };
 		D17DAA9925DBDF5300ED4A8C /* Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = D17DA9FF25DAE50300ED4A8C /* Task.swift */; };
 		D17DAA9A25DBDF5300ED4A8C /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = D187C07025DA6B4D00A5B09A /* Persistence.swift */; };
@@ -34,6 +32,11 @@
 		D17DAAA525DBE04900ED4A8C /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D17DAAA425DBE04900ED4A8C /* StringExtension.swift */; };
 		D17DAAA925DBF10300ED4A8C /* Status.swift in Sources */ = {isa = PBXBuildFile; fileRef = D17DAAA825DBF10300ED4A8C /* Status.swift */; };
 		D17DAAAD25DBF2A100ED4A8C /* Priority.swift in Sources */ = {isa = PBXBuildFile; fileRef = D17DAAAC25DBF2A100ED4A8C /* Priority.swift */; };
+		D17DAAB225DBFC9E00ED4A8C /* TaskRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D17DAAB125DBFC9E00ED4A8C /* TaskRowView.swift */; };
+		D17DAAB525DBFCEB00ED4A8C /* TaskRowViewModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = D17DAAB425DBFCEB00ED4A8C /* TaskRowViewModelProtocol.swift */; };
+		D17DAAB825DBFD0F00ED4A8C /* FakeTaskRowViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D17DAAB725DBFD0F00ED4A8C /* FakeTaskRowViewModel.swift */; };
+		D17DAABB25DBFD3300ED4A8C /* TaskRowViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D17DAABA25DBFD3300ED4A8C /* TaskRowViewModel.swift */; };
+		D17DAAD425DC279D00ED4A8C /* PriorityPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D17DAAD325DC279C00ED4A8C /* PriorityPickerView.swift */; };
 		D17FC98625D6E814002A5501 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D14E118925D2FCDD00FC27E3 /* CloudKit.framework */; };
 		D17FC98F25D8106F002A5501 /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D17FC98E25D8106F002A5501 /* SettingsViewModel.swift */; };
 		D17FC99425D8107C002A5501 /* SettingsViewModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = D17FC99325D8107C002A5501 /* SettingsViewModelProtocol.swift */; };
@@ -112,13 +115,17 @@
 		D17DA9D625DABECB00ED4A8C /* FakeTaskViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeTaskViewModel.swift; sourceTree = "<group>"; };
 		D17DA9E425DAC51700ED4A8C /* AddTaskViewModelProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTaskViewModelProtocol.swift; sourceTree = "<group>"; };
 		D17DA9E925DAC53700ED4A8C /* FakeAddTaskViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeAddTaskViewModel.swift; sourceTree = "<group>"; };
-		D17DA9F425DADA7700ED4A8C /* InputTextFieldStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputTextFieldStyle.swift; sourceTree = "<group>"; };
 		D17DA9F925DAE35C00ED4A8C /* TasksViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasksViewModelTests.swift; sourceTree = "<group>"; };
 		D17DA9FF25DAE50300ED4A8C /* Task.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Task.swift; sourceTree = "<group>"; };
 		D17DAA4F25DB039000ED4A8C /* TaskIt.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = TaskIt.xcdatamodel; sourceTree = "<group>"; };
 		D17DAAA425DBE04900ED4A8C /* StringExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
 		D17DAAA825DBF10300ED4A8C /* Status.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Status.swift; sourceTree = "<group>"; };
 		D17DAAAC25DBF2A100ED4A8C /* Priority.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Priority.swift; sourceTree = "<group>"; };
+		D17DAAB125DBFC9E00ED4A8C /* TaskRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskRowView.swift; sourceTree = "<group>"; };
+		D17DAAB425DBFCEB00ED4A8C /* TaskRowViewModelProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskRowViewModelProtocol.swift; sourceTree = "<group>"; };
+		D17DAAB725DBFD0F00ED4A8C /* FakeTaskRowViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeTaskRowViewModel.swift; sourceTree = "<group>"; };
+		D17DAABA25DBFD3300ED4A8C /* TaskRowViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskRowViewModel.swift; sourceTree = "<group>"; };
+		D17DAAD325DC279C00ED4A8C /* PriorityPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PriorityPickerView.swift; sourceTree = "<group>"; };
 		D17FC98E25D8106F002A5501 /* SettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
 		D17FC99325D8107C002A5501 /* SettingsViewModelProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModelProtocol.swift; sourceTree = "<group>"; };
 		D17FC99825D8108B002A5501 /* FakeSettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeSettingsViewModel.swift; sourceTree = "<group>"; };
@@ -160,7 +167,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D17DA9F025DADA1A00ED4A8C /* FloatingLabelTextFieldSwiftUI in Frameworks */,
 				D17FC98625D6E814002A5501 /* CloudKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -196,7 +202,6 @@
 				D1D74F0125C9753800E8EC77 /* FootnoteTextStyle.swift */,
 				D17FC9B225D81810002A5501 /* SubTitleStyle.swift */,
 				D1D74EFC25C9733700E8EC77 /* OutlinedButtonStyle.swift */,
-				D17DA9F425DADA7700ED4A8C /* InputTextFieldStyle.swift */,
 			);
 			path = Styles;
 			sourceTree = "<group>";
@@ -251,6 +256,7 @@
 			children = (
 				D1529C3C25C70457003FC9D6 /* TaskItApp.swift */,
 				D1BC33C125D455F50068A57A /* Constants.swift */,
+				D17DAAD225DC278E00ED4A8C /* Components */,
 				D13A6E2625C72E0C003A6759 /* Extensions */,
 				D1529C6425C727CA003FC9D6 /* Views */,
 				D1BC33B825D453840068A57A /* ViewModels */,
@@ -298,6 +304,7 @@
 			isa = PBXGroup;
 			children = (
 				D1783EB925C9C9E500D8EFC3 /* TasksView.swift */,
+				D17DAAB125DBFC9E00ED4A8C /* TaskRowView.swift */,
 				D17DA9C025DABB9100ED4A8C /* AddTaskView.swift */,
 			);
 			path = Tasks;
@@ -313,6 +320,14 @@
 				D17DAAAC25DBF2A100ED4A8C /* Priority.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		D17DAAD225DC278E00ED4A8C /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				D17DAAD325DC279C00ED4A8C /* PriorityPickerView.swift */,
+			);
+			path = Components;
 			sourceTree = "<group>";
 		};
 		D17FC9A725D817A6002A5501 /* Settings */ = {
@@ -334,6 +349,7 @@
 				D17FC98E25D8106F002A5501 /* SettingsViewModel.swift */,
 				D17FC9D825D8235F002A5501 /* SettingsRowViewModel.swift */,
 				D17FCA5A25D98986002A5501 /* TasksViewModel.swift */,
+				D17DAABA25DBFD3300ED4A8C /* TaskRowViewModel.swift */,
 				D17DA9CC25DABE4600ED4A8C /* AddTaskViewModel.swift */,
 			);
 			path = ViewModels;
@@ -347,6 +363,7 @@
 				D17FC99825D8108B002A5501 /* FakeSettingsViewModel.swift */,
 				D17FC9EB25D828F6002A5501 /* FakeSettingsRowViewModel.swift */,
 				D17DA9D625DABECB00ED4A8C /* FakeTaskViewModel.swift */,
+				D17DAAB725DBFD0F00ED4A8C /* FakeTaskRowViewModel.swift */,
 				D17DA9E925DAC53700ED4A8C /* FakeAddTaskViewModel.swift */,
 			);
 			path = Fakes;
@@ -360,6 +377,7 @@
 				D17FC99325D8107C002A5501 /* SettingsViewModelProtocol.swift */,
 				D17FC9E625D82863002A5501 /* SettingsRowViewModelProtocol.swift */,
 				D17DA9D125DABEA600ED4A8C /* TasksViewModelProtocol.swift */,
+				D17DAAB425DBFCEB00ED4A8C /* TaskRowViewModelProtocol.swift */,
 				D17DA9E425DAC51700ED4A8C /* AddTaskViewModelProtocol.swift */,
 			);
 			path = Protocols;
@@ -429,7 +447,6 @@
 			);
 			name = TaskIt;
 			packageProductDependencies = (
-				D17DA9EF25DADA1A00ED4A8C /* FloatingLabelTextFieldSwiftUI */,
 			);
 			productName = TaskIt;
 			productReference = D1529C3925C70457003FC9D6 /* TaskIt.app */;
@@ -481,7 +498,6 @@
 			);
 			mainGroup = D1529C3025C70457003FC9D6;
 			packageReferences = (
-				D17DA9EE25DADA1A00ED4A8C /* XCRemoteSwiftPackageReference "FloatingLabelTextFieldSwiftUI" */,
 			);
 			productRefGroup = D1529C3A25C70457003FC9D6 /* Products */;
 			projectDirPath = "";
@@ -522,6 +538,7 @@
 			files = (
 				D17DA9D225DABEA600ED4A8C /* TasksViewModelProtocol.swift in Sources */,
 				D1BC33D325D58B630068A57A /* FakeWelcomeViewModel.swift in Sources */,
+				D17DAAB525DBFCEB00ED4A8C /* TaskRowViewModelProtocol.swift in Sources */,
 				D17DA9CD25DABE4600ED4A8C /* AddTaskViewModel.swift in Sources */,
 				D17DAA9A25DBDF5300ED4A8C /* Persistence.swift in Sources */,
 				D17DA9C125DABB9100ED4A8C /* AddTaskView.swift in Sources */,
@@ -536,7 +553,6 @@
 				D17FC9E725D82863002A5501 /* SettingsRowViewModelProtocol.swift in Sources */,
 				D1783EBD25C9C9F100D8EFC3 /* CalendarView.swift in Sources */,
 				D17DA9E525DAC51700ED4A8C /* AddTaskViewModelProtocol.swift in Sources */,
-				D17DA9F525DADA7700ED4A8C /* InputTextFieldStyle.swift in Sources */,
 				D1529C6625C72810003FC9D6 /* WelcomeView.swift in Sources */,
 				D1D74EFD25C9733700E8EC77 /* OutlinedButtonStyle.swift in Sources */,
 				D17FCA5B25D98986002A5501 /* TasksViewModel.swift in Sources */,
@@ -547,7 +563,10 @@
 				D17FC9FB25D82E28002A5501 /* FooterStyle.swift in Sources */,
 				D17FC9D925D8235F002A5501 /* SettingsRowViewModel.swift in Sources */,
 				D1BC346B25D5A2720068A57A /* TabBarViewModel.swift in Sources */,
+				D17DAABB25DBFD3300ED4A8C /* TaskRowViewModel.swift in Sources */,
 				D1BC33BA25D453980068A57A /* WelcomeViewModel.swift in Sources */,
+				D17DAAD425DC279D00ED4A8C /* PriorityPickerView.swift in Sources */,
+				D17DAAB225DBFC9E00ED4A8C /* TaskRowView.swift in Sources */,
 				D17DA9D725DABECB00ED4A8C /* FakeTaskViewModel.swift in Sources */,
 				D17FC9A925D817BE002A5501 /* SettingsRowView.swift in Sources */,
 				D17FC99925D8108B002A5501 /* FakeSettingsViewModel.swift in Sources */,
@@ -561,6 +580,7 @@
 				D17FC99425D8107C002A5501 /* SettingsViewModelProtocol.swift in Sources */,
 				D14E11CE25D44E6600FC27E3 /* TabBarView.swift in Sources */,
 				D13A6E3225C73586003A6759 /* FilledButtonStyle.swift in Sources */,
+				D17DAAB825DBFD0F00ED4A8C /* FakeTaskRowViewModel.swift in Sources */,
 				D1BC33C225D455F50068A57A /* Constants.swift in Sources */,
 				D17DAAA925DBF10300ED4A8C /* Status.swift in Sources */,
 				D1BC348925D5A92A0068A57A /* SettingsView.swift in Sources */,
@@ -833,25 +853,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCRemoteSwiftPackageReference section */
-		D17DA9EE25DADA1A00ED4A8C /* XCRemoteSwiftPackageReference "FloatingLabelTextFieldSwiftUI" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/kishanraja/FloatingLabelTextFieldSwiftUI.git";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 4.1.0;
-			};
-		};
-/* End XCRemoteSwiftPackageReference section */
-
-/* Begin XCSwiftPackageProductDependency section */
-		D17DA9EF25DADA1A00ED4A8C /* FloatingLabelTextFieldSwiftUI */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = D17DA9EE25DADA1A00ED4A8C /* XCRemoteSwiftPackageReference "FloatingLabelTextFieldSwiftUI" */;
-			productName = FloatingLabelTextFieldSwiftUI;
-		};
-/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		D17DAA4E25DB039000ED4A8C /* TaskIt.xcdatamodeld */ = {
