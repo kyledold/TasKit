@@ -11,5 +11,6 @@ protocol TaskRowViewModelProtocol {
     
     var id: Int { get }
     var titleText: String { get }
+    var priority: Priority { get }
 }
 

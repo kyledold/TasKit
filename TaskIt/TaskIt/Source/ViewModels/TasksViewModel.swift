@@ -12,19 +12,17 @@ class TasksViewModel: TasksViewModelProtocol {
     
     let titleText = NSLocalizedString("tasks.title", comment: "Tasks title")
     
-    @Published var taskViewModels: [TaskRowViewModelProtocol]
+    @Published private(set) var taskViewModels: [TaskRowViewModelProtocol]
     
     private let managedObjectContext: NSManagedObjectContext
     
     init(managedObjectContext: NSManagedObjectContext) {
         self.managedObjectContext = managedObjectContext
         self.taskViewModels = []
-        
-        Task.deleteAll(viewContext: self.managedObjectContext)
     }
     
     func fetchTasks() {
         let taskModels = Task.fetchAll(viewContext: managedObjectContext)
-        taskViewModels = taskModels.compactMap { return TaskRowViewModel(task: $0) }
+        taskViewModels = taskModels.map { return TaskRowViewModel(task: $0) }
     }
 }

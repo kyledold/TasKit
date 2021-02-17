@@ -20,7 +20,7 @@ struct AddTaskView<ViewModel: AddTaskViewModelProtocol>: View {
             TextField(viewModel.taskNamePlaceholder, text: $viewModel.taskName)
                 .frame(height: 40)
             
-            PriorityPickerView()
+            PrioritySegmentView(selectedPriority: $viewModel.priority)
             
             Spacer()
             Button(action: {
@@ -30,6 +30,9 @@ struct AddTaskView<ViewModel: AddTaskViewModelProtocol>: View {
             }, label: {
                 Text("Add Task")
             })
+        }
+        .onAppear {
+            viewModel.onAppear()
         }
         .padding(.horizontal, Layout.Padding.spacious)
     }

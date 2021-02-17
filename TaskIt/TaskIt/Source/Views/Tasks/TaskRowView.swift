@@ -14,7 +14,7 @@ struct TaskRowView<ViewModel: TaskRowViewModelProtocol>: View {
     var body: some View {
         HStack(spacing: Layout.Padding.cozy) {
             Rectangle()
-                .fill(Color.orange)
+                .fill(Color.color(for: viewModel.priority))
                 .frame(width: 15)
             
             Text(viewModel.titleText)

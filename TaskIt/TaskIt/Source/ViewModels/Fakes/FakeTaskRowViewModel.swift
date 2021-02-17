@@ -11,4 +11,5 @@ class FakeTaskRowViewModel: TaskRowViewModelProtocol {
     
     var id = 0
     var titleText = "This is a fake title"
+    var priority = Priority.medium
 }
