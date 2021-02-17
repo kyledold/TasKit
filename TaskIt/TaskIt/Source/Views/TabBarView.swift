@@ -10,10 +10,11 @@ import SwiftUI
 struct TabBarView<ViewModel: TabBarViewModelProtocol>: View {
     
     @ObservedObject var viewModel: ViewModel
+    @Environment(\.managedObjectContext) var managedObjectContext
     
     var body: some View {
         TabView {
-            TasksView(viewModel: TasksViewModel())
+            TasksView(viewModel: TasksViewModel(managedObjectContext: managedObjectContext))
                 .tabItem {
                     Image(systemName: "list.dash")
                     Text(viewModel.tasksText)

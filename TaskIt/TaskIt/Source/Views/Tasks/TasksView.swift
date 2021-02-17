@@ -9,13 +9,27 @@ import SwiftUI
 
 struct TasksView<ViewModel: TasksViewModelProtocol>: View {
     
-    var viewModel: ViewModel
+    @ObservedObject var viewModel: ViewModel
     
+    @Environment(\.managedObjectContext) var managedObjectContext
     @State private var showAddTaskView = false
     
     var body: some View {
         NavigationView {
-            Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+            List {
+                ForEach(0 ..< viewModel.taskViewModels.count, id: \.self) { index in
+                    let task = viewModel.taskViewModels[index]
+                    if let taskRowViewModel = task as? TaskRowViewModel {
+                        TaskRowView(viewModel: taskRowViewModel)
+                    }
+                    #if DEBUG
+                    if let fakeTaskRowViewModel = task as? FakeTaskRowViewModel {
+                        TaskRowView(viewModel: fakeTaskRowViewModel)
+                    }
+                    #endif
+                }
+            }
+            .listStyle(InsetListStyle())
                 
             .navigationBarTitle(viewModel.titleText, displayMode: .inline)
             .navigationBarItems(trailing:
@@ -26,8 +40,18 @@ struct TasksView<ViewModel: TasksViewModelProtocol>: View {
                         .imageScale(.large)
                 }
             )
+            .onAppear {
+                viewModel.fetchTasks()
+            }
             .sheet(isPresented: $showAddTaskView) {
-                AddTaskView(viewModel: AddTaskViewModel())
+                AddTaskView(
+                    viewModel: AddTaskViewModel(
+                        managedObjectContext: managedObjectContext,
+                        onTaskAdded: {
+                            viewModel.fetchTasks()
+                        }
+                    )
+                )
             }
         }
     }

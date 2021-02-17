@@ -10,5 +10,9 @@ import Combine
 protocol AddTaskViewModelProtocol: ObservableObject {
     
     var taskName: String { get set }
+    var priority: Priority { get set }
     var taskNamePlaceholder: String { get }
+    
+    func onAppear()
+    func addNewTaskTapped(_ completion: @escaping EmptyClosure)
 }

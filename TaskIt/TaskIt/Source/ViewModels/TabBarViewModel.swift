@@ -17,10 +17,11 @@ class TabBarViewModel: TabBarViewModelProtocol {
     @Published var showWelcomeView: Bool
     
     init() {
-        #if DEBUG
+        showWelcomeView = false
+        /*#if DEBUG
         showWelcomeView = true
         #else
         showWelcomeView = UserDefaults.standard.bool(forKey: Constants.UserDefaults.welcomeViewedKey)
-        #endif
+        #endif*/
     }
 }

@@ -10,4 +10,7 @@ import Combine
 protocol TasksViewModelProtocol: ObservableObject {
     
     var titleText: String { get }
+    var taskViewModels: [TaskRowViewModelProtocol] { get }
+    
+    func fetchTasks()
 }
