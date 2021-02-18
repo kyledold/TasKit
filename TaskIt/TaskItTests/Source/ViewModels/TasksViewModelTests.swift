@@ -10,7 +10,8 @@ import XCTest
 
 class TasksViewModelTests: XCTestCase {
     
-    private lazy var sut = TasksViewModel()
+    let mockManagedObjectContext = MockNSManagedObjectContext()
+    private lazy var sut = TasksViewModel(managedObjectContext: mockManagedObjectContext)
     
     func test_titleText() {
         XCTAssertEqual(sut.titleText, "Tasks")

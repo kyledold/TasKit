@@ -9,7 +9,7 @@ import Foundation
 
 protocol TaskRowViewModelProtocol {
     
-    var id: Int { get }
+    var id: UUID { get }
     var titleText: String { get }
     var priority: Priority { get }
 }

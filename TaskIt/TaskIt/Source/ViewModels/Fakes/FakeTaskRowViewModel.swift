@@ -9,7 +9,7 @@ import Foundation
 
 class FakeTaskRowViewModel: TaskRowViewModelProtocol {
     
-    var id = 0
+    var id = UUID()
     var titleText = "This is a fake title"
     var priority = Priority.medium
 }

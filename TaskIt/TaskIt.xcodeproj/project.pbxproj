@@ -17,6 +17,10 @@
 		D1529C6A25C72886003FC9D6 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = D1529C6925C72886003FC9D6 /* Localizable.strings */; };
 		D1529C6F25C729D4003FC9D6 /* BeautifulPeople.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D1529C6E25C729D4003FC9D6 /* BeautifulPeople.ttf */; };
 		D1529C7525C72C76003FC9D6 /* ColorExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1529C7425C72C76003FC9D6 /* ColorExtensions.swift */; };
+		D1542BAE25DD8997005FD7C7 /* TaskRowViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1542BAD25DD8997005FD7C7 /* TaskRowViewModelTests.swift */; };
+		D1542BB525DD8A74005FD7C7 /* MockTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1542BB425DD8A74005FD7C7 /* MockTask.swift */; };
+		D1542BBA25DD8D49005FD7C7 /* MockNSManagedObjectContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1542BB925DD8D49005FD7C7 /* MockNSManagedObjectContext.swift */; };
+		D1542BBD25DE9276005FD7C7 /* NewTaskInputAccessoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1542BBC25DE9275005FD7C7 /* NewTaskInputAccessoryView.swift */; };
 		D1783EBA25C9C9E500D8EFC3 /* TasksView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1783EB925C9C9E500D8EFC3 /* TasksView.swift */; };
 		D1783EBD25C9C9F100D8EFC3 /* CalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1783EBC25C9C9F100D8EFC3 /* CalendarView.swift */; };
 		D17DA9C125DABB9100ED4A8C /* AddTaskView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D17DA9C025DABB9100ED4A8C /* AddTaskView.swift */; };
@@ -107,6 +111,10 @@
 		D1529C6925C72886003FC9D6 /* Localizable.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
 		D1529C6E25C729D4003FC9D6 /* BeautifulPeople.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = BeautifulPeople.ttf; sourceTree = "<group>"; };
 		D1529C7425C72C76003FC9D6 /* ColorExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorExtensions.swift; sourceTree = "<group>"; };
+		D1542BAD25DD8997005FD7C7 /* TaskRowViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskRowViewModelTests.swift; sourceTree = "<group>"; };
+		D1542BB425DD8A74005FD7C7 /* MockTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockTask.swift; sourceTree = "<group>"; };
+		D1542BB925DD8D49005FD7C7 /* MockNSManagedObjectContext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockNSManagedObjectContext.swift; sourceTree = "<group>"; };
+		D1542BBC25DE9275005FD7C7 /* NewTaskInputAccessoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewTaskInputAccessoryView.swift; sourceTree = "<group>"; };
 		D1783EB925C9C9E500D8EFC3 /* TasksView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasksView.swift; sourceTree = "<group>"; };
 		D1783EBC25C9C9F100D8EFC3 /* CalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarView.swift; sourceTree = "<group>"; };
 		D17DA9C025DABB9100ED4A8C /* AddTaskView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTaskView.swift; sourceTree = "<group>"; };
@@ -300,6 +308,15 @@
 			path = Fonts;
 			sourceTree = "<group>";
 		};
+		D1542BB325DD8A5E005FD7C7 /* Mocks */ = {
+			isa = PBXGroup;
+			children = (
+				D1542BB425DD8A74005FD7C7 /* MockTask.swift */,
+				D1542BB925DD8D49005FD7C7 /* MockNSManagedObjectContext.swift */,
+			);
+			path = Mocks;
+			sourceTree = "<group>";
+		};
 		D17DA9C825DABB9900ED4A8C /* Tasks */ = {
 			isa = PBXGroup;
 			children = (
@@ -326,6 +343,7 @@
 			isa = PBXGroup;
 			children = (
 				D17DAAD325DC279C00ED4A8C /* PrioritySegmentView.swift */,
+				D1542BBC25DE9275005FD7C7 /* NewTaskInputAccessoryView.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -395,6 +413,7 @@
 		D1BC33F425D595070068A57A /* Source */ = {
 			isa = PBXGroup;
 			children = (
+				D1542BB325DD8A5E005FD7C7 /* Mocks */,
 				D1BC33F925D595CD0068A57A /* ViewModels */,
 			);
 			path = Source;
@@ -416,6 +435,7 @@
 				D17FC9F025D82AC7002A5501 /* SettingsViewModelTests.swift */,
 				D17FC9F525D82B9C002A5501 /* SettingsRowViewModelTests.swift */,
 				D17DA9F925DAE35C00ED4A8C /* TasksViewModelTests.swift */,
+				D1542BAD25DD8997005FD7C7 /* TaskRowViewModelTests.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -586,6 +606,7 @@
 				D1BC348925D5A92A0068A57A /* SettingsView.swift in Sources */,
 				D17FC9D125D81EBB002A5501 /* UIApplicationExtension.swift in Sources */,
 				D17FC9A325D815EE002A5501 /* BundleExtension.swift in Sources */,
+				D1542BBD25DE9276005FD7C7 /* NewTaskInputAccessoryView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -597,7 +618,10 @@
 				D1BC33FB25D595EB0068A57A /* WelcomeViewModelTests.swift in Sources */,
 				D17FC9F625D82B9C002A5501 /* SettingsRowViewModelTests.swift in Sources */,
 				D17FC9F125D82AC7002A5501 /* SettingsViewModelTests.swift in Sources */,
+				D1542BAE25DD8997005FD7C7 /* TaskRowViewModelTests.swift in Sources */,
 				D17DA9FA25DAE35C00ED4A8C /* TasksViewModelTests.swift in Sources */,
+				D1542BBA25DD8D49005FD7C7 /* MockNSManagedObjectContext.swift in Sources */,
+				D1542BB525DD8A74005FD7C7 /* MockTask.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

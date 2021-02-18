@@ -9,8 +9,7 @@ import Foundation
 
 class TaskRowViewModel: TaskRowViewModelProtocol {
     
-    var id: Int { return 0 }
-    
+    var id: UUID { return task.id ?? UUID() }
     var titleText: String
     var priority: Priority
     

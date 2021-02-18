@@ -17,8 +17,7 @@ struct TasksView<ViewModel: TasksViewModelProtocol>: View {
     var body: some View {
         NavigationView {
             List {
-                ForEach(0 ..< viewModel.taskViewModels.count, id: \.self) { index in
-                    let task = viewModel.taskViewModels[index]
+                ForEach(viewModel.taskViewModels, id: \.id) { task in
                     if let taskRowViewModel = task as? TaskRowViewModel {
                         TaskRowView(viewModel: taskRowViewModel)
                     }
