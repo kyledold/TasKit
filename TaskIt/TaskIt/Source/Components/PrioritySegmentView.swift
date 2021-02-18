@@ -11,7 +11,7 @@ import Foundation
 struct PrioritySegmentView: View {
     
     @Binding var selectedPriority: Priority
-    @State private var backgroundColor: Color = .white
+    @State private var backgroundColor = Color("InputBackgroundColor")
 
     var body: some View {
         
@@ -35,10 +35,10 @@ struct PrioritySegmentView: View {
     
     private func onChange(value: Priority) {
         switch value {
-        case .none: backgroundColor = .white
-        case .low: backgroundColor = .green
-        case .medium: backgroundColor = .yellow
-        case .high: backgroundColor = .red
+        case .none: backgroundColor = Color("InputBackgroundColor")
+        case .low: backgroundColor = Color("LowPriorityGreen")
+        case .medium: backgroundColor = Color("MediumPriorityYellow")
+        case .high: backgroundColor = Color("HighPriorityRed")
         }
     }
 }

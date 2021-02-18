@@ -20,7 +20,6 @@
 		D1542BAE25DD8997005FD7C7 /* TaskRowViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1542BAD25DD8997005FD7C7 /* TaskRowViewModelTests.swift */; };
 		D1542BB525DD8A74005FD7C7 /* MockTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1542BB425DD8A74005FD7C7 /* MockTask.swift */; };
 		D1542BBA25DD8D49005FD7C7 /* MockNSManagedObjectContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1542BB925DD8D49005FD7C7 /* MockNSManagedObjectContext.swift */; };
-		D1542BBD25DE9276005FD7C7 /* NewTaskInputAccessoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1542BBC25DE9275005FD7C7 /* NewTaskInputAccessoryView.swift */; };
 		D1542BDA25DEBCAB005FD7C7 /* PartialSheet in Frameworks */ = {isa = PBXBuildFile; productRef = D1542BD925DEBCAB005FD7C7 /* PartialSheet */; };
 		D1783EBA25C9C9E500D8EFC3 /* TasksView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1783EB925C9C9E500D8EFC3 /* TasksView.swift */; };
 		D1783EBD25C9C9F100D8EFC3 /* CalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1783EBC25C9C9F100D8EFC3 /* CalendarView.swift */; };
@@ -115,7 +114,6 @@
 		D1542BAD25DD8997005FD7C7 /* TaskRowViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskRowViewModelTests.swift; sourceTree = "<group>"; };
 		D1542BB425DD8A74005FD7C7 /* MockTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockTask.swift; sourceTree = "<group>"; };
 		D1542BB925DD8D49005FD7C7 /* MockNSManagedObjectContext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockNSManagedObjectContext.swift; sourceTree = "<group>"; };
-		D1542BBC25DE9275005FD7C7 /* NewTaskInputAccessoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewTaskInputAccessoryView.swift; sourceTree = "<group>"; };
 		D1783EB925C9C9E500D8EFC3 /* TasksView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasksView.swift; sourceTree = "<group>"; };
 		D1783EBC25C9C9F100D8EFC3 /* CalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarView.swift; sourceTree = "<group>"; };
 		D17DA9C025DABB9100ED4A8C /* AddTaskView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTaskView.swift; sourceTree = "<group>"; };
@@ -345,7 +343,6 @@
 			isa = PBXGroup;
 			children = (
 				D17DAAD325DC279C00ED4A8C /* PrioritySegmentView.swift */,
-				D1542BBC25DE9275005FD7C7 /* NewTaskInputAccessoryView.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -610,7 +607,6 @@
 				D1BC348925D5A92A0068A57A /* SettingsView.swift in Sources */,
 				D17FC9D125D81EBB002A5501 /* UIApplicationExtension.swift in Sources */,
 				D17FC9A325D815EE002A5501 /* BundleExtension.swift in Sources */,
-				D1542BBD25DE9276005FD7C7 /* NewTaskInputAccessoryView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

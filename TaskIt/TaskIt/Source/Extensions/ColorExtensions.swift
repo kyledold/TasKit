@@ -13,10 +13,10 @@ extension Color {
     
     static func color(for priority: Priority) -> Color {
         switch priority {
-        case .none: return .white
-        case .low: return .green
-        case .medium: return .yellow
-        case .high: return .red
+        case .none: return .clear
+        case .low: return Color("LowPriorityGreen")
+        case .medium: return Color("MediumPriorityYellow")
+        case .high: return Color("HighPriorityRed")
         }
     }
 }
