@@ -6,13 +6,15 @@
 //
 
 import SwiftUI
+import PartialSheet
 
 struct TasksView<ViewModel: TasksViewModelProtocol>: View {
     
     @ObservedObject var viewModel: ViewModel
-    
-    @Environment(\.managedObjectContext) var managedObjectContext
     @State private var showAddTaskView = false
+    
+    @EnvironmentObject var partialSheetManager: PartialSheetManager
+    @Environment(\.managedObjectContext) var managedObjectContext
     
     var body: some View {
         NavigationView {
@@ -39,10 +41,7 @@ struct TasksView<ViewModel: TasksViewModelProtocol>: View {
                         .imageScale(.large)
                 }
             )
-            .onAppear {
-                viewModel.fetchTasks()
-            }
-            .sheet(isPresented: $showAddTaskView) {
+            .partialSheet(isPresented: $showAddTaskView) {
                 AddTaskView(
                     viewModel: AddTaskViewModel(
                         managedObjectContext: managedObjectContext,
@@ -52,6 +51,20 @@ struct TasksView<ViewModel: TasksViewModelProtocol>: View {
                     )
                 )
             }
+            .addPartialSheet(style: .defaultStyle())
+            .onAppear {
+                viewModel.fetchTasks()
+            }
+            /*.sheet(isPresented: $showAddTaskView) {
+                AddTaskView(
+                    viewModel: AddTaskViewModel(
+                        managedObjectContext: managedObjectContext,
+                        onTaskAdded: {
+                            viewModel.fetchTasks()
+                        }
+                    )
+                )
+            }*/
         }
     }
 }

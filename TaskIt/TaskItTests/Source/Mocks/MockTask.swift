@@ -7,16 +7,22 @@
 
 @testable import TaskIt
 
-class MockTask: Task {
+extension Task {
     
-    convenience init(
-        title: String = "",
-        priority: Priority = .none,
-        status: Status = .todo
-    ) {
-        self.init()
-        self.title = title
-        self.priority = priority
-        self.status = status
+    enum StubFactory {
+        
+        static func make(
+            title: String = "",
+            priority: Priority = .none,
+            status: Status = .todo,
+            dueDate: Date = Date()
+        ) -> Task {
+            let task = Task(context: MockNSManagedObjectContext())
+            task.title = title
+            task.priority = priority
+            task.status = status
+            task.dueDate = dueDate
+            return task
+        }
     }
 }

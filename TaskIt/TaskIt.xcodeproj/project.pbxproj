@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -21,6 +21,7 @@
 		D1542BB525DD8A74005FD7C7 /* MockTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1542BB425DD8A74005FD7C7 /* MockTask.swift */; };
 		D1542BBA25DD8D49005FD7C7 /* MockNSManagedObjectContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1542BB925DD8D49005FD7C7 /* MockNSManagedObjectContext.swift */; };
 		D1542BBD25DE9276005FD7C7 /* NewTaskInputAccessoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1542BBC25DE9275005FD7C7 /* NewTaskInputAccessoryView.swift */; };
+		D1542BDA25DEBCAB005FD7C7 /* PartialSheet in Frameworks */ = {isa = PBXBuildFile; productRef = D1542BD925DEBCAB005FD7C7 /* PartialSheet */; };
 		D1783EBA25C9C9E500D8EFC3 /* TasksView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1783EB925C9C9E500D8EFC3 /* TasksView.swift */; };
 		D1783EBD25C9C9F100D8EFC3 /* CalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1783EBC25C9C9F100D8EFC3 /* CalendarView.swift */; };
 		D17DA9C125DABB9100ED4A8C /* AddTaskView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D17DA9C025DABB9100ED4A8C /* AddTaskView.swift */; };
@@ -175,6 +176,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D1542BDA25DEBCAB005FD7C7 /* PartialSheet in Frameworks */,
 				D17FC98625D6E814002A5501 /* CloudKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -467,6 +469,7 @@
 			);
 			name = TaskIt;
 			packageProductDependencies = (
+				D1542BD925DEBCAB005FD7C7 /* PartialSheet */,
 			);
 			productName = TaskIt;
 			productReference = D1529C3925C70457003FC9D6 /* TaskIt.app */;
@@ -518,6 +521,7 @@
 			);
 			mainGroup = D1529C3025C70457003FC9D6;
 			packageReferences = (
+				D1542BD825DEBCAB005FD7C7 /* XCRemoteSwiftPackageReference "PartialSheet" */,
 			);
 			productRefGroup = D1529C3A25C70457003FC9D6 /* Products */;
 			projectDirPath = "";
@@ -877,6 +881,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		D1542BD825DEBCAB005FD7C7 /* XCRemoteSwiftPackageReference "PartialSheet" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/AndreaMiotto/PartialSheet.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.1.11;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		D1542BD925DEBCAB005FD7C7 /* PartialSheet */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D1542BD825DEBCAB005FD7C7 /* XCRemoteSwiftPackageReference "PartialSheet" */;
+			productName = PartialSheet;
+		};
+/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		D17DAA4E25DB039000ED4A8C /* TaskIt.xcdatamodeld */ = {

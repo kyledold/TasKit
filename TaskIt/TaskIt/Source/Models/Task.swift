@@ -37,5 +37,6 @@ public class Task: NSManagedObject {
         
         createdAt = Date()
         id = UUID()
+        status = .todo
     }
 }

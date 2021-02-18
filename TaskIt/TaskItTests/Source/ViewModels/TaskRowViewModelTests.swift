@@ -10,7 +10,7 @@ import XCTest
 
 class TaskRowViewModelTests: XCTestCase {
     
-    private let mockTask = MockTask(title: "Mock task", priority: .medium)
+    private let mockTask = Task.StubFactory.make(title: "Mock task", priority: .medium)
     private lazy var sut = TaskRowViewModel(task: mockTask)
     
     func test_titleText() {
