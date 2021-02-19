@@ -19,7 +19,7 @@ struct WelcomeView<ViewModel: WelcomeViewModelProtocol>: View {
             
             Text(viewModel.welcomeText)
                 .font(.title)
-                .foregroundColor(.white)
+                .foregroundColor(.cyanBlue)
             
             Image("Placeholder", bundle: .main)
                 .resizable()
@@ -43,7 +43,6 @@ struct WelcomeView<ViewModel: WelcomeViewModelProtocol>: View {
             Spacer()
         }
         .padding(.horizontal, Layout.Padding.spacious)
-        .background(Color.cyanBlue).ignoresSafeArea(.all)
     }
 }
 

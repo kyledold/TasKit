@@ -12,8 +12,10 @@ class AddTaskViewModel: AddTaskViewModelProtocol {
     
     @Published var taskName = String.empty
     @Published var priority = Priority.none
+    @Published var dueDate = Date()
     
-    var taskNamePlaceholder = NSLocalizedString("add_task.task_name_placeholder", comment: "Task name textfield placeholder")
+    var taskNamePlaceholderText = NSLocalizedString("add_task.task_name_placeholder", comment: "Task name textfield placeholder")
+    var taskDateText = NSLocalizedString("add_task.date", comment: "Date picker description")
     
     private var onTaskAdded: EmptyClosure
     private let managedObjectContext: NSManagedObjectContext
@@ -32,8 +34,8 @@ class AddTaskViewModel: AddTaskViewModelProtocol {
         let task = Task(context: managedObjectContext)
         
         task.title = taskName
-        task.status = .todo
         task.priority = priority
+        task.dueDate = dueDate
         
         try? managedObjectContext.save()
         

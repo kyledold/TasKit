@@ -13,7 +13,7 @@ struct FootnoteTextStyle: ViewModifier {
         content
             .font(.footnote)
             .multilineTextAlignment(.center)
-            .foregroundColor(.white)
+            .foregroundColor(.primary)
     }
 }
 

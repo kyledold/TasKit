@@ -32,6 +32,8 @@ public struct PersistenceController {
     }
 }
 
+// MARK: Constants
+
 extension PersistenceController {
     private struct Constants {
         static let containerName = "TaskIt"
