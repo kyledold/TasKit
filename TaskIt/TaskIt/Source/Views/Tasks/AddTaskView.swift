@@ -10,7 +10,7 @@ import SwiftUI
 struct AddTaskView<ViewModel: AddTaskViewModelProtocol>: View {
     
     @ObservedObject var viewModel: ViewModel
-    @Environment(\.presentationMode) var presentationMode
+    @Binding var isAddTaskViewShown: Bool
     
     var body: some View {
         VStack(spacing: Layout.Padding.cozy) {
@@ -18,20 +18,22 @@ struct AddTaskView<ViewModel: AddTaskViewModelProtocol>: View {
             Spacer()
             
             TextField(viewModel.taskNamePlaceholderText, text: $viewModel.taskName)
-                .textFieldStyle(RoundedBorderTextFieldStyle())
-                .frame(height: 40)
+            .textFieldStyle(SimpleTextFieldStyle())
+            .ignoresSafeArea(.keyboard, edges: .bottom)
             
             PrioritySegmentView(selectedPriority: $viewModel.priority)
             
             DatePicker(viewModel.taskDateText, selection: $viewModel.dueDate, displayedComponents: .date)
+                .accentColor(Color.primary)
             
             Button(action: {
                 viewModel.addNewTaskTapped() {
-                    presentationMode.wrappedValue.dismiss()
+                    isAddTaskViewShown = false
                 }
             }, label: {
                 Text("Add Task")
             })
+            .buttonStyle(FilledButtonStyle())
             
             Spacer()
         }
@@ -45,6 +47,7 @@ struct AddTaskView<ViewModel: AddTaskViewModelProtocol>: View {
 
 struct AddTaskView_Previews: PreviewProvider {
     static var previews: some View {
-        AddTaskView(viewModel: FakeAddTaskViewModel())
+        AddTaskView(viewModel: FakeAddTaskViewModel(), isAddTaskViewShown: .constant(true))
+            .previewLayout(.fixed(width: 400, height: 250))
     }
 }

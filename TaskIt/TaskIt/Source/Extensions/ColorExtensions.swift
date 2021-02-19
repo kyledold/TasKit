@@ -10,13 +10,17 @@ import SwiftUI
 extension Color {
     
     static let cyanBlue = Color(#colorLiteral(red: 0.2031033635, green: 0.3637996912, blue: 0.65155375, alpha: 1))
+    static let lowPriorityGreen = Color("LowPriorityGreen")
+    static let mediumPriorityYellow = Color("MediumPriorityYellow")
+    static let highPriorityRed = Color("HighPriorityRed")
+    static let inputBackgroundColor = Color("InputBackgroundColor")
     
     static func color(for priority: Priority) -> Color {
         switch priority {
         case .none: return .clear
-        case .low: return Color("LowPriorityGreen")
-        case .medium: return Color("MediumPriorityYellow")
-        case .high: return Color("HighPriorityRed")
+        case .low: return .lowPriorityGreen
+        case .medium: return .mediumPriorityYellow
+        case .high: return .highPriorityRed
         }
     }
 }

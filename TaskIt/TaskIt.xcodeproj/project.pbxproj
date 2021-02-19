@@ -21,6 +21,7 @@
 		D1542BB525DD8A74005FD7C7 /* MockTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1542BB425DD8A74005FD7C7 /* MockTask.swift */; };
 		D1542BBA25DD8D49005FD7C7 /* MockNSManagedObjectContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1542BB925DD8D49005FD7C7 /* MockNSManagedObjectContext.swift */; };
 		D1542BDA25DEBCAB005FD7C7 /* PartialSheet in Frameworks */ = {isa = PBXBuildFile; productRef = D1542BD925DEBCAB005FD7C7 /* PartialSheet */; };
+		D1542BE925DFE9C5005FD7C7 /* SimpleTextFieldStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1542BE825DFE9C5005FD7C7 /* SimpleTextFieldStyle.swift */; };
 		D1783EBA25C9C9E500D8EFC3 /* TasksView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1783EB925C9C9E500D8EFC3 /* TasksView.swift */; };
 		D1783EBD25C9C9F100D8EFC3 /* CalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1783EBC25C9C9F100D8EFC3 /* CalendarView.swift */; };
 		D17DA9C125DABB9100ED4A8C /* AddTaskView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D17DA9C025DABB9100ED4A8C /* AddTaskView.swift */; };
@@ -114,6 +115,7 @@
 		D1542BAD25DD8997005FD7C7 /* TaskRowViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskRowViewModelTests.swift; sourceTree = "<group>"; };
 		D1542BB425DD8A74005FD7C7 /* MockTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockTask.swift; sourceTree = "<group>"; };
 		D1542BB925DD8D49005FD7C7 /* MockNSManagedObjectContext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockNSManagedObjectContext.swift; sourceTree = "<group>"; };
+		D1542BE825DFE9C5005FD7C7 /* SimpleTextFieldStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleTextFieldStyle.swift; sourceTree = "<group>"; };
 		D1783EB925C9C9E500D8EFC3 /* TasksView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasksView.swift; sourceTree = "<group>"; };
 		D1783EBC25C9C9F100D8EFC3 /* CalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarView.swift; sourceTree = "<group>"; };
 		D17DA9C025DABB9100ED4A8C /* AddTaskView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTaskView.swift; sourceTree = "<group>"; };
@@ -210,6 +212,7 @@
 				D1D74F0125C9753800E8EC77 /* FootnoteTextStyle.swift */,
 				D17FC9B225D81810002A5501 /* SubTitleStyle.swift */,
 				D1D74EFC25C9733700E8EC77 /* OutlinedButtonStyle.swift */,
+				D1542BE825DFE9C5005FD7C7 /* SimpleTextFieldStyle.swift */,
 			);
 			path = Styles;
 			sourceTree = "<group>";
@@ -581,6 +584,7 @@
 				D17DAAAD25DBF2A100ED4A8C /* Priority.swift in Sources */,
 				D1BC347025D5A2A20068A57A /* TabBarViewModelProtocol.swift in Sources */,
 				D1BC347525D5A32D0068A57A /* FakeTabBarViewModel.swift in Sources */,
+				D1542BE925DFE9C5005FD7C7 /* SimpleTextFieldStyle.swift in Sources */,
 				D17FC9FB25D82E28002A5501 /* FooterStyle.swift in Sources */,
 				D17FC9D925D8235F002A5501 /* SettingsRowViewModel.swift in Sources */,
 				D1BC346B25D5A2720068A57A /* TabBarViewModel.swift in Sources */,

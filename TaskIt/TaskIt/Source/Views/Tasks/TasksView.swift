@@ -11,7 +11,7 @@ import PartialSheet
 struct TasksView<ViewModel: TasksViewModelProtocol>: View {
     
     @ObservedObject var viewModel: ViewModel
-    @State private var showAddTaskView = false
+    @State private var isAddTaskViewShown = false
     
     @EnvironmentObject var partialSheetManager: PartialSheetManager
     @Environment(\.managedObjectContext) var managedObjectContext
@@ -35,36 +35,27 @@ struct TasksView<ViewModel: TasksViewModelProtocol>: View {
             .navigationBarTitle(viewModel.titleText, displayMode: .inline)
             .navigationBarItems(trailing:
                 Button(action: {
-                    showAddTaskView.toggle()
+                    isAddTaskViewShown.toggle()
                 }) {
                     Image(systemName: "plus")
                         .imageScale(.large)
                 }
             )
-            .partialSheet(isPresented: $showAddTaskView) {
+            .partialSheet(isPresented: $isAddTaskViewShown) {
                 AddTaskView(
                     viewModel: AddTaskViewModel(
                         managedObjectContext: managedObjectContext,
                         onTaskAdded: {
                             viewModel.fetchTasks()
                         }
-                    )
+                    ),
+                    isAddTaskViewShown: $isAddTaskViewShown
                 )
             }
             .addPartialSheet(style: .defaultStyle())
             .onAppear {
                 viewModel.fetchTasks()
             }
-            /*.sheet(isPresented: $showAddTaskView) {
-                AddTaskView(
-                    viewModel: AddTaskViewModel(
-                        managedObjectContext: managedObjectContext,
-                        onTaskAdded: {
-                            viewModel.fetchTasks()
-                        }
-                    )
-                )
-            }*/
         }
     }
 }

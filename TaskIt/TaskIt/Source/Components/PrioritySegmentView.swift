@@ -11,7 +11,7 @@ import Foundation
 struct PrioritySegmentView: View {
     
     @Binding var selectedPriority: Priority
-    @State private var backgroundColor = Color("InputBackgroundColor")
+    @State private var backgroundColor = Color.inputBackgroundColor
 
     var body: some View {
         
@@ -25,7 +25,6 @@ struct PrioritySegmentView: View {
             Text(LocalizedStringKey("priority_picker.low")).tag(Priority.low)
             Text(LocalizedStringKey("priority_picker.medium")).tag(Priority.medium)
             Text(LocalizedStringKey("priority_picker.high")).tag(Priority.high)
-            
         }
             .onChange(of: selectedPriority) { onChange(value: $0) }
             .background(backgroundColor)
@@ -35,10 +34,10 @@ struct PrioritySegmentView: View {
     
     private func onChange(value: Priority) {
         switch value {
-        case .none: backgroundColor = Color("InputBackgroundColor")
-        case .low: backgroundColor = Color("LowPriorityGreen")
-        case .medium: backgroundColor = Color("MediumPriorityYellow")
-        case .high: backgroundColor = Color("HighPriorityRed")
+        case .none: backgroundColor = Color.inputBackgroundColor
+        case .low: backgroundColor = Color.lowPriorityGreen
+        case .medium: backgroundColor = Color.mediumPriorityYellow
+        case .high: backgroundColor = Color.highPriorityRed
         }
     }
 }
@@ -46,6 +45,6 @@ struct PrioritySegmentView: View {
 struct PriorityPickerView_Previews: PreviewProvider {
     static var previews: some View {
         PrioritySegmentView(selectedPriority: .constant(.none))
-            .previewLayout(.fixed(width: 350, height: 80))
+            .previewLayout(.fixed(width: 350, height: 50))
     }
 }
