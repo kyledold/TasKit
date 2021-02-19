@@ -28,7 +28,7 @@ struct TasksView<ViewModel: TasksViewModelProtocol>: View {
                         TaskRowView(viewModel: fakeTaskRowViewModel)
                     }
                     #endif
-                }
+                }.onDelete(perform: deleteTask)
             }
             .listStyle(InsetListStyle())
                 
@@ -57,6 +57,10 @@ struct TasksView<ViewModel: TasksViewModelProtocol>: View {
                 viewModel.fetchTasks()
             }
         }
+    }
+    
+    private func deleteTask(at indexSet: IndexSet) {
+        viewModel.deleteTask(at: indexSet)
     }
 }
 

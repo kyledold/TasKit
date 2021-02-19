@@ -6,6 +6,7 @@
 //
 
 import Combine
+import Foundation
 
 protocol TasksViewModelProtocol: ObservableObject {
     
@@ -13,4 +14,5 @@ protocol TasksViewModelProtocol: ObservableObject {
     var taskViewModels: [TaskRowViewModelProtocol] { get }
     
     func fetchTasks()
+    func deleteTask(at indexSet: IndexSet)
 }

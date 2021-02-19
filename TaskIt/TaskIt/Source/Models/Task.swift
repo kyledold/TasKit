@@ -32,6 +32,18 @@ public class Task: NSManagedObject {
         try? viewContext.save()
     }
     
+    public static func deleteTask(with id: UUID, viewContext: NSManagedObjectContext) {
+        let fetchRequest: NSFetchRequest<Task> = Task.fetchRequest()
+        fetchRequest.predicate = NSPredicate(format: "id == %@", id as CVarArg)
+        let tasks = try! viewContext.fetch(fetchRequest)
+        
+        for task in tasks {
+            viewContext.delete(task)
+        }
+        
+        try? viewContext.save()
+    }
+    
     public override func awakeFromInsert() {
         super.awakeFromInsert()
         

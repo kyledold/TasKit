@@ -25,4 +25,15 @@ class TasksViewModel: TasksViewModelProtocol {
         let taskModels = Task.fetchAll(viewContext: managedObjectContext)
         taskViewModels = taskModels.map { return TaskRowViewModel(task: $0) }
     }
+    
+    func deleteTask(at indexSet: IndexSet) {
+        
+        let taskViewModelsToDelete = indexSet.map { self.taskViewModels[$0] }
+        
+        for taskViewModel in taskViewModelsToDelete {
+            Task.deleteTask(with: taskViewModel.id, viewContext: managedObjectContext)
+        }
+        
+        fetchTasks()
+    }
 }
