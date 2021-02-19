@@ -7,10 +7,13 @@
 
 import Foundation
 
-protocol TaskRowViewModelProtocol {
+protocol TaskRowViewModelProtocol: ObservableObject {
     
     var id: UUID { get }
     var titleText: String { get }
     var priority: Priority { get }
+    var isCompleted: Bool { get }
+    
+    func completeButtonTapped()
 }
 

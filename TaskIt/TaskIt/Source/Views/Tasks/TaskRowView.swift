@@ -9,10 +9,17 @@ import SwiftUI
 
 struct TaskRowView<ViewModel: TaskRowViewModelProtocol>: View {
     
-    var viewModel: ViewModel
-
+    @ObservedObject var viewModel: ViewModel
+    
     var body: some View {
         HStack(spacing: Layout.Padding.cozy) {
+            
+            Button(action: {
+                viewModel.completeButtonTapped()
+            }) {
+                Image(systemName: viewModel.isCompleted ? "checkmark.circle.fill" : "circle")
+                    .foregroundColor(.cyanBlue)
+            }
             
             Text(viewModel.titleText)
                 .font(.body)

@@ -10,8 +10,10 @@ import Foundation
 
 protocol TasksViewModelProtocol: ObservableObject {
     
+    associatedtype RowViewModel: TaskRowViewModelProtocol
+    
     var titleText: String { get }
-    var taskViewModels: [TaskRowViewModelProtocol] { get }
+    var taskViewModels: Array<RowViewModel> { get }
     
     func fetchTasks()
     func deleteTask(at indexSet: IndexSet)

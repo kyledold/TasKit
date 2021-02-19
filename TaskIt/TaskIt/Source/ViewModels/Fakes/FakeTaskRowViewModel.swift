@@ -12,4 +12,7 @@ class FakeTaskRowViewModel: TaskRowViewModelProtocol {
     var id = UUID()
     var titleText = "This is a fake title"
     var priority = Priority.medium
+    var isCompleted = false
+    
+    func completeButtonTapped() {}
 }

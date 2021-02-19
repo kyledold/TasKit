@@ -10,9 +10,11 @@ import Foundation
 
 class TasksViewModel: TasksViewModelProtocol {
     
+    typealias RowViewModel = TaskRowViewModel
+    
     let titleText = NSLocalizedString("tasks.title", comment: "Tasks title")
     
-    @Published private(set) var taskViewModels: [TaskRowViewModelProtocol]
+    @Published private(set) var taskViewModels: [RowViewModel]
     
     private let managedObjectContext: NSManagedObjectContext
     
@@ -23,7 +25,7 @@ class TasksViewModel: TasksViewModelProtocol {
     
     func fetchTasks() {
         let taskModels = Task.fetchAll(viewContext: managedObjectContext)
-        taskViewModels = taskModels.map { return TaskRowViewModel(task: $0) }
+        taskViewModels = taskModels.map { return TaskRowViewModel(task: $0, managedObjectContext: managedObjectContext) }
     }
     
     func deleteTask(at indexSet: IndexSet) {

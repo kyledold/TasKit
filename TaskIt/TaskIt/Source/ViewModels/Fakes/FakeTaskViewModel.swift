@@ -9,8 +9,10 @@ import Foundation
 
 class FakeTaskViewModel: TasksViewModelProtocol {
     
+    typealias RowViewModel = FakeTaskRowViewModel
+    
     var titleText = "Tasks"
-    var taskViewModels: [TaskRowViewModelProtocol] = [
+    var taskViewModels: [RowViewModel] = [
         FakeTaskRowViewModel(),
         FakeTaskRowViewModel(),
         FakeTaskRowViewModel()
