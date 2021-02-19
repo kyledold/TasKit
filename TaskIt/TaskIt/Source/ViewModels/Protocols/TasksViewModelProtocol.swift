@@ -14,7 +14,9 @@ protocol TasksViewModelProtocol: ObservableObject {
     
     var titleText: String { get }
     var taskViewModels: Array<RowViewModel> { get }
+    var selectedStatusFilter: Status { get set }
     
     func fetchTasks()
     func deleteTask(at indexSet: IndexSet)
+    func didChangeStatusFilter(status: Status)
 }

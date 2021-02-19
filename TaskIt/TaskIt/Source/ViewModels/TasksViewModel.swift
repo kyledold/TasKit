@@ -12,19 +12,33 @@ class TasksViewModel: TasksViewModelProtocol {
     
     typealias RowViewModel = TaskRowViewModel
     
+    // MARK: Properties
+    
     let titleText = NSLocalizedString("tasks.title", comment: "Tasks title")
     
     @Published private(set) var taskViewModels: [RowViewModel]
+    @Published var selectedStatusFilter = Status.todo
     
     private let managedObjectContext: NSManagedObjectContext
+    
+    // MARK: Initialisation
     
     init(managedObjectContext: NSManagedObjectContext) {
         self.managedObjectContext = managedObjectContext
         self.taskViewModels = []
     }
     
+    // MARK: Functions
+    
     func fetchTasks() {
-        let taskModels = Task.fetchAll(viewContext: managedObjectContext)
+        
+        var taskModels: [Task]
+        if selectedStatusFilter == .todo {
+            taskModels = Task.fetchAllToDoTasks(viewContext: managedObjectContext)
+        } else {
+            taskModels = Task.fetchAllCompletedTasks(viewContext: managedObjectContext)
+        }
+        
         taskViewModels = taskModels.map { return TaskRowViewModel(task: $0, managedObjectContext: managedObjectContext) }
     }
     
@@ -36,6 +50,11 @@ class TasksViewModel: TasksViewModelProtocol {
             Task.deleteTask(with: taskViewModel.id, viewContext: managedObjectContext)
         }
         
+        fetchTasks()
+    }
+    
+    func didChangeStatusFilter(status: Status) {
+        selectedStatusFilter = status
         fetchTasks()
     }
 }

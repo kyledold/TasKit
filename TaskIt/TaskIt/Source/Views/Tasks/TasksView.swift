@@ -18,19 +18,26 @@ struct TasksView<ViewModel: TasksViewModelProtocol>: View {
     
     var body: some View {
         NavigationView {
-            List {
-                ForEach(viewModel.taskViewModels, id: \.id) { task in
-                    if let taskRowViewModel = task as? TaskRowViewModel {
-                        TaskRowView(viewModel: taskRowViewModel)
-                    }
-                    #if DEBUG
-                    if let fakeTaskRowViewModel = task as? FakeTaskRowViewModel {
-                        TaskRowView(viewModel: fakeTaskRowViewModel)
-                    }
-                    #endif
-                }.onDelete(perform: deleteTask)
+            VStack {
+                StatusSegmentView(selectedStatus: $viewModel.selectedStatusFilter)
+                    .onChange(of: viewModel.selectedStatusFilter) { viewModel.didChangeStatusFilter(status: $0) }
+                
+                List {
+                    ForEach(viewModel.taskViewModels, id: \.id) { task in
+                        if let taskRowViewModel = task as? TaskRowViewModel {
+                            TaskRowView(viewModel: taskRowViewModel)
+                        }
+                        #if DEBUG
+                        if let fakeTaskRowViewModel = task as? FakeTaskRowViewModel {
+                            TaskRowView(viewModel: fakeTaskRowViewModel)
+                        }
+                        #endif
+                    }.onDelete(perform: deleteTask)
+                }
+                .listStyle(InsetListStyle())
+                
+                Spacer()
             }
-            .listStyle(InsetListStyle())
                 
             .navigationBarTitle(viewModel.titleText, displayMode: .inline)
             .navigationBarItems(trailing:

@@ -18,6 +18,9 @@ class FakeTaskViewModel: TasksViewModelProtocol {
         FakeTaskRowViewModel()
     ]
     
+    var selectedStatusFilter = Status.todo
+    
     func fetchTasks() {}
     func deleteTask(at indexSet: IndexSet) {}
+    func didChangeStatusFilter(status: Status) {}
 }

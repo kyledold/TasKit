@@ -22,6 +22,7 @@
 		D1542BBA25DD8D49005FD7C7 /* MockNSManagedObjectContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1542BB925DD8D49005FD7C7 /* MockNSManagedObjectContext.swift */; };
 		D1542BDA25DEBCAB005FD7C7 /* PartialSheet in Frameworks */ = {isa = PBXBuildFile; productRef = D1542BD925DEBCAB005FD7C7 /* PartialSheet */; };
 		D1542BE925DFE9C5005FD7C7 /* SimpleTextFieldStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1542BE825DFE9C5005FD7C7 /* SimpleTextFieldStyle.swift */; };
+		D1542BF125E026A5005FD7C7 /* StatusSegmentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1542BF025E026A4005FD7C7 /* StatusSegmentView.swift */; };
 		D1783EBA25C9C9E500D8EFC3 /* TasksView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1783EB925C9C9E500D8EFC3 /* TasksView.swift */; };
 		D1783EBD25C9C9F100D8EFC3 /* CalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1783EBC25C9C9F100D8EFC3 /* CalendarView.swift */; };
 		D17DA9C125DABB9100ED4A8C /* AddTaskView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D17DA9C025DABB9100ED4A8C /* AddTaskView.swift */; };
@@ -116,6 +117,7 @@
 		D1542BB425DD8A74005FD7C7 /* MockTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockTask.swift; sourceTree = "<group>"; };
 		D1542BB925DD8D49005FD7C7 /* MockNSManagedObjectContext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockNSManagedObjectContext.swift; sourceTree = "<group>"; };
 		D1542BE825DFE9C5005FD7C7 /* SimpleTextFieldStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleTextFieldStyle.swift; sourceTree = "<group>"; };
+		D1542BF025E026A4005FD7C7 /* StatusSegmentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusSegmentView.swift; sourceTree = "<group>"; };
 		D1783EB925C9C9E500D8EFC3 /* TasksView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasksView.swift; sourceTree = "<group>"; };
 		D1783EBC25C9C9F100D8EFC3 /* CalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarView.swift; sourceTree = "<group>"; };
 		D17DA9C025DABB9100ED4A8C /* AddTaskView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTaskView.swift; sourceTree = "<group>"; };
@@ -346,6 +348,7 @@
 			isa = PBXGroup;
 			children = (
 				D17DAAD325DC279C00ED4A8C /* PrioritySegmentView.swift */,
+				D1542BF025E026A4005FD7C7 /* StatusSegmentView.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -564,6 +567,7 @@
 				D1BC33D325D58B630068A57A /* FakeWelcomeViewModel.swift in Sources */,
 				D17DAAB525DBFCEB00ED4A8C /* TaskRowViewModelProtocol.swift in Sources */,
 				D17DA9CD25DABE4600ED4A8C /* AddTaskViewModel.swift in Sources */,
+				D1542BF125E026A5005FD7C7 /* StatusSegmentView.swift in Sources */,
 				D17DAA9A25DBDF5300ED4A8C /* Persistence.swift in Sources */,
 				D17DA9C125DABB9100ED4A8C /* AddTaskView.swift in Sources */,
 				D17DA9EA25DAC53700ED4A8C /* FakeAddTaskViewModel.swift in Sources */,
