@@ -16,6 +16,7 @@
 		D11E7D3425E14DDE00EED79E /* FontExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D11E7D3325E14DDE00EED79E /* FontExtension.swift */; };
 		D11E7D3F25E15A2200EED79E /* TaskView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D11E7D3E25E15A2200EED79E /* TaskView.swift */; };
 		D11E7D4225E15B1600EED79E /* UIScreenExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D11E7D4125E15B1600EED79E /* UIScreenExtension.swift */; };
+		D11E7D4A25E16F9D00EED79E /* SegmentPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = D11E7D4925E16F9D00EED79E /* SegmentPicker.swift */; };
 		D13A6E3225C73586003A6759 /* FilledButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = D13A6E3125C73586003A6759 /* FilledButtonStyle.swift */; };
 		D1529C3D25C70457003FC9D6 /* TaskItApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1529C3C25C70457003FC9D6 /* TaskItApp.swift */; };
 		D1529C4125C70460003FC9D6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D1529C4025C70460003FC9D6 /* Assets.xcassets */; };
@@ -107,6 +108,7 @@
 		D11E7D3325E14DDE00EED79E /* FontExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontExtension.swift; sourceTree = "<group>"; };
 		D11E7D3E25E15A2200EED79E /* TaskView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskView.swift; sourceTree = "<group>"; };
 		D11E7D4125E15B1600EED79E /* UIScreenExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIScreenExtension.swift; sourceTree = "<group>"; };
+		D11E7D4925E16F9D00EED79E /* SegmentPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SegmentPicker.swift; sourceTree = "<group>"; };
 		D13A6E3125C73586003A6759 /* FilledButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilledButtonStyle.swift; sourceTree = "<group>"; };
 		D14E118925D2FCDD00FC27E3 /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
 		D1529C3925C70457003FC9D6 /* TaskIt.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TaskIt.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -360,6 +362,7 @@
 			children = (
 				D17DAAD325DC279C00ED4A8C /* PrioritySegmentView.swift */,
 				D1542BF025E026A4005FD7C7 /* StatusSegmentView.swift */,
+				D11E7D4925E16F9D00EED79E /* SegmentPicker.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -601,6 +604,7 @@
 				D17FC9A925D817BE002A5501 /* SettingsRowView.swift in Sources */,
 				D11E7D1A25E1433F00EED79E /* ViewExtension.swift in Sources */,
 				D17FC99925D8108B002A5501 /* FakeSettingsViewModel.swift in Sources */,
+				D11E7D4A25E16F9D00EED79E /* SegmentPicker.swift in Sources */,
 				D17FC9AE25D817F4002A5501 /* ImageExtension.swift in Sources */,
 				D1529C3D25C70457003FC9D6 /* TaskItApp.swift in Sources */,
 				D1783EBA25C9C9E500D8EFC3 /* TasksView.swift in Sources */,

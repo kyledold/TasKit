@@ -21,7 +21,7 @@ struct TasksView<ViewModel: TasksViewModelProtocol>: View {
             VStack {
                 HomeNavigationSection()
                 ScrollView {
-                    StatusFilterSection
+                    StatusFilterSection.padding(.horizontal, 8)
                     ForEach(viewModel.taskViewModels, id: \.id) { task in
                         if let taskRowViewModel = task as? TaskRowViewModel {
                             TaskRowView(viewModel: taskRowViewModel)

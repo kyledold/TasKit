@@ -35,9 +35,10 @@ private struct HeaderSection: View {
                 presentationMode.wrappedValue.dismiss()
             }, label: {
                 Image(systemName: "chevron.down")
-                Text("Today's tasks").font(.title20)
+                Text("all tasks")
+                    .font(.title20)
             })
-            .foregroundColor(Color.black)
+            .foregroundColor(.primary)
             
             Spacer()
         }.padding().padding(.top, 32)

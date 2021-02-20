@@ -14,18 +14,12 @@ struct StatusSegmentView: View {
 
     var body: some View {
         
-        let binding = Binding<Status>(
-            get: { self.selectedStatus },
-            set: { self.selectedStatus = $0 }
+        let binding = Binding<Int>(
+            get: { Int(self.selectedStatus.rawValue) },
+            set: { self.selectedStatus = Status(rawValue: Int32($0))! }
         )
         
-        Picker(selection: binding, label: Text("Status")) {
-            Text(LocalizedStringKey("status_picker.todo")).tag(Status.todo)
-            Text(LocalizedStringKey("status_picker.completed")).tag(Status.completed)
-        }
-        .background(Color.t_input_background)
-        .padding(.horizontal, Layout.Padding.compact)
-        .pickerStyle(SegmentedPickerStyle())
+        SegmentPicker(items: ["Todo", "Completed"], selection: binding)
     }
 }
 
