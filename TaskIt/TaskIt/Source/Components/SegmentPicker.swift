@@ -108,12 +108,6 @@ struct PreviewView: View {
     }
 }
 
-extension View {
-    func eraseToAnyView() -> AnyView {
-        AnyView(self)
-    }
-}
-
 struct SizePreferenceKey: PreferenceKey {
     typealias Value = CGSize
     static var defaultValue: CGSize = .zero

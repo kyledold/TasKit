@@ -10,16 +10,15 @@ import SwiftUI
 struct TasksView<ViewModel: TasksViewModelProtocol>: View {
     
     @ObservedObject var viewModel: ViewModel
+    @ObservedObject var coordinator = TasksCoordinator()
     
     @State var selectedTask: TaskRowViewModel? = .none
-    @State private var isAddTaskViewShown = false
-    
     @Environment(\.managedObjectContext) var managedObjectContext
     
     var body: some View {
         ZStack {
             VStack {
-                HomeNavigationSection()
+                navigationHeaderView
                 ScrollView {
                     StatusFilterSection.padding(.horizontal, 8)
                     ForEach(viewModel.taskViewModels, id: \.id) { task in
@@ -44,17 +43,39 @@ struct TasksView<ViewModel: TasksViewModelProtocol>: View {
         .fullScreenCover(item: $selectedTask) { room in
             TaskView()
         }
+        .sheet(isPresented: $coordinator.showSheet) {
+            coordinator.sheetView()
+        }
         .onAppear {
             viewModel.fetchTasks()
         }
     }
     
-    var StatusFilterSection: some View {
+    private var StatusFilterSection: some View {
         StatusSegmentView(selectedStatus: $viewModel.selectedStatusFilter)
             .onChange(of: viewModel.selectedStatusFilter) { viewModel.didChangeStatusFilter(status: $0) }
             .padding(.vertical, 4)
             .background(Color.t_background)
             .cornerRadius(25.0)
+    }
+    
+    private var navigationHeaderView: some View {
+        HStack(spacing: 18) {
+            Spacer()
+            
+            Button(action: {
+                coordinator.sheetDestination = .calendar
+            }, label: {
+                Image(systemName: Image.Icons.calendar).iconStyle()
+            })
+            
+            Button(action: {
+                coordinator.sheetDestination = .settings
+            }, label: {
+                Image(systemName: Image.Icons.settings).iconStyle()
+            })
+        }
+        .padding()
     }
     
     private func deleteTask(at indexSet: IndexSet) {
@@ -65,17 +86,6 @@ struct TasksView<ViewModel: TasksViewModelProtocol>: View {
 struct TasksView_Previews: PreviewProvider {
     static var previews: some View {
         TasksView(viewModel: FakeTaskViewModel())
-    }
-}
-
-private struct HomeNavigationSection: View {
-    var body: some View {
-        HStack(spacing: 18) {
-            Spacer()
-            Button(action: {}){Image(systemName: Image.Icons.calendar).iconStyle() }
-            Button(action: {}){Image(systemName: Image.Icons.settings).iconStyle() }
-        }
-        .padding()
     }
 }
 

@@ -17,6 +17,7 @@
 		D11E7D3F25E15A2200EED79E /* TaskView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D11E7D3E25E15A2200EED79E /* TaskView.swift */; };
 		D11E7D4225E15B1600EED79E /* UIScreenExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D11E7D4125E15B1600EED79E /* UIScreenExtension.swift */; };
 		D11E7D4A25E16F9D00EED79E /* SegmentPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = D11E7D4925E16F9D00EED79E /* SegmentPicker.swift */; };
+		D11E7D4D25E1733B00EED79E /* TasksCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D11E7D4C25E1733B00EED79E /* TasksCoordinator.swift */; };
 		D13A6E3225C73586003A6759 /* FilledButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = D13A6E3125C73586003A6759 /* FilledButtonStyle.swift */; };
 		D1529C3D25C70457003FC9D6 /* TaskItApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1529C3C25C70457003FC9D6 /* TaskItApp.swift */; };
 		D1529C4125C70460003FC9D6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D1529C4025C70460003FC9D6 /* Assets.xcassets */; };
@@ -109,6 +110,7 @@
 		D11E7D3E25E15A2200EED79E /* TaskView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskView.swift; sourceTree = "<group>"; };
 		D11E7D4125E15B1600EED79E /* UIScreenExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIScreenExtension.swift; sourceTree = "<group>"; };
 		D11E7D4925E16F9D00EED79E /* SegmentPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SegmentPicker.swift; sourceTree = "<group>"; };
+		D11E7D4C25E1733B00EED79E /* TasksCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasksCoordinator.swift; sourceTree = "<group>"; };
 		D13A6E3125C73586003A6759 /* FilledButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilledButtonStyle.swift; sourceTree = "<group>"; };
 		D14E118925D2FCDD00FC27E3 /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
 		D1529C3925C70457003FC9D6 /* TaskIt.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TaskIt.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -337,6 +339,7 @@
 		D17DA9C825DABB9900ED4A8C /* Tasks */ = {
 			isa = PBXGroup;
 			children = (
+				D11E7D4C25E1733B00EED79E /* TasksCoordinator.swift */,
 				D1783EB925C9C9E500D8EFC3 /* TasksView.swift */,
 				D17DAAB125DBFC9E00ED4A8C /* TaskRowView.swift */,
 				D17DA9C025DABB9100ED4A8C /* AddTaskView.swift */,
@@ -610,6 +613,7 @@
 				D1783EBA25C9C9E500D8EFC3 /* TasksView.swift in Sources */,
 				D17FC99E25D81450002A5501 /* SettingsItemExtension.swift in Sources */,
 				D17FC98F25D8106F002A5501 /* SettingsViewModel.swift in Sources */,
+				D11E7D4D25E1733B00EED79E /* TasksCoordinator.swift in Sources */,
 				D17FC9EC25D828F6002A5501 /* FakeSettingsRowViewModel.swift in Sources */,
 				D11E7D3F25E15A2200EED79E /* TaskView.swift in Sources */,
 				D17FC99425D8107C002A5501 /* SettingsViewModelProtocol.swift in Sources */,
