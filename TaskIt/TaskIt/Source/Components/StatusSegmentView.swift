@@ -23,9 +23,9 @@ struct StatusSegmentView: View {
             Text(LocalizedStringKey("status_picker.todo")).tag(Status.todo)
             Text(LocalizedStringKey("status_picker.completed")).tag(Status.completed)
         }
-            .background(Color.inputBackgroundColor)
-            .padding(.horizontal, Layout.Padding.compact)
-            .pickerStyle(SegmentedPickerStyle())
+        .background(Color.t_input_background)
+        .padding(.horizontal, Layout.Padding.compact)
+        .pickerStyle(SegmentedPickerStyle())
     }
 }
 

@@ -7,7 +7,7 @@
 
 import Foundation
 
-protocol TaskRowViewModelProtocol: ObservableObject {
+protocol TaskRowViewModelProtocol: ObservableObject, Identifiable {
     
     var id: UUID { get }
     var titleText: String { get }

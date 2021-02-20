@@ -18,14 +18,7 @@
 "settings.open_source.subtitle" = "Feel free to browse or contribute";
 "status_picker.todo" = "Todo";
 "status_picker.completed" = "Completed";
-"tab_bar.tasks" = "Tasks";
-"tab_bar.calendar" = "Calendar";
-"tab_bar.settings" = "Settings";
-"tasks.title" = "Tasks";
 "priority_picker.none" = "none";
 "priority_picker.low" = "low";
 "priority_picker.medium" = "medium";
 "priority_picker.high" = "high";
-"welcome.welcome" = "Welcome";
-"welcome.got_it" = "Got it";
-"welcome.terms_and_conditions" = "By continuing you agree to Task Its Terms of Service and Privacy Policy";

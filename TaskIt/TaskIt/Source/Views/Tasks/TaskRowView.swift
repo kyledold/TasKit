@@ -12,34 +12,28 @@ struct TaskRowView<ViewModel: TaskRowViewModelProtocol>: View {
     @ObservedObject var viewModel: ViewModel
     
     var body: some View {
-        VStack {
+        VStack(alignment: .leading) {
+            if viewModel.priority != .none {
+                Image(Image.iconNameForPriority(viewModel.priority))
+                    .resizable()
+                    .frame(width: 16, height: 16)
+            }
+            
             HStack(spacing: Layout.Padding.cozy) {
-                
-                Button(action: {
-                    viewModel.completeButtonTapped()
-                }) {
-                    Image(systemName: viewModel.isCompleted ? "checkmark.circle.fill" : "circle")
-                        .foregroundColor(.cyanBlue)
-                }
-                .buttonStyle(PlainButtonStyle()) 
-                
                 Text(viewModel.titleText)
-                    .font(.body)
+                    .font(.body16)
                     .foregroundColor(.primary)
                 
                 Spacer()
-                
-                if viewModel.priority != .none {
-                    Circle()
-                        .fill(Color.color(for: viewModel.priority))
-                        .frame(width: 10)
-                }
             }
-            .padding(Layout.Padding.compact)
+            
+            Spacer()
         }
-        .padding(Layout.Padding.tight)
-        .cornerRadius(8)
-        .frame(height: 50)
+        .padding(.all, 12)
+        .background(Color.t_content_background)
+        .cornerRadius(25.0)
+        .shadow(color: Color.black.opacity(0.4), radius: 1, y: 1)
+        .padding(.horizontal, 8)
     }
 }
 
@@ -48,7 +42,7 @@ struct TaskRowView_Previews: PreviewProvider {
     static var previews: some View {
         Group {
             TaskRowView(viewModel: FakeTaskRowViewModel())
-                .previewLayout(.fixed(width: 300, height: 60))
+                .previewLayout(.fixed(width: 300, height: 80))
         }
     }
 }

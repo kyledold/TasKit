@@ -10,66 +10,51 @@ import SwiftUI
 struct TasksView<ViewModel: TasksViewModelProtocol>: View {
     
     @ObservedObject var viewModel: ViewModel
+    
+    @State var selectedTask: TaskRowViewModel? = .none
     @State private var isAddTaskViewShown = false
-
+    
     @Environment(\.managedObjectContext) var managedObjectContext
     
     var body: some View {
-        NavigationView {
-            List {
-                Section(header: header) {
+        ZStack {
+            VStack {
+                HomeNavigationSection()
+                ScrollView {
+                    StatusFilterSection
                     ForEach(viewModel.taskViewModels, id: \.id) { task in
-                        NavigationLink(
-                            destination: AddTaskView(
-                                viewModel: AddTaskViewModel(
-                                    managedObjectContext: managedObjectContext,
-                                    onTaskAdded: {
-                                        viewModel.fetchTasks()
-                                    }
-                                )
-                            ),
-                            label: {
-                                if let taskRowViewModel = task as? TaskRowViewModel {
-                                    TaskRowView(viewModel: taskRowViewModel)
-                                        .padding([.horizontal], Layout.Padding.tight)
-                                        .padding([.vertical], Layout.Padding.squished)
+                        if let taskRowViewModel = task as? TaskRowViewModel {
+                            TaskRowView(viewModel: taskRowViewModel)
+                                .onTapGesture {
+                                    UIImpactFeedbackGenerator().impactOccurred()
+                                    selectedTask = taskRowViewModel
                                 }
-                                #if DEBUG
-                                if let fakeTaskRowViewModel = task as? FakeTaskRowViewModel {
-                                    TaskRowView(viewModel: fakeTaskRowViewModel)
-                                        .padding([.horizontal], Layout.Padding.tight)
-                                        .padding([.vertical], Layout.Padding.squished)
-                                }
-                                #endif
-                            })
-                    }.onDelete(perform: deleteTask)
+                        }
+                        #if DEBUG
+                        if let fakeTaskRowViewModel = task as? FakeTaskRowViewModel {
+                            TaskRowView(viewModel: fakeTaskRowViewModel)
+                        }
+                        #endif
+                    }
                 }
             }
-            .listStyle(InsetListStyle())
-            .listSeparatorStyle(.none)
-            .navigationBarTitle(viewModel.titleText)
-            .navigationBarItems(trailing:
-                Button(action: {
-                    isAddTaskViewShown.toggle()
-                }) {
-                    Text("Add")
-                    /*Image(systemName: "plus")
-                        .padding(.trailing, 10)
-                        .imageScale(.large)*/
-                }
-            )
-            .onAppear {
-                viewModel.fetchTasks()
-            }
+            .backgroundOverlay()
+            FooterSection()
+        }
+        .fullScreenCover(item: $selectedTask) { room in
+            TaskView()
+        }
+        .onAppear {
+            viewModel.fetchTasks()
         }
     }
     
-    var header: some View {
+    var StatusFilterSection: some View {
         StatusSegmentView(selectedStatus: $viewModel.selectedStatusFilter)
             .onChange(of: viewModel.selectedStatusFilter) { viewModel.didChangeStatusFilter(status: $0) }
-            .padding(.vertical, Layout.Padding.compact)
-            .background(Color.white)
-            .listRowInsets(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0))
+            .padding(.vertical, 4)
+            .background(Color.t_background)
+            .cornerRadius(25.0)
     }
     
     private func deleteTask(at indexSet: IndexSet) {
@@ -80,5 +65,37 @@ struct TasksView<ViewModel: TasksViewModelProtocol>: View {
 struct TasksView_Previews: PreviewProvider {
     static var previews: some View {
         TasksView(viewModel: FakeTaskViewModel())
+    }
+}
+
+private struct HomeNavigationSection: View {
+    var body: some View {
+        HStack(spacing: 18) {
+            Spacer()
+            Button(action: {}){Image(systemName: Image.Icons.calendar).iconStyle() }
+            Button(action: {}){Image(systemName: Image.Icons.settings).iconStyle() }
+        }
+        .padding()
+    }
+}
+
+private struct FooterSection: View {
+    var body: some View {
+        VStack {
+            Spacer()
+            ZStack {
+                Button(action: {
+                    
+                }, label: {
+                    Text("+ Create task")
+                })
+                .font(.title20)
+                .foregroundColor(.white)
+                .padding(.vertical,8).padding(.horizontal)
+                .background(Color.cyanBlue)
+                .cornerRadius(30)
+                .padding(.bottom, 48)
+            }
+        }.ignoresSafeArea(.all)
     }
 }

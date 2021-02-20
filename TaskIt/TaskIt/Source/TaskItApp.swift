@@ -10,12 +10,12 @@ import SwiftUI
 @main
 struct TaskItApp: App {
     
-    let persistenceController = PersistenceController.shared
+    let viewContext = PersistenceController.shared.container.viewContext
     
     var body: some Scene {
         WindowGroup {
-            TabBarView(viewModel: TabBarViewModel())
-                .environment(\.managedObjectContext, persistenceController.container.viewContext)
+            TasksView(viewModel: TasksViewModel(managedObjectContext: viewContext))
+                .environment(\.managedObjectContext, viewContext)
         }
     }
 }
