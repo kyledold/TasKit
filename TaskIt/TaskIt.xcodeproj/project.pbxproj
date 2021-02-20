@@ -3,10 +3,11 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 52;
+	objectVersion = 50;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D11E7D1325E1095700EED79E /* ListExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D11E7D1225E1095700EED79E /* ListExtension.swift */; };
 		D13A6E3225C73586003A6759 /* FilledButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = D13A6E3125C73586003A6759 /* FilledButtonStyle.swift */; };
 		D14E11CE25D44E6600FC27E3 /* TabBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D14E11CD25D44E6600FC27E3 /* TabBarView.swift */; };
 		D1529C3D25C70457003FC9D6 /* TaskItApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1529C3C25C70457003FC9D6 /* TaskItApp.swift */; };
@@ -20,7 +21,6 @@
 		D1542BAE25DD8997005FD7C7 /* TaskRowViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1542BAD25DD8997005FD7C7 /* TaskRowViewModelTests.swift */; };
 		D1542BB525DD8A74005FD7C7 /* MockTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1542BB425DD8A74005FD7C7 /* MockTask.swift */; };
 		D1542BBA25DD8D49005FD7C7 /* MockNSManagedObjectContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1542BB925DD8D49005FD7C7 /* MockNSManagedObjectContext.swift */; };
-		D1542BDA25DEBCAB005FD7C7 /* PartialSheet in Frameworks */ = {isa = PBXBuildFile; productRef = D1542BD925DEBCAB005FD7C7 /* PartialSheet */; };
 		D1542BE925DFE9C5005FD7C7 /* SimpleTextFieldStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1542BE825DFE9C5005FD7C7 /* SimpleTextFieldStyle.swift */; };
 		D1542BF125E026A5005FD7C7 /* StatusSegmentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1542BF025E026A4005FD7C7 /* StatusSegmentView.swift */; };
 		D1783EBA25C9C9E500D8EFC3 /* TasksView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1783EB925C9C9E500D8EFC3 /* TasksView.swift */; };
@@ -100,6 +100,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		D11E7D1225E1095700EED79E /* ListExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListExtension.swift; sourceTree = "<group>"; };
 		D13A6E3125C73586003A6759 /* FilledButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilledButtonStyle.swift; sourceTree = "<group>"; };
 		D14E118925D2FCDD00FC27E3 /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
 		D14E11CD25D44E6600FC27E3 /* TabBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarView.swift; sourceTree = "<group>"; };
@@ -178,7 +179,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D1542BDA25DEBCAB005FD7C7 /* PartialSheet in Frameworks */,
 				D17FC98625D6E814002A5501 /* CloudKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -199,6 +199,7 @@
 				D17FC9A225D815EE002A5501 /* BundleExtension.swift */,
 				D1529C7425C72C76003FC9D6 /* ColorExtensions.swift */,
 				D17FC9AD25D817F4002A5501 /* ImageExtension.swift */,
+				D11E7D1225E1095700EED79E /* ListExtension.swift */,
 				D17FC99D25D81450002A5501 /* SettingsItemExtension.swift */,
 				D17DAAA425DBE04900ED4A8C /* StringExtension.swift */,
 				D17FC9D025D81EBB002A5501 /* UIApplicationExtension.swift */,
@@ -472,7 +473,6 @@
 			);
 			name = TaskIt;
 			packageProductDependencies = (
-				D1542BD925DEBCAB005FD7C7 /* PartialSheet */,
 			);
 			productName = TaskIt;
 			productReference = D1529C3925C70457003FC9D6 /* TaskIt.app */;
@@ -524,7 +524,6 @@
 			);
 			mainGroup = D1529C3025C70457003FC9D6;
 			packageReferences = (
-				D1542BD825DEBCAB005FD7C7 /* XCRemoteSwiftPackageReference "PartialSheet" */,
 			);
 			productRefGroup = D1529C3A25C70457003FC9D6 /* Products */;
 			projectDirPath = "";
@@ -566,6 +565,7 @@
 				D17DA9D225DABEA600ED4A8C /* TasksViewModelProtocol.swift in Sources */,
 				D1BC33D325D58B630068A57A /* FakeWelcomeViewModel.swift in Sources */,
 				D17DAAB525DBFCEB00ED4A8C /* TaskRowViewModelProtocol.swift in Sources */,
+				D11E7D1325E1095700EED79E /* ListExtension.swift in Sources */,
 				D17DA9CD25DABE4600ED4A8C /* AddTaskViewModel.swift in Sources */,
 				D1542BF125E026A5005FD7C7 /* StatusSegmentView.swift in Sources */,
 				D17DAA9A25DBDF5300ED4A8C /* Persistence.swift in Sources */,
@@ -885,25 +885,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCRemoteSwiftPackageReference section */
-		D1542BD825DEBCAB005FD7C7 /* XCRemoteSwiftPackageReference "PartialSheet" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/AndreaMiotto/PartialSheet.git";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 2.1.11;
-			};
-		};
-/* End XCRemoteSwiftPackageReference section */
-
-/* Begin XCSwiftPackageProductDependency section */
-		D1542BD925DEBCAB005FD7C7 /* PartialSheet */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = D1542BD825DEBCAB005FD7C7 /* XCRemoteSwiftPackageReference "PartialSheet" */;
-			productName = PartialSheet;
-		};
-/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		D17DAA4E25DB039000ED4A8C /* TaskIt.xcdatamodeld */ = {

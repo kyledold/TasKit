@@ -11,7 +11,6 @@ import Foundation
 struct StatusSegmentView: View {
     
     @Binding var selectedStatus: Status
-    @State private var backgroundColor = Color.inputBackgroundColor
 
     var body: some View {
         
@@ -24,22 +23,15 @@ struct StatusSegmentView: View {
             Text(LocalizedStringKey("status_picker.todo")).tag(Status.todo)
             Text(LocalizedStringKey("status_picker.completed")).tag(Status.completed)
         }
-            .onChange(of: selectedStatus) { onChange(value: $0) }
-            .background(backgroundColor)
+            .background(Color.inputBackgroundColor)
+            .padding(.horizontal, Layout.Padding.compact)
             .pickerStyle(SegmentedPickerStyle())
-    }
-    
-    private func onChange(value: Status) {
-        switch value {
-        case .todo: backgroundColor = Color.inputBackgroundColor
-        case .completed: backgroundColor = Color.cyanBlue
-        }
     }
 }
 
 struct StatusSegmentView_Previews: PreviewProvider {
     static var previews: some View {
-        PrioritySegmentView(selectedPriority: .constant(.none))
+        StatusSegmentView(selectedStatus: .constant(.todo))
             .previewLayout(.fixed(width: 350, height: 50))
     }
 }

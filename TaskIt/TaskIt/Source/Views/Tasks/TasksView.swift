@@ -6,64 +6,70 @@
 //
 
 import SwiftUI
-import PartialSheet
 
 struct TasksView<ViewModel: TasksViewModelProtocol>: View {
     
     @ObservedObject var viewModel: ViewModel
     @State private var isAddTaskViewShown = false
-    
-    @EnvironmentObject var partialSheetManager: PartialSheetManager
+
     @Environment(\.managedObjectContext) var managedObjectContext
     
     var body: some View {
         NavigationView {
-            VStack {
-                StatusSegmentView(selectedStatus: $viewModel.selectedStatusFilter)
-                    .onChange(of: viewModel.selectedStatusFilter) { viewModel.didChangeStatusFilter(status: $0) }
-                
-                List {
+            List {
+                Section(header: header) {
                     ForEach(viewModel.taskViewModels, id: \.id) { task in
-                        if let taskRowViewModel = task as? TaskRowViewModel {
-                            TaskRowView(viewModel: taskRowViewModel)
-                        }
-                        #if DEBUG
-                        if let fakeTaskRowViewModel = task as? FakeTaskRowViewModel {
-                            TaskRowView(viewModel: fakeTaskRowViewModel)
-                        }
-                        #endif
+                        NavigationLink(
+                            destination: AddTaskView(
+                                viewModel: AddTaskViewModel(
+                                    managedObjectContext: managedObjectContext,
+                                    onTaskAdded: {
+                                        viewModel.fetchTasks()
+                                    }
+                                )
+                            ),
+                            label: {
+                                if let taskRowViewModel = task as? TaskRowViewModel {
+                                    TaskRowView(viewModel: taskRowViewModel)
+                                        .padding([.horizontal], Layout.Padding.tight)
+                                        .padding([.vertical], Layout.Padding.squished)
+                                }
+                                #if DEBUG
+                                if let fakeTaskRowViewModel = task as? FakeTaskRowViewModel {
+                                    TaskRowView(viewModel: fakeTaskRowViewModel)
+                                        .padding([.horizontal], Layout.Padding.tight)
+                                        .padding([.vertical], Layout.Padding.squished)
+                                }
+                                #endif
+                            })
                     }.onDelete(perform: deleteTask)
                 }
-                .listStyle(InsetListStyle())
-                
-                Spacer()
             }
-                
-            .navigationBarTitle(viewModel.titleText, displayMode: .inline)
+            .listStyle(InsetListStyle())
+            .listSeparatorStyle(.none)
+            .navigationBarTitle(viewModel.titleText)
             .navigationBarItems(trailing:
                 Button(action: {
                     isAddTaskViewShown.toggle()
                 }) {
-                    Image(systemName: "plus")
-                        .imageScale(.large)
+                    Text("Add")
+                    /*Image(systemName: "plus")
+                        .padding(.trailing, 10)
+                        .imageScale(.large)*/
                 }
             )
-            .partialSheet(isPresented: $isAddTaskViewShown) {
-                AddTaskView(
-                    viewModel: AddTaskViewModel(
-                        managedObjectContext: managedObjectContext,
-                        onTaskAdded: {
-                            viewModel.fetchTasks()
-                        }
-                    ),
-                    isAddTaskViewShown: $isAddTaskViewShown
-                )
-            }
-            .addPartialSheet(style: .defaultStyle())
             .onAppear {
                 viewModel.fetchTasks()
             }
         }
+    }
+    
+    var header: some View {
+        StatusSegmentView(selectedStatus: $viewModel.selectedStatusFilter)
+            .onChange(of: viewModel.selectedStatusFilter) { viewModel.didChangeStatusFilter(status: $0) }
+            .padding(.vertical, Layout.Padding.compact)
+            .background(Color.white)
+            .listRowInsets(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0))
     }
     
     private func deleteTask(at indexSet: IndexSet) {
