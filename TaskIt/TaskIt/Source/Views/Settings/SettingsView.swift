@@ -12,21 +12,18 @@ struct SettingsView<ViewModel: SettingsViewModelProtocol>: View {
     var viewModel: ViewModel
     
     var body: some View {
-        NavigationView {
-            VStack(alignment: .leading, spacing: Layout.Padding.cozy) {
-                List {
-                    Section(footer: footer) {
-                        ForEach(viewModel.rowViewModels, id: \.id) { settingsRowViewModel in
-                            Button(action: { didTapSettingsRow(settingsRowViewModel) }) {
-                                SettingsRowView(viewModel: settingsRowViewModel)
-                            }
+        VStack(alignment: .leading, spacing: Layout.Padding.cozy) {
+            List {
+                Section(footer: footer) {
+                    ForEach(viewModel.rowViewModels, id: \.id) { settingsRowViewModel in
+                        Button(action: { didTapSettingsRow(settingsRowViewModel) }) {
+                            SettingsRowView(viewModel: settingsRowViewModel)
                         }
                     }
-                    
                 }
-                .listStyle(InsetGroupedListStyle())
+                
             }
-            .navigationBarTitle(viewModel.titleText, displayMode: .inline)
+            .listStyle(InsetGroupedListStyle())
         }
     }
     

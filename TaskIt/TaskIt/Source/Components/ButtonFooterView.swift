@@ -16,7 +16,7 @@ struct ButtonFooterView: View {
     var body: some View {
         VStack {
             Spacer()
-            Button(action: { onButtonTap() }, label: { Text(buttonText).frame(minWidth: 120) })
+            Button(action: { onButtonTap() }, label: { Text(buttonText).frame(minWidth: 120).padding(.vertical, 5) })
                 .font(.title20)
                 .foregroundColor(.white)
                 .padding(.vertical, Layout.Padding.compact).padding(.horizontal)

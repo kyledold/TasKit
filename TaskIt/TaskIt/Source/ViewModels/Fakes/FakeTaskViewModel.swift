@@ -2,25 +2,13 @@
 //  FakeTaskViewModel.swift
 //  TaskIt
 //
-//  Created by Kyle Dold on 15/02/2021.
+//  Created by Kyle Dold on 21/02/2021.
 //
 
 import Foundation
 
-class FakeTaskViewModel: TasksViewModelProtocol {
+class FakeTaskViewModel: TaskViewModelProtocol {
     
-    typealias RowViewModel = FakeTaskRowViewModel
-    
-    var titleText = "Tasks"
-    var taskViewModels: [RowViewModel] = [
-        FakeTaskRowViewModel(),
-        FakeTaskRowViewModel(),
-        FakeTaskRowViewModel()
-    ]
-    
-    var selectedStatusFilter = Status.todo
-    
-    func fetchTasks() {}
-    func deleteTask(at indexSet: IndexSet) {}
-    func didChangeStatusFilter(status: Status) {}
+    var titleText = "This is a fake title"
+    var priority = Priority.medium
 }

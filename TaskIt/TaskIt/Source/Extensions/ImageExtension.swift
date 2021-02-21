@@ -29,7 +29,7 @@ extension Image {
     func iconStyle() -> some View {
         self.resizable()
             .frame(width: 30, height: 30)
-            .foregroundColor(Color.primary)
+            .foregroundColor(Color.t_white)
     }
     
     func thumbnailImageModifier(tintColor: Color) -> some View {

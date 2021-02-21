@@ -13,6 +13,7 @@ protocol TaskRowViewModelProtocol: ObservableObject, Identifiable {
     var titleText: String { get }
     var priority: Priority { get }
     var isCompleted: Bool { get }
+    var task: Task { get }
     
     func completeButtonTapped()
 }

@@ -9,7 +9,8 @@ import SwiftUI
 
 extension Color {
     
-    static let cyanBlue = Color(#colorLiteral(red: 0.2031033635, green: 0.3637996912, blue: 0.65155375, alpha: 1))
+    static let t_orange = Color("t_orange")
+    static let t_black = Color("t_black")
     static let t_dim_blue = Color("t_dim_blue")
     static let t_green = Color("t_green")
     static let t_yellow = Color("t_yellow")

@@ -37,7 +37,7 @@ struct TasksView<ViewModel: TasksViewModelProtocol>: View {
             .backgroundOverlay()
             ButtonFooterView(
                 buttonText: "Create task",
-                buttonColor: .cyanBlue,
+                buttonColor: .t_orange,
                 onButtonTap: {
                     navigator.fullScreenDestination = .addTask
                 }
@@ -92,6 +92,6 @@ struct TasksView<ViewModel: TasksViewModelProtocol>: View {
 
 struct TasksView_Previews: PreviewProvider {
     static var previews: some View {
-        TasksView(viewModel: FakeTaskViewModel(), navigator: TasksNavigator())
+        TasksView(viewModel: FakeTasksViewModel(), navigator: TasksNavigator())
     }
 }

@@ -16,7 +16,7 @@ enum NunitoWeight: String {
 
 extension Font {
     /// Weight: Bold, Size: 20
-    static var title20: Font { Font.nunito(weight: .semiBold, size: 20) }
+    static var title20: Font { Font.nunito(weight: .bold, size: 20) }
     /// Weight: Bold, Size: 16
     static var body16: Font { Font.nunito(weight: .bold, size: 16) }
     /// Weight: Regular, Size: 14

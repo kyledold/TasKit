@@ -16,13 +16,13 @@ struct TaskRowView<ViewModel: TaskRowViewModelProtocol>: View {
             if viewModel.priority != .none {
                 Image(Image.iconNameForPriority(viewModel.priority))
                     .resizable()
-                    .frame(width: 16, height: 16)
+                    .frame(width: 20, height: 20)
             }
             
             HStack(spacing: Layout.Padding.cozy) {
                 Text(viewModel.titleText)
-                    .font(.body16)
-                    .foregroundColor(.primary)
+                    .font(.title20)
+                    .foregroundColor(.t_black)
                 
                 Spacer()
             }

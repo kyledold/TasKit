@@ -52,7 +52,7 @@ struct AddTaskView<ViewModel: AddTaskViewModelProtocol>: View {
                 PrioritySegmentView(selectedPriority: $viewModel.priority)
                 
                 DatePicker(viewModel.taskDateText, selection: $viewModel.dueDate, displayedComponents: .date)
-                    .accentColor(Color.primary)
+                    .accentColor(Color.t_black)
                 
                 Spacer()
             }

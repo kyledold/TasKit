@@ -78,12 +78,11 @@ class TasksNavigator: ObservableObject {
         case .none:
             return Text(String.empty).eraseToAnyView()
             
-        case .viewTask:
-            return TaskView().eraseToAnyView()
+        case .viewTask(let taskRowViewModel):
+            return TaskView(viewModel: makeTaskViewModel(with: taskRowViewModel)).eraseToAnyView()
             
         case .addTask:
-            let viewModel = makeAddTaskViewModel()
-            return AddTaskView(viewModel: viewModel).eraseToAnyView()
+            return AddTaskView(viewModel: makeAddTaskViewModel()).eraseToAnyView()
         }
     }
     
@@ -98,5 +97,9 @@ class TasksNavigator: ObservableObject {
             managedObjectContext: managedObjectContext,
             onTaskAdded: {}
         )
+    }
+    
+    private func makeTaskViewModel(with taskRowViewModel: TaskRowViewModel) -> TaskViewModel {
+        return TaskViewModel(task: taskRowViewModel.task)
     }
 }
