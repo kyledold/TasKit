@@ -33,6 +33,8 @@ struct PrioritySegmentView: View {
     }
     
     private func onChange(value: Priority) {
+        UIImpactFeedbackGenerator().impactOccurred()
+        
         switch value {
         case .none: backgroundColor = Color.t_input_background
         case .low: backgroundColor = Color.t_green

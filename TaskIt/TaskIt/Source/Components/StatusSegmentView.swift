@@ -20,6 +20,11 @@ struct StatusSegmentView: View {
         )
         
         SegmentPicker(items: ["Todo", "Completed"], selection: binding)
+            .onChange(of: selectedStatus) { onChange(value: $0) }
+    }
+    
+    private func onChange(value: Status) {
+        UIImpactFeedbackGenerator().impactOccurred()
     }
 }
 

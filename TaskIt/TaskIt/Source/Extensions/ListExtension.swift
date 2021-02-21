@@ -227,7 +227,7 @@ class InjectView: UIView {
     }
 }
 
-//View that will be injected into the scroll view and handles modifying divider lines
+// View that will be injected into the scroll view and handles modifying divider lines
 class DividerHandlingView: UIView {
     var divider: (UIView) -> Void
     var table: (UITableView) -> Void
@@ -281,6 +281,7 @@ class DividerHandlingView: UIView {
 }
 
 private extension UIView {
+    
     func findViewController() -> UIViewController? {
         if let nextResponder = self.next as? UIViewController {
             return nextResponder

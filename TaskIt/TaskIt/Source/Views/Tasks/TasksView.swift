@@ -10,23 +10,20 @@ import SwiftUI
 struct TasksView<ViewModel: TasksViewModelProtocol>: View {
     
     @ObservedObject var viewModel: ViewModel
-    @ObservedObject var coordinator = TasksCoordinator()
-    
-    @State var selectedTask: TaskRowViewModel? = .none
-    @Environment(\.managedObjectContext) var managedObjectContext
+    @ObservedObject var navigator: TasksNavigator
     
     var body: some View {
         ZStack {
             VStack {
                 navigationHeaderView
                 ScrollView {
-                    StatusFilterSection.padding(.horizontal, 8)
+                    StatusFilterView.padding(.horizontal, Layout.Padding.compact)
                     ForEach(viewModel.taskViewModels, id: \.id) { task in
                         if let taskRowViewModel = task as? TaskRowViewModel {
                             TaskRowView(viewModel: taskRowViewModel)
                                 .onTapGesture {
                                     UIImpactFeedbackGenerator().impactOccurred()
-                                    selectedTask = taskRowViewModel
+                                    navigator.fullScreenDestination = .viewTask(taskRowViewModel: taskRowViewModel)
                                 }
                         }
                         #if DEBUG
@@ -38,23 +35,33 @@ struct TasksView<ViewModel: TasksViewModelProtocol>: View {
                 }
             }
             .backgroundOverlay()
-            FooterSection()
+            ButtonFooterView(
+                buttonText: "Create task",
+                buttonColor: .cyanBlue,
+                onButtonTap: {
+                    navigator.fullScreenDestination = .addTask
+                }
+            )
         }
-        .fullScreenCover(item: $selectedTask) { room in
-            TaskView()
+        .fullScreenCover(isPresented: $navigator.showFullScreen) {
+            navigator.fullScreenView()
         }
-        .sheet(isPresented: $coordinator.showSheet) {
-            coordinator.sheetView()
+        VStack {
+            // This was s workaround to get sheet and fullscreenCover working
+            // https://www.hackingwithswift.com/forums/swiftui/using-sheet-and-fullscreencover-together/4258
+        }
+        .sheet(isPresented: $navigator.showSheet) {
+            navigator.sheetView()
         }
         .onAppear {
             viewModel.fetchTasks()
         }
     }
     
-    private var StatusFilterSection: some View {
+    private var StatusFilterView: some View {
         StatusSegmentView(selectedStatus: $viewModel.selectedStatusFilter)
             .onChange(of: viewModel.selectedStatusFilter) { viewModel.didChangeStatusFilter(status: $0) }
-            .padding(.vertical, 4)
+            .padding(.vertical, Layout.Padding.tight)
             .background(Color.t_background)
             .cornerRadius(25.0)
     }
@@ -64,13 +71,13 @@ struct TasksView<ViewModel: TasksViewModelProtocol>: View {
             Spacer()
             
             Button(action: {
-                coordinator.sheetDestination = .calendar
+                navigator.sheetDestination = .calendar
             }, label: {
                 Image(systemName: Image.Icons.calendar).iconStyle()
             })
             
             Button(action: {
-                coordinator.sheetDestination = .settings
+                navigator.sheetDestination = .settings
             }, label: {
                 Image(systemName: Image.Icons.settings).iconStyle()
             })
@@ -85,27 +92,6 @@ struct TasksView<ViewModel: TasksViewModelProtocol>: View {
 
 struct TasksView_Previews: PreviewProvider {
     static var previews: some View {
-        TasksView(viewModel: FakeTaskViewModel())
-    }
-}
-
-private struct FooterSection: View {
-    var body: some View {
-        VStack {
-            Spacer()
-            ZStack {
-                Button(action: {
-                    
-                }, label: {
-                    Text("+ Create task")
-                })
-                .font(.title20)
-                .foregroundColor(.white)
-                .padding(.vertical,8).padding(.horizontal)
-                .background(Color.cyanBlue)
-                .cornerRadius(30)
-                .padding(.bottom, 48)
-            }
-        }.ignoresSafeArea(.all)
+        TasksView(viewModel: FakeTaskViewModel(), navigator: TasksNavigator())
     }
 }

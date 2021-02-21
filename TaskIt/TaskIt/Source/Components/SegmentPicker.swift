@@ -15,7 +15,7 @@ struct SegmentPicker: View {
     private static let TextColor: Color = Color(.secondaryLabel)
     private static let SelectedTextColor: Color = Color(.label)
     private static let TextFont: Font = .system(size: 12)
-    private static let SegmentCornerRadius: CGFloat = 12
+    private static let SegmentCornerRadius: CGFloat = 25
     private static let ShadowRadius: CGFloat = 4
     private static let SegmentXPadding: CGFloat = 16
     private static let SegmentYPadding: CGFloat = 8
@@ -37,8 +37,8 @@ struct SegmentPicker: View {
             RoundedRectangle(cornerRadius: SegmentPicker.SegmentCornerRadius)
                 .foregroundColor(SegmentPicker.ActiveSegmentColor)
                 .shadow(color: SegmentPicker.ShadowColor, radius: SegmentPicker.ShadowRadius)
-                .frame(width: self.segmentSize.width, height: self.segmentSize.height)
-                .offset(x: self.computeActiveSegmentHorizontalOffset(), y: 0)
+                .frame(width: segmentSize.width, height: segmentSize.height)
+                .offset(x: computeActiveSegmentHorizontalOffset(), y: 0)
                 .animation(Animation.linear(duration: SegmentPicker.AnimationDuration))
                 .eraseToAnyView()
     }
@@ -52,10 +52,10 @@ struct SegmentPicker: View {
         // Align the ZStack to the leading edge to make calculating offset on activeSegmentView easier
         ZStack(alignment: .leading) {
             // activeSegmentView indicates the current selection
-            self.activeSegmentView
+            activeSegmentView
             HStack {
-                ForEach(0..<self.items.count, id: \.self) { index in
-                    self.getSegmentView(for: index)
+                ForEach(0..<items.count, id: \.self) { index in
+                    getSegmentView(for: index)
                 }
             }
         }
@@ -64,37 +64,32 @@ struct SegmentPicker: View {
         .clipShape(RoundedRectangle(cornerRadius: SegmentPicker.SegmentCornerRadius))
     }
 
-    // Helper method to compute the offset based on the selected index
     private func computeActiveSegmentHorizontalOffset() -> CGFloat {
-        CGFloat(self.selection) * (self.segmentSize.width + SegmentPicker.SegmentXPadding / 2)
+        CGFloat(selection) * (segmentSize.width + SegmentPicker.SegmentXPadding / 2)
     }
 
-    // Gets text view for the segment
     private func getSegmentView(for index: Int) -> some View {
-        guard index < self.items.count else {
+        guard index < items.count else {
             return EmptyView().eraseToAnyView()
         }
-        let isSelected = self.selection == index
+        let isSelected = selection == index
         return
-            Text(self.items[index])
-                // Dark test for selected segment
+            Text(items[index])
                 .foregroundColor(isSelected ? SegmentPicker.SelectedTextColor: SegmentPicker.TextColor)
                 .lineLimit(1)
                 .padding(.vertical, SegmentPicker.SegmentYPadding)
                 .padding(.horizontal, SegmentPicker.SegmentXPadding)
                 .frame(minWidth: 0, maxWidth: .infinity)
-                // Watch for the size of the
-                .modifier(SizeAwareViewModifier(viewSize: self.$segmentSize))
-                .onTapGesture { self.onItemTap(index: index) }
+                .modifier(SizeAwareViewModifier(viewSize: $segmentSize))
+                .onTapGesture { onItemTap(index: index) }
                 .eraseToAnyView()
     }
 
-    // On tap to change the selection
     private func onItemTap(index: Int) {
-        guard index < self.items.count else {
+        guard index < items.count else {
             return
         }
-        self.selection = index
+        selection = index
     }
 }
 
@@ -103,7 +98,7 @@ struct PreviewView: View {
     private let items: [String] = ["M", "T", "W", "T", "F"]
     
     var body: some View {
-        SegmentPicker(items: self.items, selection: self.$selection)
+        SegmentPicker(items: items, selection: $selection)
             .padding()
     }
 }
@@ -129,12 +124,12 @@ struct SizeAwareViewModifier: ViewModifier {
     @Binding private var viewSize: CGSize
 
     init(viewSize: Binding<CGSize>) {
-        self._viewSize = viewSize
+        _viewSize = viewSize
     }
 
     func body(content: Content) -> some View {
         content
             .background(BackgroundGeometryReader())
-            .onPreferenceChange(SizePreferenceKey.self, perform: { if self.viewSize != $0 { self.viewSize = $0 }})
+            .onPreferenceChange(SizePreferenceKey.self, perform: { if viewSize != $0 { viewSize = $0 }})
     }
 }

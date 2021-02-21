@@ -10,12 +10,22 @@ import SwiftUI
 struct TaskView: View {
     
     var body: some View {
-        ZStack(alignment: .bottom) {
-            VStack(alignment: .leading) {
+        ZStack {
+            VStack {
                 HeaderSection()
                 BodySection()
-            }.edgesIgnoringSafeArea(.bottom)
-        }.backgroundOverlay()
+            }
+            .edgesIgnoringSafeArea(.bottom)
+            
+            ButtonFooterView(
+                buttonText: "Complete task",
+                buttonColor: .t_green,
+                onButtonTap: {
+                    //navigator.fullScreenDestination = .addTask
+                }
+            )
+        }
+        .backgroundOverlay()
     }
 }
 
@@ -25,7 +35,7 @@ struct TaskView_Previews: PreviewProvider {
     }
 }
 
-private struct HeaderSection: View {
+struct HeaderSection: View {
     
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     
@@ -35,7 +45,7 @@ private struct HeaderSection: View {
                 presentationMode.wrappedValue.dismiss()
             }, label: {
                 Image(systemName: "chevron.down")
-                Text("all tasks")
+                Text("cancel")
                     .font(.title20)
             })
             .foregroundColor(.primary)
