@@ -9,7 +9,4 @@ import Foundation
 
 struct Constants {
     
-    struct UserDefaults {
-        static let welcomeViewedKey = "WelcomeHasBeenViewed"
-    }
 }

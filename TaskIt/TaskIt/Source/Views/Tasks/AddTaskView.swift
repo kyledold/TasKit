@@ -10,44 +10,66 @@ import SwiftUI
 struct AddTaskView<ViewModel: AddTaskViewModelProtocol>: View {
     
     @ObservedObject var viewModel: ViewModel
-    @Binding var isAddTaskViewShown: Bool
+    @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     
     var body: some View {
-        VStack(spacing: Layout.Padding.cozy) {
-            
-            Spacer()
-            
-            TextField(viewModel.taskNamePlaceholderText, text: $viewModel.taskName)
-            .textFieldStyle(SimpleTextFieldStyle())
-            .ignoresSafeArea(.keyboard, edges: .bottom)
-            
-            PrioritySegmentView(selectedPriority: $viewModel.priority)
-            
-            DatePicker(viewModel.taskDateText, selection: $viewModel.dueDate, displayedComponents: .date)
-                .accentColor(Color.primary)
-            
-            Button(action: {
-                viewModel.addNewTaskTapped() {
-                    isAddTaskViewShown = false
+        ZStack {
+            VStack {
+                HStack {
+                    Button(action: {
+                        presentationMode.wrappedValue.dismiss()
+                    }, label: {
+                        Image(systemName: "chevron.down")
+                        Text(viewModel.cancelButtonText)
+                            .font(.title20)
+                    })
+                    .foregroundColor(Color.primary)
+                    .padding()
+                    Spacer()
                 }
-            }, label: {
-                Text("Add Task")
-            })
-            .buttonStyle(FilledButtonStyle())
+                ScrollView {
+                    addTaskView
+                }
+            }
+            .background(Color.t_content_background)
+            .edgesIgnoringSafeArea(.bottom)
             
-            Spacer()
+            ButtonFooterView(
+                buttonText: viewModel.submitButtonText,
+                buttonColor: .t_green,
+                onButtonTap: {
+                    viewModel.addNewTaskTapped() {
+                        presentationMode.wrappedValue.dismiss()
+                    }
+                }
+            )
         }
         .onAppear {
             viewModel.onAppear()
         }
-        .frame(height: 250)
-        .padding(.horizontal, Layout.Padding.spacious)
+    }
+    
+    private var addTaskView: some View {
+        VStack(spacing: Layout.Padding.cozy) {
+            VStack(spacing: Layout.Padding.cozy) {
+                
+                TextField(viewModel.taskNamePlaceholderText, text: $viewModel.taskName)
+                    .textFieldStyle(SimpleTextFieldStyle())
+                    .ignoresSafeArea(.keyboard, edges: .bottom)
+                
+                PrioritySegmentView(selectedPriority: $viewModel.priority)
+                
+                DatePicker(viewModel.taskDateText, selection: $viewModel.dueDate, displayedComponents: .date)
+                    .accentColor(Color.t_black)
+                
+                Spacer()
+            }
+        }.padding().padding(.bottom, Layout.Padding.luxurious)
     }
 }
 
 struct AddTaskView_Previews: PreviewProvider {
     static var previews: some View {
-        AddTaskView(viewModel: FakeAddTaskViewModel(), isAddTaskViewShown: .constant(true))
-            .previewLayout(.fixed(width: 400, height: 250))
+        AddTaskView(viewModel: FakeAddTaskViewModel())
     }
 }

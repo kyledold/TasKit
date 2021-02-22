@@ -11,7 +11,7 @@ import Foundation
 struct PrioritySegmentView: View {
     
     @Binding var selectedPriority: Priority
-    @State private var backgroundColor = Color.inputBackgroundColor
+    @State private var backgroundColor = Color.t_input_background
 
     var body: some View {
         
@@ -33,11 +33,13 @@ struct PrioritySegmentView: View {
     }
     
     private func onChange(value: Priority) {
+        UIImpactFeedbackGenerator().impactOccurred()
+        
         switch value {
-        case .none: backgroundColor = Color.inputBackgroundColor
-        case .low: backgroundColor = Color.lowPriorityGreen
-        case .medium: backgroundColor = Color.mediumPriorityYellow
-        case .high: backgroundColor = Color.highPriorityRed
+        case .none: backgroundColor = Color.t_input_background
+        case .low: backgroundColor = Color.t_green
+        case .medium: backgroundColor = Color.t_yellow
+        case .high: backgroundColor = Color.t_red
         }
     }
 }

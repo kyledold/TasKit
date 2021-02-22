@@ -13,6 +13,7 @@ class FakeTaskRowViewModel: TaskRowViewModelProtocol {
     var titleText = "This is a fake title"
     var priority = Priority.medium
     var isCompleted = false
+    var task = Task()
     
     func completeButtonTapped() {}
 }

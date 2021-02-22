@@ -6,11 +6,14 @@
   
 */
 
-"add_task.task_name_placeholder" = "Task name";
-"add_task.date" = "Date";
 "add_task.add_task" = "Add task";
+"add_task.create" = "Create";
+"add_task.date" = "Date";
+"add_task.save_changes" = "Save changes";
+"add_task.task_name_placeholder" = "Task name";
 "app.version.%@" = "Version %@";
 "calendar.title" = "Calendar";
+"general.cancel" = "cancel";
 "settings.title" = "Settings";
 "settings.feedback.title" = "Feedback";
 "settings.feedback.subtitle" = "kdold02@gmail.com";
@@ -18,14 +21,10 @@
 "settings.open_source.subtitle" = "Feel free to browse or contribute";
 "status_picker.todo" = "Todo";
 "status_picker.completed" = "Completed";
-"tab_bar.tasks" = "Tasks";
-"tab_bar.calendar" = "Calendar";
-"tab_bar.settings" = "Settings";
-"tasks.title" = "Tasks";
+"task_details.complete_task" = "Complete task";
+"tasks.creat_task" = "Create task";
 "priority_picker.none" = "none";
 "priority_picker.low" = "low";
 "priority_picker.medium" = "medium";
 "priority_picker.high" = "high";
-"welcome.welcome" = "Welcome";
-"welcome.got_it" = "Got it";
-"welcome.terms_and_conditions" = "By continuing you agree to Task Its Terms of Service and Privacy Policy";
+

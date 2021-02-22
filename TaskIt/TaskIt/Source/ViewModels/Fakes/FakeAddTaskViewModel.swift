@@ -14,6 +14,8 @@ class FakeAddTaskViewModel: AddTaskViewModelProtocol {
     var dueDate = Date()
     var taskNamePlaceholderText = "Task name"
     var taskDateText = "Date"
+    var cancelButtonText = "cancel"
+    var submitButtonText = "Create"
     
     func onAppear() {}
     func addNewTaskTapped(_ completion: @escaping EmptyClosure) { }

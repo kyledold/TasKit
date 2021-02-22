@@ -11,20 +11,18 @@ import Foundation
 class TaskRowViewModel: TaskRowViewModelProtocol {
     
     var id: UUID { return task.id ?? UUID() }
-    var titleText: String
-    var priority: Priority
+    var titleText: String { task.title ?? .empty }
+    var priority: Priority { task.priority }
     
     @Published var isCompleted: Bool
     
+    private(set) var task: Task
     private let managedObjectContext: NSManagedObjectContext
-    private let task: Task
     
     init(task: Task, managedObjectContext: NSManagedObjectContext) {
         self.task = task
         self.managedObjectContext = managedObjectContext
         
-        self.titleText = task.title ?? .empty
-        self.priority = task.priority
         self.isCompleted = task.status == .completed
     }
     
