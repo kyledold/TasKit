@@ -1,5 +1,5 @@
 //
-//  TasksView.swift
+//  TasksListView.swift
 //  TaskIt
 //
 //  Created by Kyle Dold on 02/02/2021.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct TasksView<ViewModel: TasksViewModelProtocol>: View {
+struct TasksListView<ViewModel: TasksListViewModelProtocol>: View {
     
     @ObservedObject var viewModel: ViewModel
     @ObservedObject var navigator: TasksNavigator
@@ -92,6 +92,6 @@ struct TasksView<ViewModel: TasksViewModelProtocol>: View {
 
 struct TasksView_Previews: PreviewProvider {
     static var previews: some View {
-        TasksView(viewModel: FakeTasksViewModel(), navigator: TasksNavigator())
+        TasksListView(viewModel: FakeTasksListsViewModel(), navigator: TasksNavigator())
     }
 }

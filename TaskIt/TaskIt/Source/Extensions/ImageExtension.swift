@@ -13,6 +13,8 @@ extension Image {
         static let calendar = "calendar"
         static let settings = "gearshape.fill"
         static let tasks = "list.dash"
+        static let pencil = "pencil"
+        static let delete = "trash"
         static let lowPriority = "LowPriority"
         static let mediumPriority = "MediumPriority"
         static let highPriority = "HighPriority"
@@ -28,7 +30,7 @@ extension Image {
     }
     func iconStyle() -> some View {
         self.resizable()
-            .frame(width: 30, height: 30)
+            .frame(width: 25, height: 25)
             .foregroundColor(Color.t_white)
     }
     

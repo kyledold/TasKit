@@ -1,5 +1,5 @@
 //
-//  TasksViewModelProtocol.swift
+//  TasksListViewModelProtocol.swift
 //  TaskIt
 //
 //  Created by Kyle Dold on 15/02/2021.
@@ -8,7 +8,7 @@
 import Combine
 import Foundation
 
-protocol TasksViewModelProtocol: ObservableObject {
+protocol TasksListViewModelProtocol: ObservableObject {
     
     associatedtype RowViewModel: TaskRowViewModelProtocol
     

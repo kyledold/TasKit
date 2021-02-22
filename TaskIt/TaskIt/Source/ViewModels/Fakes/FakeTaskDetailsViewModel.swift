@@ -1,5 +1,5 @@
 //
-//  FakeTaskViewModel.swift
+//  FakeTaskDetailsViewModel.swift
 //  TaskIt
 //
 //  Created by Kyle Dold on 21/02/2021.
@@ -7,7 +7,7 @@
 
 import Foundation
 
-class FakeTaskViewModel: TaskViewModelProtocol {
+class FakeTaskDetailsViewModel: TaskDetailsViewModelProtocol {
     
     var titleText = "This is a fake title"
     var priority = Priority.medium

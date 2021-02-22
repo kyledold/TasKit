@@ -21,8 +21,8 @@ struct TaskRowView<ViewModel: TaskRowViewModelProtocol>: View {
             
             HStack(spacing: Layout.Padding.cozy) {
                 Text(viewModel.titleText)
-                    .font(.title20)
-                    .foregroundColor(.t_black)
+                    .font(.body16)
+                    .foregroundColor(.primary)
                 
                 Spacer()
             }

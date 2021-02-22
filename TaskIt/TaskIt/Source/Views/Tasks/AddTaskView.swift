@@ -65,3 +65,24 @@ struct AddTaskView_Previews: PreviewProvider {
         AddTaskView(viewModel: FakeAddTaskViewModel())
     }
 }
+
+struct HeaderSection: View {
+    
+    @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
+    
+    var body: some View {
+        HStack(spacing: 24) {
+            Button(action: {
+                presentationMode.wrappedValue.dismiss()
+            }, label: {
+                Image(systemName: "chevron.down")
+                Text("cancel")
+                    .font(.title20)
+            })
+            .foregroundColor(.t_white)
+            Spacer()
+            
+            
+        }.padding().padding(.top, 32)
+    }
+}

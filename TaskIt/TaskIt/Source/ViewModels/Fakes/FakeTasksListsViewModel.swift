@@ -1,5 +1,5 @@
 //
-//  FakeTasksViewModel.swift
+//  FakeTasksListsViewModel.swift
 //  TaskIt
 //
 //  Created by Kyle Dold on 15/02/2021.
@@ -7,7 +7,7 @@
 
 import Foundation
 
-class FakeTasksViewModel: TasksViewModelProtocol {
+class FakeTasksListsViewModel: TasksListViewModelProtocol {
     
     typealias RowViewModel = FakeTaskRowViewModel
     

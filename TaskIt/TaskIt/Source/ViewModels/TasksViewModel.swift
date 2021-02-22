@@ -8,7 +8,7 @@
 import CoreData
 import Foundation
 
-class TasksViewModel: TasksViewModelProtocol {
+class TasksViewModel: TasksListViewModelProtocol {
     
     typealias RowViewModel = TaskRowViewModel
     

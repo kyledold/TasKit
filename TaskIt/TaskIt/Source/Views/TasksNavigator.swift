@@ -28,7 +28,7 @@ class TasksNavigator: ObservableObject {
     
     var initialView: AnyView {
         let viewModel = makeTasksViewModel()
-        return TasksView(viewModel: viewModel, navigator: self).eraseToAnyView()
+        return TasksListView(viewModel: viewModel, navigator: self).eraseToAnyView()
     }
     
     var sheetDestination: SheetDestination = .none {
@@ -79,7 +79,7 @@ class TasksNavigator: ObservableObject {
             return Text(String.empty).eraseToAnyView()
             
         case .viewTask(let taskRowViewModel):
-            return TaskView(viewModel: makeTaskViewModel(with: taskRowViewModel)).eraseToAnyView()
+            return TaskDetailsView(viewModel: makeTaskViewModel(with: taskRowViewModel)).eraseToAnyView()
             
         case .addTask:
             return AddTaskView(viewModel: makeAddTaskViewModel()).eraseToAnyView()
@@ -99,7 +99,7 @@ class TasksNavigator: ObservableObject {
         )
     }
     
-    private func makeTaskViewModel(with taskRowViewModel: TaskRowViewModel) -> TaskViewModel {
-        return TaskViewModel(task: taskRowViewModel.task)
+    private func makeTaskViewModel(with taskRowViewModel: TaskRowViewModel) -> TaskDetailsViewModel {
+        return TaskDetailsViewModel(task: taskRowViewModel.task)
     }
 }
