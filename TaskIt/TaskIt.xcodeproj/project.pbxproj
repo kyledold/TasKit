@@ -40,7 +40,7 @@
 		D17DA9C125DABB9100ED4A8C /* AddTaskView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D17DA9C025DABB9100ED4A8C /* AddTaskView.swift */; };
 		D17DA9CD25DABE4600ED4A8C /* AddTaskViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D17DA9CC25DABE4600ED4A8C /* AddTaskViewModel.swift */; };
 		D17DA9D225DABEA600ED4A8C /* TasksListViewModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = D17DA9D125DABEA600ED4A8C /* TasksListViewModelProtocol.swift */; };
-		D17DA9D725DABECB00ED4A8C /* FakeTasksListsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D17DA9D625DABECB00ED4A8C /* FakeTasksListsViewModel.swift */; };
+		D17DA9D725DABECB00ED4A8C /* FakeTasksListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D17DA9D625DABECB00ED4A8C /* FakeTasksListViewModel.swift */; };
 		D17DA9E525DAC51700ED4A8C /* AddTaskViewModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = D17DA9E425DAC51700ED4A8C /* AddTaskViewModelProtocol.swift */; };
 		D17DA9EA25DAC53700ED4A8C /* FakeAddTaskViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D17DA9E925DAC53700ED4A8C /* FakeAddTaskViewModel.swift */; };
 		D17DA9FA25DAE35C00ED4A8C /* TasksListViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D17DA9F925DAE35C00ED4A8C /* TasksListViewModelTests.swift */; };
@@ -70,7 +70,7 @@
 		D17FC9EC25D828F6002A5501 /* FakeSettingsRowViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D17FC9EB25D828F6002A5501 /* FakeSettingsRowViewModel.swift */; };
 		D17FC9F125D82AC7002A5501 /* SettingsViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D17FC9F025D82AC7002A5501 /* SettingsViewModelTests.swift */; };
 		D17FC9F625D82B9C002A5501 /* SettingsRowViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D17FC9F525D82B9C002A5501 /* SettingsRowViewModelTests.swift */; };
-		D17FCA5B25D98986002A5501 /* TasksViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D17FCA5A25D98986002A5501 /* TasksViewModel.swift */; };
+		D17FCA5B25D98986002A5501 /* TasksListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D17FCA5A25D98986002A5501 /* TasksListViewModel.swift */; };
 		D1BC33C225D455F50068A57A /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1BC33C125D455F50068A57A /* Constants.swift */; };
 		D1BC346625D5A11E0068A57A /* Closure.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1BC346525D5A11E0068A57A /* Closure.swift */; };
 		D1BC348925D5A92A0068A57A /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1BC348825D5A92A0068A57A /* SettingsView.swift */; };
@@ -138,7 +138,7 @@
 		D17DA9C025DABB9100ED4A8C /* AddTaskView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTaskView.swift; sourceTree = "<group>"; };
 		D17DA9CC25DABE4600ED4A8C /* AddTaskViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTaskViewModel.swift; sourceTree = "<group>"; };
 		D17DA9D125DABEA600ED4A8C /* TasksListViewModelProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasksListViewModelProtocol.swift; sourceTree = "<group>"; };
-		D17DA9D625DABECB00ED4A8C /* FakeTasksListsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeTasksListsViewModel.swift; sourceTree = "<group>"; };
+		D17DA9D625DABECB00ED4A8C /* FakeTasksListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeTasksListViewModel.swift; sourceTree = "<group>"; };
 		D17DA9E425DAC51700ED4A8C /* AddTaskViewModelProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTaskViewModelProtocol.swift; sourceTree = "<group>"; };
 		D17DA9E925DAC53700ED4A8C /* FakeAddTaskViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeAddTaskViewModel.swift; sourceTree = "<group>"; };
 		D17DA9F925DAE35C00ED4A8C /* TasksListViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasksListViewModelTests.swift; sourceTree = "<group>"; };
@@ -166,7 +166,7 @@
 		D17FC9EB25D828F6002A5501 /* FakeSettingsRowViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeSettingsRowViewModel.swift; sourceTree = "<group>"; };
 		D17FC9F025D82AC7002A5501 /* SettingsViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModelTests.swift; sourceTree = "<group>"; };
 		D17FC9F525D82B9C002A5501 /* SettingsRowViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsRowViewModelTests.swift; sourceTree = "<group>"; };
-		D17FCA5A25D98986002A5501 /* TasksViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasksViewModel.swift; sourceTree = "<group>"; };
+		D17FCA5A25D98986002A5501 /* TasksListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasksListViewModel.swift; sourceTree = "<group>"; };
 		D187C07025DA6B4D00A5B09A /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
 		D1BB6D4A25D0104F00B1ED10 /* TaskIt.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = TaskIt.entitlements; sourceTree = "<group>"; };
 		D1BC33C125D455F50068A57A /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
@@ -389,7 +389,7 @@
 				D1BC33D125D58B3D0068A57A /* Protocols */,
 				D17FC98E25D8106F002A5501 /* SettingsViewModel.swift */,
 				D17FC9D825D8235F002A5501 /* SettingsRowViewModel.swift */,
-				D17FCA5A25D98986002A5501 /* TasksViewModel.swift */,
+				D17FCA5A25D98986002A5501 /* TasksListViewModel.swift */,
 				D17DAABA25DBFD3300ED4A8C /* TaskRowViewModel.swift */,
 				D17DA9CC25DABE4600ED4A8C /* AddTaskViewModel.swift */,
 				D131DFA325E2CBA00039D7E7 /* TaskDetailsViewModel.swift */,
@@ -402,7 +402,7 @@
 			children = (
 				D17FC99825D8108B002A5501 /* FakeSettingsViewModel.swift */,
 				D17FC9EB25D828F6002A5501 /* FakeSettingsRowViewModel.swift */,
-				D17DA9D625DABECB00ED4A8C /* FakeTasksListsViewModel.swift */,
+				D17DA9D625DABECB00ED4A8C /* FakeTasksListViewModel.swift */,
 				D17DAAB725DBFD0F00ED4A8C /* FakeTaskRowViewModel.swift */,
 				D17DA9E925DAC53700ED4A8C /* FakeAddTaskViewModel.swift */,
 				D131DFA925E2CC170039D7E7 /* FakeTaskDetailsViewModel.swift */,
@@ -602,7 +602,7 @@
 				D17FC9E725D82863002A5501 /* SettingsRowViewModelProtocol.swift in Sources */,
 				D1783EBD25C9C9F100D8EFC3 /* CalendarView.swift in Sources */,
 				D17DA9E525DAC51700ED4A8C /* AddTaskViewModelProtocol.swift in Sources */,
-				D17FCA5B25D98986002A5501 /* TasksViewModel.swift in Sources */,
+				D17FCA5B25D98986002A5501 /* TasksListViewModel.swift in Sources */,
 				D17DAAA525DBE04900ED4A8C /* StringExtension.swift in Sources */,
 				D17DAAAD25DBF2A100ED4A8C /* Priority.swift in Sources */,
 				D1542BE925DFE9C5005FD7C7 /* SimpleTextFieldStyle.swift in Sources */,
@@ -610,7 +610,7 @@
 				D17DAABB25DBFD3300ED4A8C /* TaskRowViewModel.swift in Sources */,
 				D17DAAD425DC279D00ED4A8C /* PrioritySegmentView.swift in Sources */,
 				D17DAAB225DBFC9E00ED4A8C /* TaskRowView.swift in Sources */,
-				D17DA9D725DABECB00ED4A8C /* FakeTasksListsViewModel.swift in Sources */,
+				D17DA9D725DABECB00ED4A8C /* FakeTasksListViewModel.swift in Sources */,
 				D17FC9A925D817BE002A5501 /* SettingsRowView.swift in Sources */,
 				D11E7D1A25E1433F00EED79E /* ViewExtension.swift in Sources */,
 				D17FC99925D8108B002A5501 /* FakeSettingsViewModel.swift in Sources */,

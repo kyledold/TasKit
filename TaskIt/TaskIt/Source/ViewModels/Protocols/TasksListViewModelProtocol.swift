@@ -13,10 +13,10 @@ protocol TasksListViewModelProtocol: ObservableObject {
     associatedtype RowViewModel: TaskRowViewModelProtocol
     
     var titleText: String { get }
+    var createTaskButtonText: String { get }
     var taskViewModels: Array<RowViewModel> { get }
     var selectedStatusFilter: Status { get set }
     
     func fetchTasks()
-    func deleteTask(at indexSet: IndexSet)
     func didChangeStatusFilter(status: Status)
 }

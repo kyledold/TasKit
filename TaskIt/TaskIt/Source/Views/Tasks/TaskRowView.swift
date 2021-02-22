@@ -12,22 +12,31 @@ struct TaskRowView<ViewModel: TaskRowViewModelProtocol>: View {
     @ObservedObject var viewModel: ViewModel
     
     var body: some View {
-        VStack(alignment: .leading) {
-            if viewModel.priority != .none {
-                Image(Image.iconNameForPriority(viewModel.priority))
-                    .resizable()
-                    .frame(width: 20, height: 20)
+        HStack {
+            
+            VStack(alignment: .center) {
+                Text("25").font(.title20)
+                Text("Nov").font(.body14)
             }
             
-            HStack(spacing: Layout.Padding.cozy) {
-                Text(viewModel.titleText)
-                    .font(.body16)
-                    .foregroundColor(.primary)
-                
-                Spacer()
-            }
+            Rectangle()
+                .foregroundColor(.primary)
+                .frame(width: 0.2)
+            
+            Text(viewModel.titleText)
+                .font(.body16)
+                .foregroundColor(.primary)
             
             Spacer()
+            
+            if viewModel.priority != .none {
+                VStack {
+                    Image(Image.iconNameForPriority(viewModel.priority))
+                        .resizable()
+                        .frame(width: 20, height: 20)
+                    Spacer()
+                }
+            }
         }
         .padding(.all, 12)
         .background(Color.t_content_background)

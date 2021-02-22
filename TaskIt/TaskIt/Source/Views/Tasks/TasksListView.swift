@@ -23,7 +23,7 @@ struct TasksListView<ViewModel: TasksListViewModelProtocol>: View {
                             TaskRowView(viewModel: taskRowViewModel)
                                 .onTapGesture {
                                     UIImpactFeedbackGenerator().impactOccurred()
-                                    navigator.fullScreenDestination = .viewTask(taskRowViewModel: taskRowViewModel)
+                                    navigator.fullScreenDestination = .viewTask(task: taskRowViewModel.task)
                                 }
                         }
                         #if DEBUG
@@ -36,10 +36,10 @@ struct TasksListView<ViewModel: TasksListViewModelProtocol>: View {
             }
             .backgroundOverlay()
             ButtonFooterView(
-                buttonText: "Create task",
+                buttonText: viewModel.createTaskButtonText,
                 buttonColor: .t_orange,
                 onButtonTap: {
-                    navigator.fullScreenDestination = .addTask
+                    navigator.sheetDestination = .addTask
                 }
             )
         }
@@ -67,7 +67,7 @@ struct TasksListView<ViewModel: TasksListViewModelProtocol>: View {
     }
     
     private var navigationHeaderView: some View {
-        HStack(spacing: 18) {
+        HStack(spacing: Layout.Padding.cozy) {
             Spacer()
             
             Button(action: {
@@ -84,14 +84,10 @@ struct TasksListView<ViewModel: TasksListViewModelProtocol>: View {
         }
         .padding()
     }
-    
-    private func deleteTask(at indexSet: IndexSet) {
-        viewModel.deleteTask(at: indexSet)
-    }
 }
 
 struct TasksView_Previews: PreviewProvider {
     static var previews: some View {
-        TasksListView(viewModel: FakeTasksListsViewModel(), navigator: TasksNavigator())
+        TasksListView(viewModel: FakeTasksListViewModel(), navigator: TasksNavigator())
     }
 }

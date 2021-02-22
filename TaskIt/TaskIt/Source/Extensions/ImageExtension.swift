@@ -10,6 +10,7 @@ import SwiftUI
 extension Image {
     
     struct Icons {
+        static let downChevron = "chevron.down"
         static let calendar = "calendar"
         static let settings = "gearshape.fill"
         static let tasks = "list.dash"

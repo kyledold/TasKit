@@ -1,5 +1,5 @@
 //
-//  TasksViewModel.swift
+//  TasksListViewModel.swift
 //  TaskIt
 //
 //  Created by Kyle Dold on 14/02/2021.
@@ -8,13 +8,14 @@
 import CoreData
 import Foundation
 
-class TasksViewModel: TasksListViewModelProtocol {
+class TasksListViewModel: TasksListViewModelProtocol {
     
     typealias RowViewModel = TaskRowViewModel
     
     // MARK: Properties
     
     let titleText = NSLocalizedString("tasks.title", comment: "Tasks title")
+    var createTaskButtonText = NSLocalizedString("tasks.creat_task", comment: "Create button title")
     
     @Published private(set) var taskViewModels: [RowViewModel]
     @Published var selectedStatusFilter = Status.todo
@@ -40,17 +41,6 @@ class TasksViewModel: TasksListViewModelProtocol {
         }
         
         taskViewModels = taskModels.map { return TaskRowViewModel(task: $0, managedObjectContext: managedObjectContext) }
-    }
-    
-    func deleteTask(at indexSet: IndexSet) {
-        
-        let taskViewModelsToDelete = indexSet.map { self.taskViewModels[$0] }
-        
-        for taskViewModel in taskViewModelsToDelete {
-            Task.deleteTask(with: taskViewModel.id, viewContext: managedObjectContext)
-        }
-        
-        fetchTasks()
     }
     
     func didChangeStatusFilter(status: Status) {

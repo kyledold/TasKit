@@ -16,11 +16,23 @@ class AddTaskViewModel: AddTaskViewModelProtocol {
     
     var taskNamePlaceholderText = NSLocalizedString("add_task.task_name_placeholder", comment: "Task name textfield placeholder")
     var taskDateText = NSLocalizedString("add_task.date", comment: "Date picker description")
+    var cancelButtonText = NSLocalizedString("general.cancel", comment: "cancel button title")
+    var submitButtonText: String {
+        guard task == nil else { return NSLocalizedString("add_task.save_changes", comment: "submit button title") }
+        
+        return NSLocalizedString("add_task.create", comment: "submit button title")
+    }
     
     private var onTaskAdded: EmptyClosure
     private let managedObjectContext: NSManagedObjectContext
+    private let task: Task?
     
-    init(managedObjectContext: NSManagedObjectContext, onTaskAdded: @escaping EmptyClosure) {
+    init(
+        task: Task? = nil,
+        managedObjectContext: NSManagedObjectContext,
+        onTaskAdded: @escaping EmptyClosure
+    ) {
+        self.task = task
         self.managedObjectContext = managedObjectContext
         self.onTaskAdded = onTaskAdded
     }

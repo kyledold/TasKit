@@ -10,11 +10,14 @@ import SwiftUI
 struct TaskDetailsView<ViewModel: TaskDetailsViewModelProtocol>: View {
     
     var viewModel: ViewModel
+    @ObservedObject var navigator: TasksNavigator
+    
+    @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     
     var body: some View {
         ZStack {
             VStack {
-                HeaderView()
+                navigationHeaderView
                 ScrollView {
                     VStack(alignment: .leading, spacing: 8) {
                         if viewModel.priority != .none {
@@ -39,48 +42,49 @@ struct TaskDetailsView<ViewModel: TaskDetailsViewModelProtocol>: View {
             .edgesIgnoringSafeArea(.bottom)
             
             ButtonFooterView(
-                buttonText: "Complete task",
+                buttonText: viewModel.completeTaskButtonText,
                 buttonColor: .t_green,
                 onButtonTap: {
+                    
                 }
             )
         }
         .backgroundOverlay()
+        .sheet(isPresented: $navigator.showSheet) {
+            navigator.sheetView()
+        }
     }
-}
-
-struct TaskView_Previews: PreviewProvider {
-    static var previews: some View {
-        TaskDetailsView(viewModel: FakeTaskDetailsViewModel())
-    }
-}
-
-private struct HeaderView: View {
     
-    @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
-    
-    var body: some View {
-        HStack(spacing: 18) {
+    private var navigationHeaderView: some View {
+        HStack(spacing: Layout.Padding.cozy) {
             Button(action: {
                 presentationMode.wrappedValue.dismiss()
             }, label: {
-                Image(systemName: "chevron.down")
-                Text("cancel")
+                Image(systemName: Image.Icons.downChevron)
+                Text(viewModel.cancelButtonText)
                     .font(.title20)
             })
             .foregroundColor(.t_white)
             Spacer()
             Button(action: {
-                
+                navigator.sheetDestination = .editTask(task: viewModel.task)
             }, label: {
                 Image(systemName: Image.Icons.pencil).iconStyle()
             })
             Button(action: {
-                
+                viewModel.deleteTask {
+                    presentationMode.wrappedValue.dismiss()
+                }
             }, label: {
                 Image(systemName: Image.Icons.delete).iconStyle()
             })
         }
-        .padding().padding(.top, 32)
+        .padding().padding(.top, Layout.Padding.spacious)
+    }
+}
+
+struct TaskView_Previews: PreviewProvider {
+    static var previews: some View {
+        TaskDetailsView(viewModel: FakeTaskDetailsViewModel(), navigator: TasksNavigator())
     }
 }
