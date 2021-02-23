@@ -10,8 +10,11 @@ import Foundation
 
 class TaskRowViewModel: TaskRowViewModelProtocol {
     
+    // MARK: - Properties
+    
     var id: UUID { return task.id ?? UUID() }
     var titleText: String { task.title ?? .empty }
+    var priority: Priority { task.priority }
     
     var dateText: String {
         guard let dueDate = task.dueDate else { return .empty}
@@ -23,12 +26,12 @@ class TaskRowViewModel: TaskRowViewModelProtocol {
         return dueDate.month
     }
     
-    var priority: Priority { task.priority }
-    
     @Published var isCompleted: Bool
     
     private(set) var task: Task
     private let managedObjectContext: NSManagedObjectContext
+    
+    // MARK: - Initialisation
     
     init(task: Task, managedObjectContext: NSManagedObjectContext) {
         self.task = task
@@ -36,6 +39,8 @@ class TaskRowViewModel: TaskRowViewModelProtocol {
         
         self.isCompleted = task.status == .completed
     }
+    
+    // MARK: - Functions
     
     func completeButtonTapped() {
         task.status = task.status == .completed ? .todo : .completed

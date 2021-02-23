@@ -10,6 +10,8 @@ import Foundation
 
 class AddTaskViewModel: AddTaskViewModelProtocol {
     
+    // MARK: - Properties
+    
     @Published var taskName = String.empty
     @Published var priority = Priority.none
     @Published var dueDate = Date()
@@ -27,6 +29,8 @@ class AddTaskViewModel: AddTaskViewModelProtocol {
     private let managedObjectContext: NSManagedObjectContext
     private let task: Task?
     
+    // MARK: - Initialisation
+    
     init(
         task: Task? = nil,
         managedObjectContext: NSManagedObjectContext,
@@ -36,6 +40,8 @@ class AddTaskViewModel: AddTaskViewModelProtocol {
         self.managedObjectContext = managedObjectContext
         self.onTaskAdded = onTaskAdded
     }
+    
+    // MARK: - Functions
     
     func onAppear() {
         taskName = .empty

@@ -9,11 +9,14 @@ import SwiftUI
 
 struct TaskRowView<ViewModel: TaskRowViewModelProtocol>: View {
     
+    // MARK: - Properties
+    
     @ObservedObject var viewModel: ViewModel
+    
+    // MARK: - Content Builders
     
     var body: some View {
         HStack {
-            
             VStack(alignment: .center) {
                 Text(viewModel.dateText).font(.title20)
                 Text(viewModel.monthText).font(.body14)
@@ -46,6 +49,7 @@ struct TaskRowView<ViewModel: TaskRowViewModelProtocol>: View {
     }
 }
 
+// MARK: - PreviewProvider -
 
 struct TaskRowView_Previews: PreviewProvider {
     static var previews: some View {

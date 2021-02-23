@@ -13,6 +13,9 @@ class FakeTaskDetailsViewModel: TaskDetailsViewModelProtocol {
     var priority = Priority.medium
     var completeTaskButtonText = "Complete task"
     var cancelButtonText = "cancel"
+    var actionSheetTitle = "Delete task?"
+    var deleteText = "Delete"
+
     var task = Task()
     
     func deleteTask(_ completion: @escaping EmptyClosure) {}

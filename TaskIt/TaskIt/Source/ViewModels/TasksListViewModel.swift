@@ -12,7 +12,7 @@ class TasksListViewModel: TasksListViewModelProtocol {
     
     typealias RowViewModel = TaskRowViewModel
     
-    // MARK: Properties
+    // MARK: - Properties
     
     let titleText = NSLocalizedString("tasks.title", comment: "Tasks title")
     var createTaskButtonText = NSLocalizedString("tasks.creat_task", comment: "Create button title")
@@ -22,14 +22,14 @@ class TasksListViewModel: TasksListViewModelProtocol {
     
     private let managedObjectContext: NSManagedObjectContext
     
-    // MARK: Initialisation
+    // MARK: - Initialisation
     
     init(managedObjectContext: NSManagedObjectContext) {
         self.managedObjectContext = managedObjectContext
         self.taskViewModels = []
     }
     
-    // MARK: Functions
+    // MARK: - Functions
     
     func fetchTasks() {
         

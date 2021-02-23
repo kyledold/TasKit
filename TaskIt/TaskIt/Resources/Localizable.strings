@@ -22,6 +22,8 @@
 "status_picker.todo" = "Todo";
 "status_picker.completed" = "Completed";
 "task_details.complete_task" = "Complete task";
+"task_details.action_sheet.title" = "Delete task?";
+"task_details.action_sheet.delete" = "Delete";
 "tasks.creat_task" = "Create task";
 "priority_picker.none" = "none";
 "priority_picker.low" = "low";

@@ -9,30 +9,18 @@ import SwiftUI
 
 struct TasksListView<ViewModel: TasksListViewModelProtocol>: View {
     
+    // MARK: - Properties
+    
     @ObservedObject var viewModel: ViewModel
     @ObservedObject var navigator: TasksNavigator
+    
+    // MARK: - Content Builders
     
     var body: some View {
         ZStack {
             VStack {
                 navigationHeaderView
-                ScrollView {
-                    StatusFilterView.padding(.horizontal, Layout.Padding.compact)
-                    ForEach(viewModel.taskViewModels, id: \.id) { task in
-                        if let taskRowViewModel = task as? TaskRowViewModel {
-                            TaskRowView(viewModel: taskRowViewModel)
-                                .onTapGesture {
-                                    UIImpactFeedbackGenerator().impactOccurred()
-                                    navigator.fullScreenDestination = .viewTask(task: taskRowViewModel.task)
-                                }
-                        }
-                        #if DEBUG
-                        if let fakeTaskRowViewModel = task as? FakeTaskRowViewModel {
-                            TaskRowView(viewModel: fakeTaskRowViewModel)
-                        }
-                        #endif
-                    }
-                }
+                taskListBodyView
             }
             .backgroundOverlay()
             ButtonFooterView(
@@ -58,7 +46,7 @@ struct TasksListView<ViewModel: TasksListViewModelProtocol>: View {
         }
     }
     
-    private var StatusFilterView: some View {
+    private var statusFilterView: some View {
         StatusSegmentView(selectedStatus: $viewModel.selectedStatusFilter)
             .onChange(of: viewModel.selectedStatusFilter) { viewModel.didChangeStatusFilter(status: $0) }
             .padding(.vertical, Layout.Padding.tight)
@@ -84,7 +72,29 @@ struct TasksListView<ViewModel: TasksListViewModelProtocol>: View {
         }
         .padding()
     }
+    
+    private var taskListBodyView: some View {
+        ScrollView {
+            statusFilterView.padding(.horizontal, Layout.Padding.compact)
+            ForEach(viewModel.taskViewModels, id: \.id) { task in
+                if let taskRowViewModel = task as? TaskRowViewModel {
+                    TaskRowView(viewModel: taskRowViewModel)
+                        .onTapGesture {
+                            UIImpactFeedbackGenerator().impactOccurred()
+                            navigator.fullScreenDestination = .viewTask(task: taskRowViewModel.task)
+                        }
+                }
+                #if DEBUG
+                if let fakeTaskRowViewModel = task as? FakeTaskRowViewModel {
+                    TaskRowView(viewModel: fakeTaskRowViewModel)
+                }
+                #endif
+            }
+        }
+    }
 }
+
+// MARK: - PreviewProvider -
 
 struct TasksView_Previews: PreviewProvider {
     static var previews: some View {

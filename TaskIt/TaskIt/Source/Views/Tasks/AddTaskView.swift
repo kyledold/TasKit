@@ -9,8 +9,12 @@ import SwiftUI
 
 struct AddTaskView<ViewModel: AddTaskViewModelProtocol>: View {
     
+    // MARK: - Properties
+    
     @ObservedObject var viewModel: ViewModel
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
+    
+    // MARK: - Content Builders
     
     var body: some View {
         ZStack {
@@ -19,7 +23,7 @@ struct AddTaskView<ViewModel: AddTaskViewModelProtocol>: View {
                     Button(action: {
                         presentationMode.wrappedValue.dismiss()
                     }, label: {
-                        Image(systemName: "chevron.down")
+                        Image(systemName: Image.Icons.downChevron)
                         Text(viewModel.cancelButtonText)
                             .font(.title20)
                     })
@@ -67,6 +71,8 @@ struct AddTaskView<ViewModel: AddTaskViewModelProtocol>: View {
         }.padding().padding(.bottom, Layout.Padding.luxurious)
     }
 }
+
+// MARK: - PreviewProvider -
 
 struct AddTaskView_Previews: PreviewProvider {
     static var previews: some View {
