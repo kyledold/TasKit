@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D11E733125E53781006FD6CB /* DateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D11E733025E53781006FD6CB /* DateExtension.swift */; };
 		D11E7D1325E1095700EED79E /* ListExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D11E7D1225E1095700EED79E /* ListExtension.swift */; };
 		D11E7D1A25E1433F00EED79E /* ViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D11E7D1925E1433F00EED79E /* ViewExtension.swift */; };
 		D11E7D2825E14B8C00EED79E /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D11E7D2725E14B8C00EED79E /* Colors.xcassets */; };
@@ -102,6 +103,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		D11E733025E53781006FD6CB /* DateExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateExtension.swift; sourceTree = "<group>"; };
 		D11E7D1225E1095700EED79E /* ListExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListExtension.swift; sourceTree = "<group>"; };
 		D11E7D1925E1433F00EED79E /* ViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewExtension.swift; sourceTree = "<group>"; };
 		D11E7D2725E14B8C00EED79E /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
@@ -210,6 +212,7 @@
 			children = (
 				D17FC9A225D815EE002A5501 /* BundleExtension.swift */,
 				D1529C7425C72C76003FC9D6 /* ColorExtensions.swift */,
+				D11E733025E53781006FD6CB /* DateExtension.swift */,
 				D11E7D3325E14DDE00EED79E /* FontExtension.swift */,
 				D17FC9AD25D817F4002A5501 /* ImageExtension.swift */,
 				D11E7D1225E1095700EED79E /* ListExtension.swift */,
@@ -582,6 +585,7 @@
 			files = (
 				D17DA9D225DABEA600ED4A8C /* TasksListViewModelProtocol.swift in Sources */,
 				D11E7D3425E14DDE00EED79E /* FontExtension.swift in Sources */,
+				D11E733125E53781006FD6CB /* DateExtension.swift in Sources */,
 				D17DAAB525DBFCEB00ED4A8C /* TaskRowViewModelProtocol.swift in Sources */,
 				D11E7D1325E1095700EED79E /* ListExtension.swift in Sources */,
 				D17DA9CD25DABE4600ED4A8C /* AddTaskViewModel.swift in Sources */,

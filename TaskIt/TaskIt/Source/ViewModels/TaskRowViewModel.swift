@@ -12,6 +12,17 @@ class TaskRowViewModel: TaskRowViewModelProtocol {
     
     var id: UUID { return task.id ?? UUID() }
     var titleText: String { task.title ?? .empty }
+    
+    var dateText: String {
+        guard let dueDate = task.dueDate else { return .empty}
+        return "\(dueDate.get(.day))"
+    }
+    
+    var monthText: String {
+        guard let dueDate = task.dueDate else { return .empty}
+        return dueDate.month
+    }
+    
     var priority: Priority { task.priority }
     
     @Published var isCompleted: Bool

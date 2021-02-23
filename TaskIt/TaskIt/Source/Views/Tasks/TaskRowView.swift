@@ -15,8 +15,8 @@ struct TaskRowView<ViewModel: TaskRowViewModelProtocol>: View {
         HStack {
             
             VStack(alignment: .center) {
-                Text("25").font(.title20)
-                Text("Nov").font(.body14)
+                Text(viewModel.dateText).font(.title20)
+                Text(viewModel.monthText).font(.body14)
             }
             
             Rectangle()
