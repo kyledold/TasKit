@@ -31,7 +31,9 @@ struct TaskDetailsView<ViewModel: TaskDetailsViewModelProtocol>: View {
                 buttonText: viewModel.completeTaskButtonText,
                 buttonColor: .t_green,
                 onButtonTap: {
-                    
+                    viewModel.completeTask {
+                        presentationMode.wrappedValue.dismiss()
+                    }
                 }
             )
         }

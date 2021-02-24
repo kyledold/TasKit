@@ -21,12 +21,18 @@ class TaskDetailsViewModel: TaskDetailsViewModelProtocol {
     
     private(set) var task: Task
     private let managedObjectContext: NSManagedObjectContext
+    private let notificationCenter: NotificationCenter
     
     // MARK: - Initialisation
     
-    init(task: Task, managedObjectContext: NSManagedObjectContext) {
+    init(
+        task: Task,
+        managedObjectContext: NSManagedObjectContext,
+        notificationCenter: NotificationCenter = NotificationCenter.default
+    ) {
         self.task = task
         self.managedObjectContext = managedObjectContext
+        self.notificationCenter = notificationCenter
     }
     
     // MARK: - Functions
@@ -34,11 +40,13 @@ class TaskDetailsViewModel: TaskDetailsViewModelProtocol {
     func deleteTask(_ completion: @escaping EmptyClosure) {
         guard let taskId = task.id else { return }
         
-        Task.deleteTask(with: taskId, viewContext: managedObjectContext)
+        //Task.deleteTask(with: taskId, viewContext: managedObjectContext)
         completion()
+        notificationCenter.post(name: .taskDeleted, object: nil)
     }
     
     func completeTask(_ completion: @escaping EmptyClosure) {
         completion()
+        notificationCenter.post(name: .taskCompleted, object: nil)
     }
 }

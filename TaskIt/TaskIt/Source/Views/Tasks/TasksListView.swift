@@ -13,6 +13,7 @@ struct TasksListView<ViewModel: TasksListViewModelProtocol>: View {
     
     @ObservedObject var viewModel: ViewModel
     @ObservedObject var navigator: TasksNavigator
+    @ObservedObject var toastPresenter: ToastPresenter
     
     // MARK: - Content Builders
     
@@ -30,6 +31,9 @@ struct TasksListView<ViewModel: TasksListViewModelProtocol>: View {
                     navigator.sheetDestination = .addTask
                 }
             )
+            .onNotification(.taskCreated) {
+                toastPresenter.toast = .taskCreated
+            }
         }
         .fullScreenCover(isPresented: $navigator.showFullScreen) {
             navigator.fullScreenView()
@@ -41,10 +45,16 @@ struct TasksListView<ViewModel: TasksListViewModelProtocol>: View {
         .sheet(isPresented: $navigator.showSheet) {
             navigator.sheetView()
         }
+        .present(isPresented: $toastPresenter.showToast) {
+            toastPresenter.toastView()
+        }
         .onAppear {
             viewModel.fetchTasks()
         }
     }
+}
+
+extension TasksListView {
     
     private var statusFilterView: some View {
         StatusSegmentView(selectedStatus: $viewModel.selectedStatusFilter)
@@ -91,13 +101,22 @@ struct TasksListView<ViewModel: TasksListViewModelProtocol>: View {
                 #endif
             }
         }
+        .onNotification(.taskCompleted) {
+            toastPresenter.toast = .taskCompleted
+        }
+        .onNotification(.taskDeleted) {
+            toastPresenter.toast = .taskDeleted
+        }
+        .onNotification(.taskUpdated) {
+            toastPresenter.toast = .taskUpdated
+        }
     }
 }
 
 // MARK: - PreviewProvider -
 
-struct TasksView_Previews: PreviewProvider {
+struct TasksListView_Previews: PreviewProvider {
     static var previews: some View {
-        TasksListView(viewModel: FakeTasksListViewModel(), navigator: TasksNavigator())
+        TasksListView(viewModel: FakeTasksListViewModel(), navigator: TasksNavigator(), toastPresenter: ToastPresenter())
     }
 }

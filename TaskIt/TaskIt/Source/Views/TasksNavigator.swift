@@ -28,8 +28,11 @@ class TasksNavigator: ObservableObject {
     // MARK: - Properties
     
     var initialView: AnyView {
-        let viewModel = makeTasksViewModel()
-        return TasksListView(viewModel: viewModel, navigator: self).eraseToAnyView()
+        return TasksListView(
+            viewModel: makeTasksViewModel(),
+            navigator: self,
+            toastPresenter: ToastPresenter()
+        ).eraseToAnyView()
     }
     
     var sheetDestination: SheetDestination = .none {
@@ -56,7 +59,7 @@ class TasksNavigator: ObservableObject {
     }
     
     init() {
-        self.managedObjectContext = NSManagedObjectContext()
+        self.managedObjectContext = NSManagedObjectContext(concurrencyType: .mainQueueConcurrencyType)
     }
     
     // MARK: - View Creation
@@ -64,7 +67,7 @@ class TasksNavigator: ObservableObject {
     func sheetView() -> AnyView {
         switch sheetDestination {
         case .none:
-            return Text(String.empty).eraseToAnyView()
+            return EmptyView().eraseToAnyView()
             
         case .settings:
             return SettingsView(viewModel: SettingsViewModel()).eraseToAnyView()
@@ -86,7 +89,7 @@ class TasksNavigator: ObservableObject {
             return Text(String.empty).eraseToAnyView()
             
         case .viewTask(let task):
-            return TaskDetailsView(viewModel: makeTaskViewModel(with: task), navigator: self).eraseToAnyView()
+            return TaskDetailsView(viewModel: makeTaskDetailsViewModel(with: task), navigator: self).eraseToAnyView()
         }
     }
     
@@ -104,9 +107,10 @@ class TasksNavigator: ObservableObject {
         )
     }
     
-    private func makeTaskViewModel(with task: Task) -> TaskDetailsViewModel {
+    private func makeTaskDetailsViewModel(with task: Task) -> TaskDetailsViewModel {
         return TaskDetailsViewModel(
             task: task,
+            
             managedObjectContext: managedObjectContext
         )
     }

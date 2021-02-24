@@ -13,6 +13,7 @@ class FakeTasksListViewModel: TasksListViewModelProtocol {
     
     var titleText = "Tasks"
     var createTaskButtonText = "Create task"
+    
     var taskViewModels: [RowViewModel] = [
         FakeTaskRowViewModel(),
         FakeTaskRowViewModel(),
