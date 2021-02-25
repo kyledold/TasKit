@@ -17,7 +17,7 @@ struct TaskDetailsView<ViewModel: TaskDetailsViewModelProtocol>: View {
     @State private var showingActionSheet = false
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     
-    // MARK: - Content Builders
+    // MARK: - View
     
     var body: some View {
         ZStack {
@@ -28,10 +28,10 @@ struct TaskDetailsView<ViewModel: TaskDetailsViewModelProtocol>: View {
             .edgesIgnoringSafeArea(.bottom)
             
             ButtonFooterView(
-                buttonText: viewModel.completeTaskButtonText,
+                buttonText: viewModel.submitButtonText,
                 buttonColor: .t_green,
                 onButtonTap: {
-                    viewModel.completeTask {
+                    viewModel.submitButtonTapped {
                         presentationMode.wrappedValue.dismiss()
                     }
                 }
@@ -42,9 +42,9 @@ struct TaskDetailsView<ViewModel: TaskDetailsViewModelProtocol>: View {
             navigator.sheetView()
         }
         .actionSheet(isPresented: $showingActionSheet) {
-            ActionSheet(title: Text(viewModel.actionSheetTitle), buttons: [
+            ActionSheet(title: Text(viewModel.actionSheetTitle), message: Text(viewModel.actionSheetMessage), buttons: [
                 .destructive(Text(viewModel.deleteText), action: {
-                    viewModel.deleteTask {
+                    viewModel.deleteButtonTapped {
                         presentationMode.wrappedValue.dismiss()
                     }
                 }),
@@ -52,6 +52,9 @@ struct TaskDetailsView<ViewModel: TaskDetailsViewModelProtocol>: View {
             ])
         }
     }
+}
+
+extension TaskDetailsView {
     
     private var navigationHeaderView: some View {
         HStack(spacing: Layout.Padding.cozy) {

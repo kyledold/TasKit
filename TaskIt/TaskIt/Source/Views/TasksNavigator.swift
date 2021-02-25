@@ -22,7 +22,7 @@ class TasksNavigator: ObservableObject {
     
     enum FullScreenDestination {
         case none
-        case viewTask(task: Task)
+        case viewTask(task: Task, onChange: EmptyClosure)
     }
     
     // MARK: - Properties
@@ -88,8 +88,8 @@ class TasksNavigator: ObservableObject {
         case .none:
             return Text(String.empty).eraseToAnyView()
             
-        case .viewTask(let task):
-            return TaskDetailsView(viewModel: makeTaskDetailsViewModel(with: task), navigator: self).eraseToAnyView()
+        case .viewTask(let task, let onChange):
+            return TaskDetailsView(viewModel: makeTaskDetailsViewModel(with: task, onChange: onChange), navigator: self).eraseToAnyView()
         }
     }
     
@@ -107,10 +107,10 @@ class TasksNavigator: ObservableObject {
         )
     }
     
-    private func makeTaskDetailsViewModel(with task: Task) -> TaskDetailsViewModel {
+    private func makeTaskDetailsViewModel(with task: Task, onChange: @escaping EmptyClosure) -> TaskDetailsViewModel {
         return TaskDetailsViewModel(
             task: task,
-            
+            onChange: onChange,
             managedObjectContext: managedObjectContext
         )
     }

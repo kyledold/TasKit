@@ -15,7 +15,7 @@ struct TasksListView<ViewModel: TasksListViewModelProtocol>: View {
     @ObservedObject var navigator: TasksNavigator
     @ObservedObject var toastPresenter: ToastPresenter
     
-    // MARK: - Content Builders
+    // MARK: - View
     
     var body: some View {
         ZStack {
@@ -91,7 +91,9 @@ extension TasksListView {
                     TaskRowView(viewModel: taskRowViewModel)
                         .onTapGesture {
                             UIImpactFeedbackGenerator().impactOccurred()
-                            navigator.fullScreenDestination = .viewTask(task: taskRowViewModel.task)
+                            navigator.fullScreenDestination = .viewTask(task: taskRowViewModel.task, onChange: {
+                                viewModel.fetchTasks()
+                            })
                         }
                 }
                 #if DEBUG

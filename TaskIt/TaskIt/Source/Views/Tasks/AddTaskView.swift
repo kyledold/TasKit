@@ -14,7 +14,7 @@ struct AddTaskView<ViewModel: AddTaskViewModelProtocol>: View {
     @ObservedObject var viewModel: ViewModel
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     
-    // MARK: - Content Builders
+    // MARK: - View
     
     var body: some View {
         ZStack {
@@ -52,6 +52,9 @@ struct AddTaskView<ViewModel: AddTaskViewModelProtocol>: View {
             viewModel.onAppear()
         }
     }
+}
+
+extension AddTaskView {
     
     private var addTaskView: some View {
         VStack(spacing: Layout.Padding.cozy) {

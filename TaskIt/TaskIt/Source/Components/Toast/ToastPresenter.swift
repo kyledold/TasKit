@@ -65,6 +65,7 @@ class ToastPresenter: ObservableObject {
         VStack {
             Spacer()
             Text(title)
+                .font(.title20)
                 .foregroundColor(.white)
                 .fontWeight(.bold)
         }

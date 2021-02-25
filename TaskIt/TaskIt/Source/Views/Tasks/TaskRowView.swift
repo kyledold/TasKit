@@ -13,7 +13,7 @@ struct TaskRowView<ViewModel: TaskRowViewModelProtocol>: View {
     
     @ObservedObject var viewModel: ViewModel
     
-    // MARK: - Content Builders
+    // MARK: - View
     
     var body: some View {
         HStack {
