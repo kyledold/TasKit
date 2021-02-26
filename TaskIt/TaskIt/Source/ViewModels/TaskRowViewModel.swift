@@ -16,6 +16,11 @@ class TaskRowViewModel: TaskRowViewModelProtocol {
     var titleText: String { task.title ?? .empty }
     var priority: Priority { task.priority }
     
+    var dayOfTheWeekText: String {
+        guard let dueDate = task.dueDate else { return .empty}
+        return dueDate.dayOfTheWeek.uppercased()
+    }
+    
     var dateText: String {
         guard let dueDate = task.dueDate else { return .empty}
         return "\(dueDate.get(.day))"

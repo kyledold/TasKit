@@ -63,7 +63,7 @@ extension TaskDetailsView {
             }, label: {
                 Image(systemName: Image.Icons.downChevron)
                 Text(viewModel.cancelButtonText)
-                    .font(.title20)
+                    .font(.bold_20)
             })
             .foregroundColor(.t_white)
             Spacer()
@@ -92,7 +92,7 @@ extension TaskDetailsView {
                 
                 HStack(spacing: Layout.Padding.cozy) {
                     Text(viewModel.titleText)
-                        .font(.title20)
+                        .font(.bold_20)
                         .foregroundColor(.primary)
                     
                     Spacer()

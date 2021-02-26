@@ -14,6 +14,12 @@ extension Date {
         dateFormatter.dateFormat = "MMM"
         return dateFormatter.string(from: self)
     }
+    
+    var dayOfTheWeek: String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "EEE"
+        return dateFormatter.string(from: self)
+    }
 
     func get(_ components: Calendar.Component..., calendar: Calendar = Calendar.current) -> DateComponents {
         return calendar.dateComponents(Set(components), from: self)

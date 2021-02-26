@@ -25,7 +25,7 @@ struct AddTaskView<ViewModel: AddTaskViewModelProtocol>: View {
                     }, label: {
                         Image(systemName: Image.Icons.downChevron)
                         Text(viewModel.cancelButtonText)
-                            .font(.title20)
+                            .font(.bold_20)
                     })
                     .foregroundColor(Color.primary)
                     .padding()
