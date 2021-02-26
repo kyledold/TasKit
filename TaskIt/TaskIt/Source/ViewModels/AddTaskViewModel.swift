@@ -25,7 +25,7 @@ class AddTaskViewModel: AddTaskViewModelProtocol {
         return NSLocalizedString("add_task.create", comment: "submit button title")
     }
     
-    private var onTaskAdded: EmptyClosure
+    private let onChange: EmptyClosure
     private let managedObjectContext: NSManagedObjectContext
     private let task: Task?
     
@@ -33,12 +33,12 @@ class AddTaskViewModel: AddTaskViewModelProtocol {
     
     init(
         task: Task? = nil,
-        managedObjectContext: NSManagedObjectContext,
-        onTaskAdded: @escaping EmptyClosure
+        onChange: @escaping EmptyClosure,
+        managedObjectContext: NSManagedObjectContext
     ) {
         self.task = task
+        self.onChange = onChange
         self.managedObjectContext = managedObjectContext
-        self.onTaskAdded = onTaskAdded
     }
     
     // MARK: - Functions
@@ -49,15 +49,14 @@ class AddTaskViewModel: AddTaskViewModelProtocol {
     }
     
     func addNewTaskTapped(_ completion: @escaping EmptyClosure) {
-        let task = Task(context: managedObjectContext)
-        
-        task.title = taskName
-        task.priority = priority
-        task.dueDate = dueDate
-        
-        try? managedObjectContext.save()
-        
-        onTaskAdded()
+        Task.createNewTask(
+            taskName: taskName,
+            priority: priority,
+            dueDate: dueDate,
+            viewContext: managedObjectContext
+        )
+
+        onChange()
         completion()
     }
 }

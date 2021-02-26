@@ -68,7 +68,9 @@ extension TaskDetailsView {
             .foregroundColor(.t_white)
             Spacer()
             Button(action: {
-                navigator.sheetDestination = .editTask(task: viewModel.task)
+                navigator.sheetDestination = .editTask(task: viewModel.task, onChange: {
+                    
+                })
             }, label: {
                 Image(systemName: Image.Icons.pencil).iconStyle()
             })

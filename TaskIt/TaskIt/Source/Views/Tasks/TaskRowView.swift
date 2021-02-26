@@ -17,11 +17,13 @@ struct TaskRowView<ViewModel: TaskRowViewModelProtocol>: View {
     
     var body: some View {
         HStack {
+            
             VStack(alignment: .center) {
                 Text(viewModel.dayOfTheWeekText).font(.regular_12).foregroundColor(Color.t_red)
                 Text(viewModel.dateText).font(.bold_24)
                 Text(viewModel.monthText).font(.regular_14)
-            }
+            }.frame(minWidth: 40)
+            
             
             Rectangle()
                 .foregroundColor(.primary)

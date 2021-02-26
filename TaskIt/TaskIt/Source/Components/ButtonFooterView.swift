@@ -16,14 +16,14 @@ struct ButtonFooterView: View {
     var body: some View {
         VStack {
             Spacer()
-            Button(action: { onButtonTap() }, label: { Text(buttonText).frame(minWidth: 120).padding(.vertical, 5) })
-                .font(.semiBold_20)
-                .foregroundColor(.white)
-                .padding(.vertical, Layout.Padding.compact).padding(.horizontal)
-                .background(buttonColor)
-                .cornerRadius(25)
-                .padding(.bottom, Layout.Padding.luxurious)
-                
+            Button(action: {
+                UIImpactFeedbackGenerator().impactOccurred()
+                onButtonTap()
+            }, label: {
+                Text(buttonText)
+            })
+            .buttonStyle(RoundedButton(buttonColor: buttonColor))
+            .padding(.bottom, Layout.Padding.luxurious)
         }.ignoresSafeArea(.all)
     }
 }

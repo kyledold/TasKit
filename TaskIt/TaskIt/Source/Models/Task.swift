@@ -10,7 +10,7 @@ import CoreData
 
 public class Task: NSManagedObject {
     
-    // MARK: Properties
+    // MARK: - Properties
     
     var status: Status {
         get { return Status(rawValue: statusValue)! }
@@ -22,7 +22,7 @@ public class Task: NSManagedObject {
         set { priorityValue = newValue.rawValue }
     }
     
-    // MARK: Functions
+    // MARK: - Task CoreData Operations
     
     public static func fetchAll(viewContext: NSManagedObjectContext) -> [Task] {
         let fetchRequest: NSFetchRequest<Task> = Task.fetchRequest()
@@ -55,6 +55,18 @@ public class Task: NSManagedObject {
         
         try? viewContext.save()
     }
+    
+    public static func createNewTask(taskName: String, priority: Priority, dueDate: Date, viewContext: NSManagedObjectContext) {
+        let task = Task(context: viewContext)
+        
+        task.title = taskName
+        task.priority = priority
+        task.dueDate = dueDate
+        
+        try? viewContext.save()
+    }
+    
+    // MARK: - awake
     
     public override func awakeFromInsert() {
         super.awakeFromInsert()

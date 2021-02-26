@@ -16,8 +16,8 @@ class TasksNavigator: ObservableObject {
         case none
         case settings
         case calendar
-        case editTask(task: Task)
-        case addTask
+        case editTask(task: Task, onChange: EmptyClosure)
+        case addTask(onChange: EmptyClosure)
     }
     
     enum FullScreenDestination {
@@ -75,11 +75,13 @@ class TasksNavigator: ObservableObject {
         case .calendar:
             return CalendarView().eraseToAnyView()
             
-        case .editTask(let task):
-            return AddTaskView(viewModel: makeAddTaskViewModel(task: task)).eraseToAnyView()
+        case .editTask(let task, let onChange):
+            let viewModel = makeAddTaskViewModel(task: task, onChange: onChange)
+            return AddTaskView(viewModel: viewModel).eraseToAnyView()
         
-        case .addTask:
-            return AddTaskView(viewModel: makeAddTaskViewModel()).eraseToAnyView()
+        case .addTask(let onChange):
+            let viewModel = makeAddTaskViewModel(onChange: onChange)
+            return AddTaskView(viewModel: viewModel).eraseToAnyView()
         }
     }
     
@@ -89,7 +91,8 @@ class TasksNavigator: ObservableObject {
             return Text(String.empty).eraseToAnyView()
             
         case .viewTask(let task, let onChange):
-            return TaskDetailsView(viewModel: makeTaskDetailsViewModel(with: task, onChange: onChange), navigator: self).eraseToAnyView()
+            let viewModel = makeTaskDetailsViewModel(with: task, onChange: onChange)
+            return TaskDetailsView(viewModel: viewModel, navigator: self).eraseToAnyView()
         }
     }
     
@@ -99,11 +102,11 @@ class TasksNavigator: ObservableObject {
         return TasksListViewModel(managedObjectContext: managedObjectContext)
     }
     
-    private func makeAddTaskViewModel(task: Task? = nil) -> AddTaskViewModel {
+    private func makeAddTaskViewModel(task: Task? = nil, onChange: @escaping EmptyClosure) -> AddTaskViewModel {
         return AddTaskViewModel(
             task: task,
-            managedObjectContext: managedObjectContext,
-            onTaskAdded: {}
+            onChange: onChange,
+            managedObjectContext: managedObjectContext
         )
     }
     

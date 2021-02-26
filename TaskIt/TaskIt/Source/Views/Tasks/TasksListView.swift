@@ -28,7 +28,9 @@ struct TasksListView<ViewModel: TasksListViewModelProtocol>: View {
                 buttonText: viewModel.createTaskButtonText,
                 buttonColor: .t_orange,
                 onButtonTap: {
-                    navigator.sheetDestination = .addTask
+                    navigator.sheetDestination = .addTask(onChange: {
+                        viewModel.fetchTasks()
+                    })
                 }
             )
             .onNotification(.taskCreated) {
