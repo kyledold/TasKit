@@ -9,6 +9,8 @@ import Foundation
 
 class SettingsViewModel: SettingsViewModelProtocol {
     
+    // MARK: - Properties
+    
     let titleText = NSLocalizedString("settings.title", comment: "title")
     var versionNumber = Bundle.version
     

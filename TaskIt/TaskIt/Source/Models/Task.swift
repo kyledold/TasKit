@@ -10,7 +10,7 @@ import CoreData
 
 public class Task: NSManagedObject {
     
-    // MARK: Properties
+    // MARK: - Properties
     
     var status: Status {
         get { return Status(rawValue: statusValue)! }
@@ -22,7 +22,7 @@ public class Task: NSManagedObject {
         set { priorityValue = newValue.rawValue }
     }
     
-    // MARK: Functions
+    // MARK: - Task CoreData Operations
     
     public static func fetchAll(viewContext: NSManagedObjectContext) -> [Task] {
         let fetchRequest: NSFetchRequest<Task> = Task.fetchRequest()
@@ -31,17 +31,9 @@ public class Task: NSManagedObject {
         return tasks
     }
     
-    public static func fetchAllCompletedTasks(viewContext: NSManagedObjectContext) -> [Task] {
+    public static func fetchAll(with status: Status, viewContext: NSManagedObjectContext) -> [Task] {
         let fetchRequest: NSFetchRequest<Task> = Task.fetchRequest()
-        fetchRequest.predicate = NSPredicate(format: "statusValue == 1")
-        fetchRequest.sortDescriptors = [NSSortDescriptor(key: "dueDate", ascending: true)]
-        guard let tasks = try? viewContext.fetch(fetchRequest) else { return [] }
-        return tasks
-    }
-    
-    public static func fetchAllToDoTasks(viewContext: NSManagedObjectContext) -> [Task] {
-        let fetchRequest: NSFetchRequest<Task> = Task.fetchRequest()
-        fetchRequest.predicate = NSPredicate(format: "statusValue == 0")
+        fetchRequest.predicate = NSPredicate(format: "statusValue == \(status.rawValue)")
         fetchRequest.sortDescriptors = [NSSortDescriptor(key: "dueDate", ascending: true)]
         guard let tasks = try? viewContext.fetch(fetchRequest) else { return [] }
         return tasks
@@ -52,17 +44,29 @@ public class Task: NSManagedObject {
         try? viewContext.save()
     }
     
-    public static func deleteTask(with id: UUID, viewContext: NSManagedObjectContext) {
-        let fetchRequest: NSFetchRequest<Task> = Task.fetchRequest()
-        fetchRequest.predicate = NSPredicate(format: "id == %@", id as CVarArg)
-        let tasks = try! viewContext.fetch(fetchRequest)
-        
-        for task in tasks {
-            viewContext.delete(task)
-        }
+    public static func deleteTask(task: Task, viewContext: NSManagedObjectContext) {
+        viewContext.delete(task)
         
         try? viewContext.save()
     }
+    
+    public static func updateStatus(task: Task, newStatus: Status, viewContext: NSManagedObjectContext) {
+        task.status = newStatus
+        
+        try? viewContext.save()
+    }
+    
+    public static func createNewTask(taskName: String, priority: Priority, dueDate: Date, viewContext: NSManagedObjectContext) {
+        let task = Task(context: viewContext)
+        
+        task.title = taskName
+        task.priority = priority
+        task.dueDate = dueDate
+        
+        try? viewContext.save()
+    }
+    
+    // MARK: - awake
     
     public override func awakeFromInsert() {
         super.awakeFromInsert()

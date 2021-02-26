@@ -11,6 +11,9 @@ protocol TaskRowViewModelProtocol: ObservableObject, Identifiable {
     
     var id: UUID { get }
     var titleText: String { get }
+    var dayOfTheWeekText: String { get }
+    var dateText: String { get }
+    var monthText: String { get }
     var priority: Priority { get }
     var isCompleted: Bool { get }
     var task: Task { get }

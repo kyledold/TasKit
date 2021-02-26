@@ -11,6 +11,9 @@ class FakeTaskRowViewModel: TaskRowViewModelProtocol {
     
     var id = UUID()
     var titleText = "This is a fake title"
+    var dayOfTheWeekText = "FRI"
+    var dateText = "25"
+    var monthText = "Nov"
     var priority = Priority.medium
     var isCompleted = false
     var task = Task()

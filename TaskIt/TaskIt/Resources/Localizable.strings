@@ -21,8 +21,16 @@
 "settings.open_source.subtitle" = "Feel free to browse or contribute";
 "status_picker.todo" = "Todo";
 "status_picker.completed" = "Completed";
+"task_details.undo_completion" = "Undo completion";
 "task_details.complete_task" = "Complete task";
-"tasks.creat_task" = "Create task";
+"task_details.action_sheet.title" = "Delete task";
+"task_details.action_sheet.message" = "Are you sure you want to delete this task?";
+"task_details.action_sheet.delete" = "Delete";
+"tasks.create_task" = "Create task";
+"toast.task_created" = "Task successfully created";
+"toast.task_deleted" = "Task successfully deleted";
+"toast.task_completed" = "Task successfully completed";
+"toast.task_updated" = "Task successfully updated";
 "priority_picker.none" = "none";
 "priority_picker.low" = "low";
 "priority_picker.medium" = "medium";

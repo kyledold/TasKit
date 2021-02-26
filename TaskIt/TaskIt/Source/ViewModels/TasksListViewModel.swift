@@ -12,34 +12,27 @@ class TasksListViewModel: TasksListViewModelProtocol {
     
     typealias RowViewModel = TaskRowViewModel
     
-    // MARK: Properties
+    // MARK: - Properties
     
     let titleText = NSLocalizedString("tasks.title", comment: "Tasks title")
-    var createTaskButtonText = NSLocalizedString("tasks.creat_task", comment: "Create button title")
+    var createTaskButtonText = NSLocalizedString("tasks.create_task", comment: "Create button title")
     
     @Published private(set) var taskViewModels: [RowViewModel]
     @Published var selectedStatusFilter = Status.todo
     
     private let managedObjectContext: NSManagedObjectContext
     
-    // MARK: Initialisation
+    // MARK: - Initialisation
     
     init(managedObjectContext: NSManagedObjectContext) {
         self.managedObjectContext = managedObjectContext
         self.taskViewModels = []
     }
     
-    // MARK: Functions
+    // MARK: - Functions
     
     func fetchTasks() {
-        
-        var taskModels: [Task]
-        if selectedStatusFilter == .todo {
-            taskModels = Task.fetchAllToDoTasks(viewContext: managedObjectContext)
-        } else {
-            taskModels = Task.fetchAllCompletedTasks(viewContext: managedObjectContext)
-        }
-        
+        let taskModels = Task.fetchAll(with: selectedStatusFilter, viewContext: managedObjectContext)
         taskViewModels = taskModels.map { return TaskRowViewModel(task: $0, managedObjectContext: managedObjectContext) }
     }
     

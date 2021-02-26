@@ -14,6 +14,7 @@ protocol TasksListViewModelProtocol: ObservableObject {
     
     var titleText: String { get }
     var createTaskButtonText: String { get }
+    
     var taskViewModels: Array<RowViewModel> { get }
     var selectedStatusFilter: Status { get set }
     

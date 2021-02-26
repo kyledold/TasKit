@@ -16,20 +16,23 @@ class TasksNavigator: ObservableObject {
         case none
         case settings
         case calendar
-        case editTask(task: Task)
-        case addTask
+        case editTask(task: Task, onChange: EmptyClosure)
+        case addTask(onChange: EmptyClosure)
     }
     
     enum FullScreenDestination {
         case none
-        case viewTask(task: Task)
+        case viewTask(task: Task, onChange: EmptyClosure)
     }
     
     // MARK: - Properties
     
     var initialView: AnyView {
-        let viewModel = makeTasksViewModel()
-        return TasksListView(viewModel: viewModel, navigator: self).eraseToAnyView()
+        return TasksListView(
+            viewModel: makeTasksViewModel(),
+            navigator: self,
+            toastPresenter: ToastPresenter()
+        ).eraseToAnyView()
     }
     
     var sheetDestination: SheetDestination = .none {
@@ -56,7 +59,7 @@ class TasksNavigator: ObservableObject {
     }
     
     init() {
-        self.managedObjectContext = NSManagedObjectContext()
+        self.managedObjectContext = NSManagedObjectContext(concurrencyType: .mainQueueConcurrencyType)
     }
     
     // MARK: - View Creation
@@ -64,7 +67,7 @@ class TasksNavigator: ObservableObject {
     func sheetView() -> AnyView {
         switch sheetDestination {
         case .none:
-            return Text(String.empty).eraseToAnyView()
+            return EmptyView().eraseToAnyView()
             
         case .settings:
             return SettingsView(viewModel: SettingsViewModel()).eraseToAnyView()
@@ -72,11 +75,13 @@ class TasksNavigator: ObservableObject {
         case .calendar:
             return CalendarView().eraseToAnyView()
             
-        case .editTask(let task):
-            return AddTaskView(viewModel: makeAddTaskViewModel(task: task)).eraseToAnyView()
+        case .editTask(let task, let onChange):
+            let viewModel = makeAddTaskViewModel(task: task, onChange: onChange)
+            return AddTaskView(viewModel: viewModel).eraseToAnyView()
         
-        case .addTask:
-            return AddTaskView(viewModel: makeAddTaskViewModel()).eraseToAnyView()
+        case .addTask(let onChange):
+            let viewModel = makeAddTaskViewModel(onChange: onChange)
+            return AddTaskView(viewModel: viewModel).eraseToAnyView()
         }
     }
     
@@ -85,8 +90,9 @@ class TasksNavigator: ObservableObject {
         case .none:
             return Text(String.empty).eraseToAnyView()
             
-        case .viewTask(let task):
-            return TaskDetailsView(viewModel: makeTaskViewModel(with: task), navigator: self).eraseToAnyView()
+        case .viewTask(let task, let onChange):
+            let viewModel = makeTaskDetailsViewModel(with: task, onChange: onChange)
+            return TaskDetailsView(viewModel: viewModel, navigator: self).eraseToAnyView()
         }
     }
     
@@ -96,17 +102,18 @@ class TasksNavigator: ObservableObject {
         return TasksListViewModel(managedObjectContext: managedObjectContext)
     }
     
-    private func makeAddTaskViewModel(task: Task? = nil) -> AddTaskViewModel {
+    private func makeAddTaskViewModel(task: Task? = nil, onChange: @escaping EmptyClosure) -> AddTaskViewModel {
         return AddTaskViewModel(
             task: task,
-            managedObjectContext: managedObjectContext,
-            onTaskAdded: {}
+            onChange: onChange,
+            managedObjectContext: managedObjectContext
         )
     }
     
-    private func makeTaskViewModel(with task: Task) -> TaskDetailsViewModel {
+    private func makeTaskDetailsViewModel(with task: Task, onChange: @escaping EmptyClosure) -> TaskDetailsViewModel {
         return TaskDetailsViewModel(
             task: task,
+            onChange: onChange,
             managedObjectContext: managedObjectContext
         )
     }

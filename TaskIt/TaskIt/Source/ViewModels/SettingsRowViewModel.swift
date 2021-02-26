@@ -9,6 +9,8 @@ import Foundation
 
 class SettingsRowViewModel: SettingsRowViewModelProtocol {
     
+    // MARK: - Properties
+    
     var id: Int { return settingsItem.rawValue }
     
     var titleText: String {
@@ -40,6 +42,8 @@ class SettingsRowViewModel: SettingsRowViewModelProtocol {
     }
     
     private(set) var settingsItem: SettingsItem
+    
+    // MARK: - Initialisation
     
     init(settingItem: SettingsItem) {
         self.settingsItem = settingItem

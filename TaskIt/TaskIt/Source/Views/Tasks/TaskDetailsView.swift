@@ -9,43 +9,31 @@ import SwiftUI
 
 struct TaskDetailsView<ViewModel: TaskDetailsViewModelProtocol>: View {
     
+    // MARK: - Properties
+    
     var viewModel: ViewModel
     @ObservedObject var navigator: TasksNavigator
     
+    @State private var showingActionSheet = false
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
+    
+    // MARK: - View
     
     var body: some View {
         ZStack {
             VStack {
                 navigationHeaderView
-                ScrollView {
-                    VStack(alignment: .leading, spacing: 8) {
-                        if viewModel.priority != .none {
-                            Image(Image.iconNameForPriority(viewModel.priority))
-                                .resizable()
-                                .frame(width: 20, height: 20)
-                        }
-                        
-                        HStack(spacing: Layout.Padding.cozy) {
-                            Text(viewModel.titleText)
-                                .font(.title20)
-                                .foregroundColor(.primary)
-                            
-                            Spacer()
-                        }
-                    }.padding().padding(.bottom, 72)
-                }
-                .frame(width: UIScreen.screenWidth, height: UIScreen.screenHeight - 90)
-                .background(Color.t_content_background)
-                .cornerRadius(25)
+                taskDetailsBodyView
             }
             .edgesIgnoringSafeArea(.bottom)
             
             ButtonFooterView(
-                buttonText: viewModel.completeTaskButtonText,
+                buttonText: viewModel.submitButtonText,
                 buttonColor: .t_green,
                 onButtonTap: {
-                    
+                    viewModel.submitButtonTapped {
+                        presentationMode.wrappedValue.dismiss()
+                    }
                 }
             )
         }
@@ -53,7 +41,20 @@ struct TaskDetailsView<ViewModel: TaskDetailsViewModelProtocol>: View {
         .sheet(isPresented: $navigator.showSheet) {
             navigator.sheetView()
         }
+        .actionSheet(isPresented: $showingActionSheet) {
+            ActionSheet(title: Text(viewModel.actionSheetTitle), message: Text(viewModel.actionSheetMessage), buttons: [
+                .destructive(Text(viewModel.deleteText), action: {
+                    viewModel.deleteButtonTapped {
+                        presentationMode.wrappedValue.dismiss()
+                    }
+                }),
+                .cancel()
+            ])
+        }
     }
+}
+
+extension TaskDetailsView {
     
     private var navigationHeaderView: some View {
         HStack(spacing: Layout.Padding.cozy) {
@@ -62,26 +63,51 @@ struct TaskDetailsView<ViewModel: TaskDetailsViewModelProtocol>: View {
             }, label: {
                 Image(systemName: Image.Icons.downChevron)
                 Text(viewModel.cancelButtonText)
-                    .font(.title20)
+                    .font(.bold_20)
             })
             .foregroundColor(.t_white)
             Spacer()
             Button(action: {
-                navigator.sheetDestination = .editTask(task: viewModel.task)
+                navigator.sheetDestination = .editTask(task: viewModel.task, onChange: {
+                    
+                })
             }, label: {
                 Image(systemName: Image.Icons.pencil).iconStyle()
             })
             Button(action: {
-                viewModel.deleteTask {
-                    presentationMode.wrappedValue.dismiss()
-                }
+                showingActionSheet = true
             }, label: {
                 Image(systemName: Image.Icons.delete).iconStyle()
             })
         }
         .padding().padding(.top, Layout.Padding.spacious)
     }
+    
+    private var taskDetailsBodyView: some View {
+        ScrollView {
+            VStack(alignment: .leading, spacing: 8) {
+                if viewModel.priority != .none {
+                    Image(Image.iconNameForPriority(viewModel.priority))
+                        .resizable()
+                        .frame(width: 20, height: 20)
+                }
+                
+                HStack(spacing: Layout.Padding.cozy) {
+                    Text(viewModel.titleText)
+                        .font(.bold_20)
+                        .foregroundColor(.primary)
+                    
+                    Spacer()
+                }
+            }.padding().padding(.bottom, 72)
+        }
+        .frame(width: UIScreen.screenWidth, height: UIScreen.screenHeight - 90)
+        .background(Color.t_content_background)
+        .cornerRadius(25)
+    }
 }
+
+// MARK: - PreviewProvider -
 
 struct TaskView_Previews: PreviewProvider {
     static var previews: some View {
