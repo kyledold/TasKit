@@ -16,13 +16,7 @@ class TasksNavigator: ObservableObject {
         case none
         case settings
         case calendar
-        case editTask(task: Task, onChange: EmptyClosure)
-        case addTask(onChange: EmptyClosure)
-    }
-    
-    enum FullScreenDestination {
-        case none
-        case viewTask(task: Task, onChange: EmptyClosure)
+        case taskDetails(onChange: EmptyClosure)
     }
     
     // MARK: - Properties
@@ -40,15 +34,8 @@ class TasksNavigator: ObservableObject {
             showSheet = true
         }
     }
-    
-    var fullScreenDestination: FullScreenDestination = .none {
-        didSet {
-            showFullScreen = true
-        }
-    }
 
     @Published var showSheet = false
-    @Published var showFullScreen = false
     
     private let managedObjectContext: NSManagedObjectContext
     
@@ -74,25 +61,10 @@ class TasksNavigator: ObservableObject {
             
         case .calendar:
             return CalendarView().eraseToAnyView()
-            
-        case .editTask(let task, let onChange):
-            let viewModel = makeAddTaskViewModel(task: task, onChange: onChange)
-            return AddTaskView(viewModel: viewModel).eraseToAnyView()
         
-        case .addTask(let onChange):
-            let viewModel = makeAddTaskViewModel(onChange: onChange)
-            return AddTaskView(viewModel: viewModel).eraseToAnyView()
-        }
-    }
-    
-    func fullScreenView() -> AnyView {
-        switch fullScreenDestination {
-        case .none:
-            return Text(String.empty).eraseToAnyView()
-            
-        case .viewTask(let task, let onChange):
-            let viewModel = makeTaskDetailsViewModel(with: task, onChange: onChange)
-            return TaskDetailsView(viewModel: viewModel, navigator: self).eraseToAnyView()
+        case .taskDetails(let onChange):
+            let viewModel = makeTaskDetailsViewModel(onChange: onChange)
+            return TaskDetailsView(viewModel: viewModel).eraseToAnyView()
         }
     }
     
@@ -102,15 +74,7 @@ class TasksNavigator: ObservableObject {
         return TasksListViewModel(managedObjectContext: managedObjectContext)
     }
     
-    private func makeAddTaskViewModel(task: Task? = nil, onChange: @escaping EmptyClosure) -> AddTaskViewModel {
-        return AddTaskViewModel(
-            task: task,
-            onChange: onChange,
-            managedObjectContext: managedObjectContext
-        )
-    }
-    
-    private func makeTaskDetailsViewModel(with task: Task, onChange: @escaping EmptyClosure) -> TaskDetailsViewModel {
+    private func makeTaskDetailsViewModel(task: Task? = nil, onChange: @escaping EmptyClosure) -> TaskDetailsViewModel {
         return TaskDetailsViewModel(
             task: task,
             onChange: onChange,

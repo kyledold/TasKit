@@ -2,23 +2,24 @@
 //  FakeTaskDetailsViewModel.swift
 //  TaskIt
 //
-//  Created by Kyle Dold on 21/02/2021.
+//  Created by Kyle Dold on 15/02/2021.
 //
 
 import Foundation
 
 class FakeTaskDetailsViewModel: TaskDetailsViewModelProtocol {
-    
-    var titleText = "This is a fake title"
-    var priority = Priority.medium
-    var submitButtonText = "Complete task"
-    var cancelButtonText = "cancel"
-    var actionSheetTitle = "Delete task?"
-    var deleteText = "Delete"
-    var actionSheetMessage = "Are you sure you want to delete this task?"
 
-    var task = Task()
+    var taskName = String.empty
+    var priority = Priority.none
+    var dueDate = Date()
+    var isComplete = false
+    var taskNotes = "This is the task notes"
+    var taskNamePlaceholderText = "Task name"
+    var taskNotesPlaceholderText = "Write notes here..."
+    var taskDateText = "Date"
+    var cancelButtonText = "cancel"
+    var submitButtonText = "Create"
     
-    func deleteButtonTapped(_ completion: @escaping EmptyClosure) {}
-    func submitButtonTapped(_ completion: @escaping EmptyClosure) {}
+    func onAppear() {}
+    func addNewTaskTapped(_ completion: @escaping EmptyClosure) { }
 }

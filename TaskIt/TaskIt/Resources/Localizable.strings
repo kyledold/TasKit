@@ -11,9 +11,9 @@
 "add_task.date" = "Date";
 "add_task.save_changes" = "Save changes";
 "add_task.task_name_placeholder" = "Task name";
+"add_task.task_notes_placeholder" = "Write any notes here...";
 "app.version.%@" = "Version %@";
 "calendar.title" = "Calendar";
-"general.cancel" = "cancel";
 "settings.title" = "Settings";
 "settings.feedback.title" = "Feedback";
 "settings.feedback.subtitle" = "kdold02@gmail.com";
@@ -21,11 +21,6 @@
 "settings.open_source.subtitle" = "Feel free to browse or contribute";
 "status_picker.todo" = "Todo";
 "status_picker.completed" = "Completed";
-"task_details.undo_completion" = "Undo completion";
-"task_details.complete_task" = "Complete task";
-"task_details.action_sheet.title" = "Delete task";
-"task_details.action_sheet.message" = "Are you sure you want to delete this task?";
-"task_details.action_sheet.delete" = "Delete";
 "tasks.create_task" = "Create task";
 "toast.task_created" = "Task successfully created";
 "toast.task_deleted" = "Task successfully deleted";

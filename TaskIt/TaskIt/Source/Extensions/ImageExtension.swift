@@ -10,12 +10,10 @@ import SwiftUI
 extension Image {
     
     struct Icons {
-        static let downChevron = "chevron.down"
+        static let close = "xmark"
         static let calendar = "calendar"
         static let settings = "gearshape.fill"
         static let tasks = "list.dash"
-        static let pencil = "pencil"
-        static let delete = "trash"
         static let lowPriority = "LowPriority"
         static let mediumPriority = "MediumPriority"
         static let highPriority = "HighPriority"

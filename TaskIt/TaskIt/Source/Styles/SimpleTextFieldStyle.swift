@@ -12,9 +12,9 @@ public struct SimpleTextFieldStyle : TextFieldStyle {
     public func _body(configuration: TextField<Self._Label>) -> some View {
         VStack() {
             configuration
-            Rectangle()
-                .frame(height: 0.5, alignment: .bottom)
-                .foregroundColor(Color.secondary)
+                .padding(10)
+                .background(Color.t_input_background)
+                .cornerRadius(10)
         }
     }
 }
