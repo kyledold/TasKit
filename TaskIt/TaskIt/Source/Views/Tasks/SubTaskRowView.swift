@@ -16,14 +16,14 @@ struct SubTaskRowView<ViewModel: SubTaskRowViewModelProtocol>: View {
     // MARK: - View
     
     var body: some View {
-        HStack {
+        HStack(spacing: 10) {
             Toggle(isOn: $viewModel.isComplete) {}
                 .toggleStyle(CheckboxToggleStyle())
             
             Text(viewModel.subTaskTitle)
                 .font(.regular_16)
             Spacer()
-        }
+        }.listRowInsets(EdgeInsets())
     }
 }
 

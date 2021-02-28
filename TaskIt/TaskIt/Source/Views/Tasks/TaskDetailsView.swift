@@ -13,7 +13,6 @@ struct TaskDetailsView<ViewModel: TaskDetailsViewModelProtocol>: View {
     
     @ObservedObject var viewModel: ViewModel
     
-    @State private var showAddNewSubTaskRow = false
     @State private var showInputAccessoryView = false
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     
@@ -24,7 +23,7 @@ struct TaskDetailsView<ViewModel: TaskDetailsViewModelProtocol>: View {
             ScrollView {
                 navigationBarView
                 taskBasicDetailsView
-                subTasksListView
+                SubTaskListView(viewModel: viewModel.subTaskListViewModel)
             }
             .padding(.horizontal)
             footerView
@@ -79,46 +78,6 @@ extension TaskDetailsView {
                 TextBox(viewModel.taskNotesPlaceholderText, text: $viewModel.taskNotes)
             }
         }
-    }
-    
-    private var subTasksListView: some View {
-        VStack(alignment: .leading) {
-            List {
-                ForEach(viewModel.subTaskModels, id: \.id) { subTaskViewModel in
-                    SubTaskRowView(viewModel: subTaskViewModel)
-                }
-            }
-            .listSeparatorStyle(.none)
-            .frame(height: viewModel.subTaskModels.reduce(0) { i, _ in i + 44 })
-            
-            if showAddNewSubTaskRow {
-                HStack {
-                    TextField(viewModel.subTaskNamePlaceholderText, text: $viewModel.newSubTaskName)
-                        .textFieldStyle(SimpleTextFieldStyle())
-                    
-                    Button(action: {
-                        viewModel.addNewSubTaskButtonTapped() {
-                            showAddNewSubTaskRow.toggle()
-                        }
-                    }, label: {
-                        HStack {
-                            Text("Add")
-                        }
-                    })
-                }
-            } else {
-                Button(action: {
-                    showAddNewSubTaskRow.toggle()
-                }, label: {
-                    HStack {
-                        Image(systemName: "plus")
-                        Text("Add a subtask")
-                    }
-                })
-            }
-            Spacer()
-        }
-        .padding(.bottom, Layout.Padding.luxurious)
     }
     
     private var footerView: some View {

@@ -84,6 +84,10 @@
 		D1DCF68625EB9511006305E7 /* SubTaskRowViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1DCF68525EB9511006305E7 /* SubTaskRowViewModel.swift */; };
 		D1DCF68925EB9527006305E7 /* SubTaskRowViewModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1DCF68825EB9527006305E7 /* SubTaskRowViewModelProtocol.swift */; };
 		D1DCF68C25EB9600006305E7 /* FakeSubTaskRowViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1DCF68B25EB9600006305E7 /* FakeSubTaskRowViewModel.swift */; };
+		D1DCF69025EBD7EA006305E7 /* SubTaskListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1DCF68F25EBD7EA006305E7 /* SubTaskListView.swift */; };
+		D1DCF69425EBD8F3006305E7 /* SubTaskListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1DCF69325EBD8F3006305E7 /* SubTaskListViewModel.swift */; };
+		D1DCF69725EBD908006305E7 /* SubTaskListViewModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1DCF69625EBD908006305E7 /* SubTaskListViewModelProtocol.swift */; };
+		D1DCF69B25EBD918006305E7 /* FakeSubTaskListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1DCF69A25EBD918006305E7 /* FakeSubTaskListViewModel.swift */; };
 		D1FED10A25E6D16A00686A45 /* ToastPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1FED10925E6D16A00686A45 /* ToastPresenter.swift */; };
 /* End PBXBuildFile section */
 
@@ -193,6 +197,10 @@
 		D1DCF68525EB9511006305E7 /* SubTaskRowViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubTaskRowViewModel.swift; sourceTree = "<group>"; };
 		D1DCF68825EB9527006305E7 /* SubTaskRowViewModelProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubTaskRowViewModelProtocol.swift; sourceTree = "<group>"; };
 		D1DCF68B25EB9600006305E7 /* FakeSubTaskRowViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeSubTaskRowViewModel.swift; sourceTree = "<group>"; };
+		D1DCF68F25EBD7EA006305E7 /* SubTaskListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubTaskListView.swift; sourceTree = "<group>"; };
+		D1DCF69325EBD8F3006305E7 /* SubTaskListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubTaskListViewModel.swift; sourceTree = "<group>"; };
+		D1DCF69625EBD908006305E7 /* SubTaskListViewModelProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubTaskListViewModelProtocol.swift; sourceTree = "<group>"; };
+		D1DCF69A25EBD918006305E7 /* FakeSubTaskListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeSubTaskListViewModel.swift; sourceTree = "<group>"; };
 		D1FED10925E6D16A00686A45 /* ToastPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToastPresenter.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -377,6 +385,7 @@
 				D1783EB925C9C9E500D8EFC3 /* TasksListView.swift */,
 				D17DAAB125DBFC9E00ED4A8C /* TaskRowView.swift */,
 				D17DA9C025DABB9100ED4A8C /* TaskDetailsView.swift */,
+				D1DCF68F25EBD7EA006305E7 /* SubTaskListView.swift */,
 				D1DCF68225EB9497006305E7 /* SubTaskRowView.swift */,
 			);
 			path = Tasks;
@@ -427,6 +436,7 @@
 				D17FCA5A25D98986002A5501 /* TasksListViewModel.swift */,
 				D17DAABA25DBFD3300ED4A8C /* TaskRowViewModel.swift */,
 				D17DA9CC25DABE4600ED4A8C /* TaskDetailsViewModel.swift */,
+				D1DCF69325EBD8F3006305E7 /* SubTaskListViewModel.swift */,
 				D1DCF68525EB9511006305E7 /* SubTaskRowViewModel.swift */,
 			);
 			path = ViewModels;
@@ -440,6 +450,7 @@
 				D17DA9D625DABECB00ED4A8C /* FakeTasksListViewModel.swift */,
 				D17DAAB725DBFD0F00ED4A8C /* FakeTaskRowViewModel.swift */,
 				D17DA9E925DAC53700ED4A8C /* FakeTaskDetailsViewModel.swift */,
+				D1DCF69A25EBD918006305E7 /* FakeSubTaskListViewModel.swift */,
 				D1DCF68B25EB9600006305E7 /* FakeSubTaskRowViewModel.swift */,
 			);
 			path = Fakes;
@@ -453,6 +464,7 @@
 				D17DA9D125DABEA600ED4A8C /* TasksListViewModelProtocol.swift */,
 				D17DAAB425DBFCEB00ED4A8C /* TaskRowViewModelProtocol.swift */,
 				D17DA9E425DAC51700ED4A8C /* TaskDetailsViewModelProtocol.swift */,
+				D1DCF69625EBD908006305E7 /* SubTaskListViewModelProtocol.swift */,
 				D1DCF68825EB9527006305E7 /* SubTaskRowViewModelProtocol.swift */,
 			);
 			path = Protocols;
@@ -618,9 +630,11 @@
 				D1DCF68625EB9511006305E7 /* SubTaskRowViewModel.swift in Sources */,
 				D11E7D3425E14DDE00EED79E /* FontExtension.swift in Sources */,
 				D11E733125E53781006FD6CB /* DateExtension.swift in Sources */,
+				D1DCF69425EBD8F3006305E7 /* SubTaskListViewModel.swift in Sources */,
 				D11E734725E571BA006FD6CB /* ToastMessage.swift in Sources */,
 				D1FED10A25E6D16A00686A45 /* ToastPresenter.swift in Sources */,
 				D17DAAB525DBFCEB00ED4A8C /* TaskRowViewModelProtocol.swift in Sources */,
+				D1DCF69B25EBD918006305E7 /* FakeSubTaskListViewModel.swift in Sources */,
 				D11E7D1325E1095700EED79E /* ListExtension.swift in Sources */,
 				D11E734F25E6BC59006FD6CB /* NotificationExtension.swift in Sources */,
 				D17DA9CD25DABE4600ED4A8C /* TaskDetailsViewModel.swift in Sources */,
@@ -629,6 +643,7 @@
 				D11E734A25E571FF006FD6CB /* ToastView.swift in Sources */,
 				D1BD687825E970A9002C4518 /* FullWidthButton.swift in Sources */,
 				D17DAA9A25DBDF5300ED4A8C /* Persistence.swift in Sources */,
+				D1DCF69725EBD908006305E7 /* SubTaskListViewModelProtocol.swift in Sources */,
 				D17DA9C125DABB9100ED4A8C /* TaskDetailsView.swift in Sources */,
 				D17DA9EA25DAC53700ED4A8C /* FakeTaskDetailsViewModel.swift in Sources */,
 				D1D74EF425C96DA400E8EC77 /* Layout.swift in Sources */,
@@ -650,6 +665,7 @@
 				D1BD689125EB8E45002C4518 /* SubTask.swift in Sources */,
 				D17FC9D925D8235F002A5501 /* SettingsRowViewModel.swift in Sources */,
 				D17DAABB25DBFD3300ED4A8C /* TaskRowViewModel.swift in Sources */,
+				D1DCF69025EBD7EA006305E7 /* SubTaskListView.swift in Sources */,
 				D17DAAD425DC279D00ED4A8C /* PrioritySegmentView.swift in Sources */,
 				D17DAAB225DBFC9E00ED4A8C /* TaskRowView.swift in Sources */,
 				D1DCF68C25EB9600006305E7 /* FakeSubTaskRowViewModel.swift in Sources */,

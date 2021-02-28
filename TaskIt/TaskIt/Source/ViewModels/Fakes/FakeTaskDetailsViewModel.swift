@@ -5,11 +5,10 @@
 //  Created by Kyle Dold on 15/02/2021.
 //
 
+import CoreData
 import Foundation
 
 class FakeTaskDetailsViewModel: TaskDetailsViewModelProtocol {
-
-    typealias RowViewModel = FakeSubTaskRowViewModel
     
     var taskName = String.empty
     var priority = Priority.none
@@ -17,18 +16,14 @@ class FakeTaskDetailsViewModel: TaskDetailsViewModelProtocol {
     var isComplete = false
     var taskNotes = "This is the task notes"
     var taskNamePlaceholderText = "Task name"
-    var subTaskNamePlaceholderText = "Subtask name"
     var taskNotesPlaceholderText = "Write notes here..."
     var taskDateText = "Date"
     var submitButtonText = "Create"
-    var newSubTaskName = ""
-    var subTaskModels: [RowViewModel] = [
-        FakeSubTaskRowViewModel(),
-        FakeSubTaskRowViewModel(),
-        FakeSubTaskRowViewModel()
-    ]
+    var subTaskListViewModel = SubTaskListViewModel(
+        task: Task(),
+        managedObjectContext: NSManagedObjectContext(concurrencyType: .mainQueueConcurrencyType)
+    )
     
     func onAppear() {}
-    func addNewSubTaskButtonTapped(_ completion: @escaping EmptyClosure) {}
     func addNewTaskTapped(_ completion: @escaping EmptyClosure) { }
 }
