@@ -21,12 +21,12 @@ class TasksNavigator: ObservableObject {
     
     // MARK: - Properties
     
-    var initialView: AnyView {
+    var initialView: some View {
         return TasksListView(
             viewModel: makeTasksViewModel(),
             navigator: self,
             toastPresenter: ToastPresenter()
-        ).eraseToAnyView()
+        )
     }
     
     var sheetDestination: SheetDestination = .none {
@@ -51,20 +51,21 @@ class TasksNavigator: ObservableObject {
     
     // MARK: - View Creation
     
-    func sheetView() -> AnyView {
+    @ViewBuilder
+    func sheetView() -> some View {
         switch sheetDestination {
         case .none:
-            return EmptyView().eraseToAnyView()
+            EmptyView()
             
         case .settings:
-            return SettingsView(viewModel: SettingsViewModel()).eraseToAnyView()
+            SettingsView(viewModel: SettingsViewModel())
             
         case .calendar:
-            return CalendarView().eraseToAnyView()
-        
+            CalendarView()
+            
         case .taskDetails(let onChange):
             let viewModel = makeTaskDetailsViewModel(onChange: onChange)
-            return TaskDetailsView(viewModel: viewModel).eraseToAnyView()
+            TaskDetailsView(viewModel: viewModel)
         }
     }
     
