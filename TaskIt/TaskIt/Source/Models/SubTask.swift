@@ -14,4 +14,24 @@ public class SubTask: NSManagedObject {
     
     var unwrappedId: UUID { id ?? UUID() }
     var unwrappedTitle: String { title ?? "Unknown title"}
+    
+    // MARK: - SubTask CoreData Operations
+    
+    public static func createNewSubTask(task: Task, subTaskName: String, viewContext: NSManagedObjectContext) {
+        let subTask = SubTask(context: viewContext)
+        
+        subTask.task = task
+        subTask.title = subTaskName
+        
+        try? viewContext.save()
+    }
+    
+    // MARK: - awake
+    
+    public override func awakeFromInsert() {
+        super.awakeFromInsert()
+        
+        id = UUID()
+        isComplete = false
+    }
 }

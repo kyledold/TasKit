@@ -17,9 +17,11 @@ class FakeTaskDetailsViewModel: TaskDetailsViewModelProtocol {
     var isComplete = false
     var taskNotes = "This is the task notes"
     var taskNamePlaceholderText = "Task name"
+    var subTaskNamePlaceholderText = "Subtask name"
     var taskNotesPlaceholderText = "Write notes here..."
     var taskDateText = "Date"
     var submitButtonText = "Create"
+    var newSubTaskName = ""
     var subTaskModels: [RowViewModel] = [
         FakeSubTaskRowViewModel(),
         FakeSubTaskRowViewModel(),
@@ -27,5 +29,6 @@ class FakeTaskDetailsViewModel: TaskDetailsViewModelProtocol {
     ]
     
     func onAppear() {}
+    func addNewSubTaskButtonTapped(_ completion: @escaping EmptyClosure) {}
     func addNewTaskTapped(_ completion: @escaping EmptyClosure) { }
 }

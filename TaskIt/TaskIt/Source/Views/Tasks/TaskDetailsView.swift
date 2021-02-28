@@ -13,8 +13,8 @@ struct TaskDetailsView<ViewModel: TaskDetailsViewModelProtocol>: View {
     
     @ObservedObject var viewModel: ViewModel
     
-    @State private var status = true
-    @State private var showtextFieldToolbar = false
+    @State private var showAddNewSubTaskRow = false
+    @State private var showInputAccessoryView = false
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     
     // MARK: - View
@@ -31,7 +31,7 @@ struct TaskDetailsView<ViewModel: TaskDetailsViewModelProtocol>: View {
         }
         .onAppear {
             viewModel.onAppear()
-            showtextFieldToolbar = true
+            //showInputAccessoryView = true
             
             // TODO: find a better way to handle this
             UITextView.appearance().backgroundColor = .clear
@@ -91,22 +91,40 @@ extension TaskDetailsView {
             .listSeparatorStyle(.none)
             .frame(height: viewModel.subTaskModels.reduce(0) { i, _ in i + 44 })
             
-            Button(action: {
-                
-            }, label: {
+            if showAddNewSubTaskRow {
                 HStack {
-                    Image(systemName: "plus")
-                    Text("Add a subtask")
+                    TextField(viewModel.subTaskNamePlaceholderText, text: $viewModel.newSubTaskName)
+                        .textFieldStyle(SimpleTextFieldStyle())
+                    
+                    Button(action: {
+                        viewModel.addNewSubTaskButtonTapped() {
+                            showAddNewSubTaskRow.toggle()
+                        }
+                    }, label: {
+                        HStack {
+                            Text("Add")
+                        }
+                    })
                 }
-            })
+            } else {
+                Button(action: {
+                    showAddNewSubTaskRow.toggle()
+                }, label: {
+                    HStack {
+                        Image(systemName: "plus")
+                        Text("Add a subtask")
+                    }
+                })
+            }
             Spacer()
         }
+        .padding(.bottom, Layout.Padding.luxurious)
     }
     
     private var footerView: some View {
         VStack {
             Spacer()
-            if showtextFieldToolbar {
+            if showInputAccessoryView {
                 HStack {
                     Button(action: {
                             viewModel.addNewTaskTapped() {

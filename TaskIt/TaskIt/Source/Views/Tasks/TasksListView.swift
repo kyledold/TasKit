@@ -28,7 +28,7 @@ struct TasksListView<ViewModel: TasksListViewModelProtocol>: View {
                 buttonText: viewModel.createTaskButtonText,
                 buttonColor: .t_orange,
                 onButtonTap: {
-                    navigator.sheetDestination = .taskDetails(onChange: {
+                    navigator.sheetDestination = .taskDetails(task: nil, onChange: {
                         viewModel.fetchTasks()
                     })
                 }
@@ -89,9 +89,9 @@ extension TasksListView {
                 TaskRowView(viewModel: taskRowViewModel)
                     .onTapGesture {
                         UIImpactFeedbackGenerator().impactOccurred()
-                        /*navigator.fullScreenDestination = .viewTask(task: taskRowViewModel.task, onChange: {
+                        navigator.sheetDestination = .taskDetails(task: taskRowViewModel.task, onChange: {
                             viewModel.fetchTasks()
-                        })*/
+                        })
                     }
             }
         }
