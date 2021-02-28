@@ -29,7 +29,7 @@ struct TaskRowView<ViewModel: TaskRowViewModelProtocol>: View {
                 .foregroundColor(.primary)
                 .frame(width: 0.2)
             
-            Text(viewModel.titleText)
+            Text(viewModel.taskTitle)
                 .font(.regular_16)
                 .foregroundColor(.primary)
             

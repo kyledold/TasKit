@@ -10,6 +10,8 @@ import Foundation
 
 class TaskDetailsViewModel: TaskDetailsViewModelProtocol {
     
+    typealias RowViewModel = SubTaskRowViewModel
+    
     // MARK: - Properties
     
     @Published var taskName = String.empty
@@ -17,15 +19,15 @@ class TaskDetailsViewModel: TaskDetailsViewModelProtocol {
     @Published var dueDate = Date()
     @Published var isComplete = false
     @Published var taskNotes = String.empty
+    @Published var subTaskModels: [SubTaskRowViewModel]
     
-    var taskNamePlaceholderText = NSLocalizedString("add_task.task_name_placeholder", comment: "Task name textfield placeholder")
-    var taskDateText = NSLocalizedString("add_task.date", comment: "Date picker description")
-    var taskNotesPlaceholderText = NSLocalizedString("add_task.task_notes_placeholder", comment: "Task notes text editor placeholder")
-    var cancelButtonText = NSLocalizedString("general.cancel", comment: "cancel button title")
+    var taskNamePlaceholderText = NSLocalizedString("task_details.task_name_placeholder", comment: "Task name textfield placeholder")
+    var taskDateText = NSLocalizedString("task_details.date", comment: "Date picker description")
+    var taskNotesPlaceholderText = NSLocalizedString("task_details.task_notes_placeholder", comment: "Task notes text editor placeholder")
     var submitButtonText: String {
-        guard task == nil else { return NSLocalizedString("add_task.save_changes", comment: "submit button title") }
+        guard task == nil else { return NSLocalizedString("task_details.save_changes", comment: "submit button title") }
         
-        return NSLocalizedString("add_task.create", comment: "submit button title")
+        return NSLocalizedString("task_details.create", comment: "submit button title")
     }
     
     private let onChange: EmptyClosure
@@ -42,6 +44,8 @@ class TaskDetailsViewModel: TaskDetailsViewModelProtocol {
         self.task = task
         self.onChange = onChange
         self.managedObjectContext = managedObjectContext
+        
+        self.subTaskModels = task?.subTasksArray?.compactMap { SubTaskRowViewModel(subTask: $0) } ?? []
     }
     
     // MARK: - Functions

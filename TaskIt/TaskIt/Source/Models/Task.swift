@@ -12,6 +12,11 @@ public class Task: NSManagedObject {
     
     // MARK: - Properties
     
+    var unwrappedId: UUID { id ?? UUID() }
+    var unwrappedTitle: String { title ?? "Unknown title" }
+    var unwrappeDueDate: Date { dueDate ?? Date() }
+    var subTasksArray: [SubTask]? { return subTasks?.allObjects as? Array<SubTask> }
+    
     var status: Status {
         get { return Status(rawValue: statusValue)! }
         set { statusValue = newValue.rawValue }

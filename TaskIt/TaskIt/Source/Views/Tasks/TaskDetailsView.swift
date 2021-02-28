@@ -21,10 +21,12 @@ struct TaskDetailsView<ViewModel: TaskDetailsViewModelProtocol>: View {
     
     var body: some View {
         ZStack {
-            VStack {
-                headerView
-                taskDetailsView
+            ScrollView {
+                navigationBarView
+                taskBasicDetailsView
+                subTasksListView
             }
+            .padding(.horizontal)
             footerView
         }
         .onAppear {
@@ -39,7 +41,7 @@ struct TaskDetailsView<ViewModel: TaskDetailsViewModelProtocol>: View {
 
 extension TaskDetailsView {
     
-    private var headerView: some View {
+    private var navigationBarView: some View {
         HStack {
             Spacer()
             Button(action: {
@@ -52,35 +54,52 @@ extension TaskDetailsView {
         }
     }
     
-    private var taskDetailsView: some View {
-        ScrollView {
+    private var taskBasicDetailsView: some View {
+        VStack(spacing: Layout.Padding.cozy) {
             VStack(spacing: Layout.Padding.cozy) {
+                
+                HStack {
+                    Toggle(isOn: $viewModel.isComplete) {}
+                        .toggleStyle(CheckboxToggleStyle())
+                    
+                    TextField(viewModel.taskNamePlaceholderText, text: $viewModel.taskName)
+                        .textFieldStyle(SimpleTextFieldStyle())
+                }
+                
                 VStack(spacing: Layout.Padding.cozy) {
+                    PrioritySegmentView(selectedPriority: $viewModel.priority)
                     
-                    HStack {
-                        Toggle(isOn: $viewModel.isComplete) {}
-                            .toggleStyle(CheckboxToggleStyle())
-                        
-                        TextField(viewModel.taskNamePlaceholderText, text: $viewModel.taskName)
-                            .textFieldStyle(SimpleTextFieldStyle())
-                    }
-                    
-                    VStack(spacing: Layout.Padding.cozy) {
-                        PrioritySegmentView(selectedPriority: $viewModel.priority)
-                        
-                        DatePicker(viewModel.taskDateText, selection: $viewModel.dueDate, displayedComponents: .date)
-                            .accentColor(Color.t_black)
-                    }
-                    .padding(Layout.Padding.cozy)
-                    .background(Color.t_input_background)
-                    .cornerRadius(10)
-                    
-                    TextBox(viewModel.taskNotesPlaceholderText, text: $viewModel.taskNotes)
-                    
-                    Spacer()
+                    DatePicker(viewModel.taskDateText, selection: $viewModel.dueDate, displayedComponents: .date)
+                        .accentColor(Color.t_black)
+                }
+                .padding(Layout.Padding.cozy)
+                .background(Color.t_input_background)
+                .cornerRadius(10)
+                
+                TextBox(viewModel.taskNotesPlaceholderText, text: $viewModel.taskNotes)
+            }
+        }
+    }
+    
+    private var subTasksListView: some View {
+        VStack(alignment: .leading) {
+            List {
+                ForEach(viewModel.subTaskModels, id: \.id) { subTaskViewModel in
+                    SubTaskRowView(viewModel: subTaskViewModel)
                 }
             }
-            .padding().padding(.bottom, Layout.Padding.luxurious)
+            .listSeparatorStyle(.none)
+            .frame(height: viewModel.subTaskModels.reduce(0) { i, _ in i + 44 })
+            
+            Button(action: {
+                
+            }, label: {
+                HStack {
+                    Image(systemName: "plus")
+                    Text("Add a subtask")
+                }
+            })
+            Spacer()
         }
     }
     

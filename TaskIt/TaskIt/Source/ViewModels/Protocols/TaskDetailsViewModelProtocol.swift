@@ -10,6 +10,8 @@ import Foundation
 
 protocol TaskDetailsViewModelProtocol: ObservableObject {
     
+    associatedtype RowViewModel: SubTaskRowViewModelProtocol
+    
     var taskName: String { get set }
     var priority: Priority { get set }
     var dueDate: Date { get set }
@@ -18,8 +20,8 @@ protocol TaskDetailsViewModelProtocol: ObservableObject {
     var taskNamePlaceholderText: String { get }
     var taskNotesPlaceholderText: String { get }
     var taskDateText: String { get }
-    var cancelButtonText: String { get }
     var submitButtonText: String { get }
+    var subTaskModels: [RowViewModel] { get set }
     
     func onAppear()
     func addNewTaskTapped(_ completion: @escaping EmptyClosure)

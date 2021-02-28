@@ -6,12 +6,6 @@
   
 */
 
-"add_task.add_task" = "Add task";
-"add_task.create" = "Create";
-"add_task.date" = "Date";
-"add_task.save_changes" = "Save changes";
-"add_task.task_name_placeholder" = "Task name";
-"add_task.task_notes_placeholder" = "Write any notes here...";
 "app.version.%@" = "Version %@";
 "calendar.title" = "Calendar";
 "settings.title" = "Settings";
@@ -22,6 +16,12 @@
 "status_picker.todo" = "Todo";
 "status_picker.completed" = "Completed";
 "tasks.create_task" = "Create task";
+"task_details.add_task" = "Add task";
+"task_details.create" = "Create";
+"task_details.date" = "Date";
+"task_details.save_changes" = "Save changes";
+"task_details.task_name_placeholder" = "Task name";
+"task_details.task_notes_placeholder" = "Write any notes here...";
 "toast.task_created" = "Task successfully created";
 "toast.task_deleted" = "Task successfully deleted";
 "toast.task_completed" = "Task successfully completed";

@@ -9,6 +9,8 @@ import Foundation
 
 class FakeTaskDetailsViewModel: TaskDetailsViewModelProtocol {
 
+    typealias RowViewModel = FakeSubTaskRowViewModel
+    
     var taskName = String.empty
     var priority = Priority.none
     var dueDate = Date()
@@ -17,8 +19,12 @@ class FakeTaskDetailsViewModel: TaskDetailsViewModelProtocol {
     var taskNamePlaceholderText = "Task name"
     var taskNotesPlaceholderText = "Write notes here..."
     var taskDateText = "Date"
-    var cancelButtonText = "cancel"
     var submitButtonText = "Create"
+    var subTaskModels: [RowViewModel] = [
+        FakeSubTaskRowViewModel(),
+        FakeSubTaskRowViewModel(),
+        FakeSubTaskRowViewModel()
+    ]
     
     func onAppear() {}
     func addNewTaskTapped(_ completion: @escaping EmptyClosure) { }

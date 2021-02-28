@@ -85,21 +85,14 @@ extension TasksListView {
     private var taskListBodyView: some View {
         ScrollView {
             statusFilterView.padding(.horizontal, Layout.Padding.compact)
-            ForEach(viewModel.taskViewModels, id: \.id) { task in
-                if let taskRowViewModel = task as? TaskRowViewModel {
-                    TaskRowView(viewModel: taskRowViewModel)
-                        .onTapGesture {
-                            UIImpactFeedbackGenerator().impactOccurred()
-                            /*navigator.fullScreenDestination = .viewTask(task: taskRowViewModel.task, onChange: {
-                                viewModel.fetchTasks()
-                            })*/
-                        }
-                }
-                #if DEBUG
-                if let fakeTaskRowViewModel = task as? FakeTaskRowViewModel {
-                    TaskRowView(viewModel: fakeTaskRowViewModel)
-                }
-                #endif
+            ForEach(viewModel.taskViewModels, id: \.id) { taskRowViewModel in
+                TaskRowView(viewModel: taskRowViewModel)
+                    .onTapGesture {
+                        UIImpactFeedbackGenerator().impactOccurred()
+                        /*navigator.fullScreenDestination = .viewTask(task: taskRowViewModel.task, onChange: {
+                            viewModel.fetchTasks()
+                        })*/
+                    }
             }
         }
         .onNotification(.taskCompleted) {

@@ -77,8 +77,13 @@
 		D1BD687825E970A9002C4518 /* FullWidthButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1BD687725E970A9002C4518 /* FullWidthButton.swift */; };
 		D1BD688625EA81F3002C4518 /* CheckboxToggleStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1BD688525EA81F3002C4518 /* CheckboxToggleStyle.swift */; };
 		D1BD688C25EA8ECF002C4518 /* TextBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1BD688B25EA8ECF002C4518 /* TextBox.swift */; };
+		D1BD689125EB8E45002C4518 /* SubTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1BD689025EB8E45002C4518 /* SubTask.swift */; };
 		D1D74EF425C96DA400E8EC77 /* Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1D74EF325C96DA400E8EC77 /* Layout.swift */; };
 		D1D74F0225C9753800E8EC77 /* FootnoteTextStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1D74F0125C9753800E8EC77 /* FootnoteTextStyle.swift */; };
+		D1DCF68325EB9497006305E7 /* SubTaskRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1DCF68225EB9497006305E7 /* SubTaskRowView.swift */; };
+		D1DCF68625EB9511006305E7 /* SubTaskRowViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1DCF68525EB9511006305E7 /* SubTaskRowViewModel.swift */; };
+		D1DCF68925EB9527006305E7 /* SubTaskRowViewModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1DCF68825EB9527006305E7 /* SubTaskRowViewModelProtocol.swift */; };
+		D1DCF68C25EB9600006305E7 /* FakeSubTaskRowViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1DCF68B25EB9600006305E7 /* FakeSubTaskRowViewModel.swift */; };
 		D1FED10A25E6D16A00686A45 /* ToastPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1FED10925E6D16A00686A45 /* ToastPresenter.swift */; };
 /* End PBXBuildFile section */
 
@@ -181,8 +186,13 @@
 		D1BD687725E970A9002C4518 /* FullWidthButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullWidthButton.swift; sourceTree = "<group>"; };
 		D1BD688525EA81F3002C4518 /* CheckboxToggleStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckboxToggleStyle.swift; sourceTree = "<group>"; };
 		D1BD688B25EA8ECF002C4518 /* TextBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextBox.swift; sourceTree = "<group>"; };
+		D1BD689025EB8E45002C4518 /* SubTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubTask.swift; sourceTree = "<group>"; };
 		D1D74EF325C96DA400E8EC77 /* Layout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Layout.swift; sourceTree = "<group>"; };
 		D1D74F0125C9753800E8EC77 /* FootnoteTextStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FootnoteTextStyle.swift; sourceTree = "<group>"; };
+		D1DCF68225EB9497006305E7 /* SubTaskRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubTaskRowView.swift; sourceTree = "<group>"; };
+		D1DCF68525EB9511006305E7 /* SubTaskRowViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubTaskRowViewModel.swift; sourceTree = "<group>"; };
+		D1DCF68825EB9527006305E7 /* SubTaskRowViewModelProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubTaskRowViewModelProtocol.swift; sourceTree = "<group>"; };
+		D1DCF68B25EB9600006305E7 /* FakeSubTaskRowViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeSubTaskRowViewModel.swift; sourceTree = "<group>"; };
 		D1FED10925E6D16A00686A45 /* ToastPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToastPresenter.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -367,6 +377,7 @@
 				D1783EB925C9C9E500D8EFC3 /* TasksListView.swift */,
 				D17DAAB125DBFC9E00ED4A8C /* TaskRowView.swift */,
 				D17DA9C025DABB9100ED4A8C /* TaskDetailsView.swift */,
+				D1DCF68225EB9497006305E7 /* SubTaskRowView.swift */,
 			);
 			path = Tasks;
 			sourceTree = "<group>";
@@ -377,6 +388,7 @@
 				D17DAA4E25DB039000ED4A8C /* TaskIt.xcdatamodeld */,
 				D187C07025DA6B4D00A5B09A /* Persistence.swift */,
 				D17DA9FF25DAE50300ED4A8C /* Task.swift */,
+				D1BD689025EB8E45002C4518 /* SubTask.swift */,
 				D17DAAA825DBF10300ED4A8C /* Status.swift */,
 				D17DAAAC25DBF2A100ED4A8C /* Priority.swift */,
 			);
@@ -415,6 +427,7 @@
 				D17FCA5A25D98986002A5501 /* TasksListViewModel.swift */,
 				D17DAABA25DBFD3300ED4A8C /* TaskRowViewModel.swift */,
 				D17DA9CC25DABE4600ED4A8C /* TaskDetailsViewModel.swift */,
+				D1DCF68525EB9511006305E7 /* SubTaskRowViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -427,6 +440,7 @@
 				D17DA9D625DABECB00ED4A8C /* FakeTasksListViewModel.swift */,
 				D17DAAB725DBFD0F00ED4A8C /* FakeTaskRowViewModel.swift */,
 				D17DA9E925DAC53700ED4A8C /* FakeTaskDetailsViewModel.swift */,
+				D1DCF68B25EB9600006305E7 /* FakeSubTaskRowViewModel.swift */,
 			);
 			path = Fakes;
 			sourceTree = "<group>";
@@ -439,6 +453,7 @@
 				D17DA9D125DABEA600ED4A8C /* TasksListViewModelProtocol.swift */,
 				D17DAAB425DBFCEB00ED4A8C /* TaskRowViewModelProtocol.swift */,
 				D17DA9E425DAC51700ED4A8C /* TaskDetailsViewModelProtocol.swift */,
+				D1DCF68825EB9527006305E7 /* SubTaskRowViewModelProtocol.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -600,6 +615,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D17DA9D225DABEA600ED4A8C /* TasksListViewModelProtocol.swift in Sources */,
+				D1DCF68625EB9511006305E7 /* SubTaskRowViewModel.swift in Sources */,
 				D11E7D3425E14DDE00EED79E /* FontExtension.swift in Sources */,
 				D11E733125E53781006FD6CB /* DateExtension.swift in Sources */,
 				D11E734725E571BA006FD6CB /* ToastMessage.swift in Sources */,
@@ -609,6 +625,7 @@
 				D11E734F25E6BC59006FD6CB /* NotificationExtension.swift in Sources */,
 				D17DA9CD25DABE4600ED4A8C /* TaskDetailsViewModel.swift in Sources */,
 				D1542BF125E026A5005FD7C7 /* StatusSegmentView.swift in Sources */,
+				D1DCF68925EB9527006305E7 /* SubTaskRowViewModelProtocol.swift in Sources */,
 				D11E734A25E571FF006FD6CB /* ToastView.swift in Sources */,
 				D1BD687825E970A9002C4518 /* FullWidthButton.swift in Sources */,
 				D17DAA9A25DBDF5300ED4A8C /* Persistence.swift in Sources */,
@@ -630,10 +647,12 @@
 				D17DAAA525DBE04900ED4A8C /* StringExtension.swift in Sources */,
 				D17DAAAD25DBF2A100ED4A8C /* Priority.swift in Sources */,
 				D1542BE925DFE9C5005FD7C7 /* SimpleTextFieldStyle.swift in Sources */,
+				D1BD689125EB8E45002C4518 /* SubTask.swift in Sources */,
 				D17FC9D925D8235F002A5501 /* SettingsRowViewModel.swift in Sources */,
 				D17DAABB25DBFD3300ED4A8C /* TaskRowViewModel.swift in Sources */,
 				D17DAAD425DC279D00ED4A8C /* PrioritySegmentView.swift in Sources */,
 				D17DAAB225DBFC9E00ED4A8C /* TaskRowView.swift in Sources */,
+				D1DCF68C25EB9600006305E7 /* FakeSubTaskRowViewModel.swift in Sources */,
 				D17DA9D725DABECB00ED4A8C /* FakeTasksListViewModel.swift in Sources */,
 				D17FC9A925D817BE002A5501 /* SettingsRowView.swift in Sources */,
 				D11E7D1A25E1433F00EED79E /* ViewExtension.swift in Sources */,
@@ -649,6 +668,7 @@
 				D11E7D4D25E1733B00EED79E /* TasksNavigator.swift in Sources */,
 				D17FC9EC25D828F6002A5501 /* FakeSettingsRowViewModel.swift in Sources */,
 				D17FC99425D8107C002A5501 /* SettingsViewModelProtocol.swift in Sources */,
+				D1DCF68325EB9497006305E7 /* SubTaskRowView.swift in Sources */,
 				D11E7D4225E15B1600EED79E /* UIScreenExtension.swift in Sources */,
 				D17DAAB825DBFD0F00ED4A8C /* FakeTaskRowViewModel.swift in Sources */,
 				D1BC33C225D455F50068A57A /* Constants.swift in Sources */,
