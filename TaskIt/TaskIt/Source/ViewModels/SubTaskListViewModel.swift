@@ -17,8 +17,11 @@ class SubTaskListViewModel: SubTaskListViewModelProtocol {
     @Published var newSubTaskName = String.empty
     @Published var subTaskModels: [SubTaskRowViewModel]
     
+    var headerText = NSLocalizedString("subtask_list.subtasks", comment: "Subtask header")
     var subTaskNamePlaceholderText = NSLocalizedString("subtask_list.subtask_name_placeholder", comment: "Subtask textfield placeholder")
     var addSubTaskButtonText = NSLocalizedString("subtask_list.add_subtask", comment: "Add subtask button text")
+    var doneButtonText = NSLocalizedString("general.done", comment: "Done button text")
+    var editButtonText = NSLocalizedString("general.edit", comment: "Edit button text")
     
     private let managedObjectContext: NSManagedObjectContext
     private let task: Task
@@ -38,7 +41,15 @@ class SubTaskListViewModel: SubTaskListViewModelProtocol {
     
     // MARK: - Functions
     
-    func addNewSubTaskButtonTapped(_ completion: @escaping EmptyClosure) {
+    func deleteSubTask(at indexSet: IndexSet) {
+        
+    }
+    
+    func moveSubTask(from source: IndexSet, to destination: Int) {
+        
+    }
+    
+    func addSubTaskButtonTapped(_ completion: @escaping EmptyClosure) {
         SubTask.createNewSubTask(
             task: task,
             subTaskName: newSubTaskName,

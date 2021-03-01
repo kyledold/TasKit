@@ -11,6 +11,7 @@ class SubTaskRowViewModel: SubTaskRowViewModelProtocol {
     
     var id: UUID { return subTask.unwrappedId }
     var subTaskTitle: String { return subTask.unwrappedTitle}
+    
     @Published var isComplete = false
     
     private let subTask: SubTask

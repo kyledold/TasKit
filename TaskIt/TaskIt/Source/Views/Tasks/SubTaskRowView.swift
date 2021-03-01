@@ -12,17 +12,29 @@ struct SubTaskRowView<ViewModel: SubTaskRowViewModelProtocol>: View {
     // MARK: - Properties
     
     @ObservedObject var viewModel: ViewModel
+    @Environment(\.editMode) var editMode: Binding<EditMode>?
+    
+    private var isInEditingMode: Bool {
+        guard let editMode = editMode else { return false }
+        return editMode.wrappedValue.isEditing
+    }
     
     // MARK: - View
     
     var body: some View {
         HStack(spacing: 10) {
-            Toggle(isOn: $viewModel.isComplete) {}
-                .toggleStyle(CheckboxToggleStyle())
+            
+            if !isInEditingMode {
+                Toggle(isOn: $viewModel.isComplete) {}
+                    .toggleStyle(CheckboxToggleStyle())
+            }
             
             Text(viewModel.subTaskTitle)
                 .font(.regular_16)
+                .padding(.leading, isInEditingMode ? Layout.Padding.compact : .zero)
+            
             Spacer()
+            
         }.listRowInsets(EdgeInsets())
     }
 }

@@ -11,8 +11,11 @@ class FakeSubTaskListViewModel: SubTaskListViewModelProtocol {
 
     typealias RowViewModel = FakeSubTaskRowViewModel
     
+    var headerText = "Subtasks"
     var subTaskNamePlaceholderText = "Subtask name"
     var addSubTaskButtonText = "Add subtask"
+    var doneButtonText = "Done"
+    var editButtonText = "Edit"
     var newSubTaskName = ""
     
     var subTaskModels: [RowViewModel] = [
@@ -21,5 +24,7 @@ class FakeSubTaskListViewModel: SubTaskListViewModelProtocol {
         FakeSubTaskRowViewModel()
     ]
     
-    func addNewSubTaskButtonTapped(_ completion: @escaping EmptyClosure) {}
+    func deleteSubTask(at indexSet: IndexSet) {}
+    func moveSubTask(from source: IndexSet, to destination: Int) {}
+    func addSubTaskButtonTapped(_ completion: @escaping EmptyClosure) {}
 }

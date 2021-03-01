@@ -7,6 +7,8 @@
 */
 
 "app.version.%@" = "Version %@";
+"general.edit" = "Edit";
+"general.done" = "Done";
 "calendar.title" = "Calendar";
 "settings.title" = "Settings";
 "settings.feedback.title" = "Feedback";
@@ -17,11 +19,12 @@
 "status_picker.completed" = "Completed";
 "tasks.create_task" = "Create task";
 "subtask_list.add_subtask" = "Add a subtask";
+"subtask_list.subtasks" = "Subtasks";
+"subtask_list.subtask_name_placeholder" = "Enter subtask name here...";
 "task_details.add_task" = "Add task";
 "task_details.create" = "Create";
 "task_details.date" = "Date";
 "task_details.task_name_placeholder" = "Task name";
-"subtask_list.subtask_name_placeholder" = "Enter subtask name here...";
 "task_details.task_notes_placeholder" = "Write any notes here...";
 "toast.task_created" = "Task successfully created";
 "toast.task_deleted" = "Task successfully deleted";
