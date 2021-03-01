@@ -15,7 +15,10 @@ public class Task: NSManagedObject {
     var unwrappedId: UUID { id ?? UUID() }
     var unwrappedTitle: String { title ?? "Unknown title" }
     var unwrappeDueDate: Date { dueDate ?? Date() }
-    var subTasksArray: [SubTask]? { return subTasks?.allObjects as? Array<SubTask> }
+    var subTasksArray: [SubTask]? {
+        let subTaskArray = subTasks?.allObjects as? Array<SubTask>
+        return subTaskArray?.sorted { $0.index < $1.index }
+    }
     
     var status: Status {
         get { return Status(rawValue: statusValue)! }

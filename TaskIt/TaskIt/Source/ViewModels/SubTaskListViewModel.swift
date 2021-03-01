@@ -44,19 +44,26 @@ class SubTaskListViewModel: SubTaskListViewModelProtocol {
     func deleteSubTask(at indexSet: IndexSet) {
         
         let subTasksToDelete = indexSet.map { subTaskModels[$0].subTask }
-        SubTask.deleteSubTasks(subTasks: subTasksToDelete, viewContext: managedObjectContext)
+        SubTask.deleteSubTasks(subTasksToDelete, viewContext: managedObjectContext)
         
         fetchSubTasks()
     }
     
     func moveSubTask(from source: IndexSet, to destination: Int) {
         
+        var revisedSubTasks = subTaskModels.map { $0.subTask }
+        revisedSubTasks.move(fromOffsets: source, toOffset: destination)
+        
+        SubTask.updateOrderOfSubTasks(revisedSubTasks, viewContext: managedObjectContext)
+        
+        fetchSubTasks()
     }
     
     func addSubTaskButtonTapped(_ completion: @escaping EmptyClosure) {
         SubTask.createNewSubTask(
             task: task,
             subTaskName: newSubTaskName,
+            index: subTaskModels.count,
             viewContext: managedObjectContext
         )
         

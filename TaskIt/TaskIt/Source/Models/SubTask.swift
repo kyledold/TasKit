@@ -17,20 +17,31 @@ public class SubTask: NSManagedObject {
     
     // MARK: - SubTask CoreData Operations
     
-    public static func createNewSubTask(task: Task, subTaskName: String, viewContext: NSManagedObjectContext) {
+    public static func createNewSubTask(task: Task, subTaskName: String, index: Int, viewContext: NSManagedObjectContext) {
         let subTask = SubTask(context: viewContext)
         
         subTask.task = task
         subTask.title = subTaskName
+        subTask.index = Int16(index)
         
         try? viewContext.save()
     }
     
-    public static func deleteSubTasks(subTasks: [SubTask], viewContext: NSManagedObjectContext) {
+    public static func deleteSubTasks(_ subTasks: [SubTask], viewContext: NSManagedObjectContext) {
         subTasks.forEach {
             viewContext.delete($0)
             try? viewContext.save()
         }
+    }
+    
+    public static func updateOrderOfSubTasks(_ revisedSubTasks: [SubTask], viewContext: NSManagedObjectContext) {
+        
+        for index in stride(from: revisedSubTasks.count - 1, through: 0, by: -1) {
+            let subTask = revisedSubTasks[index]
+            subTask.index = Int16(index)
+        }
+        
+        try? viewContext.save()
     }
     
     // MARK: - awake
