@@ -12,4 +12,5 @@ protocol SubTaskRowViewModelProtocol: ObservableObject, Identifiable {
     var id: UUID { get }
     var subTaskTitle: String { get }
     var isComplete: Bool { get set }
+    var subTask: SubTask { get }
 }

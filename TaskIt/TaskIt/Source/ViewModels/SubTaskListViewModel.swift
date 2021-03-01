@@ -43,6 +43,10 @@ class SubTaskListViewModel: SubTaskListViewModelProtocol {
     
     func deleteSubTask(at indexSet: IndexSet) {
         
+        let subTasksToDelete = indexSet.map { subTaskModels[$0].subTask }
+        SubTask.deleteSubTasks(subTasks: subTasksToDelete, viewContext: managedObjectContext)
+        
+        fetchSubTasks()
     }
     
     func moveSubTask(from source: IndexSet, to destination: Int) {

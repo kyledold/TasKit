@@ -26,10 +26,11 @@ public class SubTask: NSManagedObject {
         try? viewContext.save()
     }
     
-    public static func deleteSubTask(subTask: SubTask, viewContext: NSManagedObjectContext) {
-        viewContext.delete(subTask)
-        
-        try? viewContext.save()
+    public static func deleteSubTasks(subTasks: [SubTask], viewContext: NSManagedObjectContext) {
+        subTasks.forEach {
+            viewContext.delete($0)
+            try? viewContext.save()
+        }
     }
     
     // MARK: - awake

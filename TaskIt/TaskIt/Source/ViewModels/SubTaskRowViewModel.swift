@@ -14,7 +14,7 @@ class SubTaskRowViewModel: SubTaskRowViewModelProtocol {
     
     @Published var isComplete = false
     
-    private let subTask: SubTask
+    private(set) var subTask: SubTask
     
     init(subTask: SubTask) {
         self.subTask = subTask

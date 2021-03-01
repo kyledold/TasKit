@@ -12,4 +12,5 @@ class FakeSubTaskRowViewModel: SubTaskRowViewModelProtocol {
     var id = UUID()
     var subTaskTitle = "This is a fake sub task title"
     var isComplete = false
+    var subTask = SubTask()
 }
