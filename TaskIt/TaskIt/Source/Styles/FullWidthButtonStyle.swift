@@ -1,5 +1,5 @@
 //
-//  FullWidthButton.swift
+//  FullWidthButtonStyle.swift
 //  TaskIt
 //
 //  Created by Kyle Dold on 26/02/2021.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct FullWidthButton: ButtonStyle {
+struct FullWidthButtonStyle: ButtonStyle {
     
     var buttonColor: Color
     

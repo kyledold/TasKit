@@ -94,7 +94,7 @@ extension TaskDetailsView {
                         }, label: {
                             Text(viewModel.submitButtonText)
                         })
-                        .buttonStyle(FullWidthButton(buttonColor: Color.t_green))
+                        .buttonStyle(FullWidthButtonStyle(buttonColor: Color.t_green))
                 }
                 .frame(alignment: .center)
             }
