@@ -73,6 +73,18 @@ class SubTaskListViewModel: SubTaskListViewModelProtocol {
     }
     
     private func fetchSubTasks() {
-        subTaskModels = task.subTasksArray?.compactMap { SubTaskRowViewModel(subTask: $0) } ?? []
+        subTaskModels = task.subTasksArray?.compactMap { subTask in
+            SubTaskRowViewModel(subTask: subTask, onChangeCompletion: { [weak self] isComplete in
+                self?.updateSubTaskCompletionStatus(subTask, isComplete: isComplete)
+            })
+        } ?? []
+    }
+    
+    private func updateSubTaskCompletionStatus(_ subTask: SubTask, isComplete: Bool) {
+        SubTask.updateCompletionStatus(
+            subTask,
+            isComplete: isComplete,
+            viewContext: managedObjectContext
+        )
     }
 }

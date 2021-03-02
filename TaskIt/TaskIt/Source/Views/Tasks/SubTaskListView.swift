@@ -81,8 +81,8 @@ extension SubTaskListView {
             }
             .onDelete(perform: deleteSubTask)
             .onMove(perform: moveSubTask)
-
         }
+        .id(UUID()) // this fixes a weird bug in List that doesn't show rows when adding for the first time
         .listSeparatorStyle(.none)
         .frame(height: viewModel.subTaskModels.reduce(0) { i, _ in i + 44 }) // this is here to make list fit contents
         .environment(\.editMode, isListViewEditable ? .constant(.active) : .constant(.inactive))
@@ -103,6 +103,7 @@ extension SubTaskListView {
                 .textFieldStyle(SimpleTextFieldStyle())
             
             Button(action: doneButtonTapped, label: { Text(viewModel.doneButtonText) })
+                .disabled(viewModel.newSubTaskName.isBlank)
         }
     }
     

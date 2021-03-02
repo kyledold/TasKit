@@ -31,6 +31,7 @@ struct SubTaskRowView<ViewModel: SubTaskRowViewModelProtocol>: View {
             
             Text(viewModel.subTaskTitle)
                 .font(.regular_16)
+                .strikethrough(viewModel.isComplete, color: .primary)
                 .padding(.leading, isInEditingMode ? Layout.Padding.compact : .zero)
             
             Spacer()
