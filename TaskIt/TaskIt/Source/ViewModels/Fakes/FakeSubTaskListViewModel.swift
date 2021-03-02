@@ -17,6 +17,7 @@ class FakeSubTaskListViewModel: SubTaskListViewModelProtocol {
     var doneButtonText = "Done"
     var editButtonText = "Edit"
     var newSubTaskName = ""
+    var isListInEditMode = false
     
     var subTaskModels: [RowViewModel] = [
         FakeSubTaskRowViewModel(),
@@ -27,4 +28,5 @@ class FakeSubTaskListViewModel: SubTaskListViewModelProtocol {
     func deleteSubTask(at indexSet: IndexSet) {}
     func moveSubTask(from source: IndexSet, to destination: Int) {}
     func addSubTaskButtonTapped(_ completion: @escaping EmptyClosure) {}
+    func editButtonTapped() {}
 }

@@ -16,6 +16,7 @@ class SubTaskListViewModel: SubTaskListViewModelProtocol {
     
     @Published var newSubTaskName = String.empty
     @Published var subTaskModels: [SubTaskRowViewModel]
+    @Published var isListInEditMode: Bool = false
     
     var headerText = NSLocalizedString("subtask_list.subtasks", comment: "Subtask header")
     var subTaskNamePlaceholderText = NSLocalizedString("subtask_list.subtask_name_placeholder", comment: "Subtask textfield placeholder")
@@ -47,6 +48,7 @@ class SubTaskListViewModel: SubTaskListViewModelProtocol {
         SubTask.deleteSubTasks(subTasksToDelete, viewContext: managedObjectContext)
         
         fetchSubTasks()
+        resetListViewEditModeIfEmpty()
     }
     
     func moveSubTask(from source: IndexSet, to destination: Int) {
@@ -72,12 +74,22 @@ class SubTaskListViewModel: SubTaskListViewModelProtocol {
         completion()
     }
     
+    func editButtonTapped() {
+        isListInEditMode.toggle()
+    }
+    
     private func fetchSubTasks() {
         subTaskModels = task.subTasksArray?.compactMap { subTask in
             SubTaskRowViewModel(subTask: subTask, onChangeCompletion: { [weak self] isComplete in
                 self?.updateSubTaskCompletionStatus(subTask, isComplete: isComplete)
             })
         } ?? []
+    }
+    
+    private func resetListViewEditModeIfEmpty() {
+        if isListInEditMode {
+            isListInEditMode = !subTaskModels.isEmpty
+        }
     }
     
     private func updateSubTaskCompletionStatus(_ subTask: SubTask, isComplete: Bool) {

@@ -14,7 +14,6 @@ struct SubTaskListView<ViewModel: SubTaskListViewModelProtocol>: View {
     @ObservedObject var viewModel: ViewModel
     
     @State private var showAddNewSubTaskRow = false
-    @State private var isListViewEditable = false
     
     // MARK: - View
     
@@ -24,7 +23,7 @@ struct SubTaskListView<ViewModel: SubTaskListViewModelProtocol>: View {
             headerView
             subTaskListView
             
-            if !isListViewEditable {
+            if !viewModel.isListInEditMode {
                 addNewTaskView
             }
             Spacer()
@@ -53,7 +52,7 @@ struct SubTaskListView<ViewModel: SubTaskListViewModelProtocol>: View {
     }
     
     private func editButtonTapped() {
-        isListViewEditable.toggle()
+        viewModel.editButtonTapped() 
     }
 }
 
@@ -68,7 +67,7 @@ extension SubTaskListView {
             
             if viewModel.subTaskModels.count > 0 {
                 Button(action: editButtonTapped, label: {
-                    Text(isListViewEditable ? viewModel.doneButtonText : viewModel.editButtonText)
+                    Text(viewModel.isListInEditMode ? viewModel.doneButtonText : viewModel.editButtonText)
                 })
             }
         }
@@ -85,7 +84,7 @@ extension SubTaskListView {
         .id(UUID()) // this fixes a weird bug in List that doesn't show rows when adding for the first time
         .listSeparatorStyle(.none)
         .frame(height: viewModel.subTaskModels.reduce(0) { i, _ in i + 44 }) // this is here to make list fit contents
-        .environment(\.editMode, isListViewEditable ? .constant(.active) : .constant(.inactive))
+        .environment(\.editMode, viewModel.isListInEditMode ? .constant(.active) : .constant(.inactive))
     }
     
     @ViewBuilder
