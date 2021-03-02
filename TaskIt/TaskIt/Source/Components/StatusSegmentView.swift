@@ -16,7 +16,7 @@ struct StatusSegmentView: View {
         
         let binding = Binding<Int>(
             get: { Int(self.selectedStatus.rawValue) },
-            set: { self.selectedStatus = Status(rawValue: Int32($0))! }
+            set: { self.selectedStatus = Status(rawValue: Int16($0))! }
         )
         
         SegmentPicker(items: ["Todo", "Completed"], selection: binding)

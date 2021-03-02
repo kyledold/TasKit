@@ -27,20 +27,20 @@ struct SegmentPicker: View {
     @State private var segmentSize: CGSize = .zero
     @Binding private var selection: Int
     
-    // Rounded rectangle to denote active segment
-    private var activeSegmentView: AnyView {
-        // Don't show the active segment until we have initialized the view
-        // This is required for `.animation()` to display properly, otherwise the animation will fire on init
-        let isInitialized: Bool = segmentSize != .zero
-        if !isInitialized { return EmptyView().eraseToAnyView() }
-        return
+    @ViewBuilder
+    private var activeSegmentView: some View {
+        
+        let isInitialized = segmentSize != .zero
+        if !isInitialized {
+            EmptyView()
+        } else {
             RoundedRectangle(cornerRadius: SegmentPicker.SegmentCornerRadius)
                 .foregroundColor(SegmentPicker.ActiveSegmentColor)
                 .shadow(color: SegmentPicker.ShadowColor, radius: SegmentPicker.ShadowRadius)
                 .frame(width: segmentSize.width, height: segmentSize.height)
                 .offset(x: computeActiveSegmentHorizontalOffset(), y: 0)
                 .animation(Animation.linear(duration: SegmentPicker.AnimationDuration))
-                .eraseToAnyView()
+        }
     }
     
     init(items: [String], selection: Binding<Int>) {
@@ -63,17 +63,17 @@ struct SegmentPicker: View {
         .background(SegmentPicker.BackgroundColor)
         .clipShape(RoundedRectangle(cornerRadius: SegmentPicker.SegmentCornerRadius))
     }
-
+    
     private func computeActiveSegmentHorizontalOffset() -> CGFloat {
         CGFloat(selection) * (segmentSize.width + SegmentPicker.SegmentXPadding / 2)
     }
-
+    
+    @ViewBuilder
     private func getSegmentView(for index: Int) -> some View {
-        guard index < items.count else {
-            return EmptyView().eraseToAnyView()
-        }
-        let isSelected = selection == index
-        return
+        if index == items.count {
+            EmptyView()
+        } else {
+            let isSelected = selection == index
             Text(items[index])
                 .foregroundColor(isSelected ? SegmentPicker.SelectedTextColor: SegmentPicker.TextColor)
                 .lineLimit(1)
@@ -82,9 +82,9 @@ struct SegmentPicker: View {
                 .frame(minWidth: 0, maxWidth: .infinity)
                 .modifier(SizeAwareViewModifier(viewSize: $segmentSize))
                 .onTapGesture { onItemTap(index: index) }
-                .eraseToAnyView()
+        }
     }
-
+    
     private func onItemTap(index: Int) {
         guard index < items.count else {
             return
@@ -94,6 +94,7 @@ struct SegmentPicker: View {
 }
 
 struct PreviewView: View {
+    
     @State var selection: Int = 0
     private let items: [String] = ["M", "T", "W", "T", "F"]
     
@@ -114,19 +115,19 @@ struct BackgroundGeometryReader: View {
     var body: some View {
         GeometryReader { geometry in
             return Color
-                    .clear
-                    .preference(key: SizePreferenceKey.self, value: geometry.size)
+                .clear
+                .preference(key: SizePreferenceKey.self, value: geometry.size)
         }
     }
 }
 struct SizeAwareViewModifier: ViewModifier {
-
+    
     @Binding private var viewSize: CGSize
-
+    
     init(viewSize: Binding<CGSize>) {
         _viewSize = viewSize
     }
-
+    
     func body(content: Content) -> some View {
         content
             .background(BackgroundGeometryReader())

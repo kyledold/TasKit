@@ -10,4 +10,6 @@ import Foundation
 extension String {
     
     static let empty = ""
+    
+    var isBlank: Bool { allSatisfy { $0.isWhitespace } }
 }

@@ -7,6 +7,6 @@
 
 import Foundation
 
-public enum Status: Int32 {
+public enum Status: Int16 {
     case todo, completed
 }

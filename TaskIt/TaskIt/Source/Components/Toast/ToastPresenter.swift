@@ -29,35 +29,35 @@ class ToastPresenter: ObservableObject {
     
     // MARK: - Show Toast
     
-    func toastView() -> AnyView {
+    @ViewBuilder
+    func toastView() -> some View {
         switch toast {
         case .none:
-            return EmptyView().eraseToAnyView()
+            EmptyView()
             
         case .taskCreated:
-            return createToastView(
+            createToastView(
                 title: NSLocalizedString("toast.task_created", comment: "Toast created text"),
                 color: .t_green
-            ).eraseToAnyView()
+            )
             
         case .taskCompleted:
-            return createToastView(
+            createToastView(
                 title: NSLocalizedString("toast.task_completed", comment: "Toast completed text"),
                 color: .t_green
-            ).eraseToAnyView()
+            )
             
         case .taskDeleted:
-            return createToastView(
+            createToastView(
                 title: NSLocalizedString("toast.task_deleted", comment: "Toast deleted text"),
                 color: .t_green
-            ).eraseToAnyView()
+            )
             
         case .taskUpdated:
-            return createToastView(
+            createToastView(
                 title: NSLocalizedString("toast.task_updated", comment: "Toast updated text"),
                 color: .t_green
-            ).eraseToAnyView()
-            
+            )
         }
     }
     

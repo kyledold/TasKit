@@ -7,6 +7,6 @@
 
 import Foundation
 
-public enum Priority: Int32 {
+public enum Priority: Int16 {
     case none, low, medium, high
 }

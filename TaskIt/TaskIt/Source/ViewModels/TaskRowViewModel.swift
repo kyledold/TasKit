@@ -12,24 +12,12 @@ class TaskRowViewModel: TaskRowViewModelProtocol {
     
     // MARK: - Properties
     
-    var id: UUID { return task.id ?? UUID() }
-    var titleText: String { task.title ?? .empty }
+    var id: UUID { return task.unwrappedId }
+    var taskTitle: String { task.unwrappedTitle }
     var priority: Priority { task.priority }
-    
-    var dayOfTheWeekText: String {
-        guard let dueDate = task.dueDate else { return .empty}
-        return dueDate.dayOfTheWeek.uppercased()
-    }
-    
-    var dateText: String {
-        guard let dueDate = task.dueDate else { return .empty}
-        return "\(dueDate.get(.day))"
-    }
-    
-    var monthText: String {
-        guard let dueDate = task.dueDate else { return .empty}
-        return dueDate.month
-    }
+    var dayOfTheWeekText: String { return task.unwrappeDueDate.dayOfTheWeek.uppercased() }
+    var dateText: String { return "\(task.unwrappeDueDate.get(.day))" }
+    var monthText: String { return task.unwrappeDueDate.month }
     
     @Published var isCompleted: Bool
     

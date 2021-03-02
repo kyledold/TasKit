@@ -1,5 +1,5 @@
 //
-//  RoundedButton.swift
+//  RoundedButtonStyle.swift
 //  TaskIt
 //
 //  Created by Kyle Dold on 26/02/2021.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct RoundedButton: ButtonStyle {
+struct RoundedButtonStyle: ButtonStyle {
     
     var buttonColor: Color
     

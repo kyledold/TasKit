@@ -2,7 +2,7 @@
 //  TaskDetailsViewModel.swift
 //  TaskIt
 //
-//  Created by Kyle Dold on 21/02/2021.
+//  Created by Kyle Dold on 15/02/2021.
 //
 
 import CoreData
@@ -12,61 +12,52 @@ class TaskDetailsViewModel: TaskDetailsViewModelProtocol {
     
     // MARK: - Properties
     
-    var titleText: String { task.title ?? .empty }
-    var priority: Priority { task.priority }
-    var cancelButtonText = NSLocalizedString("general.cancel", comment: "cancel button title")
-    var actionSheetTitle = NSLocalizedString("task_details.action_sheet.title", comment: "action sheet title")
-    var actionSheetMessage = NSLocalizedString("task_details.action_sheet.message", comment: "action sheet message")
-    var deleteText = NSLocalizedString("task_details.action_sheet.delete", comment: "action sheet delete")
-    var submitButtonText: String {
-        if task.status == .todo {
-            return NSLocalizedString("task_details.complete_task", comment: "submit button title")
-        } else {
-            return NSLocalizedString("task_details.undo_completion", comment: "submit button title")
-        }
-    }
+    @Published var taskName = String.empty
+    @Published var priority = Priority.none
+    @Published var dueDate = Date()
+    @Published var isComplete = false
+    @Published var taskNotes = String.empty
     
-    private(set) var task: Task
+    var taskNamePlaceholderText = NSLocalizedString("task_details.task_name_placeholder", comment: "Task name textfield placeholder")
+    var taskNotesPlaceholderText = NSLocalizedString("task_details.task_notes_placeholder", comment: "Task notes text editor placeholder")
+    var taskDateText = NSLocalizedString("task_details.date", comment: "Date picker description")
+    var submitButtonText: String { return NSLocalizedString("task_details.create", comment: "submit button title") }
+    
+    var subTaskListViewModel: SubTaskListViewModel
+    
     private let onChange: EmptyClosure
     private let managedObjectContext: NSManagedObjectContext
-    private let notificationCenter: NotificationCenter
+    private let task: Task
     
     // MARK: - Initialisation
     
     init(
-        task: Task,
+        task: Task?,
         onChange: @escaping EmptyClosure,
-        managedObjectContext: NSManagedObjectContext,
-        notificationCenter: NotificationCenter = NotificationCenter.default
+        managedObjectContext: NSManagedObjectContext
     ) {
-        self.task = task
-        self.onChange = onChange
+        self.task = task ?? Task(context: managedObjectContext)
         self.managedObjectContext = managedObjectContext
-        self.notificationCenter = notificationCenter
+        self.onChange = onChange
+        self.subTaskListViewModel = SubTaskListViewModel(task: self.task, managedObjectContext: managedObjectContext)
     }
     
-    // MARK: - Task operations
+    // MARK: - Functions
     
-    func deleteButtonTapped(_ completion: @escaping EmptyClosure) {
-        
-        Task.deleteTask(task: task, viewContext: managedObjectContext)
-        onChange()
-        notificationCenter.post(name: .taskDeleted, object: nil)
-        completion()
+    func onAppear() {
+        taskName = .empty
+        priority = .none
     }
     
-    func submitButtonTapped(_ completion: @escaping EmptyClosure) {
-        
-        let newStatus: Status = task.status == .completed ? .todo : .completed
-        Task.updateStatus(task: task, newStatus: newStatus, viewContext: managedObjectContext)
-        onChange()
-        
-        if newStatus == .completed {
-            notificationCenter.post(name: .taskCompleted, object: nil)
-        } else {
-            notificationCenter.post(name: .taskUpdated, object: nil)
-        }
+    func addNewTaskTapped(_ completion: @escaping EmptyClosure) {
+        Task.createNewTask(
+            taskName: taskName,
+            priority: priority,
+            dueDate: dueDate,
+            viewContext: managedObjectContext
+        )
 
+        onChange()
         completion()
     }
 }

@@ -2,115 +2,110 @@
 //  TaskDetailsView.swift
 //  TaskIt
 //
-//  Created by Kyle Dold on 20/02/2021.
+//  Created by Kyle Dold on 15/02/2021.
 //
 
 import SwiftUI
 
 struct TaskDetailsView<ViewModel: TaskDetailsViewModelProtocol>: View {
     
-    // MARK: - Properties
+    // MARK: - Properties
     
-    var viewModel: ViewModel
-    @ObservedObject var navigator: TasksNavigator
+    @ObservedObject var viewModel: ViewModel
     
-    @State private var showingActionSheet = false
+    @State private var showInputAccessoryView = false
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     
     // MARK: - View
     
     var body: some View {
         ZStack {
-            VStack {
-                navigationHeaderView
-                taskDetailsBodyView
+            ScrollView {
+                navigationBarView
+                taskBasicDetailsView
+                SubTaskListView(viewModel: viewModel.subTaskListViewModel)
             }
-            .edgesIgnoringSafeArea(.bottom)
+            .padding(.horizontal)
+            footerView
+        }
+        .onAppear {
+            viewModel.onAppear()
+            //showInputAccessoryView = true
             
-            ButtonFooterView(
-                buttonText: viewModel.submitButtonText,
-                buttonColor: .t_green,
-                onButtonTap: {
-                    viewModel.submitButtonTapped {
-                        presentationMode.wrappedValue.dismiss()
-                    }
-                }
-            )
-        }
-        .backgroundOverlay()
-        .sheet(isPresented: $navigator.showSheet) {
-            navigator.sheetView()
-        }
-        .actionSheet(isPresented: $showingActionSheet) {
-            ActionSheet(title: Text(viewModel.actionSheetTitle), message: Text(viewModel.actionSheetMessage), buttons: [
-                .destructive(Text(viewModel.deleteText), action: {
-                    viewModel.deleteButtonTapped {
-                        presentationMode.wrappedValue.dismiss()
-                    }
-                }),
-                .cancel()
-            ])
+            // TODO: find a better way to handle this
+            UITextView.appearance().backgroundColor = .clear
         }
     }
 }
 
 extension TaskDetailsView {
     
-    private var navigationHeaderView: some View {
-        HStack(spacing: Layout.Padding.cozy) {
+    private var navigationBarView: some View {
+        HStack {
+            Spacer()
             Button(action: {
                 presentationMode.wrappedValue.dismiss()
             }, label: {
-                Image(systemName: Image.Icons.downChevron)
-                Text(viewModel.cancelButtonText)
-                    .font(.bold_20)
+                Image(systemName: Image.Icons.close)
             })
-            .foregroundColor(.t_white)
-            Spacer()
-            Button(action: {
-                navigator.sheetDestination = .editTask(task: viewModel.task, onChange: {
-                    
-                })
-            }, label: {
-                Image(systemName: Image.Icons.pencil).iconStyle()
-            })
-            Button(action: {
-                showingActionSheet = true
-            }, label: {
-                Image(systemName: Image.Icons.delete).iconStyle()
-            })
+            .foregroundColor(Color.primary)
+            .padding()
         }
-        .padding().padding(.top, Layout.Padding.spacious)
     }
     
-    private var taskDetailsBodyView: some View {
-        ScrollView {
-            VStack(alignment: .leading, spacing: 8) {
-                if viewModel.priority != .none {
-                    Image(Image.iconNameForPriority(viewModel.priority))
-                        .resizable()
-                        .frame(width: 20, height: 20)
+    private var taskBasicDetailsView: some View {
+        VStack(spacing: Layout.Padding.cozy) {
+            VStack(spacing: Layout.Padding.cozy) {
+                
+                HStack {
+                    Toggle(isOn: $viewModel.isComplete) {}
+                        .toggleStyle(CheckboxToggleStyle())
+                    
+                    TextField(viewModel.taskNamePlaceholderText, text: $viewModel.taskName)
+                        .textFieldStyle(SimpleTextFieldStyle())
                 }
                 
-                HStack(spacing: Layout.Padding.cozy) {
-                    Text(viewModel.titleText)
-                        .font(.bold_20)
-                        .foregroundColor(.primary)
+                VStack(spacing: Layout.Padding.cozy) {
+                    PrioritySegmentView(selectedPriority: $viewModel.priority)
                     
-                    Spacer()
+                    DatePicker(viewModel.taskDateText, selection: $viewModel.dueDate, displayedComponents: .date)
+                        .accentColor(Color.t_black)
                 }
-            }.padding().padding(.bottom, 72)
+                .padding(Layout.Padding.cozy)
+                .background(Color.t_input_background)
+                .cornerRadius(10)
+                
+                TextBox(viewModel.taskNotesPlaceholderText, text: $viewModel.taskNotes)
+            }
         }
-        .frame(width: UIScreen.screenWidth, height: UIScreen.screenHeight - 90)
-        .background(Color.t_content_background)
-        .cornerRadius(25)
+    }
+    
+    private var footerView: some View {
+        VStack {
+            Spacer()
+            if showInputAccessoryView {
+                HStack {
+                    Button(action: {
+                            viewModel.addNewTaskTapped() {
+                                let generator = UINotificationFeedbackGenerator()
+                                generator.notificationOccurred(.success)
+                                presentationMode.wrappedValue.dismiss()
+                            }
+                        }, label: {
+                            Text(viewModel.submitButtonText)
+                        })
+                        .buttonStyle(FullWidthButtonStyle(buttonColor: Color.t_green))
+                }
+                .frame(alignment: .center)
+            }
+        }
     }
 }
 
 // MARK: - PreviewProvider -
 
-struct TaskView_Previews: PreviewProvider {
+struct AddTaskView_Previews: PreviewProvider {
     static var previews: some View {
-        TaskDetailsView(viewModel: FakeTaskDetailsViewModel(), navigator: TasksNavigator())
+        TaskDetailsView(viewModel: FakeTaskDetailsViewModel())
     }
 }

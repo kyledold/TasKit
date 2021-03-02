@@ -10,7 +10,7 @@ import Foundation
 protocol TaskRowViewModelProtocol: ObservableObject, Identifiable {
     
     var id: UUID { get }
-    var titleText: String { get }
+    var taskTitle: String { get }
     var dayOfTheWeekText: String { get }
     var dateText: String { get }
     var monthText: String { get }

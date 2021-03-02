@@ -2,22 +2,24 @@
 //  TaskDetailsViewModelProtocol.swift
 //  TaskIt
 //
-//  Created by Kyle Dold on 21/02/2021.
+//  Created by Kyle Dold on 15/02/2021.
 //
 
 import Foundation
 
-protocol TaskDetailsViewModelProtocol {
+protocol TaskDetailsViewModelProtocol: ObservableObject {
     
-    var titleText: String { get }
-    var priority: Priority { get }
+    var taskName: String { get set }
+    var priority: Priority { get set }
+    var dueDate: Date { get set }
+    var isComplete: Bool { get set }
+    var taskNotes: String { get set }
+    var taskNamePlaceholderText: String { get }
+    var taskNotesPlaceholderText: String { get }
+    var taskDateText: String { get }
     var submitButtonText: String { get }
-    var cancelButtonText: String { get }
-    var task: Task { get }
-    var actionSheetTitle: String { get }
-    var deleteText: String { get }
-    var actionSheetMessage: String { get }
+    var subTaskListViewModel: SubTaskListViewModel { get }
     
-    func deleteButtonTapped(_ completion: @escaping EmptyClosure)
-    func submitButtonTapped(_ completion: @escaping EmptyClosure)
+    func onAppear()
+    func addNewTaskTapped(_ completion: @escaping EmptyClosure)
 }

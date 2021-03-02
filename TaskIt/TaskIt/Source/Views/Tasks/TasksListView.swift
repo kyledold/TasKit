@@ -28,7 +28,7 @@ struct TasksListView<ViewModel: TasksListViewModelProtocol>: View {
                 buttonText: viewModel.createTaskButtonText,
                 buttonColor: .t_orange,
                 onButtonTap: {
-                    navigator.sheetDestination = .addTask(onChange: {
+                    navigator.sheetDestination = .taskDetails(task: nil, onChange: {
                         viewModel.fetchTasks()
                     })
                 }
@@ -36,9 +36,6 @@ struct TasksListView<ViewModel: TasksListViewModelProtocol>: View {
             .onNotification(.taskCreated) {
                 toastPresenter.toast = .taskCreated
             }
-        }
-        .fullScreenCover(isPresented: $navigator.showFullScreen) {
-            navigator.fullScreenView()
         }
         VStack {
             // This was s workaround to get sheet and fullscreenCover working
@@ -88,21 +85,14 @@ extension TasksListView {
     private var taskListBodyView: some View {
         ScrollView {
             statusFilterView.padding(.horizontal, Layout.Padding.compact)
-            ForEach(viewModel.taskViewModels, id: \.id) { task in
-                if let taskRowViewModel = task as? TaskRowViewModel {
-                    TaskRowView(viewModel: taskRowViewModel)
-                        .onTapGesture {
-                            UIImpactFeedbackGenerator().impactOccurred()
-                            navigator.fullScreenDestination = .viewTask(task: taskRowViewModel.task, onChange: {
-                                viewModel.fetchTasks()
-                            })
-                        }
-                }
-                #if DEBUG
-                if let fakeTaskRowViewModel = task as? FakeTaskRowViewModel {
-                    TaskRowView(viewModel: fakeTaskRowViewModel)
-                }
-                #endif
+            ForEach(viewModel.taskViewModels, id: \.id) { taskRowViewModel in
+                TaskRowView(viewModel: taskRowViewModel)
+                    .onTapGesture {
+                        UIImpactFeedbackGenerator().impactOccurred()
+                        navigator.sheetDestination = .taskDetails(task: taskRowViewModel.task, onChange: {
+                            viewModel.fetchTasks()
+                        })
+                    }
             }
         }
         .onNotification(.taskCompleted) {
