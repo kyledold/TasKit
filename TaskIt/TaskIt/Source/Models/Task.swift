@@ -15,6 +15,8 @@ public class Task: NSManagedObject {
     var unwrappedId: UUID { id ?? UUID() }
     var unwrappedTitle: String { title ?? "Unknown title" }
     var unwrappeDueDate: Date { dueDate ?? Date() }
+    var unwrappedNotes: String { notes ?? .empty }
+    
     var subTasksArray: [SubTask]? {
         let subTaskArray = subTasks?.allObjects as? Array<SubTask>
         return subTaskArray?.sorted { $0.index < $1.index }
@@ -64,12 +66,19 @@ public class Task: NSManagedObject {
         try? viewContext.save()
     }
     
-    public static func createNewTask(taskName: String, priority: Priority, dueDate: Date, viewContext: NSManagedObjectContext) {
+    public static func createNewTask(
+        taskName: String,
+        priority: Priority,
+        dueDate: Date,
+        taskNotes: String,
+        viewContext: NSManagedObjectContext
+    ) {
         let task = Task(context: viewContext)
         
         task.title = taskName
         task.priority = priority
         task.dueDate = dueDate
+        task.notes = taskNotes
         
         try? viewContext.save()
     }
