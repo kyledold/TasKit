@@ -17,6 +17,4 @@ class FakeTaskRowViewModel: TaskRowViewModelProtocol {
     var priority = Priority.medium
     var isCompleted = false
     var task = Task()
-    
-    func completeButtonTapped() {}
 }

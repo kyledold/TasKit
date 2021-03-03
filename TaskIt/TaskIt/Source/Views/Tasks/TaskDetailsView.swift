@@ -89,9 +89,11 @@ extension TaskDetailsView {
             if showInputAccessoryView {
                 HStack {
                     Button(action: {
-                            viewModel.addNewTaskTapped() {
+                            viewModel.submitButtonTapped() {
                                 let generator = UINotificationFeedbackGenerator()
                                 generator.notificationOccurred(.success)
+                                
+                                
                                 presentationMode.wrappedValue.dismiss()
                             }
                         }, label: {

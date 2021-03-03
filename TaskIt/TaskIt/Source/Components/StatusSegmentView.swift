@@ -23,9 +23,7 @@ struct StatusSegmentView: View {
             .onChange(of: selectedStatus) { onChange(value: $0) }
     }
     
-    private func onChange(value: Status) {
-        UIImpactFeedbackGenerator().impactOccurred()
-    }
+    private func onChange(value: Status) { }
 }
 
 struct StatusSegmentView_Previews: PreviewProvider {

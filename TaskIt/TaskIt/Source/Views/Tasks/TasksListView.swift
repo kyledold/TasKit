@@ -88,7 +88,6 @@ extension TasksListView {
             ForEach(viewModel.taskViewModels, id: \.id) { taskRowViewModel in
                 TaskRowView(viewModel: taskRowViewModel)
                     .onTapGesture {
-                        UIImpactFeedbackGenerator().impactOccurred()
                         navigator.sheetDestination = .taskDetails(task: taskRowViewModel.task, onChange: {
                             viewModel.fetchTasks()
                         })

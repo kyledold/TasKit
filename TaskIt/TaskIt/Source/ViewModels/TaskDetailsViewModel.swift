@@ -35,6 +35,7 @@ class TaskDetailsViewModel: TaskDetailsViewModelProtocol {
     
     private var isNewTask: Bool
     private var subscribers: Set<AnyCancellable> = []
+    private let notificationCenter = NotificationCenter.default
     private let onChange: EmptyClosure
     private let managedObjectContext: NSManagedObjectContext
     private let task: Task
@@ -82,8 +83,10 @@ class TaskDetailsViewModel: TaskDetailsViewModelProtocol {
         }
     }
     
-    func addNewTaskTapped(_ completion: @escaping EmptyClosure) {
-        Task.createNewTask(
+    func submitButtonTapped(_ completion: @escaping EmptyClosure) {
+        
+        Task.updateTask(
+            task: task,
             taskName: taskName,
             priority: priority,
             dueDate: dueDate,
@@ -92,7 +95,16 @@ class TaskDetailsViewModel: TaskDetailsViewModelProtocol {
         )
 
         onChange()
+        postToastNotification()
         completion()
+    }
+    
+    private func postToastNotification() {
+        if isNewTask {
+            notificationCenter.post(name: .taskCreated, object: nil)
+        } else {
+            notificationCenter.post(name: .taskUpdated, object: nil)
+        }
     }
     
     private func addObservers() {

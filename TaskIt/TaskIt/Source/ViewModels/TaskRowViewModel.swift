@@ -32,13 +32,4 @@ class TaskRowViewModel: TaskRowViewModelProtocol {
         
         self.isCompleted = task.status == .completed
     }
-    
-    // MARK: - Functions
-    
-    func completeButtonTapped() {
-        task.status = task.status == .completed ? .todo : .completed
-        try? managedObjectContext.save()
-        
-        isCompleted = task.status == .completed
-    }
 }

@@ -66,14 +66,14 @@ public class Task: NSManagedObject {
         try? viewContext.save()
     }
     
-    public static func createNewTask(
+    public static func updateTask(
+        task: Task,
         taskName: String,
         priority: Priority,
         dueDate: Date,
         taskNotes: String,
         viewContext: NSManagedObjectContext
     ) {
-        let task = Task(context: viewContext)
         
         task.title = taskName
         task.priority = priority

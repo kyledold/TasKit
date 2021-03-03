@@ -17,7 +17,6 @@ struct ButtonFooterView: View {
         VStack {
             Spacer()
             Button(action: {
-                UIImpactFeedbackGenerator().impactOccurred()
                 onButtonTap()
             }, label: {
                 Text(buttonText)

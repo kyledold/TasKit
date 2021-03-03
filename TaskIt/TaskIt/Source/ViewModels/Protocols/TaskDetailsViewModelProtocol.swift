@@ -23,5 +23,5 @@ protocol TaskDetailsViewModelProtocol: ObservableObject {
     
     func onAppear()
     func onDisappear()
-    func addNewTaskTapped(_ completion: @escaping EmptyClosure)
+    func submitButtonTapped(_ completion: @escaping EmptyClosure)
 }
