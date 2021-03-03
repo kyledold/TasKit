@@ -19,7 +19,9 @@ protocol TaskDetailsViewModelProtocol: ObservableObject {
     var taskDateText: String { get }
     var submitButtonText: String { get }
     var subTaskListViewModel: SubTaskListViewModel { get }
+    var isSubmitButtonDisabled: Bool { get }
     
     func onAppear()
+    func onDisappear()
     func addNewTaskTapped(_ completion: @escaping EmptyClosure)
 }

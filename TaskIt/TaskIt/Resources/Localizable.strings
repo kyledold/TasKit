@@ -23,9 +23,11 @@
 "subtask_list.subtask_name_placeholder" = "Enter subtask name here...";
 "task_details.add_task" = "Add task";
 "task_details.create" = "Create";
+"task_details.update" = "Update";
 "task_details.date" = "Date";
 "task_details.task_name_placeholder" = "Task name";
 "task_details.task_notes_placeholder" = "Write any notes here...";
+"task_details.update" = "Update";
 "toast.task_created" = "Task successfully created";
 "toast.task_deleted" = "Task successfully deleted";
 "toast.task_completed" = "Task successfully completed";

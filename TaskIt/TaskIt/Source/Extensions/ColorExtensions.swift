@@ -13,6 +13,7 @@ extension Color {
     static let t_black = Color("t_black")
     static let t_dim_blue = Color("t_dim_blue")
     static let t_green = Color("t_green")
+    static let t_gray = Color("t_gray")
     static let t_yellow = Color("t_yellow")
     static let t_red = Color("t_red")
     static let t_input_background = Color("t_input_background")

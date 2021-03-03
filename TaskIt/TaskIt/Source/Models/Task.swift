@@ -83,6 +83,10 @@ public class Task: NSManagedObject {
         try? viewContext.save()
     }
     
+    public static func saveChanges(viewContext: NSManagedObjectContext) {
+        try? viewContext.save()
+    }
+    
     // MARK: - awake
     
     public override func awakeFromInsert() {

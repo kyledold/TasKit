@@ -30,10 +30,13 @@ struct TaskDetailsView<ViewModel: TaskDetailsViewModelProtocol>: View {
         }
         .onAppear {
             viewModel.onAppear()
-            //showInputAccessoryView = true
+            showInputAccessoryView = true
             
             // TODO: find a better way to handle this
             UITextView.appearance().backgroundColor = .clear
+        }
+        .onDisappear {
+            viewModel.onDisappear()
         }
     }
 }
@@ -94,7 +97,8 @@ extension TaskDetailsView {
                         }, label: {
                             Text(viewModel.submitButtonText)
                         })
-                        .buttonStyle(FullWidthButtonStyle(buttonColor: Color.t_green))
+                        .disabled(viewModel.isSubmitButtonDisabled)
+                        .buttonStyle(FullWidthButtonStyle(isDisabled: viewModel.isSubmitButtonDisabled, buttonColor: Color.t_green))
                 }
                 .frame(alignment: .center)
             }

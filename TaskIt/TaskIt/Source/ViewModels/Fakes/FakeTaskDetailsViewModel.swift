@@ -19,11 +19,13 @@ class FakeTaskDetailsViewModel: TaskDetailsViewModelProtocol {
     var taskNotesPlaceholderText = "Write notes here..."
     var taskDateText = "Date"
     var submitButtonText = "Create"
+    var isSubmitButtonDisabled = false
     var subTaskListViewModel = SubTaskListViewModel(
         task: Task(),
         managedObjectContext: NSManagedObjectContext(concurrencyType: .mainQueueConcurrencyType)
     )
     
     func onAppear() {}
+    func onDisappear() {}
     func addNewTaskTapped(_ completion: @escaping EmptyClosure) { }
 }
