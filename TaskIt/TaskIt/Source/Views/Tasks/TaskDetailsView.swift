@@ -13,7 +13,6 @@ struct TaskDetailsView<ViewModel: TaskDetailsViewModelProtocol>: View {
     
     @ObservedObject var viewModel: ViewModel
     
-    @State private var showInputAccessoryView = false
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     
     // MARK: - View
@@ -26,12 +25,9 @@ struct TaskDetailsView<ViewModel: TaskDetailsViewModelProtocol>: View {
                 SubTaskListView(viewModel: viewModel.subTaskListViewModel)
             }
             .padding(.horizontal)
-            footerView
+            //footerView
         }
         .onAppear {
-            viewModel.onAppear()
-            showInputAccessoryView = true
-            
             // TODO: find a better way to handle this
             UITextView.appearance().backgroundColor = .clear
         }
@@ -72,7 +68,7 @@ extension TaskDetailsView {
                     PrioritySegmentView(selectedPriority: $viewModel.priority)
                     
                     DatePicker(viewModel.taskDateText, selection: $viewModel.dueDate, displayedComponents: .date)
-                        .accentColor(Color.t_black)
+                        .accentColor(Color.primary)
                 }
                 .padding(Layout.Padding.cozy)
                 .background(Color.t_input_background)
@@ -83,6 +79,7 @@ extension TaskDetailsView {
         }
     }
     
+    /*
     private var footerView: some View {
         VStack {
             Spacer()
@@ -105,7 +102,7 @@ extension TaskDetailsView {
                 .frame(alignment: .center)
             }
         }
-    }
+    }*/
 }
 
 // MARK: - PreviewProvider -

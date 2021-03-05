@@ -69,11 +69,6 @@ class TaskDetailsViewModel: TaskDetailsViewModelProtocol {
     
     // MARK: - Functions
     
-    func onAppear() {
-        taskName = .empty
-        priority = .none
-    }
-    
     func onDisappear() {
         
         let shouldDiscardUnsavedChanges = isNewTask && managedObjectContext.hasChanges
@@ -110,6 +105,13 @@ class TaskDetailsViewModel: TaskDetailsViewModelProtocol {
     private func addObservers() {
         $taskName.sink { [weak self] taskName in
             self?.isSubmitButtonDisabled = taskName.isBlank
+        }.store(in: &subscribers)
+        
+        $isComplete.dropFirst().sink { [weak self] isComplete in
+            guard let task = self?.task else { return }
+            guard let managedObjectContext = self?.managedObjectContext else { return }
+            
+            Task.updateStatus(task: task, newStatus: isComplete ? .completed : .todo, viewContext: managedObjectContext)
         }.store(in: &subscribers)
     }
 }

@@ -30,6 +30,7 @@ struct TaskRowView<ViewModel: TaskRowViewModelProtocol>: View {
                 .frame(width: 0.2)
             
             Text(viewModel.taskTitle)
+                .strikethrough(viewModel.isCompleted, color: .primary)
                 .font(.regular_16)
                 .foregroundColor(.primary)
             
