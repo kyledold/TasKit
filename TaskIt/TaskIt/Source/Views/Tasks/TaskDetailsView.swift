@@ -65,8 +65,6 @@ extension TaskDetailsView {
                 }
                 
                 VStack(spacing: Layout.Padding.cozy) {
-                    PrioritySegmentView(selectedPriority: $viewModel.priority)
-                    
                     DatePicker(viewModel.taskDateText, selection: $viewModel.dueDate, displayedComponents: .date)
                         .accentColor(Color.primary)
                 }

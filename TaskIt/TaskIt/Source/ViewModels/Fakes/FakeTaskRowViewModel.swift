@@ -14,7 +14,6 @@ class FakeTaskRowViewModel: TaskRowViewModelProtocol {
     var dayOfTheWeekText = "FRI"
     var dateText = "25"
     var monthText = "Nov"
-    var priority = Priority.medium
     var isCompleted = false
     var task = Task()
 }

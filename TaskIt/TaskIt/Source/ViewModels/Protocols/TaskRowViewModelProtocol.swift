@@ -14,7 +14,6 @@ protocol TaskRowViewModelProtocol: ObservableObject, Identifiable {
     var dayOfTheWeekText: String { get }
     var dateText: String { get }
     var monthText: String { get }
-    var priority: Priority { get }
     var isCompleted: Bool { get }
     var task: Task { get }
 }

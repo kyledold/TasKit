@@ -12,13 +12,12 @@
         <attribute name="dueDate" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
         <attribute name="notes" optional="YES" attributeType="String"/>
-        <attribute name="priorityValue" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="statusValue" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="title" optional="YES" attributeType="String"/>
         <relationship name="subTasks" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="SubTask" inverseName="task" inverseEntity="SubTask"/>
     </entity>
     <elements>
         <element name="SubTask" positionX="-63" positionY="27" width="128" height="104"/>
-        <element name="Task" positionX="-63" positionY="-18" width="128" height="149"/>
+        <element name="Task" positionX="-63" positionY="-18" width="128" height="134"/>
     </elements>
 </model>

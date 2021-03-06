@@ -27,11 +27,6 @@ public class Task: NSManagedObject {
         set { statusValue = newValue.rawValue }
     }
     
-    var priority: Priority {
-        get { return Priority(rawValue: priorityValue)! }
-        set { priorityValue = newValue.rawValue }
-    }
-    
     // MARK: - Task CoreData Operations
     
     public static func fetchAll(viewContext: NSManagedObjectContext) -> [Task] {
@@ -69,14 +64,12 @@ public class Task: NSManagedObject {
     public static func updateTask(
         task: Task,
         taskName: String,
-        priority: Priority,
         dueDate: Date,
         taskNotes: String,
         viewContext: NSManagedObjectContext
     ) {
         
         task.title = taskName
-        task.priority = priority
         task.dueDate = dueDate
         task.notes = taskNotes
         

@@ -14,7 +14,6 @@ class TaskDetailsViewModel: TaskDetailsViewModelProtocol {
     // MARK: - Properties
     
     @Published var taskName = String.empty
-    @Published var priority = Priority.none
     @Published var dueDate = Date()
     @Published var isComplete = false
     @Published var taskNotes = String.empty
@@ -51,7 +50,6 @@ class TaskDetailsViewModel: TaskDetailsViewModelProtocol {
             self.task = task
             self.isNewTask = false
             taskName = task.unwrappedTitle
-            priority = task.priority
             dueDate = task.unwrappeDueDate
             isComplete = task.status == .completed
             taskNotes = task.unwrappedNotes
@@ -83,7 +81,6 @@ class TaskDetailsViewModel: TaskDetailsViewModelProtocol {
         Task.updateTask(
             task: task,
             taskName: taskName,
-            priority: priority,
             dueDate: dueDate,
             taskNotes: taskNotes,
             viewContext: managedObjectContext

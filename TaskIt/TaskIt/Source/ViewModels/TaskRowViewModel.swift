@@ -14,7 +14,6 @@ class TaskRowViewModel: TaskRowViewModelProtocol {
     
     var id: UUID { return task.unwrappedId }
     var taskTitle: String { task.unwrappedTitle }
-    var priority: Priority { task.priority }
     var dayOfTheWeekText: String { return task.unwrappeDueDate.dayOfTheWeek.uppercased() }
     var dateText: String { return "\(task.unwrappeDueDate.get(.day))" }
     var monthText: String { return task.unwrappeDueDate.month }

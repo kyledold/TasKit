@@ -48,12 +48,10 @@
 		D17DAAA125DBDF8400ED4A8C /* TaskIt.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D17DAA4E25DB039000ED4A8C /* TaskIt.xcdatamodeld */; };
 		D17DAAA525DBE04900ED4A8C /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D17DAAA425DBE04900ED4A8C /* StringExtension.swift */; };
 		D17DAAA925DBF10300ED4A8C /* Status.swift in Sources */ = {isa = PBXBuildFile; fileRef = D17DAAA825DBF10300ED4A8C /* Status.swift */; };
-		D17DAAAD25DBF2A100ED4A8C /* Priority.swift in Sources */ = {isa = PBXBuildFile; fileRef = D17DAAAC25DBF2A100ED4A8C /* Priority.swift */; };
 		D17DAAB225DBFC9E00ED4A8C /* TaskRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D17DAAB125DBFC9E00ED4A8C /* TaskRowView.swift */; };
 		D17DAAB525DBFCEB00ED4A8C /* TaskRowViewModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = D17DAAB425DBFCEB00ED4A8C /* TaskRowViewModelProtocol.swift */; };
 		D17DAAB825DBFD0F00ED4A8C /* FakeTaskRowViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D17DAAB725DBFD0F00ED4A8C /* FakeTaskRowViewModel.swift */; };
 		D17DAABB25DBFD3300ED4A8C /* TaskRowViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D17DAABA25DBFD3300ED4A8C /* TaskRowViewModel.swift */; };
-		D17DAAD425DC279D00ED4A8C /* PrioritySegmentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D17DAAD325DC279C00ED4A8C /* PrioritySegmentView.swift */; };
 		D17FC98625D6E814002A5501 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D14E118925D2FCDD00FC27E3 /* CloudKit.framework */; };
 		D17FC98F25D8106F002A5501 /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D17FC98E25D8106F002A5501 /* SettingsViewModel.swift */; };
 		D17FC99425D8107C002A5501 /* SettingsViewModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = D17FC99325D8107C002A5501 /* SettingsViewModelProtocol.swift */; };
@@ -79,7 +77,6 @@
 		D1BD688C25EA8ECF002C4518 /* TextBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1BD688B25EA8ECF002C4518 /* TextBox.swift */; };
 		D1BD689125EB8E45002C4518 /* SubTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1BD689025EB8E45002C4518 /* SubTask.swift */; };
 		D1D74EF425C96DA400E8EC77 /* Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1D74EF325C96DA400E8EC77 /* Layout.swift */; };
-		D1D74F0225C9753800E8EC77 /* FootnoteTextStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1D74F0125C9753800E8EC77 /* FootnoteTextStyle.swift */; };
 		D1DCF68325EB9497006305E7 /* SubTaskRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1DCF68225EB9497006305E7 /* SubTaskRowView.swift */; };
 		D1DCF68625EB9511006305E7 /* SubTaskRowViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1DCF68525EB9511006305E7 /* SubTaskRowViewModel.swift */; };
 		D1DCF68925EB9527006305E7 /* SubTaskRowViewModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1DCF68825EB9527006305E7 /* SubTaskRowViewModelProtocol.swift */; };
@@ -159,12 +156,10 @@
 		D17DAA4F25DB039000ED4A8C /* TaskIt.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = TaskIt.xcdatamodel; sourceTree = "<group>"; };
 		D17DAAA425DBE04900ED4A8C /* StringExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
 		D17DAAA825DBF10300ED4A8C /* Status.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Status.swift; sourceTree = "<group>"; };
-		D17DAAAC25DBF2A100ED4A8C /* Priority.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Priority.swift; sourceTree = "<group>"; };
 		D17DAAB125DBFC9E00ED4A8C /* TaskRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskRowView.swift; sourceTree = "<group>"; };
 		D17DAAB425DBFCEB00ED4A8C /* TaskRowViewModelProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskRowViewModelProtocol.swift; sourceTree = "<group>"; };
 		D17DAAB725DBFD0F00ED4A8C /* FakeTaskRowViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeTaskRowViewModel.swift; sourceTree = "<group>"; };
 		D17DAABA25DBFD3300ED4A8C /* TaskRowViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskRowViewModel.swift; sourceTree = "<group>"; };
-		D17DAAD325DC279C00ED4A8C /* PrioritySegmentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrioritySegmentView.swift; sourceTree = "<group>"; };
 		D17FC98E25D8106F002A5501 /* SettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
 		D17FC99325D8107C002A5501 /* SettingsViewModelProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModelProtocol.swift; sourceTree = "<group>"; };
 		D17FC99825D8108B002A5501 /* FakeSettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeSettingsViewModel.swift; sourceTree = "<group>"; };
@@ -193,7 +188,6 @@
 		D1BD688B25EA8ECF002C4518 /* TextBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextBox.swift; sourceTree = "<group>"; };
 		D1BD689025EB8E45002C4518 /* SubTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubTask.swift; sourceTree = "<group>"; };
 		D1D74EF325C96DA400E8EC77 /* Layout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Layout.swift; sourceTree = "<group>"; };
-		D1D74F0125C9753800E8EC77 /* FootnoteTextStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FootnoteTextStyle.swift; sourceTree = "<group>"; };
 		D1DCF68225EB9497006305E7 /* SubTaskRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubTaskRowView.swift; sourceTree = "<group>"; };
 		D1DCF68525EB9511006305E7 /* SubTaskRowViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubTaskRowViewModel.swift; sourceTree = "<group>"; };
 		D1DCF68825EB9527006305E7 /* SubTaskRowViewModelProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubTaskRowViewModelProtocol.swift; sourceTree = "<group>"; };
@@ -267,7 +261,6 @@
 			children = (
 				D1BD688525EA81F3002C4518 /* CheckboxToggleStyle.swift */,
 				D131DFA025E277980039D7E7 /* FooterStyle.swift */,
-				D1D74F0125C9753800E8EC77 /* FootnoteTextStyle.swift */,
 				D1BD687725E970A9002C4518 /* FullWidthButtonStyle.swift */,
 				D1BD687325E96EAA002C4518 /* RoundedButtonStyle.swift */,
 				D17FC9B225D81810002A5501 /* SubTitleStyle.swift */,
@@ -401,7 +394,6 @@
 				D17DA9FF25DAE50300ED4A8C /* Task.swift */,
 				D1BD689025EB8E45002C4518 /* SubTask.swift */,
 				D17DAAA825DBF10300ED4A8C /* Status.swift */,
-				D17DAAAC25DBF2A100ED4A8C /* Priority.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -410,7 +402,6 @@
 			isa = PBXGroup;
 			children = (
 				D131DF9A25E276770039D7E7 /* ButtonFooterView.swift */,
-				D17DAAD325DC279C00ED4A8C /* PrioritySegmentView.swift */,
 				D1542BF025E026A4005FD7C7 /* StatusSegmentView.swift */,
 				D11E7D4925E16F9D00EED79E /* SegmentPicker.swift */,
 				D1BD688B25EA8ECF002C4518 /* TextBox.swift */,
@@ -653,7 +644,6 @@
 				D1D74EF425C96DA400E8EC77 /* Layout.swift in Sources */,
 				D17DAA9925DBDF5300ED4A8C /* Task.swift in Sources */,
 				D1BC346625D5A11E0068A57A /* Closure.swift in Sources */,
-				D1D74F0225C9753800E8EC77 /* FootnoteTextStyle.swift in Sources */,
 				D1529C7525C72C76003FC9D6 /* ColorExtensions.swift in Sources */,
 				D131DFA125E277980039D7E7 /* FooterStyle.swift in Sources */,
 				D17FC9B325D81810002A5501 /* SubTitleStyle.swift in Sources */,
@@ -664,13 +654,11 @@
 				D1BD688C25EA8ECF002C4518 /* TextBox.swift in Sources */,
 				D17FCA5B25D98986002A5501 /* TasksListViewModel.swift in Sources */,
 				D17DAAA525DBE04900ED4A8C /* StringExtension.swift in Sources */,
-				D17DAAAD25DBF2A100ED4A8C /* Priority.swift in Sources */,
 				D1542BE925DFE9C5005FD7C7 /* SimpleTextFieldStyle.swift in Sources */,
 				D1BD689125EB8E45002C4518 /* SubTask.swift in Sources */,
 				D17FC9D925D8235F002A5501 /* SettingsRowViewModel.swift in Sources */,
 				D17DAABB25DBFD3300ED4A8C /* TaskRowViewModel.swift in Sources */,
 				D1DCF69025EBD7EA006305E7 /* SubTaskListView.swift in Sources */,
-				D17DAAD425DC279D00ED4A8C /* PrioritySegmentView.swift in Sources */,
 				D17DAAB225DBFC9E00ED4A8C /* TaskRowView.swift in Sources */,
 				D1DCF68C25EB9600006305E7 /* FakeSubTaskRowViewModel.swift in Sources */,
 				D17DA9D725DABECB00ED4A8C /* FakeTasksListViewModel.swift in Sources */,

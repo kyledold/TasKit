@@ -33,8 +33,4 @@
 "toast.task_deleted" = "Task successfully deleted";
 "toast.task_completed" = "Task successfully completed";
 "toast.task_updated" = "Task successfully updated";
-"priority_picker.none" = "none";
-"priority_picker.low" = "low";
-"priority_picker.medium" = "medium";
-"priority_picker.high" = "high";
 

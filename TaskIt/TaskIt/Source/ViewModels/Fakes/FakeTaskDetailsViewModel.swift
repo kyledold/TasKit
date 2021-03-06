@@ -11,7 +11,6 @@ import Foundation
 class FakeTaskDetailsViewModel: TaskDetailsViewModelProtocol {
     
     var taskName = String.empty
-    var priority = Priority.none
     var dueDate = Date()
     var isComplete = false
     var taskNotes = "This is the task notes"

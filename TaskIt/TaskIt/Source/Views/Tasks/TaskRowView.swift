@@ -35,15 +35,6 @@ struct TaskRowView<ViewModel: TaskRowViewModelProtocol>: View {
                 .foregroundColor(.primary)
             
             Spacer()
-            
-            if viewModel.priority != .none {
-                VStack {
-                    Image(Image.iconNameForPriority(viewModel.priority))
-                        .resizable()
-                        .frame(width: 20, height: 20)
-                    Spacer()
-                }
-            }
         }
         .padding(.all,  Layout.Padding.compact)
         .background(Color.t_content_background)
