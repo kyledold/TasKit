@@ -51,13 +51,17 @@ public class Task: NSManagedObject {
     
     public static func deleteTask(task: Task, viewContext: NSManagedObjectContext) {
         viewContext.delete(task)
-        
         try? viewContext.save()
     }
     
     public static func updateStatus(task: Task, newStatus: Status, viewContext: NSManagedObjectContext) {
         task.status = newStatus
-        
+        try? viewContext.save()
+    }
+    
+    public static func create(title: String, viewContext: NSManagedObjectContext) {
+        let newTask = Task(context: viewContext)
+        newTask.title = title
         try? viewContext.save()
     }
     
@@ -68,11 +72,9 @@ public class Task: NSManagedObject {
         taskNotes: String,
         viewContext: NSManagedObjectContext
     ) {
-        
         task.title = taskName
         task.dueDate = dueDate
         task.notes = taskNotes
-        
         try? viewContext.save()
     }
     

@@ -5,6 +5,7 @@
 //  Created by Kyle Dold on 15/02/2021.
 //
 
+import CoreData
 import Foundation
 
 class FakeTasksListViewModel: TasksListViewModelProtocol {
@@ -13,6 +14,7 @@ class FakeTasksListViewModel: TasksListViewModelProtocol {
     
     var titleText = "Tasks"
     var createTaskButtonText = "Create task"
+    var newTaskViewModel = NewTaskViewModel(managedObjectContext: NSManagedObjectContext(concurrencyType: .mainQueueConcurrencyType))
     
     var taskViewModels: [RowViewModel] = [
         FakeTaskRowViewModel(),

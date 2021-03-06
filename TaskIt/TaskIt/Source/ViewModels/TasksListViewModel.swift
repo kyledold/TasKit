@@ -14,11 +14,20 @@ class TasksListViewModel: TasksListViewModelProtocol {
     
     // MARK: - Properties
     
+    @Published private(set) var taskViewModels: [RowViewModel]
+    @Published var selectedStatusFilter = Status.todo
+    
     let titleText = NSLocalizedString("tasks.title", comment: "Tasks title")
     var createTaskButtonText = NSLocalizedString("tasks.create_task", comment: "Create button title")
     
-    @Published private(set) var taskViewModels: [RowViewModel]
-    @Published var selectedStatusFilter = Status.todo
+    lazy var newTaskViewModel: NewTaskViewModel = {
+        let newTaskViewModel = NewTaskViewModel(managedObjectContext: managedObjectContext)
+        newTaskViewModel.onTaskAdded = { [weak self] in
+            self?.fetchTasks()
+        }
+        
+        return newTaskViewModel
+    }()
     
     private let managedObjectContext: NSManagedObjectContext
     

@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import Introspect
 
 struct TasksListView<ViewModel: TasksListViewModelProtocol>: View {
     
@@ -15,6 +16,8 @@ struct TasksListView<ViewModel: TasksListViewModelProtocol>: View {
     @ObservedObject var navigator: TasksNavigator
     @ObservedObject var toastPresenter: ToastPresenter
     
+    @State private var showNewTaskView = false
+    
     // MARK: - View
     
     var body: some View {
@@ -23,18 +26,13 @@ struct TasksListView<ViewModel: TasksListViewModelProtocol>: View {
                 navigationHeaderView
                 taskListBodyView
             }
+            .allowsHitTesting(!showNewTaskView)
             .backgroundOverlay()
-            ButtonFooterView(
-                buttonText: viewModel.createTaskButtonText,
-                buttonColor: .t_orange,
-                onButtonTap: {
-                    navigator.sheetDestination = .taskDetails(task: nil, onChange: {
-                        viewModel.fetchTasks()
-                    })
-                }
-            )
-            .onNotification(.taskCreated) {
-                toastPresenter.toast = .taskCreated
+            
+            if showNewTaskView {
+                NewTaskView(viewModel: viewModel.newTaskViewModel, showNewTaskView: $showNewTaskView)
+            } else {
+                createTaskFooterButton
             }
         }
         VStack {
@@ -102,6 +100,21 @@ extension TasksListView {
         }
         .onNotification(.taskUpdated) {
             toastPresenter.toast = .taskUpdated
+        }
+    }
+    
+    private var createTaskFooterButton: some View {
+        ButtonFooterView(
+            buttonText: viewModel.createTaskButtonText,
+            buttonColor: .t_orange,
+            onButtonTap: {
+                withAnimation {
+                    showNewTaskView = true
+                }
+            }
+        )
+        .onNotification(.taskCreated) {
+            toastPresenter.toast = .taskCreated
         }
     }
 }

@@ -85,6 +85,12 @@
 		D1DCF69425EBD8F3006305E7 /* SubTaskListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1DCF69325EBD8F3006305E7 /* SubTaskListViewModel.swift */; };
 		D1DCF69725EBD908006305E7 /* SubTaskListViewModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1DCF69625EBD908006305E7 /* SubTaskListViewModelProtocol.swift */; };
 		D1DCF69B25EBD918006305E7 /* FakeSubTaskListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1DCF69A25EBD918006305E7 /* FakeSubTaskListViewModel.swift */; };
+		D1F2065625F394F6001780E7 /* RoundedCorners.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1F2065525F394F6001780E7 /* RoundedCorners.swift */; };
+		D1F2065A25F39A4C001780E7 /* NewTaskView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1F2065925F39A4C001780E7 /* NewTaskView.swift */; };
+		D1F2065E25F39DD6001780E7 /* NewTaskViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1F2065D25F39DD6001780E7 /* NewTaskViewModel.swift */; };
+		D1F2066225F39DF8001780E7 /* NewTaskViewModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1F2066125F39DF8001780E7 /* NewTaskViewModelProtocol.swift */; };
+		D1F2066525F39E09001780E7 /* FakeNewTaskViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1F2066425F39E09001780E7 /* FakeNewTaskViewModel.swift */; };
+		D1F2066A25F3A66B001780E7 /* ImageButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1F2066925F3A66B001780E7 /* ImageButtonStyle.swift */; };
 		D1FB562325F2926600F87AC4 /* Introspect in Frameworks */ = {isa = PBXBuildFile; productRef = D1FB562225F2926600F87AC4 /* Introspect */; };
 		D1FED10A25E6D16A00686A45 /* ToastPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1FED10925E6D16A00686A45 /* ToastPresenter.swift */; };
 /* End PBXBuildFile section */
@@ -196,6 +202,12 @@
 		D1DCF69325EBD8F3006305E7 /* SubTaskListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubTaskListViewModel.swift; sourceTree = "<group>"; };
 		D1DCF69625EBD908006305E7 /* SubTaskListViewModelProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubTaskListViewModelProtocol.swift; sourceTree = "<group>"; };
 		D1DCF69A25EBD918006305E7 /* FakeSubTaskListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeSubTaskListViewModel.swift; sourceTree = "<group>"; };
+		D1F2065525F394F6001780E7 /* RoundedCorners.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedCorners.swift; sourceTree = "<group>"; };
+		D1F2065925F39A4C001780E7 /* NewTaskView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewTaskView.swift; sourceTree = "<group>"; };
+		D1F2065D25F39DD6001780E7 /* NewTaskViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewTaskViewModel.swift; sourceTree = "<group>"; };
+		D1F2066125F39DF8001780E7 /* NewTaskViewModelProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewTaskViewModelProtocol.swift; sourceTree = "<group>"; };
+		D1F2066425F39E09001780E7 /* FakeNewTaskViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeNewTaskViewModel.swift; sourceTree = "<group>"; };
+		D1F2066925F3A66B001780E7 /* ImageButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageButtonStyle.swift; sourceTree = "<group>"; };
 		D1FED10925E6D16A00686A45 /* ToastPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToastPresenter.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -262,6 +274,7 @@
 				D1BD688525EA81F3002C4518 /* CheckboxToggleStyle.swift */,
 				D131DFA025E277980039D7E7 /* FooterStyle.swift */,
 				D1BD687725E970A9002C4518 /* FullWidthButtonStyle.swift */,
+				D1F2066925F3A66B001780E7 /* ImageButtonStyle.swift */,
 				D1BD687325E96EAA002C4518 /* RoundedButtonStyle.swift */,
 				D17FC9B225D81810002A5501 /* SubTitleStyle.swift */,
 				D1542BE825DFE9C5005FD7C7 /* SimpleTextFieldStyle.swift */,
@@ -379,6 +392,7 @@
 			children = (
 				D1783EB925C9C9E500D8EFC3 /* TasksListView.swift */,
 				D17DAAB125DBFC9E00ED4A8C /* TaskRowView.swift */,
+				D1F2065925F39A4C001780E7 /* NewTaskView.swift */,
 				D17DA9C025DABB9100ED4A8C /* TaskDetailsView.swift */,
 				D1DCF68F25EBD7EA006305E7 /* SubTaskListView.swift */,
 				D1DCF68225EB9497006305E7 /* SubTaskRowView.swift */,
@@ -404,6 +418,7 @@
 				D131DF9A25E276770039D7E7 /* ButtonFooterView.swift */,
 				D1542BF025E026A4005FD7C7 /* StatusSegmentView.swift */,
 				D11E7D4925E16F9D00EED79E /* SegmentPicker.swift */,
+				D1F2065525F394F6001780E7 /* RoundedCorners.swift */,
 				D1BD688B25EA8ECF002C4518 /* TextBox.swift */,
 				D11E734525E5719D006FD6CB /* Toast */,
 			);
@@ -428,6 +443,7 @@
 				D17FC9D825D8235F002A5501 /* SettingsRowViewModel.swift */,
 				D17FCA5A25D98986002A5501 /* TasksListViewModel.swift */,
 				D17DAABA25DBFD3300ED4A8C /* TaskRowViewModel.swift */,
+				D1F2065D25F39DD6001780E7 /* NewTaskViewModel.swift */,
 				D17DA9CC25DABE4600ED4A8C /* TaskDetailsViewModel.swift */,
 				D1DCF69325EBD8F3006305E7 /* SubTaskListViewModel.swift */,
 				D1DCF68525EB9511006305E7 /* SubTaskRowViewModel.swift */,
@@ -442,6 +458,7 @@
 				D17FC9EB25D828F6002A5501 /* FakeSettingsRowViewModel.swift */,
 				D17DA9D625DABECB00ED4A8C /* FakeTasksListViewModel.swift */,
 				D17DAAB725DBFD0F00ED4A8C /* FakeTaskRowViewModel.swift */,
+				D1F2066425F39E09001780E7 /* FakeNewTaskViewModel.swift */,
 				D17DA9E925DAC53700ED4A8C /* FakeTaskDetailsViewModel.swift */,
 				D1DCF69A25EBD918006305E7 /* FakeSubTaskListViewModel.swift */,
 				D1DCF68B25EB9600006305E7 /* FakeSubTaskRowViewModel.swift */,
@@ -456,6 +473,7 @@
 				D17FC9E625D82863002A5501 /* SettingsRowViewModelProtocol.swift */,
 				D17DA9D125DABEA600ED4A8C /* TasksListViewModelProtocol.swift */,
 				D17DAAB425DBFCEB00ED4A8C /* TaskRowViewModelProtocol.swift */,
+				D1F2066125F39DF8001780E7 /* NewTaskViewModelProtocol.swift */,
 				D17DA9E425DAC51700ED4A8C /* TaskDetailsViewModelProtocol.swift */,
 				D1DCF69625EBD908006305E7 /* SubTaskListViewModelProtocol.swift */,
 				D1DCF68825EB9527006305E7 /* SubTaskRowViewModelProtocol.swift */,
@@ -634,6 +652,7 @@
 				D11E734F25E6BC59006FD6CB /* NotificationExtension.swift in Sources */,
 				D17DA9CD25DABE4600ED4A8C /* TaskDetailsViewModel.swift in Sources */,
 				D1542BF125E026A5005FD7C7 /* StatusSegmentView.swift in Sources */,
+				D1F2066525F39E09001780E7 /* FakeNewTaskViewModel.swift in Sources */,
 				D1DCF68925EB9527006305E7 /* SubTaskRowViewModelProtocol.swift in Sources */,
 				D11E734A25E571FF006FD6CB /* ToastView.swift in Sources */,
 				D1BD687825E970A9002C4518 /* FullWidthButtonStyle.swift in Sources */,
@@ -647,15 +666,19 @@
 				D1529C7525C72C76003FC9D6 /* ColorExtensions.swift in Sources */,
 				D131DFA125E277980039D7E7 /* FooterStyle.swift in Sources */,
 				D17FC9B325D81810002A5501 /* SubTitleStyle.swift in Sources */,
+				D1F2066A25F3A66B001780E7 /* ImageButtonStyle.swift in Sources */,
 				D17DAAA125DBDF8400ED4A8C /* TaskIt.xcdatamodeld in Sources */,
 				D17FC9E725D82863002A5501 /* SettingsRowViewModelProtocol.swift in Sources */,
 				D1783EBD25C9C9F100D8EFC3 /* CalendarView.swift in Sources */,
 				D17DA9E525DAC51700ED4A8C /* TaskDetailsViewModelProtocol.swift in Sources */,
 				D1BD688C25EA8ECF002C4518 /* TextBox.swift in Sources */,
+				D1F2065E25F39DD6001780E7 /* NewTaskViewModel.swift in Sources */,
 				D17FCA5B25D98986002A5501 /* TasksListViewModel.swift in Sources */,
 				D17DAAA525DBE04900ED4A8C /* StringExtension.swift in Sources */,
 				D1542BE925DFE9C5005FD7C7 /* SimpleTextFieldStyle.swift in Sources */,
 				D1BD689125EB8E45002C4518 /* SubTask.swift in Sources */,
+				D1F2066225F39DF8001780E7 /* NewTaskViewModelProtocol.swift in Sources */,
+				D1F2065625F394F6001780E7 /* RoundedCorners.swift in Sources */,
 				D17FC9D925D8235F002A5501 /* SettingsRowViewModel.swift in Sources */,
 				D17DAABB25DBFD3300ED4A8C /* TaskRowViewModel.swift in Sources */,
 				D1DCF69025EBD7EA006305E7 /* SubTaskListView.swift in Sources */,
@@ -664,6 +687,7 @@
 				D17DA9D725DABECB00ED4A8C /* FakeTasksListViewModel.swift in Sources */,
 				D17FC9A925D817BE002A5501 /* SettingsRowView.swift in Sources */,
 				D11E7D1A25E1433F00EED79E /* ViewExtension.swift in Sources */,
+				D1F2065A25F39A4C001780E7 /* NewTaskView.swift in Sources */,
 				D17FC99925D8108B002A5501 /* FakeSettingsViewModel.swift in Sources */,
 				D11E7D4A25E16F9D00EED79E /* SegmentPicker.swift in Sources */,
 				D17FC9AE25D817F4002A5501 /* ImageExtension.swift in Sources */,

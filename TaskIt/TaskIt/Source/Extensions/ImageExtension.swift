@@ -15,12 +15,13 @@ extension Image {
         static let calendar = "calendar"
         static let settings = "gearshape.fill"
         static let tasks = "list.dash"
+        static let create = "arrow.up.circle"
     }
     
-    func iconStyle() -> some View {
+    func iconStyle(foregroundColor: Color = .white) -> some View {
         self.resizable()
             .frame(width: 25, height: 25)
-            .foregroundColor(Color.white)
+            .foregroundColor(foregroundColor)
     }
     
     func thumbnailImageModifier(tintColor: Color) -> some View {

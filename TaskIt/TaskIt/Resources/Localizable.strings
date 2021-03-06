@@ -11,6 +11,7 @@
 "general.cancel" = "Cancel";
 "general.done" = "Done";
 "calendar.title" = "Calendar";
+"new_task.task_name.placeholder" = "Type new task name here...";
 "settings.title" = "Settings";
 "settings.feedback.title" = "Feedback";
 "settings.feedback.subtitle" = "kdold02@gmail.com";
