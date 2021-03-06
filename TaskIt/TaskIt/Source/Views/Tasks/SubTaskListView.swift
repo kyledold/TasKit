@@ -51,6 +51,11 @@ struct SubTaskListView<ViewModel: SubTaskListViewModelProtocol>: View {
         }
     }
     
+    private func cancelButtonTapped() {
+        viewModel.cancelButtonTapped()
+        showAddNewSubTaskRow.toggle()
+    }
+    
     private func editButtonTapped() {
         viewModel.editButtonTapped() 
     }
@@ -97,12 +102,16 @@ extension SubTaskListView {
     }
     
     private var newSubTaskInputView: some View {
-        HStack {
+        VStack(alignment: .leading, spacing: Layout.Padding.compact) {
             TextField(viewModel.subTaskNamePlaceholderText, text: $viewModel.newSubTaskName)
                 .textFieldStyle(SimpleTextFieldStyle())
             
-            Button(action: doneButtonTapped, label: { Text(viewModel.doneButtonText) })
-                .disabled(viewModel.newSubTaskName.isBlank)
+            HStack(spacing: Layout.Padding.cozy) {
+                Button(action: doneButtonTapped, label: { Text(viewModel.doneButtonText) })
+                    .disabled(viewModel.newSubTaskName.isBlank)
+                
+                Button(action: cancelButtonTapped, label: { Text("Cancel") })
+            }
         }
     }
     

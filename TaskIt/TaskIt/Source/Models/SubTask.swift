@@ -25,6 +25,8 @@ public class SubTask: NSManagedObject {
         subTask.index = Int16(index)
         
         print("SubTask \"\(subTask.unwrappedTitle)\" created")
+        
+        try? viewContext.save()
     }
     
     public static func deleteSubTasks(_ subTasks: [SubTask], viewContext: NSManagedObjectContext) {
@@ -33,6 +35,8 @@ public class SubTask: NSManagedObject {
             
             print("SubTask \"\($0.unwrappedTitle)\" deleted")
         }
+        
+        try? viewContext.save()
     }
     
     public static func updateOrderOfSubTasks(_ revisedSubTasks: [SubTask], viewContext: NSManagedObjectContext) {
@@ -43,10 +47,14 @@ public class SubTask: NSManagedObject {
             
             print("SubTask \"\(subTask.unwrappedTitle)\" update index to \(index)")
         }
+        
+        try? viewContext.save()
     }
     
     public static func updateCompletionStatus(_ subTask: SubTask, isComplete: Bool, viewContext: NSManagedObjectContext) {
         subTask.isComplete = isComplete
+        
+        try? viewContext.save()
         
         print("SubTask \"\(subTask.unwrappedTitle)\" update completion status to \(isComplete)")
     }

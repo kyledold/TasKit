@@ -8,6 +8,7 @@
 
 "app.version.%@" = "Version %@";
 "general.edit" = "Edit";
+"general.cancel" = "Cancel";
 "general.done" = "Done";
 "calendar.title" = "Calendar";
 "settings.title" = "Settings";

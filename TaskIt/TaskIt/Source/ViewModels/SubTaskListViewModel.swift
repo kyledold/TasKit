@@ -22,6 +22,7 @@ class SubTaskListViewModel: SubTaskListViewModelProtocol {
     var subTaskNamePlaceholderText = NSLocalizedString("subtask_list.subtask_name_placeholder", comment: "Subtask textfield placeholder")
     var addSubTaskButtonText = NSLocalizedString("subtask_list.add_subtask", comment: "Add subtask button text")
     var doneButtonText = NSLocalizedString("general.done", comment: "Done button text")
+    var cancelButtonText = NSLocalizedString("general.cancel", comment: "Cancel button text")
     var editButtonText = NSLocalizedString("general.edit", comment: "Edit button text")
     
     private let managedObjectContext: NSManagedObjectContext
@@ -76,6 +77,10 @@ class SubTaskListViewModel: SubTaskListViewModelProtocol {
     
     func editButtonTapped() {
         isListInEditMode.toggle()
+    }
+    
+    func cancelButtonTapped() {
+        newSubTaskName = .empty
     }
     
     private func fetchSubTasks() {
