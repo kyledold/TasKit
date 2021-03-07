@@ -36,11 +36,9 @@ struct TaskRowView<ViewModel: TaskRowViewModelProtocol>: View {
             
             Spacer()
         }
-        .padding(.all,  Layout.Padding.compact)
-        .background(Color.t_content_background)
-        .cornerRadius(25.0)
-        .shadow(color: Color.black.opacity(0.4), radius: 1, y: 1)
-        .padding(.horizontal, Layout.Padding.compact)
+        .padding(.vertical, Layout.Padding.compact)
+        .background(Color.t_input_background)
+        .cornerRadius(10.0)
     }
 }
 

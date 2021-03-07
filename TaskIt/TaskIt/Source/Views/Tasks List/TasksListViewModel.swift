@@ -28,11 +28,13 @@ class TasksListViewModel: TasksListViewModelProtocol {
         return newTaskViewModel
     }()
     
+    private unowned let coordinator: TaskItCoordinator
     private let managedObjectContext: NSManagedObjectContext
     
     // MARK: - Initialisation
     
-    init(managedObjectContext: NSManagedObjectContext) {
+    init(coordinator: TaskItCoordinator, managedObjectContext: NSManagedObjectContext) {
+        self.coordinator = coordinator
         self.managedObjectContext = managedObjectContext
         self.taskViewModels = []
     }
@@ -42,5 +44,17 @@ class TasksListViewModel: TasksListViewModelProtocol {
     func fetchTasks() {
         let taskModels = Task.fetchAll(viewContext: managedObjectContext)
         taskViewModels = taskModels.map { return TaskRowViewModel(task: $0, managedObjectContext: managedObjectContext) }
+    }
+    
+    func open(_ rowViewModel: RowViewModel) {
+        coordinator.open(rowViewModel)
+    }
+    
+    func settingsButtonTapped() {
+        coordinator.openSettings()
+    }
+    
+    func calendarButtonTapped() {
+        coordinator.openCalendar()
     }
 }

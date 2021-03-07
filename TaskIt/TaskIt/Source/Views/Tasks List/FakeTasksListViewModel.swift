@@ -23,4 +23,7 @@ class FakeTasksListViewModel: TasksListViewModelProtocol {
     ]
     
     func fetchTasks() {}
+    func open(_ rowViewModel: RowViewModel) {}
+    func settingsButtonTapped() {}
+    func calendarButtonTapped() {}
 }

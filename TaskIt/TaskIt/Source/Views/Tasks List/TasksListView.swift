@@ -8,13 +8,14 @@
 import SwiftUI
 import Introspect
 
-struct TasksListView<ViewModel: TasksListViewModelProtocol>: View {
+struct TasksListView<ViewModel: TasksListViewModelProtocol, SettingsModifier: ViewModifier, CalendarModifier: ViewModifier>: View {
     
     // MARK: - Properties
     
     @ObservedObject var viewModel: ViewModel
-    @ObservedObject var navigator: TaskItCoordinator
-    @ObservedObject var toastPresenter: ToastPresenter
+    
+    let settingsModifier: SettingsModifier
+    let calendarModifier: CalendarModifier
     
     @State private var showNewTaskView = false
     
@@ -27,7 +28,6 @@ struct TasksListView<ViewModel: TasksListViewModelProtocol>: View {
                 taskListBodyView
             }
             .allowsHitTesting(!showNewTaskView)
-            .backgroundOverlay()
             
             if showNewTaskView {
                 NewTaskView(viewModel: viewModel.newTaskViewModel, showNewTaskView: $showNewTaskView)
@@ -35,19 +35,28 @@ struct TasksListView<ViewModel: TasksListViewModelProtocol>: View {
                 createTaskFooterButton
             }
         }
-        VStack {
-            // This was s workaround to get sheet and fullscreenCover working
-            // https://www.hackingwithswift.com/forums/swiftui/using-sheet-and-fullscreencover-together/4258
-        }
-        .fullScreenCover(isPresented: $navigator.showSheet) {
-            navigator.sheetView()
-        }
-        .present(isPresented: $toastPresenter.showToast) {
-            toastPresenter.toastView()
-        }
+        .navigationTitle(String.empty)
+        .navigationBarHidden(true)
         .onAppear {
             viewModel.fetchTasks()
         }
+        /*VStack {
+            // This was s workaround to get sheet and fullscreenCover working
+            // https://www.hackingwithswift.com/forums/swiftui/using-sheet-and-fullscreencover-together/4258
+        }
+        .present(isPresented: $toastPresenter.showToast) {
+            toastPresenter.toastView()
+        }*/
+    }
+    
+    // MARK: - Events
+    
+    private func settingsButtonTapped() {
+        viewModel.settingsButtonTapped()
+    }
+    
+    private func calendarButtonTapped() {
+        viewModel.calendarButtonTapped()
     }
 }
 
@@ -57,23 +66,29 @@ extension TasksListView {
         HStack(spacing: Layout.Padding.cozy) {
             Spacer()
             
-            Button(action: {
-                navigator.sheetDestination = .calendar
-            }, label: {
+            Button(action: calendarButtonTapped, label: {
                 Image(systemName: Image.Icons.calendar).iconStyle()
-            })
+            }).modifier(calendarModifier)
             
-            Button(action: {
-                navigator.sheetDestination = .settings
-            }, label: {
+            Button(action: settingsButtonTapped, label: {
                 Image(systemName: Image.Icons.settings).iconStyle()
-            })
+            }).modifier(settingsModifier)
         }
         .padding()
     }
     
     private var taskListBodyView: some View {
-        ScrollView {
+        
+        List {
+            ForEach(viewModel.taskViewModels, id: \.id) { rowViewModel in
+                TaskRowView(viewModel: rowViewModel)
+                    .onNavigation { viewModel.open(rowViewModel) }
+            }
+        }
+        .id(UUID())
+        .listRowInsets(EdgeInsets())
+        
+        /*ScrollView {
             ForEach(viewModel.taskViewModels, id: \.id) { taskRowViewModel in
                 TaskRowView(viewModel: taskRowViewModel)
                     .onTapGesture {
@@ -91,7 +106,7 @@ extension TasksListView {
         }
         .onNotification(.taskUpdated) {
             toastPresenter.toast = .taskUpdated
-        }
+        }*/
     }
     
     private var createTaskFooterButton: some View {
@@ -105,15 +120,19 @@ extension TasksListView {
             }
         )
         .onNotification(.taskCreated) {
-            toastPresenter.toast = .taskCreated
+            //toastPresenter.toast = .taskCreated
         }
     }
 }
 
 // MARK: - PreviewProvider -
-
+/*
 struct TasksListView_Previews: PreviewProvider {
     static var previews: some View {
-        TasksListView(viewModel: FakeTasksListViewModel(), navigator: TaskItCoordinator(), toastPresenter: ToastPresenter())
+        TasksListView(
+            viewModel: FakeTasksListViewModel(),
+            settingsModifier: FakeSheetModifier()
+        )
     }
 }
+*/

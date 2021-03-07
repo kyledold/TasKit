@@ -14,7 +14,7 @@ struct TaskItApp: App {
     
     var body: some Scene {
         WindowGroup {
-            coordinator.initialView
+            TaskItCoordinatorView(coordinator: coordinator)
         }
     }
 }

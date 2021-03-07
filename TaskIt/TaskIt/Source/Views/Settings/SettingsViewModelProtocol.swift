@@ -5,7 +5,7 @@
 //  Created by Kyle Dold on 13/02/2021.
 //
 
-protocol SettingsViewModelProtocol {
+protocol SettingsViewModelProtocol: Identifiable {
     
     var titleText: String { get }
     var versionNumber: String? { get }

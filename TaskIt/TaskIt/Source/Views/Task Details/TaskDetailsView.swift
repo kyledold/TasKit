@@ -18,15 +18,18 @@ struct TaskDetailsView<ViewModel: TaskDetailsViewModelProtocol>: View {
     // MARK: - View
     
     var body: some View {
-        ZStack {
-            ScrollView {
+        ScrollView {
+            VStack {
                 navigationBarView
                 taskBasicDetailsView
                 SubTaskListView(viewModel: viewModel.subTaskListViewModel)
+                Spacer()
             }
             .padding(.horizontal)
             //footerView
         }
+        .navigationTitle(String.empty)
+        .navigationBarHidden(true)
         .onAppear {
             // TODO: find a better way to handle this
             UITextView.appearance().backgroundColor = .clear

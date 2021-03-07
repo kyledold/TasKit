@@ -18,4 +18,7 @@ protocol TasksListViewModelProtocol: ObservableObject {
     var newTaskViewModel: NewTaskViewModel { get }
     
     func fetchTasks()
+    func open(_ rowViewModel: RowViewModel)
+    func settingsButtonTapped()
+    func calendarButtonTapped()
 }

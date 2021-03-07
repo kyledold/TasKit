@@ -7,18 +7,20 @@
 
 import SwiftUI
 
-struct CalendarView: View {
+struct CalendarView<ViewModel: CalendarViewModelProtocol>: View {
+    
+    var viewModel: ViewModel
+    
     var body: some View {
-        NavigationView {
-            Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
-                
-            .navigationBarTitle("Calendar", displayMode: .inline)
+        VStack {
+            
         }
+        .navigationBarTitle(viewModel.titleText, displayMode: .inline)
     }
 }
 
 struct CalendarView_Previews: PreviewProvider {
     static var previews: some View {
-        CalendarView()
+        CalendarView(viewModel: FakeCalendarViewModel())
     }
 }
