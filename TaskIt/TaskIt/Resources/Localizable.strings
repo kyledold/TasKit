@@ -24,7 +24,6 @@
 "subtask_list.subtasks" = "Subtasks";
 "subtask_list.subtask_name_placeholder" = "Enter subtask name here...";
 "task_details.add_task" = "Add task";
-"task_details.create" = "Create";
 "task_details.update" = "Update";
 "task_details.date" = "Date";
 "task_details.task_name_placeholder" = "Task name";

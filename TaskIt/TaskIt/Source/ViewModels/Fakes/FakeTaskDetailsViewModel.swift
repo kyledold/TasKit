@@ -24,6 +24,5 @@ class FakeTaskDetailsViewModel: TaskDetailsViewModelProtocol {
         managedObjectContext: NSManagedObjectContext(concurrencyType: .mainQueueConcurrencyType)
     )
     
-    func onDisappear() {}
     func submitButtonTapped(_ completion: @escaping EmptyClosure) { }
 }

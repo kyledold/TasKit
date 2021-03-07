@@ -39,7 +39,7 @@ struct TasksListView<ViewModel: TasksListViewModelProtocol>: View {
             // This was s workaround to get sheet and fullscreenCover working
             // https://www.hackingwithswift.com/forums/swiftui/using-sheet-and-fullscreencover-together/4258
         }
-        .sheet(isPresented: $navigator.showSheet) {
+        .fullScreenCover(isPresented: $navigator.showSheet) {
             navigator.sheetView()
         }
         .present(isPresented: $toastPresenter.showToast) {

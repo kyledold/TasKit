@@ -16,7 +16,7 @@ class TasksNavigator: ObservableObject {
         case none
         case settings
         case calendar
-        case taskDetails(task: Task?, onChange: EmptyClosure)
+        case taskDetails(task: Task, onChange: EmptyClosure)
     }
     
     // MARK: - Properties
@@ -75,7 +75,7 @@ class TasksNavigator: ObservableObject {
         return TasksListViewModel(managedObjectContext: managedObjectContext)
     }
     
-    private func makeTaskDetailsViewModel(task: Task?, onChange: @escaping EmptyClosure) -> TaskDetailsViewModel {
+    private func makeTaskDetailsViewModel(task: Task, onChange: @escaping EmptyClosure) -> TaskDetailsViewModel {
         return TaskDetailsViewModel(
             task: task,
             onChange: onChange,

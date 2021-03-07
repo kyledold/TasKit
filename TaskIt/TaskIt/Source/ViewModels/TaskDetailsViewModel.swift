@@ -22,59 +22,33 @@ class TaskDetailsViewModel: TaskDetailsViewModelProtocol {
     var taskNamePlaceholderText = NSLocalizedString("task_details.task_name_placeholder", comment: "Task name textfield placeholder")
     var taskNotesPlaceholderText = NSLocalizedString("task_details.task_notes_placeholder", comment: "Task notes text editor placeholder")
     var taskDateText = NSLocalizedString("task_details.date", comment: "Date picker description")
-    var submitButtonText: String {
-        if isNewTask {
-            return NSLocalizedString("task_details.create", comment: "submit button title")
-        } else {
-            return NSLocalizedString("task_details.update", comment: "submit button title")
-        }
-    }
+    var submitButtonText = NSLocalizedString("task_details.update", comment: "submit button title")
     
     var subTaskListViewModel: SubTaskListViewModel
     
-    private var isNewTask: Bool
+    private let onChange: EmptyClosure
     private var subscribers: Set<AnyCancellable> = []
     private let notificationCenter = NotificationCenter.default
-    private let onChange: EmptyClosure
     private let managedObjectContext: NSManagedObjectContext
     private let task: Task
     
     // MARK: - Initialisation
     
-    init(
-        task: Task?,
-        onChange: @escaping EmptyClosure,
-        managedObjectContext: NSManagedObjectContext
-    ) {
-        if let task = task {
-            self.task = task
-            self.isNewTask = false
-            taskName = task.unwrappedTitle
-            dueDate = task.unwrappeDueDate
-            isComplete = task.status == .completed
-            taskNotes = task.unwrappedNotes
-        } else {
-            self.task = Task(context: managedObjectContext)
-            self.isNewTask = true
-        }
-        
+    init(task: Task, onChange: @escaping EmptyClosure, managedObjectContext: NSManagedObjectContext) {
+        self.task = task
         self.managedObjectContext = managedObjectContext
         self.onChange = onChange
         self.subTaskListViewModel = SubTaskListViewModel(task: self.task, managedObjectContext: managedObjectContext)
         
-        self.addObservers()
+        taskName = task.unwrappedTitle
+        dueDate = task.unwrappeDueDate
+        isComplete = task.status == .completed
+        taskNotes = task.unwrappedNotes
+        
+        addObservers()
     }
     
     // MARK: - Functions
-    
-    func onDisappear() {
-        
-        let shouldDiscardUnsavedChanges = isNewTask && managedObjectContext.hasChanges
-        
-        if shouldDiscardUnsavedChanges {
-            managedObjectContext.rollback()
-        }
-    }
     
     func submitButtonTapped(_ completion: @escaping EmptyClosure) {
         
@@ -87,16 +61,8 @@ class TaskDetailsViewModel: TaskDetailsViewModelProtocol {
         )
 
         onChange()
-        postToastNotification()
+        notificationCenter.post(name: .taskUpdated, object: nil)
         completion()
-    }
-    
-    private func postToastNotification() {
-        if isNewTask {
-            notificationCenter.post(name: .taskCreated, object: nil)
-        } else {
-            notificationCenter.post(name: .taskUpdated, object: nil)
-        }
     }
     
     private func addObservers() {

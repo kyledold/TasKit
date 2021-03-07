@@ -31,9 +31,6 @@ struct TaskDetailsView<ViewModel: TaskDetailsViewModelProtocol>: View {
             // TODO: find a better way to handle this
             UITextView.appearance().backgroundColor = .clear
         }
-        .onDisappear {
-            viewModel.onDisappear()
-        }
     }
 }
 
