@@ -15,7 +15,6 @@ class TasksListViewModel: TasksListViewModelProtocol {
     // MARK: - Properties
     
     @Published private(set) var taskViewModels: [RowViewModel]
-    @Published var selectedStatusFilter = Status.todo
     
     let titleText = NSLocalizedString("tasks.title", comment: "Tasks title")
     var createTaskButtonText = NSLocalizedString("tasks.create_task", comment: "Create button title")
@@ -41,12 +40,7 @@ class TasksListViewModel: TasksListViewModelProtocol {
     // MARK: - Functions
     
     func fetchTasks() {
-        let taskModels = Task.fetchAll(with: selectedStatusFilter, viewContext: managedObjectContext)
+        let taskModels = Task.fetchAll(viewContext: managedObjectContext)
         taskViewModels = taskModels.map { return TaskRowViewModel(task: $0, managedObjectContext: managedObjectContext) }
-    }
-    
-    func didChangeStatusFilter(status: Status) {
-        selectedStatusFilter = status
-        fetchTasks()
     }
 }

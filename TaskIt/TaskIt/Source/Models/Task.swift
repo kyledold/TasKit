@@ -36,14 +36,6 @@ public class Task: NSManagedObject {
         return tasks
     }
     
-    public static func fetchAll(with status: Status, viewContext: NSManagedObjectContext) -> [Task] {
-        let fetchRequest: NSFetchRequest<Task> = Task.fetchRequest()
-        fetchRequest.predicate = NSPredicate(format: "statusValue == \(status.rawValue)")
-        fetchRequest.sortDescriptors = [NSSortDescriptor(key: "dueDate", ascending: true)]
-        guard let tasks = try? viewContext.fetch(fetchRequest) else { return [] }
-        return tasks
-    }
-    
     public static func deleteAll(viewContext: NSManagedObjectContext) {
         Task.fetchAll(viewContext: viewContext).forEach { viewContext.delete($0) }
         try? viewContext.save()

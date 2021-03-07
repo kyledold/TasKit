@@ -17,8 +17,6 @@
 "settings.feedback.subtitle" = "kdold02@gmail.com";
 "settings.open_source.title" = "Source code";
 "settings.open_source.subtitle" = "Feel free to browse or contribute";
-"status_picker.todo" = "Todo";
-"status_picker.completed" = "Completed";
 "tasks.create_task" = "Create task";
 "subtask_list.add_subtask" = "Add a subtask";
 "subtask_list.subtasks" = "Subtasks";

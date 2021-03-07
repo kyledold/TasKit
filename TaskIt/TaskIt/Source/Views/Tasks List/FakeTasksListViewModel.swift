@@ -22,8 +22,5 @@ class FakeTasksListViewModel: TasksListViewModelProtocol {
         FakeTaskRowViewModel()
     ]
     
-    var selectedStatusFilter = Status.todo
-    
     func fetchTasks() {}
-    func didChangeStatusFilter(status: Status) {}
 }

@@ -53,14 +53,6 @@ struct TasksListView<ViewModel: TasksListViewModelProtocol>: View {
 
 extension TasksListView {
     
-    private var statusFilterView: some View {
-        StatusSegmentView(selectedStatus: $viewModel.selectedStatusFilter)
-            .onChange(of: viewModel.selectedStatusFilter) { viewModel.didChangeStatusFilter(status: $0) }
-            .padding(.vertical, Layout.Padding.tight)
-            .background(Color.t_background)
-            .cornerRadius(25.0)
-    }
-    
     private var navigationHeaderView: some View {
         HStack(spacing: Layout.Padding.cozy) {
             Spacer()
@@ -82,7 +74,6 @@ extension TasksListView {
     
     private var taskListBodyView: some View {
         ScrollView {
-            statusFilterView.padding(.horizontal, Layout.Padding.compact)
             ForEach(viewModel.taskViewModels, id: \.id) { taskRowViewModel in
                 TaskRowView(viewModel: taskRowViewModel)
                     .onTapGesture {
