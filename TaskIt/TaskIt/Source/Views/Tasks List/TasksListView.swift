@@ -13,7 +13,7 @@ struct TasksListView<ViewModel: TasksListViewModelProtocol>: View {
     // MARK: - Properties
     
     @ObservedObject var viewModel: ViewModel
-    @ObservedObject var navigator: TasksNavigator
+    @ObservedObject var navigator: TaskItCoordinator
     @ObservedObject var toastPresenter: ToastPresenter
     
     @State private var showNewTaskView = false
@@ -123,6 +123,6 @@ extension TasksListView {
 
 struct TasksListView_Previews: PreviewProvider {
     static var previews: some View {
-        TasksListView(viewModel: FakeTasksListViewModel(), navigator: TasksNavigator(), toastPresenter: ToastPresenter())
+        TasksListView(viewModel: FakeTasksListViewModel(), navigator: TaskItCoordinator(), toastPresenter: ToastPresenter())
     }
 }

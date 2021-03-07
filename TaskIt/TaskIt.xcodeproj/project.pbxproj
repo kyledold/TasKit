@@ -18,7 +18,7 @@
 		D11E7D3425E14DDE00EED79E /* FontExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D11E7D3325E14DDE00EED79E /* FontExtension.swift */; };
 		D11E7D4225E15B1600EED79E /* UIScreenExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D11E7D4125E15B1600EED79E /* UIScreenExtension.swift */; };
 		D11E7D4A25E16F9D00EED79E /* SegmentPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = D11E7D4925E16F9D00EED79E /* SegmentPicker.swift */; };
-		D11E7D4D25E1733B00EED79E /* TasksNavigator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D11E7D4C25E1733B00EED79E /* TasksNavigator.swift */; };
+		D11E7D4D25E1733B00EED79E /* TaskItCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D11E7D4C25E1733B00EED79E /* TaskItCoordinator.swift */; };
 		D131DF9B25E276770039D7E7 /* ButtonFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D131DF9A25E276770039D7E7 /* ButtonFooterView.swift */; };
 		D131DFA125E277980039D7E7 /* FooterStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = D131DFA025E277980039D7E7 /* FooterStyle.swift */; };
 		D1529C3D25C70457003FC9D6 /* TaskItApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1529C3C25C70457003FC9D6 /* TaskItApp.swift */; };
@@ -130,7 +130,7 @@
 		D11E7D3325E14DDE00EED79E /* FontExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontExtension.swift; sourceTree = "<group>"; };
 		D11E7D4125E15B1600EED79E /* UIScreenExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIScreenExtension.swift; sourceTree = "<group>"; };
 		D11E7D4925E16F9D00EED79E /* SegmentPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SegmentPicker.swift; sourceTree = "<group>"; };
-		D11E7D4C25E1733B00EED79E /* TasksNavigator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasksNavigator.swift; sourceTree = "<group>"; };
+		D11E7D4C25E1733B00EED79E /* TaskItCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskItCoordinator.swift; sourceTree = "<group>"; };
 		D131DF9A25E276770039D7E7 /* ButtonFooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonFooterView.swift; sourceTree = "<group>"; };
 		D131DFA025E277980039D7E7 /* FooterStyle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FooterStyle.swift; sourceTree = "<group>"; };
 		D14E118925D2FCDD00FC27E3 /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
@@ -335,7 +335,6 @@
 				D17DAAD225DC278E00ED4A8C /* Components */,
 				D13A6E2625C72E0C003A6759 /* Extensions */,
 				D1529C6425C727CA003FC9D6 /* Views */,
-				D1BC33B825D453840068A57A /* ViewModels */,
 				D17DAA9F25DBDF6200ED4A8C /* Models */,
 				D13A6E3025C73559003A6759 /* Styles */,
 				D1D74EF725C96E5A00E8EC77 /* Utilities */,
@@ -360,10 +359,16 @@
 		D1529C6425C727CA003FC9D6 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				D11E7D4C25E1733B00EED79E /* TasksNavigator.swift */,
-				D17DA9C825DABB9900ED4A8C /* Tasks */,
+				D11E7D4C25E1733B00EED79E /* TaskItCoordinator.swift */,
+				D1E91F4925F4E8F30036C1C4 /* Tasks List */,
+				D1E91F4A25F4E9070036C1C4 /* Task Row */,
+				D1E91F4C25F4E9220036C1C4 /* Task Details */,
+				D1E91F5025F4E97E0036C1C4 /* New Task */,
+				D1E91F4D25F4E9350036C1C4 /* Sub Task List */,
+				D1E91F4E25F4E94D0036C1C4 /* Sub Task Row */,
 				D11E7D3A25E155A800EED79E /* Calendar */,
 				D17FC9A725D817A6002A5501 /* Settings */,
+				D1E91F5125F4E98E0036C1C4 /* Settings Row */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -385,19 +390,6 @@
 				D1542BB925DD8D49005FD7C7 /* MockNSManagedObjectContext.swift */,
 			);
 			path = Mocks;
-			sourceTree = "<group>";
-		};
-		D17DA9C825DABB9900ED4A8C /* Tasks */ = {
-			isa = PBXGroup;
-			children = (
-				D1783EB925C9C9E500D8EFC3 /* TasksListView.swift */,
-				D17DAAB125DBFC9E00ED4A8C /* TaskRowView.swift */,
-				D1F2065925F39A4C001780E7 /* NewTaskView.swift */,
-				D17DA9C025DABB9100ED4A8C /* TaskDetailsView.swift */,
-				D1DCF68F25EBD7EA006305E7 /* SubTaskListView.swift */,
-				D1DCF68225EB9497006305E7 /* SubTaskRowView.swift */,
-			);
-			path = Tasks;
 			sourceTree = "<group>";
 		};
 		D17DAA9F25DBDF6200ED4A8C /* Models */ = {
@@ -429,56 +421,11 @@
 			isa = PBXGroup;
 			children = (
 				D1BC348825D5A92A0068A57A /* SettingsView.swift */,
-				D17FC9A825D817BE002A5501 /* SettingsRowView.swift */,
+				D17FC99825D8108B002A5501 /* FakeSettingsViewModel.swift */,
+				D17FC99325D8107C002A5501 /* SettingsViewModelProtocol.swift */,
+				D17FC98E25D8106F002A5501 /* SettingsViewModel.swift */,
 			);
 			path = Settings;
-			sourceTree = "<group>";
-		};
-		D1BC33B825D453840068A57A /* ViewModels */ = {
-			isa = PBXGroup;
-			children = (
-				D1BC33CA25D58AD70068A57A /* Fakes */,
-				D1BC33D125D58B3D0068A57A /* Protocols */,
-				D17FC98E25D8106F002A5501 /* SettingsViewModel.swift */,
-				D17FC9D825D8235F002A5501 /* SettingsRowViewModel.swift */,
-				D17FCA5A25D98986002A5501 /* TasksListViewModel.swift */,
-				D17DAABA25DBFD3300ED4A8C /* TaskRowViewModel.swift */,
-				D1F2065D25F39DD6001780E7 /* NewTaskViewModel.swift */,
-				D17DA9CC25DABE4600ED4A8C /* TaskDetailsViewModel.swift */,
-				D1DCF69325EBD8F3006305E7 /* SubTaskListViewModel.swift */,
-				D1DCF68525EB9511006305E7 /* SubTaskRowViewModel.swift */,
-			);
-			path = ViewModels;
-			sourceTree = "<group>";
-		};
-		D1BC33CA25D58AD70068A57A /* Fakes */ = {
-			isa = PBXGroup;
-			children = (
-				D17FC99825D8108B002A5501 /* FakeSettingsViewModel.swift */,
-				D17FC9EB25D828F6002A5501 /* FakeSettingsRowViewModel.swift */,
-				D17DA9D625DABECB00ED4A8C /* FakeTasksListViewModel.swift */,
-				D17DAAB725DBFD0F00ED4A8C /* FakeTaskRowViewModel.swift */,
-				D1F2066425F39E09001780E7 /* FakeNewTaskViewModel.swift */,
-				D17DA9E925DAC53700ED4A8C /* FakeTaskDetailsViewModel.swift */,
-				D1DCF69A25EBD918006305E7 /* FakeSubTaskListViewModel.swift */,
-				D1DCF68B25EB9600006305E7 /* FakeSubTaskRowViewModel.swift */,
-			);
-			path = Fakes;
-			sourceTree = "<group>";
-		};
-		D1BC33D125D58B3D0068A57A /* Protocols */ = {
-			isa = PBXGroup;
-			children = (
-				D17FC99325D8107C002A5501 /* SettingsViewModelProtocol.swift */,
-				D17FC9E625D82863002A5501 /* SettingsRowViewModelProtocol.swift */,
-				D17DA9D125DABEA600ED4A8C /* TasksListViewModelProtocol.swift */,
-				D17DAAB425DBFCEB00ED4A8C /* TaskRowViewModelProtocol.swift */,
-				D1F2066125F39DF8001780E7 /* NewTaskViewModelProtocol.swift */,
-				D17DA9E425DAC51700ED4A8C /* TaskDetailsViewModelProtocol.swift */,
-				D1DCF69625EBD908006305E7 /* SubTaskListViewModelProtocol.swift */,
-				D1DCF68825EB9527006305E7 /* SubTaskRowViewModelProtocol.swift */,
-			);
-			path = Protocols;
 			sourceTree = "<group>";
 		};
 		D1BC33DF25D594DE0068A57A /* TaskItTests */ = {
@@ -525,6 +472,83 @@
 				D1BC346525D5A11E0068A57A /* Closure.swift */,
 			);
 			path = Utilities;
+			sourceTree = "<group>";
+		};
+		D1E91F4925F4E8F30036C1C4 /* Tasks List */ = {
+			isa = PBXGroup;
+			children = (
+				D1783EB925C9C9E500D8EFC3 /* TasksListView.swift */,
+				D17DA9D625DABECB00ED4A8C /* FakeTasksListViewModel.swift */,
+				D17DA9D125DABEA600ED4A8C /* TasksListViewModelProtocol.swift */,
+				D17FCA5A25D98986002A5501 /* TasksListViewModel.swift */,
+			);
+			path = "Tasks List";
+			sourceTree = "<group>";
+		};
+		D1E91F4A25F4E9070036C1C4 /* Task Row */ = {
+			isa = PBXGroup;
+			children = (
+				D17DAAB125DBFC9E00ED4A8C /* TaskRowView.swift */,
+				D17DAAB725DBFD0F00ED4A8C /* FakeTaskRowViewModel.swift */,
+				D17DAAB425DBFCEB00ED4A8C /* TaskRowViewModelProtocol.swift */,
+				D17DAABA25DBFD3300ED4A8C /* TaskRowViewModel.swift */,
+			);
+			path = "Task Row";
+			sourceTree = "<group>";
+		};
+		D1E91F4C25F4E9220036C1C4 /* Task Details */ = {
+			isa = PBXGroup;
+			children = (
+				D17DA9C025DABB9100ED4A8C /* TaskDetailsView.swift */,
+				D17DA9E925DAC53700ED4A8C /* FakeTaskDetailsViewModel.swift */,
+				D17DA9E425DAC51700ED4A8C /* TaskDetailsViewModelProtocol.swift */,
+				D17DA9CC25DABE4600ED4A8C /* TaskDetailsViewModel.swift */,
+			);
+			path = "Task Details";
+			sourceTree = "<group>";
+		};
+		D1E91F4D25F4E9350036C1C4 /* Sub Task List */ = {
+			isa = PBXGroup;
+			children = (
+				D1DCF68F25EBD7EA006305E7 /* SubTaskListView.swift */,
+				D1DCF69A25EBD918006305E7 /* FakeSubTaskListViewModel.swift */,
+				D1DCF69625EBD908006305E7 /* SubTaskListViewModelProtocol.swift */,
+				D1DCF69325EBD8F3006305E7 /* SubTaskListViewModel.swift */,
+			);
+			path = "Sub Task List";
+			sourceTree = "<group>";
+		};
+		D1E91F4E25F4E94D0036C1C4 /* Sub Task Row */ = {
+			isa = PBXGroup;
+			children = (
+				D1DCF68225EB9497006305E7 /* SubTaskRowView.swift */,
+				D1DCF68B25EB9600006305E7 /* FakeSubTaskRowViewModel.swift */,
+				D1DCF68825EB9527006305E7 /* SubTaskRowViewModelProtocol.swift */,
+				D1DCF68525EB9511006305E7 /* SubTaskRowViewModel.swift */,
+			);
+			path = "Sub Task Row";
+			sourceTree = "<group>";
+		};
+		D1E91F5025F4E97E0036C1C4 /* New Task */ = {
+			isa = PBXGroup;
+			children = (
+				D1F2065925F39A4C001780E7 /* NewTaskView.swift */,
+				D1F2066425F39E09001780E7 /* FakeNewTaskViewModel.swift */,
+				D1F2066125F39DF8001780E7 /* NewTaskViewModelProtocol.swift */,
+				D1F2065D25F39DD6001780E7 /* NewTaskViewModel.swift */,
+			);
+			path = "New Task";
+			sourceTree = "<group>";
+		};
+		D1E91F5125F4E98E0036C1C4 /* Settings Row */ = {
+			isa = PBXGroup;
+			children = (
+				D17FC9A825D817BE002A5501 /* SettingsRowView.swift */,
+				D17FC9EB25D828F6002A5501 /* FakeSettingsRowViewModel.swift */,
+				D17FC9E625D82863002A5501 /* SettingsRowViewModelProtocol.swift */,
+				D17FC9D825D8235F002A5501 /* SettingsRowViewModel.swift */,
+			);
+			path = "Settings Row";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -697,7 +721,7 @@
 				D1BD688625EA81F3002C4518 /* CheckboxToggleStyle.swift in Sources */,
 				D1BD687425E96EAA002C4518 /* RoundedButtonStyle.swift in Sources */,
 				D17FC98F25D8106F002A5501 /* SettingsViewModel.swift in Sources */,
-				D11E7D4D25E1733B00EED79E /* TasksNavigator.swift in Sources */,
+				D11E7D4D25E1733B00EED79E /* TaskItCoordinator.swift in Sources */,
 				D17FC9EC25D828F6002A5501 /* FakeSettingsRowViewModel.swift in Sources */,
 				D17FC99425D8107C002A5501 /* SettingsViewModelProtocol.swift in Sources */,
 				D1DCF68325EB9497006305E7 /* SubTaskRowView.swift in Sources */,

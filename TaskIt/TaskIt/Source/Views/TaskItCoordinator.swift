@@ -1,5 +1,5 @@
 //
-//  TasksNavigator.swift
+//  TaskItCoordinator.swift
 //  TaskIt
 //
 //  Created by Kyle Dold on 20/02/2021.
@@ -8,7 +8,7 @@
 import CoreData
 import SwiftUI
 
-class TasksNavigator: ObservableObject {
+class TaskItCoordinator: ObservableObject {
     
     // MARK: - Destinations
     
