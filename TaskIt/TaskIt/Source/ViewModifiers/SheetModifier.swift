@@ -21,14 +21,3 @@ struct SheetModifier<Item: Identifiable, Destination: View>: ViewModifier {
         content.sheet(item: item, content: destination)
     }
 }
-
-struct FakeSheetModifier: ViewModifier {
-    
-    init() {
-        
-    }
-    
-    func body(content: Content) -> some View {
-        content
-    }
-}

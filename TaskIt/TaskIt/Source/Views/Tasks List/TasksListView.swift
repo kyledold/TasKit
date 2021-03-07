@@ -40,10 +40,7 @@ struct TasksListView<ViewModel: TasksListViewModelProtocol, SettingsModifier: Vi
         .onAppear {
             viewModel.fetchTasks()
         }
-        /*VStack {
-            // This was s workaround to get sheet and fullscreenCover working
-            // https://www.hackingwithswift.com/forums/swiftui/using-sheet-and-fullscreencover-together/4258
-        }
+        /*
         .present(isPresented: $toastPresenter.showToast) {
             toastPresenter.toastView()
         }*/
@@ -78,26 +75,22 @@ extension TasksListView {
     }
     
     private var taskListBodyView: some View {
-        
         List {
             ForEach(viewModel.taskViewModels, id: \.id) { rowViewModel in
                 TaskRowView(viewModel: rowViewModel)
                     .onNavigation { viewModel.open(rowViewModel) }
             }
+            .listRowBackground(Color.t_background)
+            .listRowInsets(EdgeInsets(top: 8, leading: 16, bottom: 8, trailing: 16))
         }
         .id(UUID())
-        .listRowInsets(EdgeInsets())
-        
-        /*ScrollView {
-            ForEach(viewModel.taskViewModels, id: \.id) { taskRowViewModel in
-                TaskRowView(viewModel: taskRowViewModel)
-                    .onTapGesture {
-                        navigator.sheetDestination = .taskDetails(task: taskRowViewModel.task, onChange: {
-                            viewModel.fetchTasks()
-                        })
-                    }
-            }
+        .listStyle(PlainListStyle())
+        .introspectTableView { tableView in
+            tableView.backgroundColor = .clear
+            tableView.separatorStyle = .none
         }
+        
+        /*
         .onNotification(.taskCompleted) {
             toastPresenter.toast = .taskCompleted
         }
@@ -126,13 +119,10 @@ extension TasksListView {
 }
 
 // MARK: - PreviewProvider -
-/*
+
 struct TasksListView_Previews: PreviewProvider {
     static var previews: some View {
-        TasksListView(
-            viewModel: FakeTasksListViewModel(),
-            settingsModifier: FakeSheetModifier()
-        )
+        TasksListView(viewModel: FakeTasksListViewModel(), settingsModifier: FakeSheetModifier(), calendarModifier: FakeSheetModifier())
+            
     }
 }
-*/

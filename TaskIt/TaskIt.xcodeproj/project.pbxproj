@@ -11,7 +11,6 @@
 		D11E734725E571BA006FD6CB /* ToastMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = D11E734625E571BA006FD6CB /* ToastMessage.swift */; };
 		D11E734A25E571FF006FD6CB /* ToastView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D11E734925E571FF006FD6CB /* ToastView.swift */; };
 		D11E734F25E6BC59006FD6CB /* NotificationExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D11E734E25E6BC59006FD6CB /* NotificationExtension.swift */; };
-		D11E7D1325E1095700EED79E /* ListExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D11E7D1225E1095700EED79E /* ListExtension.swift */; };
 		D11E7D1A25E1433F00EED79E /* ViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D11E7D1925E1433F00EED79E /* ViewExtension.swift */; };
 		D11E7D2825E14B8C00EED79E /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D11E7D2725E14B8C00EED79E /* Colors.xcassets */; };
 		D11E7D3025E14D8800EED79E /* Nunito-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D11E7D2D25E14D8800EED79E /* Nunito-Regular.ttf */; };
@@ -68,6 +67,7 @@
 		D17FC9F125D82AC7002A5501 /* SettingsViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D17FC9F025D82AC7002A5501 /* SettingsViewModelTests.swift */; };
 		D17FC9F625D82B9C002A5501 /* SettingsRowViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D17FC9F525D82B9C002A5501 /* SettingsRowViewModelTests.swift */; };
 		D17FCA5B25D98986002A5501 /* TasksListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D17FCA5A25D98986002A5501 /* TasksListViewModel.swift */; };
+		D1BB98ED25F506F700591E69 /* FakeSheetModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1BB98EC25F506F700591E69 /* FakeSheetModifier.swift */; };
 		D1BC33C225D455F50068A57A /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1BC33C125D455F50068A57A /* Constants.swift */; };
 		D1BC346625D5A11E0068A57A /* Closure.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1BC346525D5A11E0068A57A /* Closure.swift */; };
 		D1BC348925D5A92A0068A57A /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1BC348825D5A92A0068A57A /* SettingsView.swift */; };
@@ -126,7 +126,6 @@
 		D11E734625E571BA006FD6CB /* ToastMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToastMessage.swift; sourceTree = "<group>"; };
 		D11E734925E571FF006FD6CB /* ToastView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToastView.swift; sourceTree = "<group>"; };
 		D11E734E25E6BC59006FD6CB /* NotificationExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationExtension.swift; sourceTree = "<group>"; };
-		D11E7D1225E1095700EED79E /* ListExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListExtension.swift; sourceTree = "<group>"; };
 		D11E7D1925E1433F00EED79E /* ViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewExtension.swift; sourceTree = "<group>"; };
 		D11E7D2725E14B8C00EED79E /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
 		D11E7D2D25E14D8800EED79E /* Nunito-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Nunito-Regular.ttf"; sourceTree = "<group>"; };
@@ -186,6 +185,7 @@
 		D17FCA5A25D98986002A5501 /* TasksListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasksListViewModel.swift; sourceTree = "<group>"; };
 		D187C07025DA6B4D00A5B09A /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
 		D1BB6D4A25D0104F00B1ED10 /* TaskIt.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = TaskIt.entitlements; sourceTree = "<group>"; };
+		D1BB98EC25F506F700591E69 /* FakeSheetModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeSheetModifier.swift; sourceTree = "<group>"; };
 		D1BC33C125D455F50068A57A /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		D1BC33DE25D594DE0068A57A /* TaskItTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TaskItTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D1BC33E225D594DE0068A57A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -266,7 +266,6 @@
 				D11E733025E53781006FD6CB /* DateExtension.swift */,
 				D11E7D3325E14DDE00EED79E /* FontExtension.swift */,
 				D17FC9AD25D817F4002A5501 /* ImageExtension.swift */,
-				D11E7D1225E1095700EED79E /* ListExtension.swift */,
 				D11E734E25E6BC59006FD6CB /* NotificationExtension.swift */,
 				D17FC99D25D81450002A5501 /* SettingsItemExtension.swift */,
 				D17DAAA425DBE04900ED4A8C /* StringExtension.swift */,
@@ -572,6 +571,7 @@
 			isa = PBXGroup;
 			children = (
 				D1E91F5925F4EDA20036C1C4 /* SheetModifier.swift */,
+				D1BB98EC25F506F700591E69 /* FakeSheetModifier.swift */,
 			);
 			path = ViewModifiers;
 			sourceTree = "<group>";
@@ -699,7 +699,7 @@
 				D17DAAB525DBFCEB00ED4A8C /* TaskRowViewModelProtocol.swift in Sources */,
 				D1297F3F25F5039D00A3D20B /* FakeCalendarViewModel.swift in Sources */,
 				D1DCF69B25EBD918006305E7 /* FakeSubTaskListViewModel.swift in Sources */,
-				D11E7D1325E1095700EED79E /* ListExtension.swift in Sources */,
+				D1BB98ED25F506F700591E69 /* FakeSheetModifier.swift in Sources */,
 				D11E734F25E6BC59006FD6CB /* NotificationExtension.swift in Sources */,
 				D17DA9CD25DABE4600ED4A8C /* TaskDetailsViewModel.swift in Sources */,
 				D1F2066525F39E09001780E7 /* FakeNewTaskViewModel.swift in Sources */,

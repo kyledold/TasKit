@@ -18,10 +18,10 @@ extension Image {
         static let create = "arrow.up.circle"
     }
     
-    func iconStyle(foregroundColor: Color = .white) -> some View {
+    func iconStyle() -> some View {
         self.resizable()
             .frame(width: 25, height: 25)
-            .foregroundColor(foregroundColor)
+            .foregroundColor(.primary)
     }
     
     func thumbnailImageModifier(tintColor: Color) -> some View {

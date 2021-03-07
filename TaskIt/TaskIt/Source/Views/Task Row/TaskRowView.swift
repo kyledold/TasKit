@@ -48,6 +48,7 @@ struct TaskRowView_Previews: PreviewProvider {
     static var previews: some View {
         Group {
             TaskRowView(viewModel: FakeTaskRowViewModel())
+                .preferredColorScheme(.dark)
                 .previewLayout(.fixed(width: 300, height: 80))
         }
     }

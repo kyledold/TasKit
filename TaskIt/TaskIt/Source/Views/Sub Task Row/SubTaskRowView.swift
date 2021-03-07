@@ -35,8 +35,7 @@ struct SubTaskRowView<ViewModel: SubTaskRowViewModelProtocol>: View {
                 .padding(.leading, isInEditingMode ? Layout.Padding.compact : .zero)
             
             Spacer()
-            
-        }.listRowInsets(EdgeInsets())
+        }
     }
 }
 

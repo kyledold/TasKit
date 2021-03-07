@@ -85,9 +85,12 @@ extension SubTaskListView {
             }
             .onDelete(perform: deleteSubTask)
             .onMove(perform: moveSubTask)
+            .listRowInsets(EdgeInsets())
         }
         .id(UUID()) // this fixes a weird bug in List that doesn't show rows when adding for the first time
-        .listSeparatorStyle(.none)
+        .introspectTableView { tableView in
+            tableView.backgroundColor = .clear
+        }
         .frame(height: viewModel.subTaskModels.reduce(0) { i, _ in i + 44 }) // this is here to make list fit contents
         .environment(\.editMode, viewModel.isListInEditMode ? .constant(.active) : .constant(.inactive))
     }
