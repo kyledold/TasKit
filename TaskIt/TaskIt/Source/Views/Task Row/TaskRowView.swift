@@ -24,7 +24,6 @@ struct TaskRowView<ViewModel: TaskRowViewModelProtocol>: View {
                 Text(viewModel.monthText).font(.regular_14)
             }.frame(minWidth: 40)
             
-            
             Rectangle()
                 .foregroundColor(.primary)
                 .frame(width: 0.2)
@@ -36,9 +35,6 @@ struct TaskRowView<ViewModel: TaskRowViewModelProtocol>: View {
             
             Spacer()
         }
-        .padding(.vertical, Layout.Padding.compact)
-        .background(Color.t_input_background)
-        .cornerRadius(10.0)
     }
 }
 

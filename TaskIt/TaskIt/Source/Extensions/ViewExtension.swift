@@ -26,6 +26,7 @@ extension View {
         }
     }
     
+    @ViewBuilder
     func onNavigation(_ action: @escaping EmptyClosure) -> some View {
         let isActive = Binding(
             get: { false },
@@ -36,7 +37,11 @@ extension View {
             }
         )
         
-        return NavigationLink(destination: EmptyView(), isActive: isActive) { self }
+        // TODO: this is to hide navigation link arrow, try find a better solution
+        ZStack {
+            NavigationLink(destination: EmptyView(), isActive: isActive) {}
+            self
+        }
     }
 
     func navigation<Item, Destination: View>(item: Binding<Item?>, @ViewBuilder destination: (Item) -> Destination) -> some View {

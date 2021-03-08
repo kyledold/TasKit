@@ -17,6 +17,7 @@ struct TasksListView<ViewModel: TasksListViewModelProtocol, SettingsModifier: Vi
     let settingsModifier: SettingsModifier
     let calendarModifier: CalendarModifier
     
+    @State private var isListEditing = false
     @State private var showNewTaskView = false
     
     // MARK: - View
@@ -79,9 +80,24 @@ extension TasksListView {
             ForEach(viewModel.taskViewModels, id: \.id) { rowViewModel in
                 TaskRowView(viewModel: rowViewModel)
                     .onNavigation { viewModel.open(rowViewModel) }
+                    .onTapGesture { isListEditing = false }
+                    .onLongPressGesture { isListEditing.toggle() }
             }
+            .onMove(perform: moveTask)
+            .onDelete(perform: deleteTask)
+            .deleteDisabled(isListEditing)
+            .padding(.vertical, Layout.Padding.compact)
+            .background(Color.t_input_background)
+            .cornerRadius(10.0)
             .listRowBackground(Color.t_background)
-            .listRowInsets(EdgeInsets(top: 8, leading: 16, bottom: 8, trailing: 16))
+            .listRowInsets(
+                EdgeInsets(
+                    top: 8,
+                    leading: isListEditing ? -24 : 16,
+                    bottom: 8,
+                    trailing: 16
+                )
+            )
         }
         .id(UUID())
         .listStyle(PlainListStyle())
@@ -89,6 +105,7 @@ extension TasksListView {
             tableView.backgroundColor = .clear
             tableView.separatorStyle = .none
         }
+        .environment(\.editMode, isListEditing ? .constant(.active) : .constant(.inactive))
         
         /*
         .onNotification(.taskCompleted) {
@@ -101,6 +118,19 @@ extension TasksListView {
             toastPresenter.toast = .taskUpdated
         }*/
     }
+    
+    // MARK: - Events
+    
+    private func moveTask(from source: IndexSet, to destination: Int) {
+        
+    }
+    
+    private func deleteTask(at indexSet: IndexSet) {
+        
+    }
+}
+
+extension TasksListView {
     
     private var createTaskFooterButton: some View {
         ButtonFooterView(
