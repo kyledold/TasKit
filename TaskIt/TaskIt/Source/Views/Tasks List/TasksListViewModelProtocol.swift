@@ -13,7 +13,7 @@ protocol TasksListViewModelProtocol: ObservableObject {
     associatedtype RowViewModel: TaskRowViewModelProtocol
     
     var taskViewModels: Array<RowViewModel> { get }
-    var titleText: String { get }
+    var selectedDateText: String { get }
     var createTaskButtonText: String { get }
     var newTaskViewModel: NewTaskViewModel { get }
     

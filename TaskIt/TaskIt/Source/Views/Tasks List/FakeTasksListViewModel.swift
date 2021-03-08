@@ -12,7 +12,7 @@ class FakeTasksListViewModel: TasksListViewModelProtocol {
     
     typealias RowViewModel = FakeTaskRowViewModel
     
-    var titleText = "Tasks"
+    var selectedDateText = "Tasks"
     var createTaskButtonText = "Create task"
     var newTaskViewModel = NewTaskViewModel(managedObjectContext: NSManagedObjectContext(concurrencyType: .mainQueueConcurrencyType))
     

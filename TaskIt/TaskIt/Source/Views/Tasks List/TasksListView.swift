@@ -65,6 +65,9 @@ extension TasksListView {
     
     private var navigationHeaderView: some View {
         HStack(spacing: Layout.Padding.spacious) {
+            Text(viewModel.selectedDateText)
+                .font(.largeTitle)
+            
             Spacer()
             
             Button(action: pencilButtonTapped, label: {
