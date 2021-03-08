@@ -36,7 +36,6 @@ struct TasksListView<ViewModel: TasksListViewModelProtocol, SettingsModifier: Vi
                 createTaskFooterButton
             }
         }
-        .navigationTitle(String.empty)
         .navigationBarHidden(true)
         .onAppear {
             viewModel.fetchTasks()
@@ -48,6 +47,10 @@ struct TasksListView<ViewModel: TasksListViewModelProtocol, SettingsModifier: Vi
     }
     
     // MARK: - Events
+    
+    private func pencilButtonTapped() {
+        isListEditing.toggle()
+    }
     
     private func settingsButtonTapped() {
         viewModel.settingsButtonTapped()
@@ -61,8 +64,12 @@ struct TasksListView<ViewModel: TasksListViewModelProtocol, SettingsModifier: Vi
 extension TasksListView {
     
     private var navigationHeaderView: some View {
-        HStack(spacing: Layout.Padding.cozy) {
+        HStack(spacing: Layout.Padding.spacious) {
             Spacer()
+            
+            Button(action: pencilButtonTapped, label: {
+                Image(systemName: isListEditing ? Image.Icons.tick : Image.Icons.sort).iconStyle()
+            })
             
             Button(action: calendarButtonTapped, label: {
                 Image(systemName: Image.Icons.calendar).iconStyle()
@@ -80,8 +87,6 @@ extension TasksListView {
             ForEach(viewModel.taskViewModels, id: \.id) { rowViewModel in
                 TaskRowView(viewModel: rowViewModel)
                     .onNavigation { viewModel.open(rowViewModel) }
-                    .onTapGesture { isListEditing = false }
-                    .onLongPressGesture { isListEditing.toggle() }
             }
             .onMove(perform: moveTask)
             .onDelete(perform: deleteTask)
@@ -90,14 +95,7 @@ extension TasksListView {
             .background(Color.t_input_background)
             .cornerRadius(10.0)
             .listRowBackground(Color.t_background)
-            .listRowInsets(
-                EdgeInsets(
-                    top: 8,
-                    leading: isListEditing ? -24 : 16,
-                    bottom: 8,
-                    trailing: 16
-                )
-            )
+            .listRowInsets(EdgeInsets(top: 8, leading: isListEditing ? -24 : 16, bottom: 8, trailing: 16))
         }
         .id(UUID())
         .listStyle(PlainListStyle())

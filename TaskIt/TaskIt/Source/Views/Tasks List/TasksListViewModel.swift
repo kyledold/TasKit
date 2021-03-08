@@ -17,7 +17,7 @@ class TasksListViewModel: TasksListViewModelProtocol {
     @Published private(set) var taskViewModels: [RowViewModel]
     
     let titleText = NSLocalizedString("tasks.title", comment: "Tasks title")
-    var createTaskButtonText = NSLocalizedString("tasks.create_task", comment: "Create button title")
+    var createTaskButtonText = NSLocalizedString("task_list.create_task", comment: "Create button title")
     
     lazy var newTaskViewModel: NewTaskViewModel = {
         let newTaskViewModel = NewTaskViewModel(managedObjectContext: managedObjectContext)

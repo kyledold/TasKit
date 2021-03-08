@@ -28,7 +28,6 @@ struct TaskDetailsView<ViewModel: TaskDetailsViewModelProtocol>: View {
             .padding(.horizontal)
             //footerView
         }
-        .navigationTitle(String.empty)
         .navigationBarHidden(true)
         .onAppear {
             // TODO: find a better way to handle this

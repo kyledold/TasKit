@@ -16,6 +16,8 @@ extension Image {
         static let settings = "gearshape.fill"
         static let tasks = "list.dash"
         static let create = "arrow.up.circle"
+        static let sort = "arrow.up.arrow.down.square"
+        static let tick = "checkmark.circle"
     }
     
     func iconStyle() -> some View {

@@ -17,7 +17,7 @@
 "settings.feedback.subtitle" = "kdold02@gmail.com";
 "settings.open_source.title" = "Source code";
 "settings.open_source.subtitle" = "Feel free to browse or contribute";
-"tasks.create_task" = "Create task";
+"task_list.create_task" = "Create task";
 "subtask_list.add_subtask" = "Add a subtask";
 "subtask_list.subtasks" = "Subtasks";
 "subtask_list.subtask_name_placeholder" = "Enter subtask name here...";
