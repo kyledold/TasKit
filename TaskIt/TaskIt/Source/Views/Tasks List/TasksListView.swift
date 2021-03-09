@@ -87,18 +87,14 @@ extension TasksListView {
     
     private var taskListBodyView: some View {
         List {
-            ForEach(viewModel.taskViewModels, id: \.id) { rowViewModel in
-                TaskRowView(viewModel: rowViewModel)
-                    .onNavigation { viewModel.open(rowViewModel) }
+            if viewModel.hasOverdueTasks {
+                overdueTasksSection
+                Section(header: Text("Current")) {
+                    currentTasksSection
+                }
+            } else {
+                currentTasksSection
             }
-            .onMove(perform: moveTask)
-            .onDelete(perform: deleteTask)
-            .deleteDisabled(isListEditing)
-            .padding(.vertical, Layout.Padding.compact)
-            .background(Color.t_input_background)
-            .cornerRadius(10.0)
-            .listRowBackground(Color.t_background)
-            .listRowInsets(EdgeInsets(top: 8, leading: isListEditing ? -24 : 16, bottom: 8, trailing: 16))
         }
         .id(UUID())
         .listStyle(PlainListStyle())
@@ -118,6 +114,31 @@ extension TasksListView {
         .onNotification(.taskUpdated) {
             toastPresenter.toast = .taskUpdated
         }*/
+    }
+    
+    private var overdueTasksSection: some View {
+        Section(header: Text(viewModel.overdueSectionTitle)) {
+            taskRows(rowViewModels: viewModel.overdueTaskViewModels)
+        }
+    }
+    
+    private var currentTasksSection: some View {
+        taskRows(rowViewModels: viewModel.currentTaskViewModels)
+    }
+    
+    private func taskRows(rowViewModels: [ViewModel.RowViewModel]) -> some View {
+        ForEach(rowViewModels, id: \.id) { rowViewModel in
+            TaskRowView(viewModel: rowViewModel)
+                .onNavigation { viewModel.open(rowViewModel) }
+        }
+        .onMove(perform: moveTask)
+        .onDelete(perform: deleteTask)
+        .deleteDisabled(isListEditing)
+        .padding(.vertical, Layout.Padding.compact)
+        .background(Color.t_input_background)
+        .cornerRadius(10.0)
+        .listRowBackground(Color.t_background)
+        .listRowInsets(EdgeInsets(top: 8, leading: isListEditing ? -24 : 16, bottom: 8, trailing: 16))
     }
     
     // MARK: - Events

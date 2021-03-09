@@ -12,7 +12,12 @@ protocol TasksListViewModelProtocol: ObservableObject {
     
     associatedtype RowViewModel: TaskRowViewModelProtocol
     
-    var taskViewModels: Array<RowViewModel> { get }
+    var overdueTaskViewModels: Array<RowViewModel> { get }
+    var currentTaskViewModels: Array<RowViewModel> { get }
+    
+    var selectedDate: Date { get set }
+    var hasOverdueTasks: Bool { get }
+    var overdueSectionTitle: String { get }
     var selectedDateText: String { get }
     var createTaskButtonText: String { get }
     var newTaskViewModel: NewTaskViewModel { get }

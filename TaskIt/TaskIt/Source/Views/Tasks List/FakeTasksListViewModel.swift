@@ -12,11 +12,18 @@ class FakeTasksListViewModel: TasksListViewModelProtocol {
     
     typealias RowViewModel = FakeTaskRowViewModel
     
-    var selectedDateText = "Tasks"
+    var selectedDate = Date()
+    var hasOverdueTasks = false
+    var selectedDateText = "Today"
     var createTaskButtonText = "Create task"
+    var overdueSectionTitle = "Overdue"
     var newTaskViewModel = NewTaskViewModel(managedObjectContext: NSManagedObjectContext(concurrencyType: .mainQueueConcurrencyType))
     
-    var taskViewModels: [RowViewModel] = [
+    var overdueTaskViewModels: [RowViewModel] = [
+        FakeTaskRowViewModel(),
+        FakeTaskRowViewModel()
+    ]
+    var currentTaskViewModels: [RowViewModel] = [
         FakeTaskRowViewModel(),
         FakeTaskRowViewModel(),
         FakeTaskRowViewModel()
