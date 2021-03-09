@@ -61,6 +61,12 @@ class TasksListViewModel: TasksListViewModelProtocol {
     
     func moveTask(from source: IndexSet, to destination: Int) {
         
+        var revisedTasks = taskViewModels.map { $0.task }
+        revisedTasks.move(fromOffsets: source, toOffset: destination)
+        
+        Task.updateOrderOfTasks(revisedTasks, viewContext: managedObjectContext)
+        
+        fetchTasks()
     }
     
     func taskRowTapped(_ rowViewModel: RowViewModel) {

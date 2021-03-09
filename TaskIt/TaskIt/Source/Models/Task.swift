@@ -30,6 +30,8 @@ public class Task: NSManagedObject {
     // MARK: - Task CoreData Operations
     
     public static func fetchAll(viewContext: NSManagedObjectContext) -> [Task] {
+        print("Task fetchAll called")
+        
         let fetchRequest: NSFetchRequest<Task> = Task.fetchRequest()
         fetchRequest.sortDescriptors = [NSSortDescriptor(key: "dueDate", ascending: true)]
         guard let tasks = try? viewContext.fetch(fetchRequest) else { return [] }
@@ -37,6 +39,7 @@ public class Task: NSManagedObject {
     }
     
     public static func fetchAll(for date: Date, viewContext: NSManagedObjectContext) -> [Task] {
+        print("Task fetchAll(for date:) called")
         
         let calendar = Calendar.current
         let startDate = calendar.startOfDay(for: date)
@@ -44,6 +47,7 @@ public class Task: NSManagedObject {
         
         let fetchRequest: NSFetchRequest<Task> = Task.fetchRequest()
         fetchRequest.predicate = NSPredicate(format: "dueDate >= %@ AND dueDate <= %@", startDate as NSDate, endDate as NSDate)
+        fetchRequest.sortDescriptors = [NSSortDescriptor(key: "index", ascending: true)]
         guard let tasks = try? viewContext.fetch(fetchRequest) else { return [] }
         return tasks
     }
@@ -51,15 +55,33 @@ public class Task: NSManagedObject {
     public static func deleteAll(viewContext: NSManagedObjectContext) {
         Task.fetchAll(viewContext: viewContext).forEach { viewContext.delete($0) }
         try? viewContext.save()
+        
+        print("Task deleteAll called")
     }
     
     public static func deleteTask(task: Task, viewContext: NSManagedObjectContext) {
         viewContext.delete(task)
         try? viewContext.save()
+        
+        print("Task \"\(task.unwrappedTitle)\" deleted")
     }
     
     public static func updateStatus(task: Task, newStatus: Status, viewContext: NSManagedObjectContext) {
         task.status = newStatus
+        try? viewContext.save()
+        
+        print("Task \"\(task.unwrappedTitle)\" status updated to \"\(newStatus.rawValue)\"")
+    }
+    
+    public static func updateOrderOfTasks(_ revisedTasks: [Task], viewContext: NSManagedObjectContext) {
+        
+        for index in stride(from: revisedTasks.count - 1, through: 0, by: -1) {
+            let task = revisedTasks[index]
+            task.index = Int16(index)
+            
+            print("Task \"\(task.unwrappedTitle)\" update index to \(index)")
+        }
+        
         try? viewContext.save()
     }
     
@@ -67,6 +89,8 @@ public class Task: NSManagedObject {
         let newTask = Task(context: viewContext)
         newTask.title = title
         try? viewContext.save()
+        
+        print("Task \"\(title)\" created")
     }
     
     public static func updateTask(
@@ -80,6 +104,8 @@ public class Task: NSManagedObject {
         task.dueDate = dueDate
         task.notes = taskNotes
         try? viewContext.save()
+        
+        print("Task \"\(task.unwrappedTitle)\" updated")
     }
     
     public static func saveChanges(viewContext: NSManagedObjectContext) {
