@@ -40,10 +40,6 @@ struct TasksListView<ViewModel: TasksListViewModelProtocol, SettingsModifier: Vi
         .onAppear {
             viewModel.fetchTasks()
         }
-        /*
-        .present(isPresented: $toastPresenter.showToast) {
-            toastPresenter.toastView()
-        }*/
     }
     
     // MARK: - Events
@@ -65,7 +61,7 @@ extension TasksListView {
     
     private var navigationHeaderView: some View {
         HStack(spacing: Layout.Padding.spacious) {
-            Text(viewModel.selectedDateText)
+            Text(viewModel.titleText)
                 .font(.largeTitle)
             
             Spacer()
@@ -87,14 +83,7 @@ extension TasksListView {
     
     private var taskListBodyView: some View {
         List {
-            if viewModel.hasOverdueTasks {
-                overdueTasksSection
-                Section(header: Text("Current")) {
-                    currentTasksSection
-                }
-            } else {
-                currentTasksSection
-            }
+            taskRows
         }
         .id(UUID())
         .listStyle(PlainListStyle())
@@ -103,31 +92,10 @@ extension TasksListView {
             tableView.separatorStyle = .none
         }
         .environment(\.editMode, isListEditing ? .constant(.active) : .constant(.inactive))
-        
-        /*
-        .onNotification(.taskCompleted) {
-            toastPresenter.toast = .taskCompleted
-        }
-        .onNotification(.taskDeleted) {
-            toastPresenter.toast = .taskDeleted
-        }
-        .onNotification(.taskUpdated) {
-            toastPresenter.toast = .taskUpdated
-        }*/
     }
     
-    private var overdueTasksSection: some View {
-        Section(header: Text(viewModel.overdueSectionTitle)) {
-            taskRows(rowViewModels: viewModel.overdueTaskViewModels)
-        }
-    }
-    
-    private var currentTasksSection: some View {
-        taskRows(rowViewModels: viewModel.currentTaskViewModels)
-    }
-    
-    private func taskRows(rowViewModels: [ViewModel.RowViewModel]) -> some View {
-        ForEach(rowViewModels, id: \.id) { rowViewModel in
+    private var taskRows: some View {
+        ForEach(viewModel.taskViewModels, id: \.id) { rowViewModel in
             TaskRowView(viewModel: rowViewModel)
                 .onNavigation { viewModel.open(rowViewModel) }
         }

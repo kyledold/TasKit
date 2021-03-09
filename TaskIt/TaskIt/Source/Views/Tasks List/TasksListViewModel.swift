@@ -15,12 +15,9 @@ class TasksListViewModel: TasksListViewModelProtocol {
     // MARK: - Properties
     
     @Published var selectedDate: Date
-    @Published private(set) var hasOverdueTasks: Bool
-    @Published private(set) var overdueTaskViewModels: [RowViewModel]
-    @Published private(set) var currentTaskViewModels: [RowViewModel]
+    @Published private(set) var taskViewModels: [RowViewModel]
     
-    let overdueSectionTitle = NSLocalizedString("task_list.overdue", comment: "Title for overdue section")
-    let selectedDateText = NSLocalizedString("task_list.today", comment: "Text for selected date")
+    let titleText = NSLocalizedString("task_list.tasks", comment: "Title")
     let createTaskButtonText = NSLocalizedString("task_list.create_task", comment: "Create button title")
     
     lazy var newTaskViewModel: NewTaskViewModel = {
@@ -41,21 +38,14 @@ class TasksListViewModel: TasksListViewModelProtocol {
         self.selectedDate = Date()
         self.coordinator = coordinator
         self.managedObjectContext = managedObjectContext
-        self.overdueTaskViewModels = []
-        self.currentTaskViewModels = []
-        self.hasOverdueTasks = false
+        self.taskViewModels = []
     }
     
     // MARK: - Functions
     
     func fetchTasks() {
-        let overdueTaskModels = Task.fetchAllOverdue(for: selectedDate, viewContext: managedObjectContext)
-        let selectedDatesTaskModels = Task.fetchAll(for: selectedDate, viewContext: managedObjectContext)
-        
-        overdueTaskViewModels = overdueTaskModels.map { return TaskRowViewModel(task: $0, managedObjectContext: managedObjectContext) }
-        hasOverdueTasks = !overdueTaskViewModels.isEmpty
-        
-        currentTaskViewModels = selectedDatesTaskModels.map { return TaskRowViewModel(task: $0, managedObjectContext: managedObjectContext) }
+        let selectedDatesTaskModels = Task.fetchAll(viewContext: managedObjectContext)
+        taskViewModels = selectedDatesTaskModels.map { return TaskRowViewModel(task: $0, managedObjectContext: managedObjectContext) }
     }
     
     func open(_ rowViewModel: RowViewModel) {
