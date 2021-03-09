@@ -34,15 +34,15 @@ class TaskItCoordinator: ObservableObject, Identifiable {
 
     // MARK: - Functions
 
-    func open(_ taskRowViewModel: TaskRowViewModel) {
+    func showTaskDetails(_ taskRowViewModel: TaskRowViewModel) {
         taskDetailViewModel = makeTaskDetailsViewModel(task: taskRowViewModel.task, onChange: { })
     }
     
-    func openSettings() {
+    func showSettings() {
         settingsViewModel = SettingsViewModel()
     }
     
-    func openCalendar() {
+    func showCalendar() {
         calendarViewModel = CalendarViewModel()
     }
     

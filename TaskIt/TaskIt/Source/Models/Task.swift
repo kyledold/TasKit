@@ -36,6 +36,18 @@ public class Task: NSManagedObject {
         return tasks
     }
     
+    public static func fetchAll(for date: Date, viewContext: NSManagedObjectContext) -> [Task] {
+        
+        let calendar = Calendar.current
+        let startDate = calendar.startOfDay(for: date)
+        let endDate = calendar.date(byAdding: .hour, value: 24, to: startDate)!
+        
+        let fetchRequest: NSFetchRequest<Task> = Task.fetchRequest()
+        fetchRequest.predicate = NSPredicate(format: "dueDate >= %@ AND dueDate <= %@", startDate as NSDate, endDate as NSDate)
+        guard let tasks = try? viewContext.fetch(fetchRequest) else { return [] }
+        return tasks
+    }
+    
     public static func deleteAll(viewContext: NSManagedObjectContext) {
         Task.fetchAll(viewContext: viewContext).forEach { viewContext.delete($0) }
         try? viewContext.save()

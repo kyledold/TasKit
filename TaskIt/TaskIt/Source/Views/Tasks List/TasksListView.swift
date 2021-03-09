@@ -61,7 +61,7 @@ extension TasksListView {
     
     private var navigationHeaderView: some View {
         HStack(spacing: Layout.Padding.spacious) {
-            Text(viewModel.titleText)
+            Text(viewModel.selectedDateText)
                 .font(.largeTitle)
             
             Spacer()
@@ -97,7 +97,7 @@ extension TasksListView {
     private var taskRows: some View {
         ForEach(viewModel.taskViewModels, id: \.id) { rowViewModel in
             TaskRowView(viewModel: rowViewModel)
-                .onNavigation { viewModel.open(rowViewModel) }
+                .onNavigation { viewModel.taskRowTapped(rowViewModel) }
         }
         .onMove(perform: moveTask)
         .onDelete(perform: deleteTask)
@@ -112,11 +112,11 @@ extension TasksListView {
     // MARK: - Events
     
     private func moveTask(from source: IndexSet, to destination: Int) {
-        
+        viewModel.moveTask(from: source, to: destination)
     }
     
     private func deleteTask(at indexSet: IndexSet) {
-        
+        viewModel.deleteTask(at: indexSet)
     }
 }
 

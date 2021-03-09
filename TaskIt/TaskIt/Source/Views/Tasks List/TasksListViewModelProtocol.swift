@@ -15,12 +15,15 @@ protocol TasksListViewModelProtocol: ObservableObject {
     var taskViewModels: Array<RowViewModel> { get }
     
     var selectedDate: Date { get set }
-    var titleText: String { get }
+    var selectedDateText: String { get }
     var createTaskButtonText: String { get }
     var newTaskViewModel: NewTaskViewModel { get }
     
     func fetchTasks()
-    func open(_ rowViewModel: RowViewModel)
+    func deleteTask(at indexSet: IndexSet)
+    func moveTask(from source: IndexSet, to destination: Int)
+    
+    func taskRowTapped(_ rowViewModel: RowViewModel)
     func settingsButtonTapped()
     func calendarButtonTapped()
 }

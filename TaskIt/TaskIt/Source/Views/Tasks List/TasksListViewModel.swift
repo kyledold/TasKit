@@ -17,7 +17,7 @@ class TasksListViewModel: TasksListViewModelProtocol {
     @Published var selectedDate: Date
     @Published private(set) var taskViewModels: [RowViewModel]
     
-    let titleText = NSLocalizedString("task_list.tasks", comment: "Title")
+    let selectedDateText = NSLocalizedString("task_list.today", comment: "Title")
     let createTaskButtonText = NSLocalizedString("task_list.create_task", comment: "Create button title")
     
     lazy var newTaskViewModel: NewTaskViewModel = {
@@ -44,20 +44,35 @@ class TasksListViewModel: TasksListViewModelProtocol {
     // MARK: - Functions
     
     func fetchTasks() {
-        let selectedDatesTaskModels = Task.fetchAll(viewContext: managedObjectContext)
+        let selectedDatesTaskModels = Task.fetchAll(for: selectedDate, viewContext: managedObjectContext)
         taskViewModels = selectedDatesTaskModels.map { return TaskRowViewModel(task: $0, managedObjectContext: managedObjectContext) }
     }
     
-    func open(_ rowViewModel: RowViewModel) {
-        coordinator.open(rowViewModel)
+    func deleteTask(at indexSet: IndexSet) {
+        
+        let tasksToDelete = indexSet.map { taskViewModels[$0].task }
+        
+        tasksToDelete.forEach { task in
+            Task.deleteTask(task: task, viewContext: managedObjectContext)
+        }
+        
+        fetchTasks()
+    }
+    
+    func moveTask(from source: IndexSet, to destination: Int) {
+        
+    }
+    
+    func taskRowTapped(_ rowViewModel: RowViewModel) {
+        coordinator.showTaskDetails(rowViewModel)
     }
     
     func settingsButtonTapped() {
-        coordinator.openSettings()
+        coordinator.showSettings()
     }
     
     func calendarButtonTapped() {
-        coordinator.openCalendar()
+        coordinator.showCalendar()
     }
 }
 
