@@ -8,18 +8,15 @@
 import SwiftUI
 import Introspect
 
-struct TasksListView<ViewModel: TasksListViewModelProtocol, SettingsModifier: ViewModifier, CalendarModifier: ViewModifier>: View {
+struct TasksListView<ViewModel: TasksListViewModelProtocol, SettingsModifier: ViewModifier>: View {
     
     // MARK: - Properties
     
     @ObservedObject var viewModel: ViewModel
     
     let settingsModifier: SettingsModifier
-    let calendarModifier: CalendarModifier
     
     @State private var isListEditing = false
-    @State private var showNewTaskView = false
-    @State private var showCalendarView = false
     
     // MARK: - View
     
@@ -29,17 +26,17 @@ struct TasksListView<ViewModel: TasksListViewModelProtocol, SettingsModifier: Vi
                 navigationHeaderView
                 taskListBodyView
             }
-            .allowsHitTesting(!showNewTaskView)
+            .allowsHitTesting(!viewModel.showNewTaskView)
             
-            if showNewTaskView {
-                NewTaskView(viewModel: viewModel.newTaskViewModel, showNewTaskView: $showNewTaskView)
+            if viewModel.showNewTaskView {
+                NewTaskView(viewModel: viewModel.newTaskViewModel, showNewTaskView: $viewModel.showNewTaskView)
             } else {
                 createTaskFooterButton
             }
         }
         .navigationBarHidden(true)
-        .bottomSheet(isPresented: $showCalendarView, height: 450) {
-            CalendarView(viewModel: CalendarViewModel())
+        .bottomSheet(isPresented: $viewModel.showCalendarView, height: 450) {
+            CalendarView(viewModel: viewModel.calendarViewModel)
         }
         .onAppear {
             viewModel.fetchTasks()
@@ -74,15 +71,9 @@ extension TasksListView {
                 Image(systemName: isListEditing ? Image.Icons.tick : Image.Icons.sort).iconStyle()
             })
             
-            Button(action: {
-                showCalendarView = true
-            }, label: {
+            Button(action: calendarButtonTapped, label: {
                 Image(systemName: Image.Icons.calendar).iconStyle()
             })
-            
-            /*Button(action: calendarButtonTapped, label: {
-                Image(systemName: Image.Icons.calendar).iconStyle()
-            }).modifier(calendarModifier)*/
             
             Button(action: settingsButtonTapped, label: {
                 Image(systemName: Image.Icons.settings).iconStyle()
@@ -138,7 +129,7 @@ extension TasksListView {
             buttonColor: .t_orange,
             onButtonTap: {
                 withAnimation {
-                    showNewTaskView = true
+                    viewModel.createTaskButtonTapped()
                 }
             }
         )
@@ -152,7 +143,7 @@ extension TasksListView {
 
 struct TasksListView_Previews: PreviewProvider {
     static var previews: some View {
-        TasksListView(viewModel: FakeTasksListViewModel(), settingsModifier: FakeSheetModifier(), calendarModifier: FakeSheetModifier())
+        TasksListView(viewModel: FakeTasksListViewModel(), settingsModifier: FakeSheetModifier())
             
     }
 }

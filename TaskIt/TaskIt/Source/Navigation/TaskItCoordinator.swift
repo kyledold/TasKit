@@ -14,7 +14,6 @@ class TaskItCoordinator: ObservableObject, Identifiable {
 
     @Published var taskDetailViewModel: TaskDetailsViewModel?
     @Published var settingsViewModel: SettingsViewModel?
-    @Published var calendarViewModel: CalendarViewModel?
     
     lazy var tasksListViewModel: TasksListViewModel = {
         TasksListViewModel(coordinator: self, managedObjectContext: managedObjectContext)
@@ -40,10 +39,6 @@ class TaskItCoordinator: ObservableObject, Identifiable {
     
     func showSettings() {
         settingsViewModel = SettingsViewModel()
-    }
-    
-    func showCalendar() {
-        calendarViewModel = CalendarViewModel()
     }
     
     // MARK: - Make

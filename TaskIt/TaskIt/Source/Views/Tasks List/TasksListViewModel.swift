@@ -15,6 +15,8 @@ class TasksListViewModel: TasksListViewModelProtocol {
     // MARK: - Properties
     
     @Published var selectedDate: Date
+    @Published var showNewTaskView: Bool
+    @Published var showCalendarView: Bool
     @Published private(set) var taskViewModels: [RowViewModel]
     
     let selectedDateText = NSLocalizedString("task_list.today", comment: "Title")
@@ -29,6 +31,10 @@ class TasksListViewModel: TasksListViewModelProtocol {
         return newTaskViewModel
     }()
     
+    lazy var calendarViewModel: CalendarViewModel = {
+        return CalendarViewModel()
+    }()
+    
     private unowned let coordinator: TaskItCoordinator
     private let managedObjectContext: NSManagedObjectContext
     
@@ -39,6 +45,8 @@ class TasksListViewModel: TasksListViewModelProtocol {
         self.coordinator = coordinator
         self.managedObjectContext = managedObjectContext
         self.taskViewModels = []
+        self.showNewTaskView = false
+        self.showCalendarView = false
     }
     
     // MARK: - Functions
@@ -73,12 +81,16 @@ class TasksListViewModel: TasksListViewModelProtocol {
         coordinator.showTaskDetails(rowViewModel)
     }
     
-    func settingsButtonTapped() {
-        coordinator.showSettings()
+    func createTaskButtonTapped() {
+        showNewTaskView = true
     }
     
     func calendarButtonTapped() {
-        coordinator.showCalendar()
+        showCalendarView = true
+    }
+    
+    func settingsButtonTapped() {
+        coordinator.showSettings()
     }
 }
 
