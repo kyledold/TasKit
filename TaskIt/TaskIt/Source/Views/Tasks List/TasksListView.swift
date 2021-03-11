@@ -19,6 +19,7 @@ struct TasksListView<ViewModel: TasksListViewModelProtocol, SettingsModifier: Vi
     
     @State private var isListEditing = false
     @State private var showNewTaskView = false
+    @State private var showCalendarView = false
     
     // MARK: - View
     
@@ -37,6 +38,9 @@ struct TasksListView<ViewModel: TasksListViewModelProtocol, SettingsModifier: Vi
             }
         }
         .navigationBarHidden(true)
+        .bottomSheet(isPresented: $showCalendarView, height: 450) {
+            CalendarView(viewModel: CalendarViewModel())
+        }
         .onAppear {
             viewModel.fetchTasks()
         }
@@ -70,9 +74,15 @@ extension TasksListView {
                 Image(systemName: isListEditing ? Image.Icons.tick : Image.Icons.sort).iconStyle()
             })
             
-            Button(action: calendarButtonTapped, label: {
+            Button(action: {
+                showCalendarView = true
+            }, label: {
                 Image(systemName: Image.Icons.calendar).iconStyle()
-            }).modifier(calendarModifier)
+            })
+            
+            /*Button(action: calendarButtonTapped, label: {
+                Image(systemName: Image.Icons.calendar).iconStyle()
+            }).modifier(calendarModifier)*/
             
             Button(action: settingsButtonTapped, label: {
                 Image(systemName: Image.Icons.settings).iconStyle()

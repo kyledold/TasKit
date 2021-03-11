@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D1034ADE25FA5E2900288A38 /* BottomSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1034ADD25FA5E2900288A38 /* BottomSheet.swift */; };
+		D1034AE225FA5E4500288A38 /* RoundedCorner.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1034AE125FA5E4500288A38 /* RoundedCorner.swift */; };
 		D11E733125E53781006FD6CB /* DateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D11E733025E53781006FD6CB /* DateExtension.swift */; };
 		D11E734725E571BA006FD6CB /* ToastMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = D11E734625E571BA006FD6CB /* ToastMessage.swift */; };
 		D11E734A25E571FF006FD6CB /* ToastView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D11E734925E571FF006FD6CB /* ToastView.swift */; };
@@ -122,6 +124,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		D1034ADD25FA5E2900288A38 /* BottomSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomSheet.swift; sourceTree = "<group>"; };
+		D1034AE125FA5E4500288A38 /* RoundedCorner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedCorner.swift; sourceTree = "<group>"; };
 		D11E733025E53781006FD6CB /* DateExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateExtension.swift; sourceTree = "<group>"; };
 		D11E734625E571BA006FD6CB /* ToastMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToastMessage.swift; sourceTree = "<group>"; };
 		D11E734925E571FF006FD6CB /* ToastView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToastView.swift; sourceTree = "<group>"; };
@@ -237,6 +241,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		D1034ADC25FA5E0800288A38 /* Bottom Sheet */ = {
+			isa = PBXGroup;
+			children = (
+				D1034ADD25FA5E2900288A38 /* BottomSheet.swift */,
+				D1034AE125FA5E4500288A38 /* RoundedCorner.swift */,
+			);
+			path = "Bottom Sheet";
+			sourceTree = "<group>";
+		};
 		D11E734525E5719D006FD6CB /* Toast */ = {
 			isa = PBXGroup;
 			children = (
@@ -419,6 +432,7 @@
 				D131DF9A25E276770039D7E7 /* ButtonFooterView.swift */,
 				D1F2065525F394F6001780E7 /* RoundedCorners.swift */,
 				D1BD688B25EA8ECF002C4518 /* TextBox.swift */,
+				D1034ADC25FA5E0800288A38 /* Bottom Sheet */,
 				D11E734525E5719D006FD6CB /* Toast */,
 			);
 			path = Components;
@@ -715,6 +729,7 @@
 				D1BC346625D5A11E0068A57A /* Closure.swift in Sources */,
 				D1297F3C25F5038F00A3D20B /* CalendarViewModel.swift in Sources */,
 				D1529C7525C72C76003FC9D6 /* ColorExtensions.swift in Sources */,
+				D1034AE225FA5E4500288A38 /* RoundedCorner.swift in Sources */,
 				D131DFA125E277980039D7E7 /* FooterStyle.swift in Sources */,
 				D17FC9B325D81810002A5501 /* SubTitleStyle.swift in Sources */,
 				D1F2066A25F3A66B001780E7 /* ImageButtonStyle.swift in Sources */,
@@ -732,6 +747,7 @@
 				D1F2065625F394F6001780E7 /* RoundedCorners.swift in Sources */,
 				D17FC9D925D8235F002A5501 /* SettingsRowViewModel.swift in Sources */,
 				D17DAABB25DBFD3300ED4A8C /* TaskRowViewModel.swift in Sources */,
+				D1034ADE25FA5E2900288A38 /* BottomSheet.swift in Sources */,
 				D1DCF69025EBD7EA006305E7 /* SubTaskListView.swift in Sources */,
 				D17DAAB225DBFC9E00ED4A8C /* TaskRowView.swift in Sources */,
 				D1DCF68C25EB9600006305E7 /* FakeSubTaskRowViewModel.swift in Sources */,

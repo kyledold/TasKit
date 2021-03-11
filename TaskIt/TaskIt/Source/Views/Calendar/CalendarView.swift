@@ -14,13 +14,12 @@ struct CalendarView<ViewModel: CalendarViewModelProtocol>: View {
     
     var body: some View {
         VStack {
+            Spacer()
             DatePicker("Enter your birthday", selection: $date, displayedComponents: .date)
                 .datePickerStyle(GraphicalDatePickerStyle())
                 .frame(maxHeight: 400)
-            Spacer()
         }
         .padding()
-        .navigationBarTitle(viewModel.titleText, displayMode: .inline)
     }
 }
 
