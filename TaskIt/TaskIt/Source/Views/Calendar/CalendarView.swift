@@ -13,13 +13,9 @@ struct CalendarView<ViewModel: CalendarViewModelProtocol>: View {
     @State private var date = Date()
     
     var body: some View {
-        VStack {
-            Spacer()
-            DatePicker("Enter your birthday", selection: $date, displayedComponents: .date)
-                .datePickerStyle(GraphicalDatePickerStyle())
-                .frame(maxHeight: 400)
-        }
-        .padding()
+        DatePicker("Enter your birthday", selection: $date, displayedComponents: .date)
+            .datePickerStyle(GraphicalDatePickerStyle())
+            .padding()
     }
 }
 
