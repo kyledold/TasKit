@@ -10,11 +10,16 @@ import SwiftUI
 struct CalendarView<ViewModel: CalendarViewModelProtocol>: View {
     
     var viewModel: ViewModel
+    @State private var date = Date()
     
     var body: some View {
         VStack {
-            
+            DatePicker("Enter your birthday", selection: $date, displayedComponents: .date)
+                .datePickerStyle(GraphicalDatePickerStyle())
+                .frame(maxHeight: 400)
+            Spacer()
         }
+        .padding()
         .navigationBarTitle(viewModel.titleText, displayMode: .inline)
     }
 }
