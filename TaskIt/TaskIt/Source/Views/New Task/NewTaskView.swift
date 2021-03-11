@@ -66,7 +66,8 @@ extension NewTaskView {
         }
         .padding()
         .frame(height: 80)
-        .background(RoundedCorners(color: .t_content_background, topLeft: 10, topRight: 10, bottomLeft: 0, bottomRight: 0))
+        .background(Color.t_content_background)
+        .cornerRadius(10, corners: [.topLeft, .topRight])
     }
 }
 
