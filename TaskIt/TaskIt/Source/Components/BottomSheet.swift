@@ -49,7 +49,7 @@ public struct BottomSheet<Content: View>: View {
                 .frame(height: height)
                 .background(contentBackgroundColor)
                 .cornerRadius(topBarCornerRadius, corners: [.topLeft, .topRight])
-                .animation(.interactiveSpring())
+                .animation(Animation.easeInOut(duration: 0.5))
                 .offset(y: yOffset(for: isPresented, geometry: geometry))
             }
         }
@@ -99,7 +99,7 @@ public struct BottomSheet<Content: View>: View {
         if isPresented {
             return geometry.size.height/2 - height/2 + geometry.safeAreaInsets.bottom + draggedOffset
         } else {
-            return geometry.size.height/2 + height/2 + geometry.safeAreaInsets.bottom
+            return UIScreen.screenHeight + height
         }
     }
 }
