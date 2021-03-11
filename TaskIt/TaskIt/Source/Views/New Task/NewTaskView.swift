@@ -20,7 +20,7 @@ struct NewTaskView<ViewModel: NewTaskViewModelProtocol>: View {
     
     var body: some View {
         
-        dimmedBackgroundView
+        DimmedBackgroundView(isPresented: $showNewTaskView)
         VStack {
             Spacer()
             newTaskInputView
@@ -38,15 +38,6 @@ struct NewTaskView<ViewModel: NewTaskViewModelProtocol>: View {
 }
 
 extension NewTaskView {
-    
-    private var dimmedBackgroundView: some View {
-        VStack {
-        }
-        .backgroundOverlay(color: .black).opacity(0.3)
-        .onTapGesture {
-            showNewTaskView = false
-        }
-    }
     
     private var newTaskInputView: some View {
         HStack {
