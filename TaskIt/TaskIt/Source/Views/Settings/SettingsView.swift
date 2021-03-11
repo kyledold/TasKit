@@ -25,6 +25,7 @@ struct SettingsView<ViewModel: SettingsViewModelProtocol>: View {
             }
             .listStyle(InsetGroupedListStyle())
         }
+        .navigationBarTitle(viewModel.titleText, displayMode: .inline)
     }
     
     var footer: some View {

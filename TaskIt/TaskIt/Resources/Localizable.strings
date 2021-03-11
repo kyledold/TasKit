@@ -8,30 +8,28 @@
 
 "app.version.%@" = "Version %@";
 "general.edit" = "Edit";
+"general.cancel" = "Cancel";
 "general.done" = "Done";
 "calendar.title" = "Calendar";
+"new_task.task_name.placeholder" = "Type new task name here...";
 "settings.title" = "Settings";
 "settings.feedback.title" = "Feedback";
 "settings.feedback.subtitle" = "kdold02@gmail.com";
 "settings.open_source.title" = "Source code";
 "settings.open_source.subtitle" = "Feel free to browse or contribute";
-"status_picker.todo" = "Todo";
-"status_picker.completed" = "Completed";
-"tasks.create_task" = "Create task";
+"task_list.create_task" = "Create task";
+"task_list.today" = "Today";
 "subtask_list.add_subtask" = "Add a subtask";
 "subtask_list.subtasks" = "Subtasks";
 "subtask_list.subtask_name_placeholder" = "Enter subtask name here...";
 "task_details.add_task" = "Add task";
-"task_details.create" = "Create";
+"task_details.update" = "Update";
 "task_details.date" = "Date";
 "task_details.task_name_placeholder" = "Task name";
 "task_details.task_notes_placeholder" = "Write any notes here...";
+"task_details.update" = "Update";
 "toast.task_created" = "Task successfully created";
 "toast.task_deleted" = "Task successfully deleted";
 "toast.task_completed" = "Task successfully completed";
 "toast.task_updated" = "Task successfully updated";
-"priority_picker.none" = "none";
-"priority_picker.low" = "low";
-"priority_picker.medium" = "medium";
-"priority_picker.high" = "high";
 

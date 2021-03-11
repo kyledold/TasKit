@@ -15,23 +15,15 @@ extension Image {
         static let calendar = "calendar"
         static let settings = "gearshape.fill"
         static let tasks = "list.dash"
-        static let lowPriority = "LowPriority"
-        static let mediumPriority = "MediumPriority"
-        static let highPriority = "HighPriority"
+        static let create = "arrow.up.circle"
+        static let sort = "arrow.up.arrow.down.square"
+        static let tick = "checkmark.circle"
     }
     
-    static func iconNameForPriority(_ priority: Priority) -> String {
-        switch priority {
-        case .none: return .empty
-        case .low: return Icons.lowPriority
-        case .medium: return Icons.mediumPriority
-        case .high: return Icons.highPriority
-        }
-    }
     func iconStyle() -> some View {
         self.resizable()
             .frame(width: 25, height: 25)
-            .foregroundColor(Color.t_white)
+            .foregroundColor(.primary)
     }
     
     func thumbnailImageModifier(tintColor: Color) -> some View {
