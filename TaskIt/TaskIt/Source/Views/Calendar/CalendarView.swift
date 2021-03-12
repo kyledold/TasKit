@@ -9,11 +9,10 @@ import SwiftUI
 
 struct CalendarView<ViewModel: CalendarViewModelProtocol>: View {
     
-    var viewModel: ViewModel
-    @State private var date = Date()
+    @ObservedObject var viewModel: ViewModel
     
     var body: some View {
-        DatePicker("Enter your birthday", selection: $date, displayedComponents: .date)
+        DatePicker("Enter your birthday", selection: $viewModel.selectedDate, displayedComponents: .date)
             .datePickerStyle(GraphicalDatePickerStyle())
             .padding()
     }

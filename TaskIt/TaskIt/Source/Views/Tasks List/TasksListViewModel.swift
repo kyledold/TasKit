@@ -32,7 +32,14 @@ class TasksListViewModel: TasksListViewModelProtocol {
     }()
     
     lazy var calendarViewModel: CalendarViewModel = {
-        return CalendarViewModel()
+        let calendarViewModel = CalendarViewModel(selectedDate: selectedDate)
+        calendarViewModel.onDateSelected = { [weak self] selectedDate in
+            self?.selectedDate = selectedDate
+            self?.showCalendarView = false
+            self?.fetchTasks()
+        }
+        
+        return calendarViewModel
     }()
     
     private unowned let coordinator: TaskItCoordinator

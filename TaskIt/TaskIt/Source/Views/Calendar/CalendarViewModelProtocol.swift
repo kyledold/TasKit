@@ -7,7 +7,8 @@
 
 import Foundation
 
-protocol CalendarViewModelProtocol: Identifiable {
+protocol CalendarViewModelProtocol: ObservableObject {
     
-    var titleText: String { get }
+    var selectedDate: Date { get set }
+    var onDateSelected: ValueClosure<Date>? { get set }
 }

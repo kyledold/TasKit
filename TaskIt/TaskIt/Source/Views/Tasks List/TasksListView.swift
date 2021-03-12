@@ -56,6 +56,12 @@ struct TasksListView<ViewModel: TasksListViewModelProtocol, SettingsModifier: Vi
     private func calendarButtonTapped() {
         viewModel.calendarButtonTapped()
     }
+    
+    private func createTaskButtonTapped() {
+        withAnimation {
+            viewModel.createTaskButtonTapped()
+        }
+    }
 }
 
 extension TasksListView {
@@ -127,11 +133,7 @@ extension TasksListView {
         ButtonFooterView(
             buttonText: viewModel.createTaskButtonText,
             buttonColor: .t_orange,
-            onButtonTap: {
-                withAnimation {
-                    viewModel.createTaskButtonTapped()
-                }
-            }
+            onButtonTap: createTaskButtonTapped
         )
         .onNotification(.taskCreated) {
             //toastPresenter.toast = .taskCreated
