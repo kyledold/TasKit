@@ -85,9 +85,10 @@ public class Task: NSManagedObject {
         try? viewContext.save()
     }
     
-    public static func create(title: String, viewContext: NSManagedObjectContext) {
+    public static func create(title: String, dueDate: Date, viewContext: NSManagedObjectContext) {
         let newTask = Task(context: viewContext)
         newTask.title = title
+        newTask.dueDate = dueDate
         try? viewContext.save()
         
         print("Task \"\(title)\" created")
@@ -118,7 +119,6 @@ public class Task: NSManagedObject {
         super.awakeFromInsert()
         
         createdAt = Date()
-        dueDate = Date()
         id = UUID()
         status = .todo
     }

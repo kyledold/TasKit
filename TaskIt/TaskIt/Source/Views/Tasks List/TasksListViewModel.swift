@@ -23,7 +23,7 @@ class TasksListViewModel: TasksListViewModelProtocol {
     let createTaskButtonText = NSLocalizedString("task_list.create_task", comment: "Create button title")
     
     lazy var newTaskViewModel: NewTaskViewModel = {
-        let newTaskViewModel = NewTaskViewModel(managedObjectContext: managedObjectContext)
+        let newTaskViewModel = NewTaskViewModel(selectedDate: selectedDate, managedObjectContext: managedObjectContext)
         newTaskViewModel.onTaskAdded = { [weak self] in
             self?.fetchTasks()
         }

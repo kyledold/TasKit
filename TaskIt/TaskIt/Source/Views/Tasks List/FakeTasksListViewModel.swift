@@ -17,7 +17,7 @@ class FakeTasksListViewModel: TasksListViewModelProtocol {
     var showCalendarView = false
     var selectedDateText = "Today"
     var createTaskButtonText = "Create task"
-    var newTaskViewModel = NewTaskViewModel(managedObjectContext: NSManagedObjectContext(concurrencyType: .mainQueueConcurrencyType))
+    var newTaskViewModel = NewTaskViewModel(selectedDate: Date(), managedObjectContext: NSManagedObjectContext(concurrencyType: .mainQueueConcurrencyType))
     var calendarViewModel = CalendarViewModel(selectedDate: Date())
 
     var taskViewModels: [RowViewModel] = [
