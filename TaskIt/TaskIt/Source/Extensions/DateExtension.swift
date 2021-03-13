@@ -28,4 +28,11 @@ extension Date {
     func get(_ component: Calendar.Component, calendar: Calendar = Calendar.current) -> Int {
         return calendar.component(component, from: self)
     }
+    
+    func addDays(numberOfDays: Int) -> Date {
+        let currentDate = Date()
+        var dateComponent = DateComponents()
+        dateComponent.day = 1
+        return Calendar.current.date(byAdding: dateComponent, to: currentDate)!
+    }
 }

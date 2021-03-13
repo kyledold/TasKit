@@ -5,6 +5,7 @@
 //  Created by Kyle Dold on 14/02/2021.
 //
 
+import Combine
 import CoreData
 import Foundation
 
@@ -23,6 +24,8 @@ class TasksListViewModel: TasksListViewModelProtocol {
     
     let createTaskButtonText = NSLocalizedString("task_list.create_task", comment: "Create button title")
     
+    private let calendar = Calendar.current
+    private var subscribers: Set<AnyCancellable> = []
     private unowned let coordinator: TaskItCoordinator
     private let managedObjectContext: NSManagedObjectContext
     
@@ -38,6 +41,8 @@ class TasksListViewModel: TasksListViewModelProtocol {
         self.showNewTaskView = false
         self.showCalendarView = false
         self.showSortButton = false
+        
+        addObservers()
     }
     
     // MARK: - Functions
@@ -87,6 +92,33 @@ class TasksListViewModel: TasksListViewModelProtocol {
     
     func settingsButtonTapped() {
         coordinator.showSettings()
+    }
+    
+    // MARK: - Observers
+    
+    private func addObservers() {
+        $selectedDate.dropFirst().sink(receiveValue: { [weak self] newSelectedDate in
+            guard let self = self else { return }
+            self.selectedDateText = self.getReadableDate(from: newSelectedDate)
+        }).store(in: &subscribers)
+    }
+    
+    private func getReadableDate(from date: Date) -> String {
+        
+        // Return "Today" if selected date is today
+        guard !calendar.isDate(Date(), inSameDayAs: date) else {
+            return NSLocalizedString("task_list.today", comment: "Selcted date title")
+        }
+        
+        // Return "Tomorrow" if selected date is today
+        guard !calendar.isDate(Date().addDays(numberOfDays: 1), inSameDayAs: date) else {
+            return NSLocalizedString("task_list.tomorrow", comment: "Selcted date title")
+        }
+        
+        let day = date.get(.day)
+        let dayOfTheWeek = date.dayOfTheWeek
+        let month = date.month
+        return "\(dayOfTheWeek) \(day) \(month)"
     }
 
     // MARK: - Child ViewModels
