@@ -102,7 +102,7 @@ extension TasksListView {
     private var emptyTaskList: some View {
         VStack(spacing: 10) {
             Spacer()
-            Image(systemName: Image.Icons.tick).placeholderStyle()
+            Image(systemName: Image.Icons.minusCalendar).placeholderStyle()
             Text(viewModel.emptyListText)
             Spacer()
             Spacer()

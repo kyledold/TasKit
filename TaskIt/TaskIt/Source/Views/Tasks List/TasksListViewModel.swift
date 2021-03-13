@@ -50,7 +50,15 @@ class TasksListViewModel: TasksListViewModelProtocol {
     
     func fetchTasks() {
         let selectedDatesTaskModels = Task.fetchAll(for: selectedDate, viewContext: managedObjectContext)
-        taskViewModels = selectedDatesTaskModels.map { return TaskRowViewModel(task: $0, managedObjectContext: managedObjectContext) }
+        taskViewModels = selectedDatesTaskModels.map { task in
+            return TaskRowViewModel(
+                task: task,
+                managedObjectContext: managedObjectContext,
+                onChangeCompletion: { [weak self] isComplete in
+                    self?.updateTaskCompletionStatus(task, isComplete: isComplete)
+                }
+            )
+        }
         showSortButton = taskViewModels.count > 1
     }
     
@@ -73,6 +81,14 @@ class TasksListViewModel: TasksListViewModelProtocol {
         Task.updateOrderOfTasks(revisedTasks, viewContext: managedObjectContext)
         
         fetchTasks()
+    }
+    
+    private func updateTaskCompletionStatus(_ task: Task, isComplete: Bool) {
+        Task.updateStatus(
+            task: task,
+            newStatus: isComplete ? .completed : .todo,
+            viewContext: managedObjectContext
+        )
     }
     
     // MARK: - Events

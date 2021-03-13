@@ -12,7 +12,7 @@ struct TaskDetailsView<ViewModel: TaskDetailsViewModelProtocol>: View {
     // MARK: - Properties
     
     @ObservedObject var viewModel: ViewModel
-    
+    @State private var feedback = UINotificationFeedbackGenerator()
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     
     // MARK: - View
@@ -58,6 +58,9 @@ extension TaskDetailsView {
                 HStack {
                     Toggle(isOn: $viewModel.isComplete) {}
                         .toggleStyle(CheckboxToggleStyle())
+                        .onChange(of: viewModel.isComplete) { _ in
+                            feedback.notificationOccurred(.success)
+                        }
                     
                     TextField(viewModel.taskNamePlaceholderText, text: $viewModel.taskName)
                         .textFieldStyle(SimpleTextFieldStyle())

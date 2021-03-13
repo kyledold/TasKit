@@ -12,6 +12,7 @@ struct TaskRowView<ViewModel: TaskRowViewModelProtocol>: View {
     // MARK: - Properties
     
     @ObservedObject var viewModel: ViewModel
+    @State private var feedback = UINotificationFeedbackGenerator()
     
     // MARK: - View
     
@@ -20,6 +21,9 @@ struct TaskRowView<ViewModel: TaskRowViewModelProtocol>: View {
             
             Toggle(isOn: $viewModel.isComplete) {}
                 .toggleStyle(CheckboxToggleStyle())
+                .onChange(of: viewModel.isComplete) { _ in
+                    feedback.notificationOccurred(.success)
+                }
             
             /*VStack(alignment: .center) {
                 Text(viewModel.dayOfTheWeekText).font(.regular_12).foregroundColor(Color.t_red)

@@ -18,7 +18,7 @@ extension Image {
         static let create = "arrow.up.circle"
         static let sort = "arrow.up.arrow.down.square"
         static let circleTick = "checkmark.circle"
-        static let tick = "checkmark"
+        static let minusCalendar = "calendar.badge.minus"
     }
     
     func iconStyle() -> some View {
@@ -29,7 +29,7 @@ extension Image {
     
     func placeholderStyle() -> some View {
         self.resizable()
-            .frame(width: 40, height: 40)
+            .frame(width: 50, height: 40)
     }
     
     func thumbnailImageModifier(tintColor: Color) -> some View {
