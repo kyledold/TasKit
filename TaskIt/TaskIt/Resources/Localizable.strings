@@ -10,6 +10,7 @@
 "general.edit" = "Edit";
 "general.cancel" = "Cancel";
 "general.done" = "Done";
+"general.add" = "Add";
 "calendar.title" = "Calendar";
 "new_task.task_name.placeholder" = "Type new task name here...";
 "settings.title" = "Settings";

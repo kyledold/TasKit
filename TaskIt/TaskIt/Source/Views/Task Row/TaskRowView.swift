@@ -25,17 +25,6 @@ struct TaskRowView<ViewModel: TaskRowViewModelProtocol>: View {
                     feedback.notificationOccurred(.success)
                 }
             
-            /*VStack(alignment: .center) {
-                Text(viewModel.dayOfTheWeekText).font(.regular_12).foregroundColor(Color.t_red)
-                Text(viewModel.dateText).font(.bold_24)
-                Text(viewModel.monthText).font(.regular_14)
-            }.frame(minWidth: 40)
-            
-            Rectangle()
-                .foregroundColor(.primary)
-                .frame(width: 0.2)
-             */
-            
             Text(viewModel.taskTitle)
                 .strikethrough(viewModel.isComplete, color: .primary)
                 .font(.regular_16)

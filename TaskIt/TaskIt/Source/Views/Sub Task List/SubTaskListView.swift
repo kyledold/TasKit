@@ -110,10 +110,10 @@ extension SubTaskListView {
                 .textFieldStyle(SimpleTextFieldStyle())
             
             HStack(spacing: Layout.Padding.cozy) {
-                Button(action: doneButtonTapped, label: { Text(viewModel.doneButtonText) })
+                Button(action: doneButtonTapped, label: { Text(viewModel.addButtonText) })
                     .disabled(viewModel.newSubTaskName.isBlank)
                 
-                Button(action: cancelButtonTapped, label: { Text("Cancel") })
+                Button(action: cancelButtonTapped, label: { Text(viewModel.cancelButtonText) })
             }
         }
     }

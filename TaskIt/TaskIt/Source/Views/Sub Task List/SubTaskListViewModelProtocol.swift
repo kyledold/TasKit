@@ -18,6 +18,7 @@ protocol SubTaskListViewModelProtocol: ObservableObject {
     var isListInEditMode: Bool { get }
     var addSubTaskButtonText: String { get }
     var doneButtonText: String { get }
+    var addButtonText: String { get }
     var cancelButtonText: String { get }
     var editButtonText: String { get }
     

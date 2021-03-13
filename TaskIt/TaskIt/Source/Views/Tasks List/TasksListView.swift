@@ -131,7 +131,6 @@ extension TasksListView {
         .onDelete(perform: deleteTask)
         .deleteDisabled(isListEditing)
         .padding(.vertical, Layout.Padding.compact)
-        .background(Color.t_input_background)
         .cornerRadius(10.0)
         .listRowBackground(Color.t_background)
         .listRowInsets(EdgeInsets(top: 8, leading: isListEditing ? -24 : 16, bottom: 8, trailing: 16))

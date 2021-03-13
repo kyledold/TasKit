@@ -14,6 +14,7 @@ class FakeSubTaskListViewModel: SubTaskListViewModelProtocol {
     var headerText = "Subtasks"
     var subTaskNamePlaceholderText = "Subtask name"
     var addSubTaskButtonText = "Add subtask"
+    var addButtonText = "Add"
     var doneButtonText = "Done"
     var cancelButtonText = "Cancel"
     var editButtonText = "Edit"
