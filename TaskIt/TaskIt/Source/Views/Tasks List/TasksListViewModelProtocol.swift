@@ -15,9 +15,10 @@ protocol TasksListViewModelProtocol: ObservableObject {
     var taskViewModels: Array<RowViewModel> { get }
     
     var selectedDate: Date { get set }
+    var selectedDateText: String { get }
     var showNewTaskView: Bool { get set }
     var showCalendarView: Bool { get set }
-    var selectedDateText: String { get }
+    var showSortButton: Bool { get }
     var createTaskButtonText: String { get }
     var newTaskViewModel: NewTaskViewModel { get }
     var calendarViewModel: CalendarViewModel { get }

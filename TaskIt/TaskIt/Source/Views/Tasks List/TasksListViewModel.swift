@@ -15,32 +15,13 @@ class TasksListViewModel: TasksListViewModelProtocol {
     // MARK: - Properties
     
     @Published var selectedDate: Date
+    @Published var selectedDateText: String
     @Published var showNewTaskView: Bool
     @Published var showCalendarView: Bool
-    @Published private(set) var taskViewModels: [RowViewModel]
+    @Published var showSortButton: Bool
+    @Published var taskViewModels: [RowViewModel]
     
-    let selectedDateText = NSLocalizedString("task_list.today", comment: "Title")
     let createTaskButtonText = NSLocalizedString("task_list.create_task", comment: "Create button title")
-    
-    lazy var newTaskViewModel: NewTaskViewModel = {
-        let newTaskViewModel = NewTaskViewModel(selectedDate: selectedDate, managedObjectContext: managedObjectContext)
-        newTaskViewModel.onTaskAdded = { [weak self] in
-            self?.fetchTasks()
-        }
-        
-        return newTaskViewModel
-    }()
-    
-    lazy var calendarViewModel: CalendarViewModel = {
-        let calendarViewModel = CalendarViewModel(selectedDate: selectedDate)
-        calendarViewModel.onDateSelected = { [weak self] selectedDate in
-            self?.selectedDate = selectedDate
-            self?.showCalendarView = false
-            self?.fetchTasks()
-        }
-        
-        return calendarViewModel
-    }()
     
     private unowned let coordinator: TaskItCoordinator
     private let managedObjectContext: NSManagedObjectContext
@@ -48,12 +29,15 @@ class TasksListViewModel: TasksListViewModelProtocol {
     // MARK: - Initialisation
     
     init(coordinator: TaskItCoordinator, managedObjectContext: NSManagedObjectContext) {
-        self.selectedDate = Date()
         self.coordinator = coordinator
         self.managedObjectContext = managedObjectContext
+        
+        self.selectedDate = Date()
+        self.selectedDateText = NSLocalizedString("task_list.today", comment: "Selcted date title")
         self.taskViewModels = []
         self.showNewTaskView = false
         self.showCalendarView = false
+        self.showSortButton = false
     }
     
     // MARK: - Functions
@@ -61,6 +45,7 @@ class TasksListViewModel: TasksListViewModelProtocol {
     func fetchTasks() {
         let selectedDatesTaskModels = Task.fetchAll(for: selectedDate, viewContext: managedObjectContext)
         taskViewModels = selectedDatesTaskModels.map { return TaskRowViewModel(task: $0, managedObjectContext: managedObjectContext) }
+        showSortButton = taskViewModels.count > 1
     }
     
     func deleteTask(at indexSet: IndexSet) {
@@ -84,20 +69,46 @@ class TasksListViewModel: TasksListViewModelProtocol {
         fetchTasks()
     }
     
+    // MARK: - Events
+    
     func taskRowTapped(_ rowViewModel: RowViewModel) {
         coordinator.showTaskDetails(rowViewModel)
     }
     
     func createTaskButtonTapped() {
+        newTaskViewModel.selectedDate = selectedDate
         showNewTaskView = true
     }
     
     func calendarButtonTapped() {
+        calendarViewModel.selectedDate = selectedDate
         showCalendarView = true
     }
     
     func settingsButtonTapped() {
         coordinator.showSettings()
     }
+
+    // MARK: - Child ViewModels
+    
+    lazy var newTaskViewModel: NewTaskViewModel = {
+        let newTaskViewModel = NewTaskViewModel(selectedDate: selectedDate, managedObjectContext: managedObjectContext)
+        newTaskViewModel.onTaskAdded = { [weak self] in
+            self?.fetchTasks()
+        }
+        
+        return newTaskViewModel
+    }()
+    
+    lazy var calendarViewModel: CalendarViewModel = {
+        let calendarViewModel = CalendarViewModel(selectedDate: selectedDate)
+        calendarViewModel.onDateSelected = { [weak self] selectedDate in
+            self?.selectedDate = selectedDate
+            self?.showCalendarView = false
+            self?.fetchTasks()
+        }
+        
+        return calendarViewModel
+    }()
 }
 

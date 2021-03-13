@@ -45,7 +45,7 @@ struct TasksListView<ViewModel: TasksListViewModelProtocol, SettingsModifier: Vi
     
     // MARK: - Events
     
-    private func pencilButtonTapped() {
+    private func sortButtonTapped() {
         isListEditing.toggle()
     }
     
@@ -73,9 +73,11 @@ extension TasksListView {
             
             Spacer()
             
-            Button(action: pencilButtonTapped, label: {
-                Image(systemName: isListEditing ? Image.Icons.tick : Image.Icons.sort).iconStyle()
-            })
+            if viewModel.showSortButton {
+                Button(action: sortButtonTapped, label: {
+                    Image(systemName: isListEditing ? Image.Icons.tick : Image.Icons.sort).iconStyle()
+                })
+            }
             
             Button(action: calendarButtonTapped, label: {
                 Image(systemName: Image.Icons.calendar).iconStyle()

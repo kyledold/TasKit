@@ -14,11 +14,10 @@ class NewTaskViewModel: NewTaskViewModelProtocol {
     @Published var taskName: String = .empty
     @Published var isCreateButtonDisabled: Bool = false
     
+    var selectedDate: Date
+    var onTaskAdded: EmptyClosure?
     let taskNamePlaceholder = NSLocalizedString("new_task.task_name.placeholder", comment: "Task name placeholder")
     
-    var onTaskAdded: EmptyClosure?
-    
-    private var selectedDate: Date
     private var subscribers: Set<AnyCancellable> = []
     private let managedObjectContext: NSManagedObjectContext
     
