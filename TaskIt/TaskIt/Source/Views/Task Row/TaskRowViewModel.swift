@@ -12,13 +12,10 @@ class TaskRowViewModel: TaskRowViewModelProtocol {
     
     // MARK: - Properties
     
-    var id: UUID { return task.unwrappedId }
-    var taskTitle: String { task.unwrappedTitle }
-    var dayOfTheWeekText: String { return task.unwrappeDueDate.dayOfTheWeek.uppercased() }
-    var dateText: String { return "\(task.unwrappeDueDate.get(.day))" }
-    var monthText: String { return task.unwrappeDueDate.month }
+    @Published var isComplete: Bool
     
-    @Published var isCompleted: Bool
+    var id: UUID { task.unwrappedId }
+    var taskTitle: String { task.unwrappedTitle }
     
     private(set) var task: Task
     private let managedObjectContext: NSManagedObjectContext
@@ -29,6 +26,6 @@ class TaskRowViewModel: TaskRowViewModelProtocol {
         self.task = task
         self.managedObjectContext = managedObjectContext
         
-        self.isCompleted = task.status == .completed
+        self.isComplete = task.status == .completed
     }
 }

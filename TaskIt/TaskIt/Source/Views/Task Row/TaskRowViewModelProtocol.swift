@@ -9,12 +9,9 @@ import Foundation
 
 protocol TaskRowViewModelProtocol: ObservableObject, Identifiable {
     
+    var isComplete: Bool { get set }
     var id: UUID { get }
     var taskTitle: String { get }
-    var dayOfTheWeekText: String { get }
-    var dateText: String { get }
-    var monthText: String { get }
-    var isCompleted: Bool { get }
     var task: Task { get }
 }
 

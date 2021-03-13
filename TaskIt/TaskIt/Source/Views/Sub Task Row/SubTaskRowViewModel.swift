@@ -10,11 +10,10 @@ import Foundation
 
 class SubTaskRowViewModel: SubTaskRowViewModelProtocol {
     
-    var id: UUID { return subTask.unwrappedId }
-    var subTaskTitle: String { return subTask.unwrappedTitle}
-    
     @Published var isComplete: Bool
     
+    var id: UUID { return subTask.unwrappedId }
+    var subTaskTitle: String { return subTask.unwrappedTitle}
     var onChangeCompletion: ValueClosure<Bool>
     
     private var subscribers: Set<AnyCancellable> = []

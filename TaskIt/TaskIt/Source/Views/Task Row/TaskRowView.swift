@@ -18,7 +18,10 @@ struct TaskRowView<ViewModel: TaskRowViewModelProtocol>: View {
     var body: some View {
         HStack {
             
-            VStack(alignment: .center) {
+            Toggle(isOn: $viewModel.isComplete) {}
+                .toggleStyle(CheckboxToggleStyle())
+            
+            /*VStack(alignment: .center) {
                 Text(viewModel.dayOfTheWeekText).font(.regular_12).foregroundColor(Color.t_red)
                 Text(viewModel.dateText).font(.bold_24)
                 Text(viewModel.monthText).font(.regular_14)
@@ -27,14 +30,16 @@ struct TaskRowView<ViewModel: TaskRowViewModelProtocol>: View {
             Rectangle()
                 .foregroundColor(.primary)
                 .frame(width: 0.2)
+             */
             
             Text(viewModel.taskTitle)
-                .strikethrough(viewModel.isCompleted, color: .primary)
+                .strikethrough(viewModel.isComplete, color: .primary)
                 .font(.regular_16)
                 .foregroundColor(.primary)
             
             Spacer()
         }
+        .padding(Layout.Padding.compact)
     }
 }
 
