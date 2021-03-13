@@ -23,6 +23,7 @@ class TasksListViewModel: TasksListViewModelProtocol {
     @Published var taskViewModels: [RowViewModel]
     
     let createTaskButtonText = NSLocalizedString("task_list.create_task", comment: "Create button title")
+    let emptyListText = NSLocalizedString("task_list.no_tasks", comment: "Empty list text")
     
     private let calendar = Calendar.current
     private var subscribers: Set<AnyCancellable> = []

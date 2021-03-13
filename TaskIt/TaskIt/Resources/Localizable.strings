@@ -20,6 +20,7 @@
 "task_list.create_task" = "Create task";
 "task_list.today" = "Today";
 "task_list.tomorrow" = "Tomorrow";
+"task_list.no_tasks" = "No tasks";
 "subtask_list.add_subtask" = "Add a subtask";
 "subtask_list.subtasks" = "Subtasks";
 "subtask_list.subtask_name_placeholder" = "Enter subtask name here...";

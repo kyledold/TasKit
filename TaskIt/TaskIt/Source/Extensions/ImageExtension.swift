@@ -17,13 +17,19 @@ extension Image {
         static let tasks = "list.dash"
         static let create = "arrow.up.circle"
         static let sort = "arrow.up.arrow.down.square"
-        static let tick = "checkmark.circle"
+        static let circleTick = "checkmark.circle"
+        static let tick = "checkmark"
     }
     
     func iconStyle() -> some View {
         self.resizable()
             .frame(width: 25, height: 25)
             .foregroundColor(.primary)
+    }
+    
+    func placeholderStyle() -> some View {
+        self.resizable()
+            .frame(width: 40, height: 40)
     }
     
     func thumbnailImageModifier(tintColor: Color) -> some View {

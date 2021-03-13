@@ -20,6 +20,7 @@ protocol TasksListViewModelProtocol: ObservableObject {
     var showCalendarView: Bool { get set }
     var showSortButton: Bool { get }
     var createTaskButtonText: String { get }
+    var emptyListText: String { get }
     var newTaskViewModel: NewTaskViewModel { get }
     var calendarViewModel: CalendarViewModel { get }
     

@@ -75,7 +75,7 @@ extension TasksListView {
             
             if viewModel.showSortButton {
                 Button(action: sortButtonTapped, label: {
-                    Image(systemName: isListEditing ? Image.Icons.tick : Image.Icons.sort).iconStyle()
+                    Image(systemName: isListEditing ? Image.Icons.circleTick : Image.Icons.sort).iconStyle()
                 })
             }
             
@@ -90,7 +90,26 @@ extension TasksListView {
         .padding()
     }
     
+    @ViewBuilder
     private var taskListBodyView: some View {
+        if !viewModel.taskViewModels.isEmpty {
+            taskList
+        } else {
+            emptyTaskList
+        }
+    }
+    
+    private var emptyTaskList: some View {
+        VStack(spacing: 10) {
+            Spacer()
+            Image(systemName: Image.Icons.tick).placeholderStyle()
+            Text(viewModel.emptyListText)
+            Spacer()
+            Spacer()
+        }.foregroundColor(Color.t_gray)
+    }
+    
+    private var taskList: some View {
         List {
             taskRows
         }
