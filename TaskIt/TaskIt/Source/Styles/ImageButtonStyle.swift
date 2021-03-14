@@ -9,7 +9,7 @@ import SwiftUI
 
 struct ImageButtonStyle: ButtonStyle {
     
-    var isDisabled: Bool
+    var isDisabled: Bool = false
     var buttonColor: Color
     
     func makeBody(configuration: Configuration) -> some View {

@@ -7,10 +7,11 @@
 */
 
 "app.version.%@" = "Version %@";
-"general.edit" = "Edit";
+"general.add" = "Add";
 "general.cancel" = "Cancel";
 "general.done" = "Done";
-"general.add" = "Add";
+"general.edit" = "Edit";
+"general.save" = "Save";
 "calendar.title" = "Calendar";
 "new_task.task_name.placeholder" = "Type new task name here...";
 "settings.title" = "Settings";
@@ -26,8 +27,11 @@
 "subtask_list.subtasks" = "Sub-tasks";
 "subtask_list.subtask_name_placeholder" = "Enter sub-task name here...";
 "task_details.add_task" = "Add task";
-"task_details.update" = "Update";
 "task_details.date" = "Date";
+"task_details.delete" = "Delete";
+"task_details.delete_alert.title" = "Delete task";
+"task_details.delete_alert.message" = "Are you sure you want to delete this task?";
+"task_details.save" = "Save";
 "task_details.task_name_placeholder" = "Task name";
 "task_details.task_notes_placeholder" = "Write any notes here...";
 "task_details.update" = "Update";

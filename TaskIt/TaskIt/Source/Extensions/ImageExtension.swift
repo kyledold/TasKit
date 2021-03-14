@@ -11,14 +11,15 @@ extension Image {
     
     struct Icons {
         static let add = "plus"
-        static let close = "xmark"
+        static let back = "arrow.left"
         static let calendar = "calendar"
-        static let settings = "gearshape.fill"
-        static let tasks = "list.dash"
-        static let create = "arrow.up.circle"
-        static let sort = "arrow.up.arrow.down.square"
         static let circleTick = "checkmark.circle"
+        static let close = "xmark"
+        static let create = "arrow.up.circle"
         static let minusCalendar = "calendar.badge.minus"
+        static let settings = "gearshape.fill"
+        static let sort = "arrow.up.arrow.down.square"
+        static let tasks = "list.dash"
     }
     
     func iconStyle() -> some View {

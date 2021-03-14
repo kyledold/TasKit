@@ -13,6 +13,7 @@ struct TaskDetailsView<ViewModel: TaskDetailsViewModelProtocol>: View {
     
     @ObservedObject var viewModel: ViewModel
     @State private var feedback = UINotificationFeedbackGenerator()
+    @State private var showDeleteConfirmationAlert = false
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     
     // MARK: - View
@@ -26,13 +27,28 @@ struct TaskDetailsView<ViewModel: TaskDetailsViewModelProtocol>: View {
                 Spacer()
             }
             .padding(.horizontal)
-            //footerView
         }
         .navigationBarHidden(true)
+        .alert(isPresented: $showDeleteConfirmationAlert, content: { deleteConfirmationAlert })
         .onAppear {
             // TODO: find a better way to handle this
             UITextView.appearance().backgroundColor = .clear
         }
+    }
+    
+    // MARK: - Events
+    
+    private func backButtonTapped() {
+        presentationMode.wrappedValue.dismiss()
+    }
+    
+    private func deleteButtonTapped() {
+        showDeleteConfirmationAlert = true
+        /*
+        viewModel.deleteButtonTapped {
+            
+        }
+         */
     }
 }
 
@@ -40,15 +56,19 @@ extension TaskDetailsView {
     
     private var navigationBarView: some View {
         HStack {
+            
+            Button(action: backButtonTapped, label: {
+                Image(systemName: Image.Icons.back)
+            }).buttonStyle(ImageButtonStyle(buttonColor: .primary))
+            
             Spacer()
-            Button(action: {
-                presentationMode.wrappedValue.dismiss()
-            }, label: {
-                Image(systemName: Image.Icons.close)
+            
+            Button(action: deleteButtonTapped, label: {
+                Text(viewModel.deleteButtonText)
             })
-            .foregroundColor(Color.primary)
-            .padding()
-        }
+            .buttonStyle(TextNavigationButtonStyle(buttonColor: .t_red, textColor: .white))
+            
+        }.padding(.bottom, Layout.Spacing.compact)
     }
     
     private var taskBasicDetailsView: some View {
@@ -79,30 +99,18 @@ extension TaskDetailsView {
         }
     }
     
-    /*
-    private var footerView: some View {
-        VStack {
-            Spacer()
-            if showInputAccessoryView {
-                HStack {
-                    Button(action: {
-                            viewModel.submitButtonTapped() {
-                                let generator = UINotificationFeedbackGenerator()
-                                generator.notificationOccurred(.success)
-                                
-                                
-                                presentationMode.wrappedValue.dismiss()
-                            }
-                        }, label: {
-                            Text(viewModel.submitButtonText)
-                        })
-                        .disabled(viewModel.isSubmitButtonDisabled)
-                        .buttonStyle(FullWidthButtonStyle(isDisabled: viewModel.isSubmitButtonDisabled, buttonColor: Color.t_green))
+    var deleteConfirmationAlert: Alert {
+        Alert(
+            title: Text(viewModel.deleteAlertTitleText),
+            message: Text(viewModel.deleteAlertMessageText),
+            primaryButton: .destructive(Text(viewModel.deleteButtonText), action: {
+                viewModel.deleteButtonTapped {
+                    presentationMode.wrappedValue.dismiss()
                 }
-                .frame(alignment: .center)
-            }
-        }
-    }*/
+            }),
+            secondaryButton: .cancel()
+        )
+    }
 }
 
 // MARK: - PreviewProvider -

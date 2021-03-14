@@ -75,7 +75,7 @@
 		D1BC346625D5A11E0068A57A /* Closure.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1BC346525D5A11E0068A57A /* Closure.swift */; };
 		D1BC348925D5A92A0068A57A /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1BC348825D5A92A0068A57A /* SettingsView.swift */; };
 		D1BD687425E96EAA002C4518 /* RoundedButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1BD687325E96EAA002C4518 /* RoundedButtonStyle.swift */; };
-		D1BD687825E970A9002C4518 /* FullWidthButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1BD687725E970A9002C4518 /* FullWidthButtonStyle.swift */; };
+		D1BD687825E970A9002C4518 /* TextNavigationButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1BD687725E970A9002C4518 /* TextNavigationButtonStyle.swift */; };
 		D1BD688625EA81F3002C4518 /* CheckboxToggleStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1BD688525EA81F3002C4518 /* CheckboxToggleStyle.swift */; };
 		D1BD688C25EA8ECF002C4518 /* TextBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1BD688B25EA8ECF002C4518 /* TextBox.swift */; };
 		D1BD689125EB8E45002C4518 /* SubTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1BD689025EB8E45002C4518 /* SubTask.swift */; };
@@ -197,7 +197,7 @@
 		D1BC346525D5A11E0068A57A /* Closure.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Closure.swift; sourceTree = "<group>"; };
 		D1BC348825D5A92A0068A57A /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		D1BD687325E96EAA002C4518 /* RoundedButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedButtonStyle.swift; sourceTree = "<group>"; };
-		D1BD687725E970A9002C4518 /* FullWidthButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullWidthButtonStyle.swift; sourceTree = "<group>"; };
+		D1BD687725E970A9002C4518 /* TextNavigationButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextNavigationButtonStyle.swift; sourceTree = "<group>"; };
 		D1BD688525EA81F3002C4518 /* CheckboxToggleStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckboxToggleStyle.swift; sourceTree = "<group>"; };
 		D1BD688B25EA8ECF002C4518 /* TextBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextBox.swift; sourceTree = "<group>"; };
 		D1BD689025EB8E45002C4518 /* SubTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubTask.swift; sourceTree = "<group>"; };
@@ -285,7 +285,7 @@
 			children = (
 				D1BD688525EA81F3002C4518 /* CheckboxToggleStyle.swift */,
 				D131DFA025E277980039D7E7 /* FooterStyle.swift */,
-				D1BD687725E970A9002C4518 /* FullWidthButtonStyle.swift */,
+				D1BD687725E970A9002C4518 /* TextNavigationButtonStyle.swift */,
 				D1F2066925F3A66B001780E7 /* ImageButtonStyle.swift */,
 				D1BD687325E96EAA002C4518 /* RoundedButtonStyle.swift */,
 				D17FC9B225D81810002A5501 /* SubTitleStyle.swift */,
@@ -711,7 +711,7 @@
 				D1F2066525F39E09001780E7 /* FakeNewTaskViewModel.swift in Sources */,
 				D1DCF68925EB9527006305E7 /* SubTaskRowViewModelProtocol.swift in Sources */,
 				D11E734A25E571FF006FD6CB /* ToastView.swift in Sources */,
-				D1BD687825E970A9002C4518 /* FullWidthButtonStyle.swift in Sources */,
+				D1BD687825E970A9002C4518 /* TextNavigationButtonStyle.swift in Sources */,
 				D17DAA9A25DBDF5300ED4A8C /* Persistence.swift in Sources */,
 				D1DCF69725EBD908006305E7 /* SubTaskListViewModelProtocol.swift in Sources */,
 				D17DA9C125DABB9100ED4A8C /* TaskDetailsView.swift in Sources */,

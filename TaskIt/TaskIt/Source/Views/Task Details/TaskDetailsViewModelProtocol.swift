@@ -16,9 +16,10 @@ protocol TaskDetailsViewModelProtocol: ObservableObject {
     var taskNamePlaceholderText: String { get }
     var taskNotesPlaceholderText: String { get }
     var taskDateText: String { get }
-    var submitButtonText: String { get }
+    var deleteAlertTitleText: String { get }
+    var deleteAlertMessageText: String { get }
+    var deleteButtonText: String { get }
     var subTaskListViewModel: SubTaskListViewModel { get }
-    var isSubmitButtonDisabled: Bool { get }
     
-    func submitButtonTapped(_ completion: @escaping EmptyClosure)
+    func deleteButtonTapped(_ completion: @escaping EmptyClosure)
 }

@@ -17,12 +17,14 @@ class FakeTaskDetailsViewModel: TaskDetailsViewModelProtocol {
     var taskNamePlaceholderText = "Task name"
     var taskNotesPlaceholderText = "Write notes here..."
     var taskDateText = "Date"
-    var submitButtonText = "Create"
-    var isSubmitButtonDisabled = false
+    var deleteAlertTitleText = "Delete task"
+    var deleteAlertMessageText = "Are you sure you want to delete this task?"
+    var deleteButtonText = "Delete"
+    
     var subTaskListViewModel = SubTaskListViewModel(
         task: Task(),
         managedObjectContext: NSManagedObjectContext(concurrencyType: .mainQueueConcurrencyType)
     )
     
-    func submitButtonTapped(_ completion: @escaping EmptyClosure) { }
+    func deleteButtonTapped(_ completion: @escaping EmptyClosure) { }
 }
