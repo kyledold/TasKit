@@ -22,9 +22,9 @@
 "task_list.today" = "Today";
 "task_list.tomorrow" = "Tomorrow";
 "task_list.no_tasks" = "No tasks";
-"subtask_list.add_subtask" = "Add a subtask";
-"subtask_list.subtasks" = "Subtasks";
-"subtask_list.subtask_name_placeholder" = "Enter subtask name here...";
+"subtask_list.add_subtask" = "Add a sub-task";
+"subtask_list.subtasks" = "Sub-tasks";
+"subtask_list.subtask_name_placeholder" = "Enter sub-task name here...";
 "task_details.add_task" = "Add task";
 "task_details.update" = "Update";
 "task_details.date" = "Date";
