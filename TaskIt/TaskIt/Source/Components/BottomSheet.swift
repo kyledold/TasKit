@@ -42,7 +42,7 @@ public struct BottomSheet<Content: View>: View {
         GeometryReader { geometry in
             ZStack {
                 DimmedBackgroundView(isPresented: $isPresented)
-                VStack(spacing: Layout.Padding.compact) {
+                VStack(spacing: Layout.Spacing.compact) {
                     topBar(geometry: geometry)
                     content
                 }

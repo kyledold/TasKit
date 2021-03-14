@@ -67,7 +67,7 @@ struct TasksListView<ViewModel: TasksListViewModelProtocol, SettingsModifier: Vi
 extension TasksListView {
     
     private var navigationHeaderView: some View {
-        HStack(alignment: .firstTextBaseline, spacing: Layout.Padding.spacious) {
+        HStack(alignment: .firstTextBaseline, spacing: Layout.Spacing.spacious) {
             
             Text(viewModel.selectedDateText)
                 .font(.regular_28)
@@ -131,7 +131,7 @@ extension TasksListView {
         .onMove(perform: moveTask)
         .onDelete(perform: deleteTask)
         .deleteDisabled(isListEditing)
-        .padding(.vertical, Layout.Padding.compact)
+        .padding(.vertical, Layout.Spacing.compact)
         .cornerRadius(10.0)
         .listRowBackground(Color.t_background)
         .listRowInsets(EdgeInsets(top: 8, leading: isListEditing ? -24 : 16, bottom: 8, trailing: 16))

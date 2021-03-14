@@ -32,7 +32,7 @@ struct TaskRowView<ViewModel: TaskRowViewModelProtocol>: View {
             
             Spacer()
         }
-        .padding(Layout.Padding.compact)
+        .padding(Layout.Spacing.compact)
     }
 }
 

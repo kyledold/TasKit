@@ -18,7 +18,7 @@ struct FullWidthButtonStyle: ButtonStyle {
             .frame(height: 40)
             .font(.semiBold_20)
             .foregroundColor(.white)
-            .padding(.vertical, Layout.Padding.compact)
+            .padding(.vertical, Layout.Spacing.compact)
             .background(isDisabled ? Color.t_gray : buttonColor)
             .opacity(configuration.isPressed ? 0.75 : 1.0)
     }

@@ -69,7 +69,7 @@ class ToastPresenter: ObservableObject {
                 .foregroundColor(.white)
                 .fontWeight(.bold)
         }
-        .padding(Layout.Padding.cozy)
+        .padding(Layout.Spacing.cozy)
         .frame(width: UIScreen.screenWidth, height: 100)
         .background(color)
     }

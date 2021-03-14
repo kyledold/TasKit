@@ -52,8 +52,8 @@ extension TaskDetailsView {
     }
     
     private var taskBasicDetailsView: some View {
-        VStack(spacing: Layout.Padding.cozy) {
-            VStack(spacing: Layout.Padding.cozy) {
+        VStack(spacing: Layout.Spacing.cozy) {
+            VStack(spacing: Layout.Spacing.cozy) {
                 
                 HStack {
                     Toggle(isOn: $viewModel.isComplete) {}
@@ -66,11 +66,11 @@ extension TaskDetailsView {
                         .textFieldStyle(SimpleTextFieldStyle())
                 }
                 
-                VStack(spacing: Layout.Padding.cozy) {
+                VStack(spacing: Layout.Spacing.cozy) {
                     DatePicker(viewModel.taskDateText, selection: $viewModel.dueDate, displayedComponents: .date)
                         .accentColor(Color.primary)
                 }
-                .padding(Layout.Padding.cozy)
+                .padding(Layout.Spacing.cozy)
                 .background(Color.t_input_background)
                 .cornerRadius(10)
                 

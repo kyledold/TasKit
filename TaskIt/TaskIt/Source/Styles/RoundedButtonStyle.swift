@@ -16,7 +16,7 @@ struct RoundedButtonStyle: ButtonStyle {
             .frame(minWidth: 120).padding(.vertical, 5)
             .font(.semiBold_20)
             .foregroundColor(.white)
-            .padding(.vertical, Layout.Padding.compact).padding(.horizontal)
+            .padding(.vertical, Layout.Spacing.compact).padding(.horizontal)
             .background(buttonColor)
             .cornerRadius(25)
             .opacity(configuration.isPressed ? 0.75 : 1.0)
