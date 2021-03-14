@@ -14,10 +14,12 @@ enum NunitoWeight: String {
 }
 
 extension Font {
+    static var regular_28: Font { Font.nunito(weight: .regular, size: 28) }
     static var regular_16: Font { Font.nunito(weight: .regular, size: 16) }
     static var regular_14: Font { Font.nunito(weight: .regular, size: 14)}
     static var regular_12: Font { Font.nunito(weight: .regular, size: 12) }
     
+    static var semiBold_28: Font { Font.nunito(weight: .semiBold, size: 28) }
     static var semiBold_20: Font { Font.nunito(weight: .semiBold, size: 20) }
     static var semiBold_16: Font { Font.nunito(weight: .semiBold, size: 16) }
     

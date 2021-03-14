@@ -67,9 +67,10 @@ struct TasksListView<ViewModel: TasksListViewModelProtocol, SettingsModifier: Vi
 extension TasksListView {
     
     private var navigationHeaderView: some View {
-        HStack(spacing: Layout.Padding.spacious) {
+        HStack(alignment: .firstTextBaseline, spacing: Layout.Padding.spacious) {
+            
             Text(viewModel.selectedDateText)
-                .font(.largeTitle)
+                .font(.regular_28)
             
             Spacer()
             
