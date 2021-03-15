@@ -66,5 +66,6 @@ public class SubTask: NSManagedObject {
         
         id = UUID()
         isComplete = false
+        index = Int16.max
     }
 }
