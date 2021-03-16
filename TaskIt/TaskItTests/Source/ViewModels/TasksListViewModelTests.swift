@@ -10,10 +10,28 @@ import XCTest
 
 class TasksListViewModelTests: XCTestCase {
     
-    let mockManagedObjectContext = MockNSManagedObjectContext()
-    private lazy var sut = TasksViewModel(managedObjectContext: mockManagedObjectContext)
+    let mockManagedObjectContext = MockNSManagedObjectContext(concurrencyType: .mainQueueConcurrencyType)
     
-    func test_titleText() {
-        XCTAssertEqual(sut.titleText, "Tasks")
+    private lazy var sut = TasksListViewModel(
+        coordinator: TaskItCoordinator(),
+        managedObjectContext: MockNSManagedObjectContext(concurrencyType: .mainQueueConcurrencyType)
+    )
+    
+    func test_givenDefaultInit_whenSelectedDateCalled_thenValueEqualsCurrentDate() {
+        // given
+        // when
+        let result = sut.selectedDate
+        
+        // then
+        XCTAssertEqual(result, Date())
+    }
+    
+    func test_givenDefaultInit_whenSelectedDateTextCalled_thenValueEqualsToday() {
+        // given
+        // when
+        let result = sut.selectedDateText
+        
+        // then
+        XCTAssertEqual(result, "Today")
     }
 }
