@@ -32,11 +32,15 @@ class TasksListViewModel: TasksListViewModelProtocol {
     
     // MARK: - Initialisation
     
-    init(coordinator: TaskItCoordinator, managedObjectContext: NSManagedObjectContext) {
+    init(
+        selectedDate: Date = Date(),
+        coordinator: TaskItCoordinator,
+        managedObjectContext: NSManagedObjectContext
+    ) {
         self.coordinator = coordinator
         self.managedObjectContext = managedObjectContext
         
-        self.selectedDate = Date()
+        self.selectedDate = selectedDate
         self.selectedDateText = NSLocalizedString("task_list.today", comment: "Selcted date title")
         self.taskViewModels = []
         self.showNewTaskView = false
