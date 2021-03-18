@@ -11,6 +11,9 @@
 		D1034AE225FA5E4500288A38 /* RoundedCorner.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1034AE125FA5E4500288A38 /* RoundedCorner.swift */; };
 		D1034AEB25FA66D800288A38 /* DimmedBackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1034AEA25FA66D800288A38 /* DimmedBackgroundView.swift */; };
 		D10F85B62603C53200B08A87 /* NewTaskViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D10F85B52603C53200B08A87 /* NewTaskViewModelTests.swift */; };
+		D10F85BA2603C87200B08A87 /* SubTaskListViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D10F85B92603C87200B08A87 /* SubTaskListViewModelTests.swift */; };
+		D10F85BD2603C96300B08A87 /* SubTaskRowViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D10F85BC2603C96300B08A87 /* SubTaskRowViewModelTests.swift */; };
+		D10F85C02603C9A600B08A87 /* MockSubTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = D10F85BF2603C9A600B08A87 /* MockSubTask.swift */; };
 		D11E733125E53781006FD6CB /* DateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D11E733025E53781006FD6CB /* DateExtension.swift */; };
 		D11E734725E571BA006FD6CB /* ToastMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = D11E734625E571BA006FD6CB /* ToastMessage.swift */; };
 		D11E734A25E571FF006FD6CB /* ToastView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D11E734925E571FF006FD6CB /* ToastView.swift */; };
@@ -130,6 +133,9 @@
 		D1034AE125FA5E4500288A38 /* RoundedCorner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedCorner.swift; sourceTree = "<group>"; };
 		D1034AEA25FA66D800288A38 /* DimmedBackgroundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DimmedBackgroundView.swift; sourceTree = "<group>"; };
 		D10F85B52603C53200B08A87 /* NewTaskViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewTaskViewModelTests.swift; sourceTree = "<group>"; };
+		D10F85B92603C87200B08A87 /* SubTaskListViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubTaskListViewModelTests.swift; sourceTree = "<group>"; };
+		D10F85BC2603C96300B08A87 /* SubTaskRowViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubTaskRowViewModelTests.swift; sourceTree = "<group>"; };
+		D10F85BF2603C9A600B08A87 /* MockSubTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockSubTask.swift; sourceTree = "<group>"; };
 		D11E733025E53781006FD6CB /* DateExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateExtension.swift; sourceTree = "<group>"; };
 		D11E734625E571BA006FD6CB /* ToastMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToastMessage.swift; sourceTree = "<group>"; };
 		D11E734925E571FF006FD6CB /* ToastView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToastView.swift; sourceTree = "<group>"; };
@@ -404,6 +410,7 @@
 			isa = PBXGroup;
 			children = (
 				D1542BB425DD8A74005FD7C7 /* MockTask.swift */,
+				D10F85BF2603C9A600B08A87 /* MockSubTask.swift */,
 				D1542BB925DD8D49005FD7C7 /* MockNSManagedObjectContext.swift */,
 			);
 			path = Mocks;
@@ -480,6 +487,8 @@
 				D1542BAD25DD8997005FD7C7 /* TaskRowViewModelTests.swift */,
 				D1F02E922603BF1600E6B134 /* TaskDetailsViewModelTests.swift */,
 				D10F85B52603C53200B08A87 /* NewTaskViewModelTests.swift */,
+				D10F85B92603C87200B08A87 /* SubTaskListViewModelTests.swift */,
+				D10F85BC2603C96300B08A87 /* SubTaskRowViewModelTests.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -782,12 +791,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D10F85BA2603C87200B08A87 /* SubTaskListViewModelTests.swift in Sources */,
 				D17FC9F625D82B9C002A5501 /* SettingsRowViewModelTests.swift in Sources */,
 				D17FC9F125D82AC7002A5501 /* SettingsViewModelTests.swift in Sources */,
+				D10F85BD2603C96300B08A87 /* SubTaskRowViewModelTests.swift in Sources */,
 				D10F85B62603C53200B08A87 /* NewTaskViewModelTests.swift in Sources */,
 				D1542BAE25DD8997005FD7C7 /* TaskRowViewModelTests.swift in Sources */,
 				D17DA9FA25DAE35C00ED4A8C /* TasksListViewModelTests.swift in Sources */,
 				D1F02E932603BF1600E6B134 /* TaskDetailsViewModelTests.swift in Sources */,
+				D10F85C02603C9A600B08A87 /* MockSubTask.swift in Sources */,
 				D1542BBA25DD8D49005FD7C7 /* MockNSManagedObjectContext.swift in Sources */,
 				D1542BB525DD8A74005FD7C7 /* MockTask.swift in Sources */,
 			);
