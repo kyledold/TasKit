@@ -17,7 +17,32 @@ class TaskRowViewModelTests: XCTestCase {
         onChangeCompletion: { _ in }
     )
     
-    func test_titleText() {
-        //XCTAssertEqual(sut.titleText, mockTask.title)
+    // MARK: - Properties
+    
+    func test_givenDefaultInit_whenIdCalled_thenValueEqualsExpectedValue() {
+        // given
+        // when
+        let result = sut.id
+        
+        // then
+        XCTAssertEqual(result, mockTask.id)
+    }
+    
+    func test_givenDefaultInit_whenTaskTitleCalled_thenValueEqualsExpectedValue() {
+        // given
+        // when
+        let result = sut.taskTitle
+        
+        // then
+        XCTAssertEqual(result, mockTask.title)
+    }
+    
+    func test_givenDefaultInit_whenIsCompleteCalled_thenValueEqualsExpectedValue() {
+        // given
+        // when
+        let result = sut.isComplete
+        
+        // then
+        XCTAssertEqual(result, mockTask.status == .completed)
     }
 }

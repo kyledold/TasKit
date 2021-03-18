@@ -19,6 +19,7 @@ extension Task {
             taskNotes: String = ""
         ) -> Task {
             let task = Task(context: MockNSManagedObjectContext(concurrencyType: .mainQueueConcurrencyType))
+            task.id = UUID()
             task.title = title
             task.status = status
             task.dueDate = dueDate
