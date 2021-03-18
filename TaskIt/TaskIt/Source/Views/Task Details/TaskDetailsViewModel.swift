@@ -21,11 +21,9 @@ class TaskDetailsViewModel: TaskDetailsViewModelProtocol {
     var taskNamePlaceholderText = NSLocalizedString("task_details.task_name_placeholder", comment: "Task name textfield placeholder")
     var taskNotesPlaceholderText = NSLocalizedString("task_details.task_notes_placeholder", comment: "Task notes text editor placeholder")
     var taskDateText = NSLocalizedString("task_details.date", comment: "Date picker description")
-    
     var deleteAlertTitleText = NSLocalizedString("task_details.delete_alert.title", comment: "Delete alert title")
     var deleteAlertMessageText = NSLocalizedString("task_details.delete_alert.message", comment: "Delete alert message")
     var deleteButtonText = NSLocalizedString("task_details.delete", comment: "Delete button title")
-    var saveButtonText = NSLocalizedString("task_details.save", comment: "Save button title")
     
     var subTaskListViewModel: SubTaskListViewModel
     

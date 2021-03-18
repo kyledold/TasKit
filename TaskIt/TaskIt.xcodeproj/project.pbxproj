@@ -91,6 +91,7 @@
 		D1E91F5A25F4EDA20036C1C4 /* SheetModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1E91F5925F4EDA20036C1C4 /* SheetModifier.swift */; };
 		D1E91F5D25F4EE650036C1C4 /* TaskItCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1E91F5C25F4EE650036C1C4 /* TaskItCoordinator.swift */; };
 		D1E91F6025F4EE700036C1C4 /* TaskItCoordinatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1E91F5F25F4EE700036C1C4 /* TaskItCoordinatorView.swift */; };
+		D1F02E932603BF1600E6B134 /* TaskDetailsViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1F02E922603BF1600E6B134 /* TaskDetailsViewModelTests.swift */; };
 		D1F2065A25F39A4C001780E7 /* NewTaskView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1F2065925F39A4C001780E7 /* NewTaskView.swift */; };
 		D1F2065E25F39DD6001780E7 /* NewTaskViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1F2065D25F39DD6001780E7 /* NewTaskViewModel.swift */; };
 		D1F2066225F39DF8001780E7 /* NewTaskViewModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1F2066125F39DF8001780E7 /* NewTaskViewModelProtocol.swift */; };
@@ -213,6 +214,7 @@
 		D1E91F5925F4EDA20036C1C4 /* SheetModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SheetModifier.swift; sourceTree = "<group>"; };
 		D1E91F5C25F4EE650036C1C4 /* TaskItCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskItCoordinator.swift; sourceTree = "<group>"; };
 		D1E91F5F25F4EE700036C1C4 /* TaskItCoordinatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskItCoordinatorView.swift; sourceTree = "<group>"; };
+		D1F02E922603BF1600E6B134 /* TaskDetailsViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskDetailsViewModelTests.swift; sourceTree = "<group>"; };
 		D1F2065925F39A4C001780E7 /* NewTaskView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewTaskView.swift; sourceTree = "<group>"; };
 		D1F2065D25F39DD6001780E7 /* NewTaskViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewTaskViewModel.swift; sourceTree = "<group>"; };
 		D1F2066125F39DF8001780E7 /* NewTaskViewModelProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewTaskViewModelProtocol.swift; sourceTree = "<group>"; };
@@ -474,6 +476,7 @@
 				D17FC9F525D82B9C002A5501 /* SettingsRowViewModelTests.swift */,
 				D17DA9F925DAE35C00ED4A8C /* TasksListViewModelTests.swift */,
 				D1542BAD25DD8997005FD7C7 /* TaskRowViewModelTests.swift */,
+				D1F02E922603BF1600E6B134 /* TaskDetailsViewModelTests.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -780,6 +783,7 @@
 				D17FC9F125D82AC7002A5501 /* SettingsViewModelTests.swift in Sources */,
 				D1542BAE25DD8997005FD7C7 /* TaskRowViewModelTests.swift in Sources */,
 				D17DA9FA25DAE35C00ED4A8C /* TasksListViewModelTests.swift in Sources */,
+				D1F02E932603BF1600E6B134 /* TaskDetailsViewModelTests.swift in Sources */,
 				D1542BBA25DD8D49005FD7C7 /* MockNSManagedObjectContext.swift in Sources */,
 				D1542BB525DD8A74005FD7C7 /* MockTask.swift in Sources */,
 			);

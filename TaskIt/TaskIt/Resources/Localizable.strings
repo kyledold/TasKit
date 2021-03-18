@@ -31,7 +31,6 @@
 "task_details.delete" = "Delete";
 "task_details.delete_alert.title" = "Delete task";
 "task_details.delete_alert.message" = "Are you sure you want to delete this task?";
-"task_details.save" = "Save";
 "task_details.task_name_placeholder" = "Task name";
 "task_details.task_notes_placeholder" = "Write any notes here...";
 "task_details.update" = "Update";

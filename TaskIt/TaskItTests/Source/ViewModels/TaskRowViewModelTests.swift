@@ -13,13 +13,13 @@ class TaskRowViewModelTests: XCTestCase {
     private let mockTask = Task.StubFactory.make(title: "Mock task")
     private lazy var sut = TaskRowViewModel(
         task: mockTask,
-        managedObjectContext: MockNSManagedObjectContext(concurrencyType: .mainQueueConcurrencyType),
+        managedObjectContext: MockNSManagedObjectContext(),
         onChangeCompletion: { _ in }
     )
     
     // MARK: - Properties
     
-    func test_givenDefaultInit_whenIdCalled_thenValueEqualsExpectedValue() {
+    func test_givenDefaultInit_whenIdCalled_thenReturnsExpectedValue() {
         // given
         // when
         let result = sut.id
@@ -28,7 +28,7 @@ class TaskRowViewModelTests: XCTestCase {
         XCTAssertEqual(result, mockTask.id)
     }
     
-    func test_givenDefaultInit_whenTaskTitleCalled_thenValueEqualsExpectedValue() {
+    func test_givenDefaultInit_whenTaskTitleCalled_thenReturnsExpectedValue() {
         // given
         // when
         let result = sut.taskTitle
@@ -37,7 +37,7 @@ class TaskRowViewModelTests: XCTestCase {
         XCTAssertEqual(result, mockTask.title)
     }
     
-    func test_givenDefaultInit_whenIsCompleteCalled_thenValueEqualsExpectedValue() {
+    func test_givenDefaultInit_whenIsCompleteCalled_thenReturnsExpectedValue() {
         // given
         // when
         let result = sut.isComplete

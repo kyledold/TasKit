@@ -11,7 +11,7 @@ import XCTest
 class TasksListViewModelTests: XCTestCase {
     
     private let mockSelectedDate = Date()
-    private let mockManagedObjectContext = MockNSManagedObjectContext(concurrencyType: .mainQueueConcurrencyType)
+    private let mockManagedObjectContext = MockNSManagedObjectContext()
     
     private lazy var sut = TasksListViewModel(
         selectedDate: mockSelectedDate,
