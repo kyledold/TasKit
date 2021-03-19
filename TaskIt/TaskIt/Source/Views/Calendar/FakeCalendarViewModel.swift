@@ -10,6 +10,9 @@ import Foundation
 class FakeCalendarViewModel: CalendarViewModelProtocol {
     
     var selectedDate = Date()
+    var doneButtonText = "Done"
     var onDateSelected: ValueClosure<Date>? = { _ in }
+    
+    func doneButtonTapped() {}
 }
 

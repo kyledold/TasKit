@@ -14,19 +14,16 @@ class CalendarViewModel: CalendarViewModelProtocol {
     
     @Published var selectedDate: Date
     
+    var doneButtonText = NSLocalizedString("general.done", comment: "Done button text")
     var onDateSelected: ValueClosure<Date>?
     
     private var subscribers: Set<AnyCancellable> = []
     
     init(selectedDate: Date) {
         self.selectedDate = selectedDate
-        
-        addObservers()
     }
     
-    private func addObservers() {
-        $selectedDate.dropFirst().sink(receiveValue: { [weak self] selectedDate in
-            self?.onDateSelected?(selectedDate)
-        }).store(in: &subscribers)
+    func doneButtonTapped() {
+        onDateSelected?(selectedDate)
     }
 }

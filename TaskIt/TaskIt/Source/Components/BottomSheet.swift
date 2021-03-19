@@ -57,9 +57,6 @@ public struct BottomSheet<Content: View>: View {
     
     private func topBar(geometry: GeometryProxy) -> some View {
         ZStack {
-            RoundedRectangle(cornerRadius: 6)
-                .fill(Color.secondary)
-                .frame(width: 40, height: 6)
         }
         .frame(width: geometry.size.width, height: 30)
         .background(topBarBackgroundColor)

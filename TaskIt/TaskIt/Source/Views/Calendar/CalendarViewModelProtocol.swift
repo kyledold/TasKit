@@ -10,5 +10,8 @@ import Foundation
 protocol CalendarViewModelProtocol: ObservableObject {
     
     var selectedDate: Date { get set }
+    var doneButtonText: String { get }
     var onDateSelected: ValueClosure<Date>? { get set }
+    
+    func doneButtonTapped()
 }
