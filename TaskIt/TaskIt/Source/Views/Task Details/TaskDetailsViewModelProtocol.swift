@@ -21,6 +21,8 @@ protocol TaskDetailsViewModelProtocol: ObservableObject {
     var deleteAlertMessageText: String { get }
     var deleteButtonText: String { get }
     var showCalendarView: Bool { get set }
+    var reminderTimeInterval: TimeInterval { get set }
+    var isReminderEnabled: Bool { get set }
     var subTaskListViewModel: SubTaskListViewModel { get }
     var calendarViewModel: CalendarViewModel { get }
     

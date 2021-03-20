@@ -49,13 +49,11 @@ struct TaskDetailsView<ViewModel: TaskDetailsViewModelProtocol>: View {
         viewModel.calendarButtonTapped()
     }
     
+    private func reminderTimeButtonTapped() {
+    }
+    
     private func deleteButtonTapped() {
         showDeleteConfirmationAlert = true
-        /*
-        viewModel.deleteButtonTapped {
-            
-        }
-         */
     }
 }
 
@@ -93,12 +91,49 @@ extension TaskDetailsView {
                         .textFieldStyle(SimpleTextFieldStyle())
                 }
                 
+                VStack(spacing: Layout.Spacing.tight) {
+                    dueDateRow
+                    reminderRow
+                }
+                .padding(Layout.Spacing.cozy)
+                .background(Color.t_input_background)
+                .cornerRadius(10)
+                
+                TextBox(viewModel.taskNotesPlaceholderText, text: $viewModel.taskNotes)
+            }
+        }
+    }
+    
+    private var dueDateRow: some View {
+        HStack {
+            Text(viewModel.taskDateText)
+            Spacer()
+            Button(action: calendarButtonTapped, label: {
                 HStack {
-                    Text(viewModel.taskDateText)
+                    Text(viewModel.formattedDueDate)
+                        .foregroundColor(.primary)
+                }
+                .padding(Layout.Spacing.compact)
+                .background(Color.t_input_background_2)
+                .cornerRadius(10)
+            })
+        }
+    }
+    
+    private var reminderRow: some View {
+        VStack {
+            HStack {
+                Text("Reminder")
+                Spacer()
+                Toggle(isOn: $viewModel.isReminderEnabled, label: {}).toggleStyle(SwitchToggleStyle())
+                    .padding(Layout.Spacing.tight)
+            }
+            if viewModel.isReminderEnabled {
+                HStack {
                     Spacer()
-                    Button(action: calendarButtonTapped, label: {
+                    Button(action: reminderTimeButtonTapped, label: {
                         HStack {
-                            Text(viewModel.formattedDueDate)
+                            Text("15 min before")
                                 .foregroundColor(.primary)
                         }
                         .padding(Layout.Spacing.compact)
@@ -106,11 +141,6 @@ extension TaskDetailsView {
                         .cornerRadius(10)
                     })
                 }
-                .padding(Layout.Spacing.cozy)
-                .background(Color.t_input_background)
-                .cornerRadius(10)
-                
-                TextBox(viewModel.taskNotesPlaceholderText, text: $viewModel.taskNotes)
             }
         }
     }

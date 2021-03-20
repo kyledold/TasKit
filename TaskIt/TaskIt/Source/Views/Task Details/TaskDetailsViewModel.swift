@@ -19,6 +19,8 @@ class TaskDetailsViewModel: TaskDetailsViewModelProtocol {
     @Published var taskNotes = String.empty
     @Published var formattedDueDate = String.empty
     @Published var showCalendarView: Bool
+    @Published var reminderTimeInterval: TimeInterval
+    @Published var isReminderEnabled: Bool
     
     var taskNamePlaceholderText = NSLocalizedString("task_details.task_name_placeholder", comment: "Task name textfield placeholder")
     var taskNotesPlaceholderText = NSLocalizedString("task_details.task_notes_placeholder", comment: "Task notes text editor placeholder")
@@ -40,13 +42,17 @@ class TaskDetailsViewModel: TaskDetailsViewModelProtocol {
         self.task = task
         self.managedObjectContext = managedObjectContext
         self.subTaskListViewModel = SubTaskListViewModel(task: self.task, managedObjectContext: managedObjectContext)
-        self.showCalendarView = false
         
         taskName = task.unwrappedTitle
         dueDate = task.unwrappeDueDate
-        formattedDueDate = dueDate.shortDate
+        formattedDueDate = task.unwrappeDueDate.shortDate
         isComplete = task.status == .completed
         taskNotes = task.unwrappedNotes
+        reminderTimeInterval = TimeInterval()
+        isReminderEnabled = false
+        showCalendarView = false
+        
+        //isReminderEnabled = task.isReminderEnabled
         
         addObservers()
     }
