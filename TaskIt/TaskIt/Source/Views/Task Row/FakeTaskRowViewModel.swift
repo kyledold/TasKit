@@ -9,11 +9,8 @@ import Foundation
 
 class FakeTaskRowViewModel: TaskRowViewModelProtocol {
     
+    var isComplete = false
     var id = UUID()
     var taskTitle = "This is a fake title"
-    var dayOfTheWeekText = "FRI"
-    var dateText = "25"
-    var monthText = "Nov"
-    var isCompleted = false
     var task = Task()
 }

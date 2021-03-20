@@ -12,22 +12,37 @@ class SettingsViewModelTests: XCTestCase {
     
     private lazy var sut = SettingsViewModel()
     
-    func test_titleText() {
-        XCTAssertEqual(sut.titleText, "Settings")
-    }
-    
-    func test_versionNumber() {
-        XCTAssertEqual(sut.versionNumber, Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String)
-    }
-    
-    func test_rowViewModels() {
-        XCTAssertEqual(sut.rowViewModels.count, 2)
+    func test_givenDefaultInit_whenTitleTextCalled_thenReturnsExpectedValue() {
+        // given
+        // when
+        let result = sut.titleText
         
-        let feedbackRowViewModel = sut.rowViewModels[0]
+        // then
+        XCTAssertEqual(result, "Settings")
+    }
+    
+    func test_givenDefaultInit_whenVersionNumberCalled_thenReturnsExpectedValue() {
+        // given
+        // when
+        let result = sut.versionNumber
+        
+        // then
+        XCTAssertEqual(result, Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String)
+    }
+    
+    func test_givenDefaultInit_whenRowViewModelsCalled_thenReturnsExpectedValues() {
+        // given
+        // when
+        let result = sut.rowViewModels
+        
+        // then
+        XCTAssertEqual(result.count, 2)
+        
+        let feedbackRowViewModel = result[0]
         XCTAssertNotNil(feedbackRowViewModel)
         XCTAssertEqual(feedbackRowViewModel.settingsItem, .feedback)
         
-        let openSourceRowViewModel = sut.rowViewModels[1]
+        let openSourceRowViewModel = result[1]
         XCTAssertNotNil(openSourceRowViewModel)
         XCTAssertEqual(openSourceRowViewModel.settingsItem, .openSource)
     }

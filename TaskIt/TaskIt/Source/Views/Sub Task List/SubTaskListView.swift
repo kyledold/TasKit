@@ -18,7 +18,7 @@ struct SubTaskListView<ViewModel: SubTaskListViewModelProtocol>: View {
     // MARK: - View
     
     var body: some View {
-        VStack(alignment: .leading, spacing: Layout.Padding.squished) {
+        VStack(alignment: .leading, spacing: Layout.Spacing.squished) {
             
             headerView
             subTaskListView
@@ -28,7 +28,7 @@ struct SubTaskListView<ViewModel: SubTaskListViewModelProtocol>: View {
             }
             Spacer()
         }
-        .padding(.bottom, Layout.Padding.luxurious)
+        .padding(.bottom, Layout.Spacing.luxurious)
     }
     
     // MARK: - Events
@@ -105,15 +105,15 @@ extension SubTaskListView {
     }
     
     private var newSubTaskInputView: some View {
-        VStack(alignment: .leading, spacing: Layout.Padding.compact) {
+        VStack(alignment: .leading, spacing: Layout.Spacing.compact) {
             TextField(viewModel.subTaskNamePlaceholderText, text: $viewModel.newSubTaskName)
                 .textFieldStyle(SimpleTextFieldStyle())
             
-            HStack(spacing: Layout.Padding.cozy) {
-                Button(action: doneButtonTapped, label: { Text(viewModel.doneButtonText) })
+            HStack(spacing: Layout.Spacing.cozy) {
+                Button(action: doneButtonTapped, label: { Text(viewModel.addButtonText) })
                     .disabled(viewModel.newSubTaskName.isBlank)
                 
-                Button(action: cancelButtonTapped, label: { Text("Cancel") })
+                Button(action: cancelButtonTapped, label: { Text(viewModel.cancelButtonText) })
             }
         }
     }
@@ -125,8 +125,8 @@ extension SubTaskListView {
                 Text(viewModel.addSubTaskButtonText)
             }
         })
-        .padding(.leading, Layout.Padding.squished)
-        .padding(.vertical, Layout.Padding.compact)
+        .padding(.leading, Layout.Spacing.squished)
+        .padding(.vertical, Layout.Spacing.compact)
     }
 }
 

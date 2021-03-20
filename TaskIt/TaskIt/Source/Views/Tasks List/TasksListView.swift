@@ -8,17 +8,15 @@
 import SwiftUI
 import Introspect
 
-struct TasksListView<ViewModel: TasksListViewModelProtocol, SettingsModifier: ViewModifier, CalendarModifier: ViewModifier>: View {
+struct TasksListView<ViewModel: TasksListViewModelProtocol, SettingsModifier: ViewModifier>: View {
     
     // MARK: - Properties
     
     @ObservedObject var viewModel: ViewModel
     
     let settingsModifier: SettingsModifier
-    let calendarModifier: CalendarModifier
     
     @State private var isListEditing = false
-    @State private var showNewTaskView = false
     
     // MARK: - View
     
@@ -28,15 +26,18 @@ struct TasksListView<ViewModel: TasksListViewModelProtocol, SettingsModifier: Vi
                 navigationHeaderView
                 taskListBodyView
             }
-            .allowsHitTesting(!showNewTaskView)
+            .allowsHitTesting(!viewModel.showNewTaskView)
             
-            if showNewTaskView {
-                NewTaskView(viewModel: viewModel.newTaskViewModel, showNewTaskView: $showNewTaskView)
+            if viewModel.showNewTaskView {
+                NewTaskView(viewModel: viewModel.newTaskViewModel, showNewTaskView: $viewModel.showNewTaskView)
             } else {
                 createTaskFooterButton
             }
         }
         .navigationBarHidden(true)
+        .bottomSheet(isPresented: $viewModel.showCalendarView, height: 450) {
+            CalendarView(viewModel: viewModel.calendarViewModel)
+        }
         .onAppear {
             viewModel.fetchTasks()
         }
@@ -44,7 +45,7 @@ struct TasksListView<ViewModel: TasksListViewModelProtocol, SettingsModifier: Vi
     
     // MARK: - Events
     
-    private func pencilButtonTapped() {
+    private func sortButtonTapped() {
         isListEditing.toggle()
     }
     
@@ -55,24 +56,33 @@ struct TasksListView<ViewModel: TasksListViewModelProtocol, SettingsModifier: Vi
     private func calendarButtonTapped() {
         viewModel.calendarButtonTapped()
     }
+    
+    private func createTaskButtonTapped() {
+        withAnimation {
+            viewModel.createTaskButtonTapped()
+        }
+    }
 }
 
 extension TasksListView {
     
     private var navigationHeaderView: some View {
-        HStack(spacing: Layout.Padding.spacious) {
+        HStack(alignment: .firstTextBaseline, spacing: Layout.Spacing.spacious) {
+            
             Text(viewModel.selectedDateText)
-                .font(.largeTitle)
+                .font(.semiBold_22)
             
             Spacer()
             
-            Button(action: pencilButtonTapped, label: {
-                Image(systemName: isListEditing ? Image.Icons.tick : Image.Icons.sort).iconStyle()
-            })
+            if viewModel.showSortButton {
+                Button(action: sortButtonTapped, label: {
+                    Image(systemName: isListEditing ? Image.Icons.circleTick : Image.Icons.sort).iconStyle()
+                })
+            }
             
             Button(action: calendarButtonTapped, label: {
                 Image(systemName: Image.Icons.calendar).iconStyle()
-            }).modifier(calendarModifier)
+            })
             
             Button(action: settingsButtonTapped, label: {
                 Image(systemName: Image.Icons.settings).iconStyle()
@@ -81,7 +91,26 @@ extension TasksListView {
         .padding()
     }
     
+    @ViewBuilder
     private var taskListBodyView: some View {
+        if !viewModel.taskViewModels.isEmpty {
+            taskList
+        } else {
+            emptyTaskList
+        }
+    }
+    
+    private var emptyTaskList: some View {
+        VStack(spacing: 10) {
+            Spacer()
+            Image(systemName: Image.Icons.minusCalendar).placeholderStyle()
+            Text(viewModel.emptyListText)
+            Spacer()
+            Spacer()
+        }.foregroundColor(Color.t_gray)
+    }
+    
+    private var taskList: some View {
         List {
             taskRows
         }
@@ -102,8 +131,7 @@ extension TasksListView {
         .onMove(perform: moveTask)
         .onDelete(perform: deleteTask)
         .deleteDisabled(isListEditing)
-        .padding(.vertical, Layout.Padding.compact)
-        .background(Color.t_input_background)
+        .padding(.vertical, Layout.Spacing.compact)
         .cornerRadius(10.0)
         .listRowBackground(Color.t_background)
         .listRowInsets(EdgeInsets(top: 8, leading: isListEditing ? -24 : 16, bottom: 8, trailing: 16))
@@ -126,11 +154,7 @@ extension TasksListView {
         ButtonFooterView(
             buttonText: viewModel.createTaskButtonText,
             buttonColor: .t_orange,
-            onButtonTap: {
-                withAnimation {
-                    showNewTaskView = true
-                }
-            }
+            onButtonTap: createTaskButtonTapped
         )
         .onNotification(.taskCreated) {
             //toastPresenter.toast = .taskCreated
@@ -142,7 +166,7 @@ extension TasksListView {
 
 struct TasksListView_Previews: PreviewProvider {
     static var previews: some View {
-        TasksListView(viewModel: FakeTasksListViewModel(), settingsModifier: FakeSheetModifier(), calendarModifier: FakeSheetModifier())
+        TasksListView(viewModel: FakeTasksListViewModel(), settingsModifier: FakeSheetModifier())
             
     }
 }

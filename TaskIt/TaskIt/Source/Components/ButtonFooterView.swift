@@ -22,7 +22,7 @@ struct ButtonFooterView: View {
                 Text(buttonText)
             })
             .buttonStyle(RoundedButtonStyle(buttonColor: buttonColor))
-            .padding(.bottom, Layout.Padding.luxurious)
+            .padding(.bottom, Layout.Spacing.luxurious)
         }.ignoresSafeArea(.all)
     }
 }

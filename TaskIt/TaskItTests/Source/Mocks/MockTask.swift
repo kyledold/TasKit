@@ -6,6 +6,7 @@
 //
 
 @testable import TaskIt
+import Foundation
 
 extension Task {
     
@@ -13,15 +14,16 @@ extension Task {
         
         static func make(
             title: String = "",
-            priority: Priority = .none,
             status: Status = .todo,
-            dueDate: Date = Date()
+            dueDate: Date = Date(),
+            taskNotes: String = ""
         ) -> Task {
             let task = Task(context: MockNSManagedObjectContext())
+            task.id = UUID()
             task.title = title
-            task.priority = priority
             task.status = status
             task.dueDate = dueDate
+            task.notes = taskNotes
             return task
         }
     }

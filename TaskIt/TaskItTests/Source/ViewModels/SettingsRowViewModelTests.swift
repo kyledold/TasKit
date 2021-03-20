@@ -10,43 +10,91 @@ import XCTest
 
 class SettingsRowViewModelTests: XCTestCase {
     
-    func test_feedbackRow_titleText() {
+    func test_givenFeedbackRow_whenTitleTextCalled_thenReturnsExpectedValue() {
+        // given
         let sut = SettingsRowViewModel(settingItem: .feedback)
-        XCTAssertEqual(sut.titleText, "Feedback")
+        
+        // when
+        let result = sut.titleText
+        
+        // then
+        XCTAssertEqual(result, "Feedback")
     }
     
-    func test_feedbackRow_subtitleText() {
+    func test_givenFeedbackRow_whenSubtitleTextCalled_thenReturnsExpectedValue() {
+        // given
         let sut = SettingsRowViewModel(settingItem: .feedback)
-        XCTAssertEqual(sut.subtitleText, "kdold02@gmail.com")
+        
+        // when
+        let result = sut.subtitleText
+        
+        // then
+        XCTAssertEqual(result, "kdold02@gmail.com")
     }
     
-    func test_feedbackRow_systemImageName() {
+    func test_givenFeedbackRow_whenSystemImageNameCalled_thenReturnsExpectedValue() {
+        // given
         let sut = SettingsRowViewModel(settingItem: .feedback)
-        XCTAssertEqual(sut.systemImageName, "at")
+        
+        // when
+        let result = sut.systemImageName
+        
+        // then
+        XCTAssertEqual(result, "at")
     }
     
-    func test_feedbackRow_url() {
+    func test_givenFeedbackRow_whenUrlCalled_thenReturnsExpectedValue() {
+        // given
         let sut = SettingsRowViewModel(settingItem: .feedback)
-        XCTAssertEqual(sut.url, URL(string: "mailto:kdold02@gmail.com")!)
+        
+        // when
+        let result = sut.url
+        
+        // then
+        XCTAssertEqual(result, URL(string: "mailto:kdold02@gmail.com")!)
     }
     
-    func test_openSourceRow_titleText() {
+    func test_givenOpenSourceRow_whenTitleTextCalled_thenReturnsExpectedValue() {
+        // given
         let sut = SettingsRowViewModel(settingItem: .openSource)
-        XCTAssertEqual(sut.titleText, "Source code")
+        
+        // when
+        let result = sut.titleText
+        
+        // then
+        XCTAssertEqual(result, "Source code")
     }
     
-    func test_openSourceRow_subtitleText() {
+    func test_givenOpenSourceRow_whenSubTitleTextCalled_thenReturnsExpectedValue() {
+        // given
         let sut = SettingsRowViewModel(settingItem: .openSource)
-        XCTAssertEqual(sut.subtitleText, "Feel free to browse or contribute")
+        
+        // when
+        let result = sut.subtitleText
+        
+        // then
+        XCTAssertEqual(result, "Feel free to browse or contribute")
     }
     
-    func test_openSourceRow_systemImageName() {
+    func test_givenOpenSourceRow_whenSystemImageNameCalled_thenReturnsExpectedValue() {
+        // given
         let sut = SettingsRowViewModel(settingItem: .openSource)
-        XCTAssertEqual(sut.systemImageName, "swift")
+        
+        // when
+        let result = sut.systemImageName
+        
+        // then
+        XCTAssertEqual(result, "swift")
     }
     
-    func test_openSourceRow_url() {
+    func test_givenOpenSourceRow_whenUrlCalled_thenReturnsExpectedValue() {
+        // given
         let sut = SettingsRowViewModel(settingItem: .openSource)
-        XCTAssertEqual(sut.url, URL(string: "https://github.com/kyledold/TaskIt")!)
+        
+        // when
+        let result = sut.url
+        
+        // then
+        XCTAssertEqual(result, URL(string: "https://github.com/kyledold/TaskIt")!)
     }
 }

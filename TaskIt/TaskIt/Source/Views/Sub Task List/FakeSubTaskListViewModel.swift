@@ -11,9 +11,10 @@ class FakeSubTaskListViewModel: SubTaskListViewModelProtocol {
 
     typealias RowViewModel = FakeSubTaskRowViewModel
     
-    var headerText = "Subtasks"
-    var subTaskNamePlaceholderText = "Subtask name"
+    var headerText = "Sub-tasks"
+    var subTaskNamePlaceholderText = "Sub-task name"
     var addSubTaskButtonText = "Add subtask"
+    var addButtonText = "Add"
     var doneButtonText = "Done"
     var cancelButtonText = "Cancel"
     var editButtonText = "Edit"

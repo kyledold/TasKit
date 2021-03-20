@@ -11,19 +11,26 @@ extension Image {
     
     struct Icons {
         static let add = "plus"
-        static let close = "xmark"
+        static let back = "arrow.left"
         static let calendar = "calendar"
-        static let settings = "gearshape.fill"
-        static let tasks = "list.dash"
+        static let circleTick = "checkmark.circle"
+        static let close = "xmark"
         static let create = "arrow.up.circle"
+        static let minusCalendar = "calendar.badge.minus"
+        static let settings = "gearshape.fill"
         static let sort = "arrow.up.arrow.down.square"
-        static let tick = "checkmark.circle"
+        static let tasks = "list.dash"
     }
     
-    func iconStyle() -> some View {
+    func iconStyle(imageColor: Color = .primary) -> some View {
         self.resizable()
             .frame(width: 25, height: 25)
-            .foregroundColor(.primary)
+            .foregroundColor(imageColor)
+    }
+    
+    func placeholderStyle() -> some View {
+        self.resizable()
+            .frame(width: 50, height: 40)
     }
     
     func thumbnailImageModifier(tintColor: Color) -> some View {

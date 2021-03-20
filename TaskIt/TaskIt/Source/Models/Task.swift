@@ -66,13 +66,6 @@ public class Task: NSManagedObject {
         print("Task \"\(task.unwrappedTitle)\" deleted")
     }
     
-    public static func updateStatus(task: Task, newStatus: Status, viewContext: NSManagedObjectContext) {
-        task.status = newStatus
-        try? viewContext.save()
-        
-        print("Task \"\(task.unwrappedTitle)\" status updated to \"\(newStatus.rawValue)\"")
-    }
-    
     public static func updateOrderOfTasks(_ revisedTasks: [Task], viewContext: NSManagedObjectContext) {
         
         for index in stride(from: revisedTasks.count - 1, through: 0, by: -1) {
@@ -85,27 +78,44 @@ public class Task: NSManagedObject {
         try? viewContext.save()
     }
     
-    public static func create(title: String, viewContext: NSManagedObjectContext) {
+    public static func create(title: String, dueDate: Date, viewContext: NSManagedObjectContext) {
         let newTask = Task(context: viewContext)
         newTask.title = title
+        newTask.dueDate = dueDate
         try? viewContext.save()
         
         print("Task \"\(title)\" created")
     }
     
-    public static func updateTask(
-        task: Task,
-        taskName: String,
-        dueDate: Date,
-        taskNotes: String,
-        viewContext: NSManagedObjectContext
-    ) {
-        task.title = taskName
-        task.dueDate = dueDate
-        task.notes = taskNotes
+    public static func updateNotes(task: Task, notes: String, viewContext: NSManagedObjectContext) {
+        task.notes = notes
+        
         try? viewContext.save()
         
-        print("Task \"\(task.unwrappedTitle)\" updated")
+        print("Task \"\(task.unwrappedTitle)\" notes updated to \"\(notes)\" ")
+    }
+    
+    public static func updateDueDate(task: Task, dueDate: Date, viewContext: NSManagedObjectContext) {
+        task.dueDate = dueDate
+        
+        try? viewContext.save()
+        
+        print("Task \"\(task.unwrappedTitle)\" dueDate updated to \"\(dueDate)\" ")
+    }
+    
+    public static func updateTitle(task: Task, title: String, viewContext: NSManagedObjectContext) {
+        task.title = title
+        
+        try? viewContext.save()
+        
+        print("Task \"\(task.unwrappedTitle)\" title updated to \"\(title)\" ")
+    }
+    
+    public static func updateStatus(task: Task, newStatus: Status, viewContext: NSManagedObjectContext) {
+        task.status = newStatus
+        try? viewContext.save()
+        
+        print("Task \"\(task.unwrappedTitle)\" status updated to \"\(newStatus.rawValue)\"")
     }
     
     public static func saveChanges(viewContext: NSManagedObjectContext) {
@@ -118,8 +128,8 @@ public class Task: NSManagedObject {
         super.awakeFromInsert()
         
         createdAt = Date()
-        dueDate = Date()
         id = UUID()
         status = .todo
+        index = Int16.max
     }
 }

@@ -17,16 +17,18 @@ class TaskDetailsViewModel: TaskDetailsViewModelProtocol {
     @Published var dueDate = Date()
     @Published var isComplete = false
     @Published var taskNotes = String.empty
-    @Published var isSubmitButtonDisabled: Bool = false
+    @Published var formattedDueDate = String.empty
+    @Published var showCalendarView: Bool
     
     var taskNamePlaceholderText = NSLocalizedString("task_details.task_name_placeholder", comment: "Task name textfield placeholder")
     var taskNotesPlaceholderText = NSLocalizedString("task_details.task_notes_placeholder", comment: "Task notes text editor placeholder")
     var taskDateText = NSLocalizedString("task_details.date", comment: "Date picker description")
-    var submitButtonText = NSLocalizedString("task_details.update", comment: "submit button title")
+    var deleteAlertTitleText = NSLocalizedString("task_details.delete_alert.title", comment: "Delete alert title")
+    var deleteAlertMessageText = NSLocalizedString("task_details.delete_alert.message", comment: "Delete alert message")
+    var deleteButtonText = NSLocalizedString("task_details.delete", comment: "Delete button title")
     
     var subTaskListViewModel: SubTaskListViewModel
     
-    private let onChange: EmptyClosure
     private var subscribers: Set<AnyCancellable> = []
     private let notificationCenter = NotificationCenter.default
     private let managedObjectContext: NSManagedObjectContext
@@ -34,47 +36,99 @@ class TaskDetailsViewModel: TaskDetailsViewModelProtocol {
     
     // MARK: - Initialisation
     
-    init(task: Task, onChange: @escaping EmptyClosure, managedObjectContext: NSManagedObjectContext) {
+    init(task: Task, managedObjectContext: NSManagedObjectContext) {
         self.task = task
         self.managedObjectContext = managedObjectContext
-        self.onChange = onChange
         self.subTaskListViewModel = SubTaskListViewModel(task: self.task, managedObjectContext: managedObjectContext)
+        self.showCalendarView = false
         
         taskName = task.unwrappedTitle
         dueDate = task.unwrappeDueDate
+        formattedDueDate = dueDate.shortDate
         isComplete = task.status == .completed
         taskNotes = task.unwrappedNotes
         
         addObservers()
     }
     
-    // MARK: - Functions
+    // MARK: - Events
     
-    func submitButtonTapped(_ completion: @escaping EmptyClosure) {
+    func deleteButtonTapped(_ completion: @escaping EmptyClosure) {
+        Task.deleteTask(task: task, viewContext: managedObjectContext)
         
-        Task.updateTask(
-            task: task,
-            taskName: taskName,
-            dueDate: dueDate,
-            taskNotes: taskNotes,
-            viewContext: managedObjectContext
-        )
-
-        onChange()
-        notificationCenter.post(name: .taskUpdated, object: nil)
+        notificationCenter.post(name: .taskDeleted, object: nil)
         completion()
     }
     
+    func calendarButtonTapped() {
+        showCalendarView = true
+    }
+    
+    // MARK: - Observers
+    
     private func addObservers() {
-        $taskName.sink { [weak self] taskName in
-            self?.isSubmitButtonDisabled = taskName.isBlank
-        }.store(in: &subscribers)
         
         $isComplete.dropFirst().sink { [weak self] isComplete in
-            guard let task = self?.task else { return }
-            guard let managedObjectContext = self?.managedObjectContext else { return }
-            
-            Task.updateStatus(task: task, newStatus: isComplete ? .completed : .todo, viewContext: managedObjectContext)
+            self?.updateCompletionStatus(isComplete)
+        }.store(in: &subscribers)
+        
+        $taskName.dropFirst().sink { [weak self] taskName in
+            self?.updateTaskName(taskName)
+        }.store(in: &subscribers)
+        
+        $dueDate.dropFirst().sink { [weak self] dueDate in
+            self?.updateTaskDueDate(dueDate)
+        }.store(in: &subscribers)
+        
+        $taskNotes.dropFirst().sink { [weak self] taskNotes in
+            self?.updateTaskNotes(taskNotes)
         }.store(in: &subscribers)
     }
+
+    // MARK: - CoreDate Operations
+    
+    private func updateTaskNotes(_ taskNotes: String) {
+        Task.updateNotes(
+            task: task,
+            notes: taskNotes,
+            viewContext: managedObjectContext
+        )
+    }
+    
+    private func updateTaskDueDate(_ dueDate: Date) {
+        Task.updateDueDate(
+            task: task,
+            dueDate: dueDate,
+            viewContext: managedObjectContext
+        )
+    }
+    
+    private func updateTaskName(_ taskName: String) {
+        Task.updateTitle(
+            task: task,
+            title: taskName,
+            viewContext: managedObjectContext
+        )
+    }
+    
+    private func updateCompletionStatus(_ isComplete: Bool) {
+        Task.updateStatus(
+            task: task,
+            newStatus: isComplete ? .completed : .todo,
+            viewContext: managedObjectContext
+        )
+    }
+    
+    // MARK: - Child ViewModels
+    
+    lazy var calendarViewModel: CalendarViewModel = {
+        let calendarViewModel = CalendarViewModel(selectedDate: dueDate)
+        calendarViewModel.onDateSelected = { [weak self] selectedDate in
+            self?.dueDate = selectedDate
+            self?.formattedDueDate = selectedDate.shortDate
+            self?.showCalendarView = false
+        }
+        
+        return calendarViewModel
+    }()
 }

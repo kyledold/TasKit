@@ -13,12 +13,17 @@ protocol TaskDetailsViewModelProtocol: ObservableObject {
     var dueDate: Date { get set }
     var isComplete: Bool { get set }
     var taskNotes: String { get set }
+    var formattedDueDate: String { get }
     var taskNamePlaceholderText: String { get }
     var taskNotesPlaceholderText: String { get }
     var taskDateText: String { get }
-    var submitButtonText: String { get }
+    var deleteAlertTitleText: String { get }
+    var deleteAlertMessageText: String { get }
+    var deleteButtonText: String { get }
+    var showCalendarView: Bool { get set }
     var subTaskListViewModel: SubTaskListViewModel { get }
-    var isSubmitButtonDisabled: Bool { get }
+    var calendarViewModel: CalendarViewModel { get }
     
-    func submitButtonTapped(_ completion: @escaping EmptyClosure)
+    func deleteButtonTapped(_ completion: @escaping EmptyClosure)
+    func calendarButtonTapped()
 }

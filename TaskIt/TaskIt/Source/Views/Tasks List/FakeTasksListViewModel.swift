@@ -14,8 +14,13 @@ class FakeTasksListViewModel: TasksListViewModelProtocol {
     
     var selectedDate = Date()
     var selectedDateText = "Today"
+    var showNewTaskView = false
+    var showCalendarView = false
+    var showSortButton = true
     var createTaskButtonText = "Create task"
-    var newTaskViewModel = NewTaskViewModel(managedObjectContext: NSManagedObjectContext(concurrencyType: .mainQueueConcurrencyType))
+    var emptyListText = "No tasks"
+    var newTaskViewModel = NewTaskViewModel(selectedDate: Date(), managedObjectContext: NSManagedObjectContext(concurrencyType: .mainQueueConcurrencyType))
+    var calendarViewModel = CalendarViewModel(selectedDate: Date())
 
     var taskViewModels: [RowViewModel] = [
         FakeTaskRowViewModel(),
@@ -27,6 +32,7 @@ class FakeTasksListViewModel: TasksListViewModelProtocol {
     func deleteTask(at indexSet: IndexSet) {}
     func moveTask(from source: IndexSet, to destination: Int) {}
     func taskRowTapped(_ rowViewModel: RowViewModel) {}
-    func settingsButtonTapped() {}
+    func createTaskButtonTapped() {}
     func calendarButtonTapped() {}
+    func settingsButtonTapped() {}
 }

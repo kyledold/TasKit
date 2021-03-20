@@ -9,6 +9,10 @@ import SwiftUI
 import Foundation
 
 extension View {
+    
+    func cornerRadius(_ radius: CGFloat, corners: UIRectCorner) -> some View {
+        clipShape(RoundedCorner(radius: radius, corners: corners))
+    }
 
     func onNotification(
         _ notificationName: Notification.Name,
@@ -65,5 +69,20 @@ extension View {
                 label: { EmptyView() }
             )
         )
+    }
+    
+    func bottomSheet<Content: View>(
+        isPresented: Binding<Bool>,
+        height: CGFloat,
+        @ViewBuilder content: @escaping () -> Content
+    ) -> some View {
+        ZStack {
+            self
+            BottomSheet(
+                isPresented: isPresented,
+                height: height,
+                content: content
+            )
+        }
     }
 }

@@ -10,14 +10,39 @@ import XCTest
 
 class TaskRowViewModelTests: XCTestCase {
     
-    private let mockTask = Task.StubFactory.make(title: "Mock task", priority: .medium)
-    private lazy var sut = TaskRowViewModel(task: mockTask)
+    private let mockTask = Task.StubFactory.make(title: "Mock task")
+    private lazy var sut = TaskRowViewModel(
+        task: mockTask,
+        managedObjectContext: MockNSManagedObjectContext(),
+        onChangeCompletion: { _ in }
+    )
     
-    func test_titleText() {
-        XCTAssertEqual(sut.titleText, mockTask.title)
+    // MARK: - Properties
+    
+    func test_givenDefaultInit_whenIdCalled_thenReturnsExpectedValue() {
+        // given
+        // when
+        let result = sut.id
+        
+        // then
+        XCTAssertEqual(result, mockTask.id)
     }
     
-    func test_priority() {
-        XCTAssertEqual(sut.priority, mockTask.priority)
+    func test_givenDefaultInit_whenTaskTitleCalled_thenReturnsExpectedValue() {
+        // given
+        // when
+        let result = sut.taskTitle
+        
+        // then
+        XCTAssertEqual(result, mockTask.title)
+    }
+    
+    func test_givenDefaultInit_whenIsCompleteCalled_thenReturnsExpectedValue() {
+        // given
+        // when
+        let result = sut.isComplete
+        
+        // then
+        XCTAssertEqual(result, mockTask.status == .completed)
     }
 }

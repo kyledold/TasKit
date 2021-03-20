@@ -7,9 +7,11 @@
 */
 
 "app.version.%@" = "Version %@";
-"general.edit" = "Edit";
+"general.add" = "Add";
 "general.cancel" = "Cancel";
 "general.done" = "Done";
+"general.edit" = "Edit";
+"general.save" = "Save";
 "calendar.title" = "Calendar";
 "new_task.task_name.placeholder" = "Type new task name here...";
 "settings.title" = "Settings";
@@ -19,12 +21,16 @@
 "settings.open_source.subtitle" = "Feel free to browse or contribute";
 "task_list.create_task" = "Create task";
 "task_list.today" = "Today";
-"subtask_list.add_subtask" = "Add a subtask";
-"subtask_list.subtasks" = "Subtasks";
-"subtask_list.subtask_name_placeholder" = "Enter subtask name here...";
+"task_list.tomorrow" = "Tomorrow";
+"task_list.no_tasks" = "No tasks";
+"subtask_list.add_subtask" = "Add a sub-task";
+"subtask_list.subtasks" = "Sub-tasks";
+"subtask_list.subtask_name_placeholder" = "Enter sub-task name here...";
 "task_details.add_task" = "Add task";
-"task_details.update" = "Update";
 "task_details.date" = "Date";
+"task_details.delete" = "Delete";
+"task_details.delete_alert.title" = "Delete task";
+"task_details.delete_alert.message" = "Are you sure you want to delete this task?";
 "task_details.task_name_placeholder" = "Task name";
 "task_details.task_notes_placeholder" = "Write any notes here...";
 "task_details.update" = "Update";

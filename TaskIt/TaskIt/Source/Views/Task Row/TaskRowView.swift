@@ -12,29 +12,27 @@ struct TaskRowView<ViewModel: TaskRowViewModelProtocol>: View {
     // MARK: - Properties
     
     @ObservedObject var viewModel: ViewModel
+    @State private var feedback = UINotificationFeedbackGenerator()
     
     // MARK: - View
     
     var body: some View {
         HStack {
             
-            VStack(alignment: .center) {
-                Text(viewModel.dayOfTheWeekText).font(.regular_12).foregroundColor(Color.t_red)
-                Text(viewModel.dateText).font(.bold_24)
-                Text(viewModel.monthText).font(.regular_14)
-            }.frame(minWidth: 40)
-            
-            Rectangle()
-                .foregroundColor(.primary)
-                .frame(width: 0.2)
+            Toggle(isOn: $viewModel.isComplete) {}
+                .toggleStyle(CheckboxToggleStyle())
+                .onChange(of: viewModel.isComplete) { _ in
+                    feedback.notificationOccurred(.success)
+                }
             
             Text(viewModel.taskTitle)
-                .strikethrough(viewModel.isCompleted, color: .primary)
+                .strikethrough(viewModel.isComplete, color: .primary)
                 .font(.regular_16)
                 .foregroundColor(.primary)
             
             Spacer()
         }
+        .padding(Layout.Spacing.compact)
     }
 }
 
@@ -44,7 +42,6 @@ struct TaskRowView_Previews: PreviewProvider {
     static var previews: some View {
         Group {
             TaskRowView(viewModel: FakeTaskRowViewModel())
-                .preferredColorScheme(.dark)
                 .previewLayout(.fixed(width: 300, height: 80))
         }
     }

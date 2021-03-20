@@ -13,6 +13,7 @@ struct SubTaskRowView<ViewModel: SubTaskRowViewModelProtocol>: View {
     
     @ObservedObject var viewModel: ViewModel
     @Environment(\.editMode) var editMode: Binding<EditMode>?
+    @State private var feedback = UINotificationFeedbackGenerator()
     
     private var isInEditingMode: Bool {
         guard let editMode = editMode else { return false }
@@ -27,12 +28,15 @@ struct SubTaskRowView<ViewModel: SubTaskRowViewModelProtocol>: View {
             if !isInEditingMode {
                 Toggle(isOn: $viewModel.isComplete) {}
                     .toggleStyle(CheckboxToggleStyle())
+                    .onChange(of: viewModel.isComplete) { _ in
+                        feedback.notificationOccurred(.success)
+                    }
             }
             
             Text(viewModel.subTaskTitle)
                 .font(.regular_16)
                 .strikethrough(viewModel.isComplete, color: .primary)
-                .padding(.leading, isInEditingMode ? Layout.Padding.compact : .zero)
+                .padding(.leading, isInEditingMode ? Layout.Spacing.compact : .zero)
             
             Spacer()
         }

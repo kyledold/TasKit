@@ -19,11 +19,6 @@ struct TaskItCoordinatorView: View {
                     NavigationView {
                         SettingsView(viewModel: settingsViewModel)
                     }
-                },
-                calendarModifier: SheetModifier(item: $coordinator.calendarViewModel) { calendarViewModel in
-                    NavigationView {
-                        CalendarView(viewModel: calendarViewModel)
-                    }
                 }
             ).navigation(item: $coordinator.taskDetailViewModel) { viewModel in
                 TaskDetailsView(viewModel: viewModel)

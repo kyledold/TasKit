@@ -22,14 +22,14 @@ struct TextBox: View {
             
             TextEditor(text: $text)
                 .frame(minHeight: 100)
-                .padding(Layout.Padding.tight)
+                .padding(Layout.Spacing.tight)
                 .background(Color.t_input_background)
                 .cornerRadius(10)
             
             if text.isEmpty {
                 Text(placeholder)
                     .foregroundColor(Color(UIColor.placeholderText))
-                    .padding(.horizontal, Layout.Padding.compact)
+                    .padding(.horizontal, Layout.Spacing.compact)
                     .padding(.vertical, 12)
             }
         }

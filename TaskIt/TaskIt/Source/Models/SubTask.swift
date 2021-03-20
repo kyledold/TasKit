@@ -24,7 +24,7 @@ public class SubTask: NSManagedObject {
         subTask.title = subTaskName
         subTask.index = Int16(index)
         
-        print("SubTask \"\(subTask.unwrappedTitle)\" created")
+        print("Sub-task \"\(subTask.unwrappedTitle)\" created")
         
         try? viewContext.save()
     }
@@ -33,7 +33,7 @@ public class SubTask: NSManagedObject {
         subTasks.forEach {
             viewContext.delete($0)
             
-            print("SubTask \"\($0.unwrappedTitle)\" deleted")
+            print("Sub-task \"\($0.unwrappedTitle)\" deleted")
         }
         
         try? viewContext.save()
@@ -45,7 +45,7 @@ public class SubTask: NSManagedObject {
             let subTask = revisedSubTasks[index]
             subTask.index = Int16(index)
             
-            print("SubTask \"\(subTask.unwrappedTitle)\" update index to \(index)")
+            print("Sub-task \"\(subTask.unwrappedTitle)\" update index to \(index)")
         }
         
         try? viewContext.save()
@@ -56,7 +56,7 @@ public class SubTask: NSManagedObject {
         
         try? viewContext.save()
         
-        print("SubTask \"\(subTask.unwrappedTitle)\" update completion status to \(isComplete)")
+        print("Sub-task \"\(subTask.unwrappedTitle)\" update completion status to \(isComplete)")
     }
     
     // MARK: - awake
@@ -66,5 +66,6 @@ public class SubTask: NSManagedObject {
         
         id = UUID()
         isComplete = false
+        index = Int16.max
     }
 }

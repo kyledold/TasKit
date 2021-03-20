@@ -20,7 +20,7 @@ struct NewTaskView<ViewModel: NewTaskViewModelProtocol>: View {
     
     var body: some View {
         
-        dimmedBackgroundView
+        DimmedBackgroundView(isPresented: $showNewTaskView)
         VStack {
             Spacer()
             newTaskInputView
@@ -39,15 +39,6 @@ struct NewTaskView<ViewModel: NewTaskViewModelProtocol>: View {
 
 extension NewTaskView {
     
-    private var dimmedBackgroundView: some View {
-        VStack {
-        }
-        .backgroundOverlay(color: .black).opacity(0.3)
-        .onTapGesture {
-            showNewTaskView = false
-        }
-    }
-    
     private var newTaskInputView: some View {
         HStack {
             TextField(viewModel.taskNamePlaceholder, text: $viewModel.taskName)
@@ -59,14 +50,16 @@ extension NewTaskView {
             Spacer()
             
             Button(action: createTaskButtonTapped, label: {
-                Image(systemName: Image.Icons.create).iconStyle()
+                Image(systemName: Image.Icons.create).iconStyle(imageColor: .t_orange)
+                
             })
-            .buttonStyle(ImageButtonStyle(isDisabled: viewModel.isCreateButtonDisabled, buttonColor: .primary))
+            .buttonStyle(ImageButtonStyle(isDisabled: viewModel.isCreateButtonDisabled))
             .disabled(viewModel.isCreateButtonDisabled)
         }
         .padding()
         .frame(height: 80)
-        .background(RoundedCorners(color: .t_content_background, topLeft: 10, topRight: 10, bottomLeft: 0, bottomRight: 0))
+        .background(Color.t_content_background)
+        .cornerRadius(10, corners: [.topLeft, .topRight])
     }
 }
 

@@ -12,7 +12,7 @@ struct SettingsView<ViewModel: SettingsViewModelProtocol>: View {
     var viewModel: ViewModel
     
     var body: some View {
-        VStack(alignment: .leading, spacing: Layout.Padding.cozy) {
+        VStack(alignment: .leading, spacing: Layout.Spacing.cozy) {
             List {
                 Section(footer: footer) {
                     ForEach(viewModel.rowViewModels, id: \.id) { settingsRowViewModel in

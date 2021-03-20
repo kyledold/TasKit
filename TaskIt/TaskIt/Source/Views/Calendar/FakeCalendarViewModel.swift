@@ -5,8 +5,14 @@
 //  Created by Kyle Dold on 07/03/2021.
 //
 
+import Foundation
+
 class FakeCalendarViewModel: CalendarViewModelProtocol {
     
-    var titleText = "Calendar"
+    var selectedDate = Date()
+    var doneButtonText = "Done"
+    var onDateSelected: ValueClosure<Date>? = { _ in }
+    
+    func doneButtonTapped() {}
 }
 

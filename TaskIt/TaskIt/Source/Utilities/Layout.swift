@@ -8,7 +8,7 @@
 import SwiftUI
 
 public struct Layout {
-    struct Padding {
+    struct Spacing {
         static let squished = CGFloat(2)
         static let tight = CGFloat(4)
         static let compact = CGFloat(8)
