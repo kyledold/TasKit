@@ -17,6 +17,8 @@ class TaskDetailsViewModel: TaskDetailsViewModelProtocol {
     @Published var dueDate = Date()
     @Published var isComplete = false
     @Published var taskNotes = String.empty
+    @Published var formattedDueDate = String.empty
+    @Published var showCalendarView: Bool
     
     var taskNamePlaceholderText = NSLocalizedString("task_details.task_name_placeholder", comment: "Task name textfield placeholder")
     var taskNotesPlaceholderText = NSLocalizedString("task_details.task_notes_placeholder", comment: "Task notes text editor placeholder")
@@ -38,9 +40,11 @@ class TaskDetailsViewModel: TaskDetailsViewModelProtocol {
         self.task = task
         self.managedObjectContext = managedObjectContext
         self.subTaskListViewModel = SubTaskListViewModel(task: self.task, managedObjectContext: managedObjectContext)
+        self.showCalendarView = false
         
         taskName = task.unwrappedTitle
         dueDate = task.unwrappeDueDate
+        formattedDueDate = dueDate.shortDate
         isComplete = task.status == .completed
         taskNotes = task.unwrappedNotes
         
@@ -54,6 +58,10 @@ class TaskDetailsViewModel: TaskDetailsViewModelProtocol {
         
         notificationCenter.post(name: .taskDeleted, object: nil)
         completion()
+    }
+    
+    func calendarButtonTapped() {
+        showCalendarView = true
     }
     
     // MARK: - Observers
@@ -110,4 +118,17 @@ class TaskDetailsViewModel: TaskDetailsViewModelProtocol {
             viewContext: managedObjectContext
         )
     }
+    
+    // MARK: - Child ViewModels
+    
+    lazy var calendarViewModel: CalendarViewModel = {
+        let calendarViewModel = CalendarViewModel(selectedDate: dueDate)
+        calendarViewModel.onDateSelected = { [weak self] selectedDate in
+            self?.dueDate = selectedDate
+            self?.formattedDueDate = selectedDate.shortDate
+            self?.showCalendarView = false
+        }
+        
+        return calendarViewModel
+    }()
 }

@@ -15,6 +15,7 @@ extension Color {
     static let t_gray = Color("t_gray")
     static let t_red = Color("t_red")
     static let t_input_background = Color("t_input_background")
+    static let t_input_background_2 = Color("t_input_background_2")
     static let t_content_background = Color("t_content_background")
     static let t_background = Color("t_background")
 }

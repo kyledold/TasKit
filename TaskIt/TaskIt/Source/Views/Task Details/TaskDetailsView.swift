@@ -30,6 +30,9 @@ struct TaskDetailsView<ViewModel: TaskDetailsViewModelProtocol>: View {
         }
         .navigationBarHidden(true)
         .alert(isPresented: $showDeleteConfirmationAlert, content: { deleteConfirmationAlert })
+        .bottomSheet(isPresented: $viewModel.showCalendarView, height: 450) {
+            CalendarView(viewModel: viewModel.calendarViewModel)
+        }
         .onAppear {
             // TODO: find a better way to handle this
             UITextView.appearance().backgroundColor = .clear
@@ -40,6 +43,10 @@ struct TaskDetailsView<ViewModel: TaskDetailsViewModelProtocol>: View {
     
     private func backButtonTapped() {
         presentationMode.wrappedValue.dismiss()
+    }
+    
+    private func calendarButtonTapped() {
+        viewModel.calendarButtonTapped()
     }
     
     private func deleteButtonTapped() {
@@ -86,9 +93,18 @@ extension TaskDetailsView {
                         .textFieldStyle(SimpleTextFieldStyle())
                 }
                 
-                VStack(spacing: Layout.Spacing.cozy) {
-                    DatePicker(viewModel.taskDateText, selection: $viewModel.dueDate, displayedComponents: .date)
-                        .accentColor(Color.primary)
+                HStack {
+                    Text(viewModel.taskDateText)
+                    Spacer()
+                    Button(action: calendarButtonTapped, label: {
+                        HStack {
+                            Text(viewModel.formattedDueDate)
+                                .foregroundColor(.primary)
+                        }
+                        .padding(Layout.Spacing.compact)
+                        .background(Color.t_input_background_2)
+                        .cornerRadius(10)
+                    })
                 }
                 .padding(Layout.Spacing.cozy)
                 .background(Color.t_input_background)
