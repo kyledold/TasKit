@@ -22,10 +22,10 @@ extension Image {
         static let tasks = "list.dash"
     }
     
-    func iconStyle() -> some View {
+    func iconStyle(imageColor: Color = .primary) -> some View {
         self.resizable()
             .frame(width: 25, height: 25)
-            .foregroundColor(.primary)
+            .foregroundColor(imageColor)
     }
     
     func placeholderStyle() -> some View {

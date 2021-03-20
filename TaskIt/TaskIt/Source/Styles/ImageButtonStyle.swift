@@ -10,11 +10,11 @@ import SwiftUI
 struct ImageButtonStyle: ButtonStyle {
     
     var isDisabled: Bool = false
-    var buttonColor: Color
+    var buttonColor: Color = .primary
     
     func makeBody(configuration: Configuration) -> some View {
         configuration.label
             .foregroundColor(buttonColor)
-            .opacity(isDisabled ? 0.5 : 1.0)
+            .opacity(isDisabled ? 0.4 : 1.0)
     }
 }
