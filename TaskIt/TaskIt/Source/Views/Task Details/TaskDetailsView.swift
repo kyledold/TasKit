@@ -122,7 +122,9 @@ extension TaskDetailsView {
                         .cornerRadius(10)
                     })
                 }
-                timeRow
+                if viewModel.hasDateValue {
+                    timeRow
+                }
             }
         }
     }
@@ -138,15 +140,11 @@ extension TaskDetailsView {
             if viewModel.isTimeEnabled {
                 HStack {
                     Spacer()
-                    Button(action: calendarButtonTapped, label: {
-                        HStack {
-                            Text("14:00")
-                                .foregroundColor(.primary)
-                        }
-                        .padding(Layout.Spacing.compact)
-                        .background(Color.t_input_background_2)
-                        .cornerRadius(10)
-                    })
+                    DatePicker(String.empty, selection: $viewModel.dueTime, displayedComponents: .hourAndMinute)
+                        .datePickerStyle(GraphicalDatePickerStyle())
+                        .padding(.trailing, -25)
+                        .padding(.vertical, -10)
+                        .scaleEffect(0.9)
                 }
             }
         }

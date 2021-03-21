@@ -10,7 +10,8 @@ import Foundation
 protocol TaskDetailsViewModelProtocol: ObservableObject {
     
     var taskName: String { get set }
-    var dueDate: Date? { get set }
+    var dueDate: Date { get set }
+    var dueTime: Date { get set }
     var isComplete: Bool { get set }
     var taskNotes: String { get set }
     var formattedDueDate: String { get }
@@ -26,6 +27,7 @@ protocol TaskDetailsViewModelProtocol: ObservableObject {
     var reminderText: String { get }
     var timeText: String { get }
     
+    var hasDateValue: Bool { get }
     var isDateEnabled: Bool { get set }
     var isTimeEnabled: Bool { get set }
     var isReminderEnabled: Bool { get set }

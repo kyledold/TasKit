@@ -29,25 +29,16 @@ extension Date {
         dateComponent.day = 1
         return Calendar.current.date(byAdding: dateComponent, to: currentDate)!
     }
-}
+    
+    public func setTime(hour: Int = 0, minute: Int = 0, second: Int = 0) -> Date {
+        let x: Set<Calendar.Component> = [.year, .month, .day, .hour, .minute, .second]
+        let calendar = Calendar.current
+        var components = calendar.dateComponents(x, from: self)
 
-extension DateFormatter {
-    
-    static var monthDateFormatter: DateFormatter {
-        let monthDateFormatter = DateFormatter()
-        monthDateFormatter.dateFormat = "MMM"
-        return monthDateFormatter
-    }
-    
-    static var dayOfWeekDateFormatter: DateFormatter {
-        let dayOfWeekDateFormatter = DateFormatter()
-        dayOfWeekDateFormatter.dateFormat = "EEE"
-        return dayOfWeekDateFormatter
-    }
-    
-    static var shortDateDateFormatter: DateFormatter {
-        let shortDateDateFormatter = DateFormatter()
-        shortDateDateFormatter.dateFormat = "EEE dd MMMM"
-        return shortDateDateFormatter
+        components.hour = hour
+        components.minute = minute
+        components.second = second
+
+        return calendar.date(from: components)!
     }
 }

@@ -15,7 +15,8 @@ class TaskDetailsViewModel: TaskDetailsViewModelProtocol {
     // MARK: - Properties
     
     @Published var taskName = String.empty
-    @Published var dueDate: Date?
+    @Published var dueDate = Date()
+    @Published var dueTime = Date()
     @Published var isComplete = false
     @Published var taskNotes = String.empty
     @Published var formattedDueDate = String.empty
@@ -24,6 +25,7 @@ class TaskDetailsViewModel: TaskDetailsViewModelProtocol {
     @Published var isDateEnabled: Bool
     @Published var isTimeEnabled: Bool
     @Published var isReminderEnabled: Bool
+    @Published var hasDateValue: Bool
     
     var deleteAlertTitleText = NSLocalizedString("task_details.delete_alert.title", comment: "Delete alert title")
     var deleteAlertMessageText = NSLocalizedString("task_details.delete_alert.message", comment: "Delete alert message")
@@ -50,7 +52,8 @@ class TaskDetailsViewModel: TaskDetailsViewModelProtocol {
         self.subTaskListViewModel = SubTaskListViewModel(task: self.task, managedObjectContext: managedObjectContext)
         
         taskName = task.unwrappedTitle
-        dueDate = task.dueDate
+        dueDate = task.unwrappedDueDate
+        dueTime = task.unwrappedDueTime
         isComplete = task.status == .completed
         taskNotes = task.unwrappedNotes
         reminderTimeInterval = TimeInterval()
@@ -59,6 +62,7 @@ class TaskDetailsViewModel: TaskDetailsViewModelProtocol {
         isDateEnabled = task.dueDate != nil
         isTimeEnabled = task.dueTime != nil
         isReminderEnabled = task.reminderTimeInterval != nil
+        hasDateValue = task.dueDate != nil
         formattedDueDate = task.dueDate?.shortDate ?? selectedDateText
         
         addObservers()
@@ -76,57 +80,6 @@ class TaskDetailsViewModel: TaskDetailsViewModelProtocol {
     func calendarButtonTapped() {
         showCalendarView = true
     }
-    
-    // MARK: - Observers
-    
-    private func addObservers() {
-        
-        $isComplete.dropFirst().sink { [weak self] isComplete in
-            self?.updateCompletionStatus(isComplete)
-        }.store(in: &subscribers)
-        
-        $taskName.dropFirst().sink { [weak self] taskName in
-            self?.updateTaskName(taskName)
-        }.store(in: &subscribers)
-        
-        $dueDate.dropFirst().sink { [weak self] dueDate in
-            self?.updateTaskDueDate(dueDate)
-        }.store(in: &subscribers)
-        
-        $isDateEnabled.dropFirst().sink { [weak self] isDateEnabled in
-            self?.updateTaskDueDate(nil)
-        }.store(in: &subscribers)
-        
-        $taskNotes.dropFirst().sink { [weak self] taskNotes in
-            self?.updateTaskNotes(taskNotes)
-        }.store(in: &subscribers)
-        
-        $isReminderEnabled.dropFirst().sink { [weak self] isReminderEnabled in
-            
-            guard let self = self else { return }
-            
-            let store = EKEventStore()
-            store.requestAccess(to: .reminder) { (granted, error) in
-              if let error = error {
-                print("request access error: \(error)")
-              } else if granted {
-                
-                guard let calendar = store.defaultCalendarForNewReminders() else { return }
-                let newReminder = EKReminder(eventStore: store)
-                newReminder.calendar = calendar
-                newReminder.title = "Buy coffee"
-                
-                //let dueDate = task.dueDate.addingTimeInterval()
-                //newReminder.dueDateComponents = Calendar.current.dateComponents([.year, .month, .day], from: dueDate)
-
-                try! store.save(newReminder, commit: true)
-
-              } else {
-                print("access denied")
-              }
-            }
-        }.store(in: &subscribers)
-    }
 
     // MARK: - CoreDate Operations
     
@@ -142,6 +95,14 @@ class TaskDetailsViewModel: TaskDetailsViewModelProtocol {
         Task.updateDueDate(
             task: task,
             dueDate: dueDate,
+            viewContext: managedObjectContext
+        )
+    }
+    
+    private func updateTaskDueTime(_ dueTime: Date?) {
+        Task.updateDueTime(
+            task: task,
+            dueTime: dueTime,
             viewContext: managedObjectContext
         )
     }
@@ -174,4 +135,81 @@ class TaskDetailsViewModel: TaskDetailsViewModelProtocol {
         
         return calendarViewModel
     }()
+}
+
+// MARK: - Observers
+
+extension TaskDetailsViewModel {
+    
+    private func addObservers() {
+        
+        $isComplete.dropFirst().sink { [weak self] isComplete in
+            self?.updateCompletionStatus(isComplete)
+        }.store(in: &subscribers)
+        
+        $taskName.dropFirst().sink { [weak self] taskName in
+            self?.updateTaskName(taskName)
+        }.store(in: &subscribers)
+        
+        $dueDate.dropFirst().sink { [weak self] dueDate in
+            self?.updateTaskDueDate(dueDate)
+            self?.hasDateValue = true
+        }.store(in: &subscribers)
+        
+        $isDateEnabled.dropFirst().sink { [weak self] isDateEnabled in
+            guard let self = self else { return }
+            
+            if !isDateEnabled {
+                self.updateTaskDueDate(nil)
+                self.updateTaskDueTime(nil)
+                self.hasDateValue = false
+            } else {
+                self.formattedDueDate = self.task.dueDate?.shortDate ?? self.selectedDateText
+            }
+        }.store(in: &subscribers)
+        
+        $dueTime.dropFirst().sink { [weak self] dueTime in
+            self?.updateTaskDueTime(dueTime)
+        }.store(in: &subscribers)
+        
+        $isTimeEnabled.dropFirst().sink { [weak self] isTimeEnabled in
+            guard let self = self else { return }
+            
+            if !isTimeEnabled {
+                self.updateTaskDueTime(nil)
+            } else {
+                self.updateTaskDueTime(self.dueTime)
+            }
+        }.store(in: &subscribers)
+        
+        $taskNotes.dropFirst().sink { [weak self] taskNotes in
+            self?.updateTaskNotes(taskNotes)
+        }.store(in: &subscribers)
+        
+        $isReminderEnabled.dropFirst().sink { [weak self] isReminderEnabled in
+            
+            guard let self = self else { return }
+            
+            let store = EKEventStore()
+            store.requestAccess(to: .reminder) { (granted, error) in
+              if let error = error {
+                print("request access error: \(error)")
+              } else if granted {
+                
+                guard let calendar = store.defaultCalendarForNewReminders() else { return }
+                let newReminder = EKReminder(eventStore: store)
+                newReminder.calendar = calendar
+                newReminder.title = "Buy coffee"
+                
+                //let dueDate = task.dueDate.addingTimeInterval()
+                //newReminder.dueDateComponents = Calendar.current.dateComponents([.year, .month, .day], from: dueDate)
+
+                try! store.save(newReminder, commit: true)
+
+              } else {
+                print("access denied")
+              }
+            }
+        }.store(in: &subscribers)
+    }
 }

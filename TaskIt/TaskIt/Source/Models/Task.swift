@@ -14,6 +14,8 @@ public class Task: NSManagedObject {
     
     var unwrappedId: UUID { id ?? UUID() }
     var unwrappedTitle: String { title ?? "Unknown title" }
+    var unwrappedDueDate: Date { dueDate ?? Date() }
+    var unwrappedDueTime: Date { dueTime ?? Date().setTime(hour: 12) }
     var unwrappedNotes: String { notes ?? .empty }
     var reminderTimeInterval: TimeInterval? {
         guard reminder > 0 else { return nil }
@@ -98,7 +100,15 @@ public class Task: NSManagedObject {
         
         try? viewContext.save()
         
-        print("Task \"\(task.unwrappedTitle)\" dueDate updated to \"\(dueDate)\" ")
+        print("Task \"\(task.unwrappedTitle)\" dueDate updated to \"\(String(describing: dueDate))\" ")
+    }
+    
+    public static func updateDueTime(task: Task, dueTime: Date?, viewContext: NSManagedObjectContext) {
+        task.dueTime = dueTime
+        
+        try? viewContext.save()
+        
+        print("Task \"\(task.unwrappedTitle)\" dueTime updated to \"\(String(describing: dueTime))\" ")
     }
     
     public static func updateTitle(task: Task, title: String, viewContext: NSManagedObjectContext) {

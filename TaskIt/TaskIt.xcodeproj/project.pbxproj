@@ -11,6 +11,7 @@
 		D1034AE225FA5E4500288A38 /* RoundedCorner.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1034AE125FA5E4500288A38 /* RoundedCorner.swift */; };
 		D1034AEB25FA66D800288A38 /* DimmedBackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1034AEA25FA66D800288A38 /* DimmedBackgroundView.swift */; };
 		D10CD69A260626ED0025851B /* EventKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D10CD699260626ED0025851B /* EventKit.framework */; };
+		D10CD6A226075CF80025851B /* DateFormatterExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D10CD6A126075CF80025851B /* DateFormatterExtension.swift */; };
 		D10F85B62603C53200B08A87 /* NewTaskViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D10F85B52603C53200B08A87 /* NewTaskViewModelTests.swift */; };
 		D10F85BA2603C87200B08A87 /* SubTaskListViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D10F85B92603C87200B08A87 /* SubTaskListViewModelTests.swift */; };
 		D10F85BD2603C96300B08A87 /* SubTaskRowViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D10F85BC2603C96300B08A87 /* SubTaskRowViewModelTests.swift */; };
@@ -134,6 +135,7 @@
 		D1034AE125FA5E4500288A38 /* RoundedCorner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedCorner.swift; sourceTree = "<group>"; };
 		D1034AEA25FA66D800288A38 /* DimmedBackgroundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DimmedBackgroundView.swift; sourceTree = "<group>"; };
 		D10CD699260626ED0025851B /* EventKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = EventKit.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.1.sdk/System/Library/Frameworks/EventKit.framework; sourceTree = DEVELOPER_DIR; };
+		D10CD6A126075CF80025851B /* DateFormatterExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateFormatterExtension.swift; sourceTree = "<group>"; };
 		D10F85B52603C53200B08A87 /* NewTaskViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewTaskViewModelTests.swift; sourceTree = "<group>"; };
 		D10F85B92603C87200B08A87 /* SubTaskListViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubTaskListViewModelTests.swift; sourceTree = "<group>"; };
 		D10F85BC2603C96300B08A87 /* SubTaskRowViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubTaskRowViewModelTests.swift; sourceTree = "<group>"; };
@@ -281,6 +283,7 @@
 				D17FC9A225D815EE002A5501 /* BundleExtension.swift */,
 				D1529C7425C72C76003FC9D6 /* ColorExtensions.swift */,
 				D11E733025E53781006FD6CB /* DateExtension.swift */,
+				D10CD6A126075CF80025851B /* DateFormatterExtension.swift */,
 				D11E7D3325E14DDE00EED79E /* FontExtension.swift */,
 				D17FC9AD25D817F4002A5501 /* ImageExtension.swift */,
 				D11E734E25E6BC59006FD6CB /* NotificationExtension.swift */,
@@ -715,6 +718,7 @@
 			files = (
 				D17DA9D225DABEA600ED4A8C /* TasksListViewModelProtocol.swift in Sources */,
 				D1E91F6025F4EE700036C1C4 /* TaskItCoordinatorView.swift in Sources */,
+				D10CD6A226075CF80025851B /* DateFormatterExtension.swift in Sources */,
 				D1DCF68625EB9511006305E7 /* SubTaskRowViewModel.swift in Sources */,
 				D11E7D3425E14DDE00EED79E /* FontExtension.swift in Sources */,
 				D11E733125E53781006FD6CB /* DateExtension.swift in Sources */,

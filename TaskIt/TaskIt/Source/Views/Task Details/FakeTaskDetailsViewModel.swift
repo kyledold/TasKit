@@ -11,7 +11,8 @@ import Foundation
 class FakeTaskDetailsViewModel: TaskDetailsViewModelProtocol {
     
     var taskName = String.empty
-    var dueDate: Date? = nil
+    var dueDate = Date()
+    var dueTime = Date()
     var isComplete = false
     var taskNotes = "This is the task notes"
     var formattedDueDate = "25 March 2021"
@@ -28,6 +29,7 @@ class FakeTaskDetailsViewModel: TaskDetailsViewModelProtocol {
     var isDateEnabled = false
     var isTimeEnabled = false
     var isReminderEnabled = false
+    var hasDateValue = false
     
     var calendarViewModel = CalendarViewModel(selectedDate: Date())
     var subTaskListViewModel = SubTaskListViewModel(
