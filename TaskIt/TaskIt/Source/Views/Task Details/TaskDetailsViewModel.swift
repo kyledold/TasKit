@@ -8,6 +8,7 @@
 import Combine
 import CoreData
 import Foundation
+import EventKit
 
 class TaskDetailsViewModel: TaskDetailsViewModelProtocol {
     
@@ -20,14 +21,18 @@ class TaskDetailsViewModel: TaskDetailsViewModelProtocol {
     @Published var formattedDueDate = String.empty
     @Published var showCalendarView: Bool
     @Published var reminderTimeInterval: TimeInterval
+    @Published var isDateEnabled: Bool
+    @Published var isTimeEnabled: Bool
     @Published var isReminderEnabled: Bool
     
-    var taskNamePlaceholderText = NSLocalizedString("task_details.task_name_placeholder", comment: "Task name textfield placeholder")
-    var taskNotesPlaceholderText = NSLocalizedString("task_details.task_notes_placeholder", comment: "Task notes text editor placeholder")
-    var taskDateText = NSLocalizedString("task_details.date", comment: "Date picker description")
     var deleteAlertTitleText = NSLocalizedString("task_details.delete_alert.title", comment: "Delete alert title")
     var deleteAlertMessageText = NSLocalizedString("task_details.delete_alert.message", comment: "Delete alert message")
     var deleteButtonText = NSLocalizedString("task_details.delete", comment: "Delete button title")
+    var reminderText = NSLocalizedString("task_details.reminder", comment: "Reminder label")
+    var taskNamePlaceholderText = NSLocalizedString("task_details.task_name_placeholder", comment: "Task name textfield placeholder")
+    var taskNotesPlaceholderText = NSLocalizedString("task_details.task_notes_placeholder", comment: "Task notes text editor placeholder")
+    var taskDateText = NSLocalizedString("task_details.date", comment: "Date picker description")
+    var timeText = NSLocalizedString("task_details.time", comment: "Time label")
     
     var subTaskListViewModel: SubTaskListViewModel
     
@@ -49,10 +54,11 @@ class TaskDetailsViewModel: TaskDetailsViewModelProtocol {
         isComplete = task.status == .completed
         taskNotes = task.unwrappedNotes
         reminderTimeInterval = TimeInterval()
-        isReminderEnabled = false
         showCalendarView = false
         
-        //isReminderEnabled = task.isReminderEnabled
+        isDateEnabled = false
+        isTimeEnabled = false
+        isReminderEnabled = false
         
         addObservers()
     }
@@ -88,6 +94,32 @@ class TaskDetailsViewModel: TaskDetailsViewModelProtocol {
         
         $taskNotes.dropFirst().sink { [weak self] taskNotes in
             self?.updateTaskNotes(taskNotes)
+        }.store(in: &subscribers)
+        
+        $isReminderEnabled.dropFirst().sink { [weak self] isReminderEnabled in
+            
+            guard let self = self else { return }
+            
+            let store = EKEventStore()
+            store.requestAccess(to: .reminder) { (granted, error) in
+              if let error = error {
+                print("request access error: \(error)")
+              } else if granted {
+                
+                guard let calendar = store.defaultCalendarForNewReminders() else { return }
+                let newReminder = EKReminder(eventStore: store)
+                newReminder.calendar = calendar
+                newReminder.title = "Buy coffee"
+                
+                //let dueDate = task.dueDate.addingTimeInterval()
+                //newReminder.dueDateComponents = Calendar.current.dateComponents([.year, .month, .day], from: dueDate)
+
+                try! store.save(newReminder, commit: true)
+
+              } else {
+                print("access denied")
+              }
+            }
         }.store(in: &subscribers)
     }
 

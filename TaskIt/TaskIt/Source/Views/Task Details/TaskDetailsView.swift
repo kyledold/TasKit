@@ -49,9 +49,6 @@ struct TaskDetailsView<ViewModel: TaskDetailsViewModelProtocol>: View {
         viewModel.calendarButtonTapped()
     }
     
-    private func reminderTimeButtonTapped() {
-    }
-    
     private func deleteButtonTapped() {
         showDeleteConfirmationAlert = true
     }
@@ -91,8 +88,9 @@ extension TaskDetailsView {
                         .textFieldStyle(SimpleTextFieldStyle())
                 }
                 
-                VStack(spacing: Layout.Spacing.tight) {
+                VStack(spacing: Layout.Spacing.compact) {
                     dueDateRow
+                    timeRow
                     reminderRow
                 }
                 .padding(Layout.Spacing.cozy)
@@ -103,27 +101,61 @@ extension TaskDetailsView {
             }
         }
     }
-    
+
     private var dueDateRow: some View {
-        HStack {
-            Text(viewModel.taskDateText)
-            Spacer()
-            Button(action: calendarButtonTapped, label: {
+        VStack {
+            HStack {
+                Text(viewModel.taskDateText)
+                Spacer()
+                Toggle(isOn: $viewModel.isDateEnabled, label: {}).toggleStyle(SwitchToggleStyle())
+                    .padding(Layout.Spacing.tight)
+            }
+            if viewModel.isDateEnabled {
                 HStack {
-                    Text(viewModel.formattedDueDate)
-                        .foregroundColor(.primary)
+                    Spacer()
+                    Button(action: calendarButtonTapped, label: {
+                        HStack {
+                            Text(viewModel.formattedDueDate)
+                                .foregroundColor(.primary)
+                        }
+                        .padding(Layout.Spacing.compact)
+                        .background(Color.t_input_background_2)
+                        .cornerRadius(10)
+                    })
                 }
-                .padding(Layout.Spacing.compact)
-                .background(Color.t_input_background_2)
-                .cornerRadius(10)
-            })
+            }
+        }
+    }
+    
+    private var timeRow: some View {
+        VStack {
+            HStack {
+                Text(viewModel.timeText)
+                Spacer()
+                Toggle(isOn: $viewModel.isTimeEnabled, label: {}).toggleStyle(SwitchToggleStyle())
+                    .padding(Layout.Spacing.tight)
+            }
+            if viewModel.isTimeEnabled {
+                HStack {
+                    Spacer()
+                    Button(action: calendarButtonTapped, label: {
+                        HStack {
+                            Text("14:00")
+                                .foregroundColor(.primary)
+                        }
+                        .padding(Layout.Spacing.compact)
+                        .background(Color.t_input_background_2)
+                        .cornerRadius(10)
+                    })
+                }
+            }
         }
     }
     
     private var reminderRow: some View {
         VStack {
             HStack {
-                Text("Reminder")
+                Text(viewModel.reminderText)
                 Spacer()
                 Toggle(isOn: $viewModel.isReminderEnabled, label: {}).toggleStyle(SwitchToggleStyle())
                     .padding(Layout.Spacing.tight)
@@ -131,7 +163,7 @@ extension TaskDetailsView {
             if viewModel.isReminderEnabled {
                 HStack {
                     Spacer()
-                    Button(action: reminderTimeButtonTapped, label: {
+                    Button(action: {}, label: {
                         HStack {
                             Text("15 min before")
                                 .foregroundColor(.primary)

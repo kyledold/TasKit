@@ -21,8 +21,12 @@ class FakeTaskDetailsViewModel: TaskDetailsViewModelProtocol {
     var deleteAlertTitleText = "Delete task"
     var deleteAlertMessageText = "Are you sure you want to delete this task?"
     var deleteButtonText = "Delete"
+    var reminderText = "Reminder"
+    var timeText = "Time"
     var showCalendarView = false
     var reminderTimeInterval = TimeInterval()
+    var isDateEnabled = false
+    var isTimeEnabled = false
     var isReminderEnabled = false
     
     var calendarViewModel = CalendarViewModel(selectedDate: Date())
