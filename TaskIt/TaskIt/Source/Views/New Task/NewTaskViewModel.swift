@@ -14,7 +14,6 @@ class NewTaskViewModel: NewTaskViewModelProtocol {
     @Published var taskName: String = .empty
     @Published var isCreateButtonDisabled: Bool = false
     
-    var selectedDate: Date
     var onTaskAdded: EmptyClosure?
     let taskNamePlaceholder = NSLocalizedString("new_task.task_name.placeholder", comment: "Task name placeholder")
     
@@ -22,14 +21,13 @@ class NewTaskViewModel: NewTaskViewModelProtocol {
     private let managedObjectContext: NSManagedObjectContext
     
     init(selectedDate: Date, managedObjectContext: NSManagedObjectContext) {
-        self.selectedDate = selectedDate
         self.managedObjectContext = managedObjectContext
         
         addObservers()
     }
     
     func createTaskButtonTapped(_ completion: @escaping EmptyClosure) {
-        Task.create(title: taskName, dueDate: selectedDate, viewContext: managedObjectContext)
+        Task.create(title: taskName, viewContext: managedObjectContext)
         
         onTaskAdded?()
         completion()

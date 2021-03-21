@@ -11,7 +11,7 @@ import Foundation
 class FakeTaskDetailsViewModel: TaskDetailsViewModelProtocol {
     
     var taskName = String.empty
-    var dueDate = Date()
+    var dueDate: Date? = nil
     var isComplete = false
     var taskNotes = "This is the task notes"
     var formattedDueDate = "25 March 2021"

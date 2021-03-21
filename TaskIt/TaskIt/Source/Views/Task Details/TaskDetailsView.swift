@@ -90,7 +90,6 @@ extension TaskDetailsView {
                 
                 VStack(spacing: Layout.Spacing.compact) {
                     dueDateRow
-                    timeRow
                     reminderRow
                 }
                 .padding(Layout.Spacing.cozy)
@@ -123,6 +122,7 @@ extension TaskDetailsView {
                         .cornerRadius(10)
                     })
                 }
+                timeRow
             }
         }
     }

@@ -10,7 +10,7 @@ import Foundation
 protocol TaskDetailsViewModelProtocol: ObservableObject {
     
     var taskName: String { get set }
-    var dueDate: Date { get set }
+    var dueDate: Date? { get set }
     var isComplete: Bool { get set }
     var taskNotes: String { get set }
     var formattedDueDate: String { get }

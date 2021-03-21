@@ -15,7 +15,7 @@ class TaskDetailsViewModel: TaskDetailsViewModelProtocol {
     // MARK: - Properties
     
     @Published var taskName = String.empty
-    @Published var dueDate = Date()
+    @Published var dueDate: Date?
     @Published var isComplete = false
     @Published var taskNotes = String.empty
     @Published var formattedDueDate = String.empty
@@ -33,6 +33,7 @@ class TaskDetailsViewModel: TaskDetailsViewModelProtocol {
     var taskNotesPlaceholderText = NSLocalizedString("task_details.task_notes_placeholder", comment: "Task notes text editor placeholder")
     var taskDateText = NSLocalizedString("task_details.date", comment: "Date picker description")
     var timeText = NSLocalizedString("task_details.time", comment: "Time label")
+    private var selectedDateText = NSLocalizedString("task_details.select_date", comment: "Select data text")
     
     var subTaskListViewModel: SubTaskListViewModel
     
@@ -49,16 +50,16 @@ class TaskDetailsViewModel: TaskDetailsViewModelProtocol {
         self.subTaskListViewModel = SubTaskListViewModel(task: self.task, managedObjectContext: managedObjectContext)
         
         taskName = task.unwrappedTitle
-        dueDate = task.unwrappeDueDate
-        formattedDueDate = task.unwrappeDueDate.shortDate
+        dueDate = task.dueDate
         isComplete = task.status == .completed
         taskNotes = task.unwrappedNotes
         reminderTimeInterval = TimeInterval()
         showCalendarView = false
         
-        isDateEnabled = false
-        isTimeEnabled = false
-        isReminderEnabled = false
+        isDateEnabled = task.dueDate != nil
+        isTimeEnabled = task.dueTime != nil
+        isReminderEnabled = task.reminderTimeInterval != nil
+        formattedDueDate = task.dueDate?.shortDate ?? selectedDateText
         
         addObservers()
     }
@@ -90,6 +91,10 @@ class TaskDetailsViewModel: TaskDetailsViewModelProtocol {
         
         $dueDate.dropFirst().sink { [weak self] dueDate in
             self?.updateTaskDueDate(dueDate)
+        }.store(in: &subscribers)
+        
+        $isDateEnabled.dropFirst().sink { [weak self] isDateEnabled in
+            self?.updateTaskDueDate(nil)
         }.store(in: &subscribers)
         
         $taskNotes.dropFirst().sink { [weak self] taskNotes in
@@ -133,7 +138,7 @@ class TaskDetailsViewModel: TaskDetailsViewModelProtocol {
         )
     }
     
-    private func updateTaskDueDate(_ dueDate: Date) {
+    private func updateTaskDueDate(_ dueDate: Date?) {
         Task.updateDueDate(
             task: task,
             dueDate: dueDate,
@@ -160,7 +165,7 @@ class TaskDetailsViewModel: TaskDetailsViewModelProtocol {
     // MARK: - Child ViewModels
     
     lazy var calendarViewModel: CalendarViewModel = {
-        let calendarViewModel = CalendarViewModel(selectedDate: dueDate)
+        let calendarViewModel = CalendarViewModel(selectedDate: dueDate ?? Date())
         calendarViewModel.onDateSelected = { [weak self] selectedDate in
             self?.dueDate = selectedDate
             self?.formattedDueDate = selectedDate.shortDate

@@ -14,8 +14,11 @@ public class Task: NSManagedObject {
     
     var unwrappedId: UUID { id ?? UUID() }
     var unwrappedTitle: String { title ?? "Unknown title" }
-    var unwrappeDueDate: Date { dueDate ?? Date() }
     var unwrappedNotes: String { notes ?? .empty }
+    var reminderTimeInterval: TimeInterval? {
+        guard reminder > 0 else { return nil }
+        return TimeInterval(reminder)
+    }
     
     var subTasksArray: [SubTask]? {
         let subTaskArray = subTasks?.allObjects as? Array<SubTask>
@@ -27,7 +30,7 @@ public class Task: NSManagedObject {
         set { statusValue = newValue.rawValue }
     }
     
-    // MARK: - Task CoreData Operations
+    // MARK: - Fetch
     
     public static func fetchAll(viewContext: NSManagedObjectContext) -> [Task] {
         print("Task fetchAll called")
@@ -46,11 +49,13 @@ public class Task: NSManagedObject {
         let endDate = calendar.date(byAdding: .hour, value: 24, to: startDate)!
         
         let fetchRequest: NSFetchRequest<Task> = Task.fetchRequest()
-        fetchRequest.predicate = NSPredicate(format: "dueDate >= %@ AND dueDate <= %@", startDate as NSDate, endDate as NSDate)
+        fetchRequest.predicate = NSPredicate(format: "dueDate = nil OR dueDate >= %@ AND dueDate <= %@", startDate as NSDate, endDate as NSDate)
         fetchRequest.sortDescriptors = [NSSortDescriptor(key: "index", ascending: true)]
         guard let tasks = try? viewContext.fetch(fetchRequest) else { return [] }
         return tasks
     }
+    
+    // MARK: - Delete
     
     public static func deleteAll(viewContext: NSManagedObjectContext) {
         Task.fetchAll(viewContext: viewContext).forEach { viewContext.delete($0) }
@@ -66,6 +71,8 @@ public class Task: NSManagedObject {
         print("Task \"\(task.unwrappedTitle)\" deleted")
     }
     
+    // MARK: - Update
+    
     public static func updateOrderOfTasks(_ revisedTasks: [Task], viewContext: NSManagedObjectContext) {
         
         for index in stride(from: revisedTasks.count - 1, through: 0, by: -1) {
@@ -78,15 +85,6 @@ public class Task: NSManagedObject {
         try? viewContext.save()
     }
     
-    public static func create(title: String, dueDate: Date, viewContext: NSManagedObjectContext) {
-        let newTask = Task(context: viewContext)
-        newTask.title = title
-        newTask.dueDate = dueDate
-        try? viewContext.save()
-        
-        print("Task \"\(title)\" created")
-    }
-    
     public static func updateNotes(task: Task, notes: String, viewContext: NSManagedObjectContext) {
         task.notes = notes
         
@@ -95,7 +93,7 @@ public class Task: NSManagedObject {
         print("Task \"\(task.unwrappedTitle)\" notes updated to \"\(notes)\" ")
     }
     
-    public static func updateDueDate(task: Task, dueDate: Date, viewContext: NSManagedObjectContext) {
+    public static func updateDueDate(task: Task, dueDate: Date?, viewContext: NSManagedObjectContext) {
         task.dueDate = dueDate
         
         try? viewContext.save()
@@ -118,11 +116,23 @@ public class Task: NSManagedObject {
         print("Task \"\(task.unwrappedTitle)\" status updated to \"\(newStatus.rawValue)\"")
     }
     
+    // MARK: - Create
+    
+    public static func create(title: String, viewContext: NSManagedObjectContext) {
+        let newTask = Task(context: viewContext)
+        newTask.title = title
+        try? viewContext.save()
+        
+        print("Task \"\(title)\" created")
+    }
+    
+    // MARK: - Save
+    
     public static func saveChanges(viewContext: NSManagedObjectContext) {
         try? viewContext.save()
     }
     
-    // MARK: - awake
+    // MARK: - Awake
     
     public override func awakeFromInsert() {
         super.awakeFromInsert()
