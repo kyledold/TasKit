@@ -16,6 +16,8 @@ struct TaskDetailsView<ViewModel: TaskDetailsViewModelProtocol>: View {
     @State private var showDeleteConfirmationAlert = false
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     
+    @State var selectedReminder: Int = 0
+    
     // MARK: - View
     
     var body: some View {
@@ -142,9 +144,9 @@ extension TaskDetailsView {
                     Spacer()
                     DatePicker(String.empty, selection: $viewModel.dueTime, displayedComponents: .hourAndMinute)
                         .datePickerStyle(GraphicalDatePickerStyle())
-                        .padding(.trailing, -25)
+                        .scaleEffect(0.85)
+                        .padding(.trailing, -30)
                         .padding(.vertical, -10)
-                        .scaleEffect(0.9)
                 }
             }
         }
@@ -159,17 +161,8 @@ extension TaskDetailsView {
                     .padding(Layout.Spacing.tight)
             }
             if viewModel.isReminderEnabled {
-                HStack {
-                    Spacer()
-                    Button(action: {}, label: {
-                        HStack {
-                            Text("15 min before")
-                                .foregroundColor(.primary)
-                        }
-                        .padding(Layout.Spacing.compact)
-                        .background(Color.t_input_background_2)
-                        .cornerRadius(10)
-                    })
+                HStack() {
+                    SegmentPicker(items: ["on time", "15min", "45min", "1hour" ], selection: $selectedReminder)
                 }
             }
         }

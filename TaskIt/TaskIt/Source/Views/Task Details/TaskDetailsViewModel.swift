@@ -126,7 +126,7 @@ class TaskDetailsViewModel: TaskDetailsViewModelProtocol {
     // MARK: - Child ViewModels
     
     lazy var calendarViewModel: CalendarViewModel = {
-        let calendarViewModel = CalendarViewModel(selectedDate: dueDate ?? Date())
+        let calendarViewModel = CalendarViewModel(selectedDate: dueDate)
         calendarViewModel.onDateSelected = { [weak self] selectedDate in
             self?.dueDate = selectedDate
             self?.formattedDueDate = selectedDate.shortDate
@@ -188,7 +188,7 @@ extension TaskDetailsViewModel {
         
         $isReminderEnabled.dropFirst().sink { [weak self] isReminderEnabled in
             
-            guard let self = self else { return }
+            /*guard let self = self else { return }
             
             let store = EKEventStore()
             store.requestAccess(to: .reminder) { (granted, error) in
@@ -209,7 +209,7 @@ extension TaskDetailsViewModel {
               } else {
                 print("access denied")
               }
-            }
+            }*/
         }.store(in: &subscribers)
     }
 }
