@@ -41,4 +41,4 @@
 "toast.task_deleted" = "Task successfully deleted";
 "toast.task_completed" = "Task successfully completed";
 "toast.task_updated" = "Task successfully updated";
-
+"user_notification.title" = "Reminder: %@";

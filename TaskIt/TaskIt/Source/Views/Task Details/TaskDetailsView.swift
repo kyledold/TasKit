@@ -127,10 +127,10 @@ extension TaskDetailsView {
             HStack {
                 Text(viewModel.timeText)
                 Spacer()
-                Toggle(isOn: $viewModel.isTimeEnabled, label: {}).toggleStyle(SwitchToggleStyle())
+                Toggle(isOn: $viewModel.isTimeToggledOn, label: {}).toggleStyle(SwitchToggleStyle())
                     .padding(Layout.Spacing.tight)
             }
-            if viewModel.isTimeEnabled {
+            if viewModel.isTimeToggledOn {
                 VStack {
                     HStack {
                         Spacer()
@@ -143,7 +143,7 @@ extension TaskDetailsView {
                     HStack {
                         Text(viewModel.reminderText)
                         Spacer()
-                        Toggle(isOn: $viewModel.isReminderEnabled, label: {}).toggleStyle(SwitchToggleStyle())
+                        Toggle(isOn: $viewModel.isReminderToggledOn, label: {}).toggleStyle(SwitchToggleStyle())
                             .padding(Layout.Spacing.tight)
                         
                     }

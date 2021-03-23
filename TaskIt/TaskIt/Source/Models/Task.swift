@@ -17,10 +17,6 @@ public class Task: NSManagedObject {
     var unwrappedDueDate: Date { dueDate ?? Date() }
     var unwrappedDueTime: Date { dueTime ?? unwrappedDueDate.setTime(hour: 12, minute: 0) }
     var unwrappedNotes: String { notes ?? .empty }
-    var reminderTimeInterval: TimeInterval? {
-        guard reminder > 0 else { return nil }
-        return TimeInterval(reminder)
-    }
     
     var subTasksArray: [SubTask]? {
         let subTaskArray = subTasks?.allObjects as? Array<SubTask>
@@ -124,6 +120,14 @@ public class Task: NSManagedObject {
         try? viewContext.save()
         
         print("Task \"\(task.unwrappedTitle)\" status updated to \"\(newStatus.rawValue)\"")
+    }
+    
+    public static func updateIsReminderSet(task: Task, isReminderSet: Bool, viewContext: NSManagedObjectContext) {
+        task.isReminderSet = isReminderSet
+        
+        try? viewContext.save()
+        
+        print("Task \"\(task.unwrappedTitle)\" isReminderSet updated to \"\(isReminderSet)\" ")
     }
     
     // MARK: - Create

@@ -26,8 +26,8 @@ protocol TaskDetailsViewModelProtocol: ObservableObject {
     var reminderText: String { get }
     var timeText: String { get }
     
-    var isTimeEnabled: Bool { get set }
-    var isReminderEnabled: Bool { get set }
+    var isTimeToggledOn: Bool { get set }
+    var isReminderToggledOn: Bool { get set }
     
     var subTaskListViewModel: SubTaskListViewModel { get }
     var calendarViewModel: CalendarViewModel { get }

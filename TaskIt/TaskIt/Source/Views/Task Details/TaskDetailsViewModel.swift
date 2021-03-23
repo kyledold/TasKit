@@ -9,6 +9,7 @@ import Combine
 import CoreData
 import Foundation
 import EventKit
+import UserNotifications
 
 class TaskDetailsViewModel: TaskDetailsViewModelProtocol {
     
@@ -21,8 +22,8 @@ class TaskDetailsViewModel: TaskDetailsViewModelProtocol {
     @Published var taskNotes = String.empty
     @Published var formattedDueDate = String.empty
     @Published var showCalendarView: Bool
-    @Published var isTimeEnabled: Bool
-    @Published var isReminderEnabled: Bool
+    @Published var isTimeToggledOn: Bool
+    @Published var isReminderToggledOn: Bool
     
     var deleteAlertTitleText = NSLocalizedString("task_details.delete_alert.title", comment: "Delete alert title")
     var deleteAlertMessageText = NSLocalizedString("task_details.delete_alert.message", comment: "Delete alert message")
@@ -32,12 +33,14 @@ class TaskDetailsViewModel: TaskDetailsViewModelProtocol {
     var taskNotesPlaceholderText = NSLocalizedString("task_details.task_notes_placeholder", comment: "Task notes text editor placeholder")
     var taskDateText = NSLocalizedString("task_details.date", comment: "Date picker description")
     var timeText = NSLocalizedString("task_details.time", comment: "Time label")
+    private let reminderTitle = NSLocalizedString("user_notification.title", comment: "Notification title")
     
     var subTaskListViewModel: SubTaskListViewModel
     
     private let calendar = Calendar.current
     private var subscribers: Set<AnyCancellable> = []
     private let notificationCenter = NotificationCenter.default
+    private let userNotificationCenter = UNUserNotificationCenter.current()
     private let managedObjectContext: NSManagedObjectContext
     private let task: Task
     
@@ -55,8 +58,8 @@ class TaskDetailsViewModel: TaskDetailsViewModelProtocol {
         taskNotes = task.unwrappedNotes
         showCalendarView = false
         
-        isTimeEnabled = task.dueTime != nil
-        isReminderEnabled = task.reminderTimeInterval != nil
+        isTimeToggledOn = task.dueTime != nil
+        isReminderToggledOn = task.isReminderSet
         formattedDueDate = task.unwrappedDueDate.shortDate
         
         addObservers()
@@ -87,7 +90,7 @@ class TaskDetailsViewModel: TaskDetailsViewModelProtocol {
     
     private func updateTaskDueDate(_ dueDate: Date?) {
         
-        if isTimeEnabled {
+        if isTimeToggledOn {
             // we update task time date but ignore the time component of the new date
             let newDueTime = dueDate?.setTime(hour: dueTime.get(.hour), minute: dueTime.get(.minute))
             updateTaskDueTime(newDueTime)
@@ -106,12 +109,32 @@ class TaskDetailsViewModel: TaskDetailsViewModelProtocol {
             dueTime: dueTime,
             viewContext: managedObjectContext
         )
+        
+        if task.isReminderSet {
+            
+            // delete old reminder
+            deleteReminder()
+            
+            // add new reminder, I added a delay here because there is a weird race condition with delete
+            // before adding that causes the notification not to be set
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) { [weak self] in
+                self?.setReminder()
+            }
+        }
     }
     
     private func updateTaskName(_ taskName: String) {
         Task.updateTitle(
             task: task,
             title: taskName,
+            viewContext: managedObjectContext
+        )
+    }
+    
+    private func updateIsReminderSet(_ isReminderSet: Bool) {
+        Task.updateIsReminderSet(
+            task: task,
+            isReminderSet: isReminderSet,
             viewContext: managedObjectContext
         )
     }
@@ -138,7 +161,49 @@ class TaskDetailsViewModel: TaskDetailsViewModelProtocol {
     }()
 }
 
-// MARK: - Observers
+// MARK: - User Notifications -
+
+extension TaskDetailsViewModel {
+    
+    private func requestNotificationAuthorization() {
+        
+        let authOptions = UNAuthorizationOptions(arrayLiteral: .alert, .badge, .sound)
+        
+        userNotificationCenter.requestAuthorization(options: authOptions) { (success, error) in
+            if let error = error {
+                print("Error: ", error)
+            }
+        }
+    }
+    
+    private func setReminder() {
+        let content = UNMutableNotificationContent()
+        content.title = String(format: reminderTitle, task.unwrappedTitle)
+        content.body = task.unwrappedNotes
+        
+        let trigger = UNCalendarNotificationTrigger(dateMatching: calendar.dateComponents([.year, .month, .day, .hour, .minute, .second], from: dueTime), repeats: false)
+        let request = UNNotificationRequest(identifier: task.unwrappedId.uuidString, content: content, trigger: trigger)
+        
+        userNotificationCenter.add(request, withCompletionHandler: { [weak self] error in
+            if let error = error {
+                print("Notification Error: ", error)
+                return
+            }
+            
+            print("Reminder set for \(String(describing: self?.dueTime))")
+            self?.updateIsReminderSet(true)
+        })
+    }
+    
+    private func deleteReminder() {
+        userNotificationCenter.removePendingNotificationRequests(withIdentifiers: [task.unwrappedId.uuidString])
+        print("Reminder deleted")
+        
+        updateIsReminderSet(false)
+    }
+}
+
+// MARK: - Observers -
 
 extension TaskDetailsViewModel {
     
@@ -160,7 +225,7 @@ extension TaskDetailsViewModel {
             self?.updateTaskDueTime(dueTime)
         }.store(in: &subscribers)
         
-        $isTimeEnabled.dropFirst().sink { [weak self] isTimeEnabled in
+        $isTimeToggledOn.dropFirst().sink { [weak self] isTimeEnabled in
             guard let self = self else { return }
             
             if !isTimeEnabled {
@@ -174,29 +239,17 @@ extension TaskDetailsViewModel {
             self?.updateTaskNotes(taskNotes)
         }.store(in: &subscribers)
         
-        $isReminderEnabled.dropFirst().sink { [weak self] isReminderEnabled in
+        $isReminderToggledOn.dropFirst().sink { [weak self] isReminderEnabled in
             
             guard let self = self else { return }
             
-            let store = EKEventStore()
-            store.requestAccess(to: .reminder) { (granted, error) in
-              if let error = error {
-                print("request access error: \(error)")
-              } else if granted {
-                
-                guard let reminderCalendar = store.defaultCalendarForNewReminders() else { return }
-                
-                let newReminder = EKReminder(eventStore: store)
-                newReminder.calendar = reminderCalendar
-                newReminder.title = self.task.title
-                newReminder.dueDateComponents = self.calendar.dateComponents([.year, .month, .day, .hour, .minute], from: self.task.unwrappedDueTime)
-
-                try! store.save(newReminder, commit: true)
-
-              } else {
-                print("access denied")
-              }
+            self.requestNotificationAuthorization()
+            if isReminderEnabled {
+                self.setReminder()
+            } else {
+                self.deleteReminder()
             }
+            
         }.store(in: &subscribers)
     }
 }
