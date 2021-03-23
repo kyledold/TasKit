@@ -15,7 +15,7 @@ public class Task: NSManagedObject {
     var unwrappedId: UUID { id ?? UUID() }
     var unwrappedTitle: String { title ?? "Unknown title" }
     var unwrappedDueDate: Date { dueDate ?? Date() }
-    var unwrappedDueTime: Date { dueTime ?? Date().setTime(hour: 12) }
+    var unwrappedDueTime: Date { dueTime ?? unwrappedDueDate.setTime(hour: 12, minute: 0) }
     var unwrappedNotes: String { notes ?? .empty }
     var reminderTimeInterval: TimeInterval? {
         guard reminder > 0 else { return nil }

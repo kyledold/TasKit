@@ -30,14 +30,13 @@ extension Date {
         return Calendar.current.date(byAdding: dateComponent, to: currentDate)!
     }
     
-    public func setTime(hour: Int = 0, minute: Int = 0, second: Int = 0) -> Date {
-        let x: Set<Calendar.Component> = [.year, .month, .day, .hour, .minute, .second]
+    public func setTime(hour: Int = 0, minute: Int = 0) -> Date {
+        let x: Set<Calendar.Component> = [.year, .month, .day, .hour, .minute]
         let calendar = Calendar.current
         var components = calendar.dateComponents(x, from: self)
 
         components.hour = hour
         components.minute = minute
-        components.second = second
 
         return calendar.date(from: components)!
     }

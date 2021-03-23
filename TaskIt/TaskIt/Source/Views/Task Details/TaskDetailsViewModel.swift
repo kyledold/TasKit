@@ -35,6 +35,7 @@ class TaskDetailsViewModel: TaskDetailsViewModelProtocol {
     
     var subTaskListViewModel: SubTaskListViewModel
     
+    private let calendar = Calendar.current
     private var subscribers: Set<AnyCancellable> = []
     private let notificationCenter = NotificationCenter.default
     private let managedObjectContext: NSManagedObjectContext
@@ -85,6 +86,13 @@ class TaskDetailsViewModel: TaskDetailsViewModelProtocol {
     }
     
     private func updateTaskDueDate(_ dueDate: Date?) {
+        
+        if isTimeEnabled {
+            // we update task time date but ignore the time component of the new date
+            let newDueTime = dueDate?.setTime(hour: dueTime.get(.hour), minute: dueTime.get(.minute))
+            updateTaskDueTime(newDueTime)
+        }
+        
         Task.updateDueDate(
             task: task,
             dueDate: dueDate,
@@ -168,7 +176,7 @@ extension TaskDetailsViewModel {
         
         $isReminderEnabled.dropFirst().sink { [weak self] isReminderEnabled in
             
-            /*guard let self = self else { return }
+            guard let self = self else { return }
             
             let store = EKEventStore()
             store.requestAccess(to: .reminder) { (granted, error) in
@@ -176,20 +184,19 @@ extension TaskDetailsViewModel {
                 print("request access error: \(error)")
               } else if granted {
                 
-                guard let calendar = store.defaultCalendarForNewReminders() else { return }
-                let newReminder = EKReminder(eventStore: store)
-                newReminder.calendar = calendar
-                newReminder.title = "Buy coffee"
+                guard let reminderCalendar = store.defaultCalendarForNewReminders() else { return }
                 
-                //let dueDate = task.dueDate.addingTimeInterval()
-                //newReminder.dueDateComponents = Calendar.current.dateComponents([.year, .month, .day], from: dueDate)
+                let newReminder = EKReminder(eventStore: store)
+                newReminder.calendar = reminderCalendar
+                newReminder.title = self.task.title
+                newReminder.dueDateComponents = self.calendar.dateComponents([.year, .month, .day, .hour, .minute], from: self.task.unwrappedDueTime)
 
                 try! store.save(newReminder, commit: true)
 
               } else {
                 print("access denied")
               }
-            }*/
+            }
         }.store(in: &subscribers)
     }
 }
