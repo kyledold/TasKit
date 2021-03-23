@@ -10,6 +10,7 @@ import Foundation
 class FakeNewTaskViewModel: NewTaskViewModelProtocol {
     
     var taskName = ""
+    var selectedDate = Date()
     var isCreateButtonDisabled = false
     var taskNamePlaceholder = "Type new task name here..."
     

@@ -25,11 +25,8 @@ class FakeTaskDetailsViewModel: TaskDetailsViewModelProtocol {
     var reminderText = "Reminder"
     var timeText = "Time"
     var showCalendarView = false
-    var reminderTimeInterval = TimeInterval()
-    var isDateEnabled = false
     var isTimeEnabled = false
     var isReminderEnabled = false
-    var hasDateValue = false
     
     var calendarViewModel = CalendarViewModel(selectedDate: Date())
     var subTaskListViewModel = SubTaskListViewModel(

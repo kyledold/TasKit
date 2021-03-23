@@ -16,7 +16,8 @@ struct TaskDetailsView<ViewModel: TaskDetailsViewModelProtocol>: View {
     @State private var showDeleteConfirmationAlert = false
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     
-    @State var selectedReminder: Int = 0
+    @State var hours: Int = 0
+    @State var minutes: Int = 0
     
     // MARK: - View
     
@@ -92,7 +93,7 @@ extension TaskDetailsView {
                 
                 VStack(spacing: Layout.Spacing.compact) {
                     dueDateRow
-                    reminderRow
+                    timeRow
                 }
                 .padding(Layout.Spacing.cozy)
                 .background(Color.t_input_background)
@@ -108,25 +109,15 @@ extension TaskDetailsView {
             HStack {
                 Text(viewModel.taskDateText)
                 Spacer()
-                Toggle(isOn: $viewModel.isDateEnabled, label: {}).toggleStyle(SwitchToggleStyle())
-                    .padding(Layout.Spacing.tight)
-            }
-            if viewModel.isDateEnabled {
-                HStack {
-                    Spacer()
-                    Button(action: calendarButtonTapped, label: {
-                        HStack {
-                            Text(viewModel.formattedDueDate)
-                                .foregroundColor(.primary)
-                        }
-                        .padding(Layout.Spacing.compact)
-                        .background(Color.t_input_background_2)
-                        .cornerRadius(10)
-                    })
-                }
-                if viewModel.hasDateValue {
-                    timeRow
-                }
+                Button(action: calendarButtonTapped, label: {
+                    HStack {
+                        Text(viewModel.formattedDueDate)
+                            .foregroundColor(.primary)
+                    }
+                    .padding(Layout.Spacing.compact)
+                    .background(Color.t_input_background_2)
+                    .cornerRadius(10)
+                })
             }
         }
     }
@@ -140,29 +131,22 @@ extension TaskDetailsView {
                     .padding(Layout.Spacing.tight)
             }
             if viewModel.isTimeEnabled {
-                HStack {
-                    Spacer()
-                    DatePicker(String.empty, selection: $viewModel.dueTime, displayedComponents: .hourAndMinute)
-                        .datePickerStyle(GraphicalDatePickerStyle())
-                        .scaleEffect(0.85)
-                        .padding(.trailing, -30)
-                        .padding(.vertical, -10)
-                }
-            }
-        }
-    }
-    
-    private var reminderRow: some View {
-        VStack {
-            HStack {
-                Text(viewModel.reminderText)
-                Spacer()
-                Toggle(isOn: $viewModel.isReminderEnabled, label: {}).toggleStyle(SwitchToggleStyle())
-                    .padding(Layout.Spacing.tight)
-            }
-            if viewModel.isReminderEnabled {
-                HStack() {
-                    SegmentPicker(items: ["on time", "15min", "45min", "1hour" ], selection: $selectedReminder)
+                VStack {
+                    HStack {
+                        Spacer()
+                        DatePicker(String.empty, selection: $viewModel.dueTime, displayedComponents: .hourAndMinute)
+                            .datePickerStyle(GraphicalDatePickerStyle())
+                            .scaleEffect(0.85)
+                            .padding(.trailing, -30)
+                            .padding(.vertical, -10)
+                    }
+                    HStack {
+                        Text(viewModel.reminderText)
+                        Spacer()
+                        Toggle(isOn: $viewModel.isReminderEnabled, label: {}).toggleStyle(SwitchToggleStyle())
+                            .padding(Layout.Spacing.tight)
+                        
+                    }
                 }
             }
         }

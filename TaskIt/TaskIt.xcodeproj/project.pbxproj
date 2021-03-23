@@ -40,7 +40,6 @@
 		D1542BB525DD8A74005FD7C7 /* MockTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1542BB425DD8A74005FD7C7 /* MockTask.swift */; };
 		D1542BBA25DD8D49005FD7C7 /* MockNSManagedObjectContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1542BB925DD8D49005FD7C7 /* MockNSManagedObjectContext.swift */; };
 		D1542BE925DFE9C5005FD7C7 /* SimpleTextFieldStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1542BE825DFE9C5005FD7C7 /* SimpleTextFieldStyle.swift */; };
-		D1590A4726090DC20069E1BB /* SegmentPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1590A4626090DC20069E1BB /* SegmentPicker.swift */; };
 		D15D7BE625E9664000C380FA /* Nunito-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D15D7BE525E9664000C380FA /* Nunito-Bold.ttf */; };
 		D15D7BE925E966AC00C380FA /* Nunito-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D15D7BE825E966AC00C380FA /* Nunito-SemiBold.ttf */; };
 		D1783EBA25C9C9E500D8EFC3 /* TasksListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1783EB925C9C9E500D8EFC3 /* TasksListView.swift */; };
@@ -168,7 +167,6 @@
 		D1542BB425DD8A74005FD7C7 /* MockTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockTask.swift; sourceTree = "<group>"; };
 		D1542BB925DD8D49005FD7C7 /* MockNSManagedObjectContext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockNSManagedObjectContext.swift; sourceTree = "<group>"; };
 		D1542BE825DFE9C5005FD7C7 /* SimpleTextFieldStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleTextFieldStyle.swift; sourceTree = "<group>"; };
-		D1590A4626090DC20069E1BB /* SegmentPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SegmentPicker.swift; sourceTree = "<group>"; };
 		D15D7BE525E9664000C380FA /* Nunito-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Nunito-Bold.ttf"; sourceTree = "<group>"; };
 		D15D7BE825E966AC00C380FA /* Nunito-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Nunito-SemiBold.ttf"; sourceTree = "<group>"; };
 		D1783EB925C9C9E500D8EFC3 /* TasksListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasksListView.swift; sourceTree = "<group>"; };
@@ -443,7 +441,6 @@
 				D131DF9A25E276770039D7E7 /* ButtonFooterView.swift */,
 				D1034ADD25FA5E2900288A38 /* BottomSheet.swift */,
 				D1034AEA25FA66D800288A38 /* DimmedBackgroundView.swift */,
-				D1590A4626090DC20069E1BB /* SegmentPicker.swift */,
 				D1034AE125FA5E4500288A38 /* RoundedCorner.swift */,
 				D1BD688B25EA8ECF002C4518 /* TextBox.swift */,
 				D11E734525E5719D006FD6CB /* Toast */,
@@ -749,7 +746,6 @@
 				D1529C7525C72C76003FC9D6 /* ColorExtensions.swift in Sources */,
 				D1034AE225FA5E4500288A38 /* RoundedCorner.swift in Sources */,
 				D131DFA125E277980039D7E7 /* FooterStyle.swift in Sources */,
-				D1590A4726090DC20069E1BB /* SegmentPicker.swift in Sources */,
 				D17FC9B325D81810002A5501 /* SubTitleStyle.swift in Sources */,
 				D1F2066A25F3A66B001780E7 /* ImageButtonStyle.swift in Sources */,
 				D17DAAA125DBDF8400ED4A8C /* TaskIt.xcdatamodeld in Sources */,

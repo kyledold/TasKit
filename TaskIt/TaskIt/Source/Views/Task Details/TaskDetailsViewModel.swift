@@ -21,11 +21,8 @@ class TaskDetailsViewModel: TaskDetailsViewModelProtocol {
     @Published var taskNotes = String.empty
     @Published var formattedDueDate = String.empty
     @Published var showCalendarView: Bool
-    @Published var reminderTimeInterval: TimeInterval
-    @Published var isDateEnabled: Bool
     @Published var isTimeEnabled: Bool
     @Published var isReminderEnabled: Bool
-    @Published var hasDateValue: Bool
     
     var deleteAlertTitleText = NSLocalizedString("task_details.delete_alert.title", comment: "Delete alert title")
     var deleteAlertMessageText = NSLocalizedString("task_details.delete_alert.message", comment: "Delete alert message")
@@ -35,7 +32,6 @@ class TaskDetailsViewModel: TaskDetailsViewModelProtocol {
     var taskNotesPlaceholderText = NSLocalizedString("task_details.task_notes_placeholder", comment: "Task notes text editor placeholder")
     var taskDateText = NSLocalizedString("task_details.date", comment: "Date picker description")
     var timeText = NSLocalizedString("task_details.time", comment: "Time label")
-    private var selectedDateText = NSLocalizedString("task_details.select_date", comment: "Select data text")
     
     var subTaskListViewModel: SubTaskListViewModel
     
@@ -56,14 +52,11 @@ class TaskDetailsViewModel: TaskDetailsViewModelProtocol {
         dueTime = task.unwrappedDueTime
         isComplete = task.status == .completed
         taskNotes = task.unwrappedNotes
-        reminderTimeInterval = TimeInterval()
         showCalendarView = false
         
-        isDateEnabled = task.dueDate != nil
         isTimeEnabled = task.dueTime != nil
         isReminderEnabled = task.reminderTimeInterval != nil
-        hasDateValue = task.dueDate != nil
-        formattedDueDate = task.dueDate?.shortDate ?? selectedDateText
+        formattedDueDate = task.unwrappedDueDate.shortDate
         
         addObservers()
     }
@@ -153,19 +146,6 @@ extension TaskDetailsViewModel {
         
         $dueDate.dropFirst().sink { [weak self] dueDate in
             self?.updateTaskDueDate(dueDate)
-            self?.hasDateValue = true
-        }.store(in: &subscribers)
-        
-        $isDateEnabled.dropFirst().sink { [weak self] isDateEnabled in
-            guard let self = self else { return }
-            
-            if !isDateEnabled {
-                self.updateTaskDueDate(nil)
-                self.updateTaskDueTime(nil)
-                self.hasDateValue = false
-            } else {
-                self.formattedDueDate = self.task.dueDate?.shortDate ?? self.selectedDateText
-            }
         }.store(in: &subscribers)
         
         $dueTime.dropFirst().sink { [weak self] dueTime in

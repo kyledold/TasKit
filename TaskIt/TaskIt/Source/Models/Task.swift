@@ -128,9 +128,10 @@ public class Task: NSManagedObject {
     
     // MARK: - Create
     
-    public static func create(title: String, viewContext: NSManagedObjectContext) {
+    public static func create(title: String, dueDate: Date, viewContext: NSManagedObjectContext) {
         let newTask = Task(context: viewContext)
         newTask.title = title
+        newTask.dueDate = dueDate
         try? viewContext.save()
         
         print("Task \"\(title)\" created")

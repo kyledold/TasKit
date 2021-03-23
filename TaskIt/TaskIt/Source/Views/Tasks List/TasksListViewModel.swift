@@ -102,6 +102,7 @@ class TasksListViewModel: TasksListViewModelProtocol {
     }
     
     func createTaskButtonTapped() {
+        newTaskViewModel.selectedDate = selectedDate
         showNewTaskView = true
     }
     

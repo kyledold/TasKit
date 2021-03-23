@@ -16,7 +16,6 @@ protocol TaskDetailsViewModelProtocol: ObservableObject {
     var taskNotes: String { get set }
     var formattedDueDate: String { get }
     var showCalendarView: Bool { get set }
-    var reminderTimeInterval: TimeInterval { get set }
     
     var taskNamePlaceholderText: String { get }
     var taskNotesPlaceholderText: String { get }
@@ -27,8 +26,6 @@ protocol TaskDetailsViewModelProtocol: ObservableObject {
     var reminderText: String { get }
     var timeText: String { get }
     
-    var hasDateValue: Bool { get }
-    var isDateEnabled: Bool { get set }
     var isTimeEnabled: Bool { get set }
     var isReminderEnabled: Bool { get set }
     
