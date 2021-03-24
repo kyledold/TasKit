@@ -38,9 +38,6 @@ struct TasksListView<ViewModel: TasksListViewModelProtocol, SettingsModifier: Vi
         .bottomSheet(isPresented: $viewModel.showCalendarView, height: 450) {
             CalendarView(viewModel: viewModel.calendarViewModel)
         }
-        .onAppear {
-            viewModel.fetchTasks()
-        }
     }
     
     // MARK: - Events

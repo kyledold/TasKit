@@ -28,7 +28,6 @@ class FakeTasksListViewModel: TasksListViewModelProtocol {
         FakeTaskRowViewModel()
     ]
     
-    func fetchTasks() {}
     func deleteTask(at indexSet: IndexSet) {}
     func moveTask(from source: IndexSet, to destination: Int) {}
     func taskRowTapped(_ rowViewModel: RowViewModel) {}

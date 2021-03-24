@@ -23,6 +23,14 @@ public class Task: NSManagedObject {
         return subTaskArray?.sorted { $0.index < $1.index }
     }
     
+    var subTasksCompletionPercentage: Double? {
+        guard let completedSubTasksCount = subTasksArray?.filter({ $0.isComplete }).count else { return nil }
+        guard let subTasksCount = subTasksArray?.count else { return nil }
+        guard subTasksCount > 0 else { return nil }
+    
+        return Double(completedSubTasksCount) / Double(subTasksCount)
+    }
+    
     var status: Status {
         get { return Status(rawValue: statusValue)! }
         set { statusValue = newValue.rawValue }

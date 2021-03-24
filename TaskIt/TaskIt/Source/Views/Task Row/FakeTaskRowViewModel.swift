@@ -13,5 +13,7 @@ class FakeTaskRowViewModel: TaskRowViewModelProtocol {
     var id = UUID()
     var title = "This is a fake title"
     var time: String? = "17:00"
+    var subTasksCompletedText = "Completion:"
+    var subTasksCompletionPercentage: Double? = 20
     var task = Task()
 }

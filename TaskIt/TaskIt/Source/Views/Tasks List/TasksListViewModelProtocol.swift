@@ -24,7 +24,6 @@ protocol TasksListViewModelProtocol: ObservableObject {
     var newTaskViewModel: NewTaskViewModel { get }
     var calendarViewModel: CalendarViewModel { get }
     
-    func fetchTasks()
     func deleteTask(at indexSet: IndexSet)
     func moveTask(from source: IndexSet, to destination: Int)
     

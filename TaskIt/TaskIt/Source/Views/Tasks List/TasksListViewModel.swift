@@ -48,11 +48,12 @@ class TasksListViewModel: TasksListViewModelProtocol {
         self.showSortButton = false
         
         addObservers()
+        fetchTasks()
     }
     
     // MARK: - Functions
     
-    func fetchTasks() {
+    private func fetchTasks() {
         let selectedDatesTaskModels = Task.fetchAll(for: selectedDate, viewContext: managedObjectContext)
         taskViewModels = selectedDatesTaskModels.map { task in
             return TaskRowViewModel(

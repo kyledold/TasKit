@@ -14,6 +14,8 @@ class TaskRowViewModel: TaskRowViewModelProtocol {
     // MARK: - Properties
     
     @Published var isComplete: Bool
+    @Published var subTasksCompletedText: String
+    @Published var subTasksCompletionPercentage: Double?
     
     var id: UUID { task.unwrappedId }
     var title: String { task.unwrappedTitle }
@@ -32,6 +34,9 @@ class TaskRowViewModel: TaskRowViewModelProtocol {
         self.onChangeCompletion = onChangeCompletion
         
         self.isComplete = task.status == .completed
+        self.subTasksCompletedText = "Completion:"
+        self.subTasksCompletionPercentage = task.subTasksCompletionPercentage
+        
         addObservers()
     }
     
