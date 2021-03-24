@@ -10,10 +10,9 @@ import Foundation
 extension Date {
     
     var month: String { return DateFormatter.monthDateFormatter.string(from: self) }
-    
     var dayOfTheWeek: String { return DateFormatter.dayOfWeekDateFormatter.string(from: self) }
-    
     var shortDate: String { return DateFormatter.shortDateDateFormatter.string(from: self) }
+    var shortTime: String { return DateFormatter.shortTimeDateFormatter.string(from: self) }
 
     func get(_ components: Calendar.Component..., calendar: Calendar = Calendar.current) -> DateComponents {
         return calendar.dateComponents(Set(components), from: self)

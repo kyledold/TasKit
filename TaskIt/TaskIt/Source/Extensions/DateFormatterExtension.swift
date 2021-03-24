@@ -26,4 +26,10 @@ extension DateFormatter {
         shortDateDateFormatter.dateFormat = "EEE dd MMMM"
         return shortDateDateFormatter
     }
+    
+    static var shortTimeDateFormatter: DateFormatter {
+        let shortDateDateFormatter = DateFormatter()
+        shortDateDateFormatter.dateFormat = "HH:mm"
+        return shortDateDateFormatter
+    }
 }

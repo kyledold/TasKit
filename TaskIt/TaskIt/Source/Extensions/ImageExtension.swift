@@ -10,6 +10,7 @@ import SwiftUI
 extension Image {
     
     struct Icons {
+        static let alarm = "alarm"
         static let add = "plus"
         static let back = "arrow.left"
         static let calendar = "calendar"

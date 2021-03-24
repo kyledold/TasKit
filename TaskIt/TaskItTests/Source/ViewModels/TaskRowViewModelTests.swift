@@ -31,7 +31,7 @@ class TaskRowViewModelTests: XCTestCase {
     func test_givenDefaultInit_whenTaskTitleCalled_thenReturnsExpectedValue() {
         // given
         // when
-        let result = sut.taskTitle
+        let result = sut.title
         
         // then
         XCTAssertEqual(result, mockTask.title)

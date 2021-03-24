@@ -16,7 +16,8 @@ class TaskRowViewModel: TaskRowViewModelProtocol {
     @Published var isComplete: Bool
     
     var id: UUID { task.unwrappedId }
-    var taskTitle: String { task.unwrappedTitle }
+    var title: String { task.unwrappedTitle }
+    var time: String? { task.dueTime?.shortTime ?? nil }
     var onChangeCompletion: ValueClosure<Bool>
     
     private var subscribers: Set<AnyCancellable> = []
