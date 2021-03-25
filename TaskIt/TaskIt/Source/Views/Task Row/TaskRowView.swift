@@ -46,13 +46,17 @@ struct TaskRowView<ViewModel: TaskRowViewModelProtocol>: View {
             
             if let subTasksCompletionValue = viewModel.subTasksCompletionPercentage {
                 HStack {
-                    ProgressView(viewModel.subTasksCompletedText, value: subTasksCompletionValue)
+                    ProgressView(String.empty, value: subTasksCompletionValue)
                         .font(.footnote)
                     Spacer()
                 }.padding(.leading, Layout.Spacing.spacious)
             }
             
-        }.padding(Layout.Spacing.compact)
+        }
+        .padding(Layout.Spacing.compact)
+        .onAppear {
+            viewModel.viewAppeared()
+        }
     }
 }
 

@@ -14,7 +14,6 @@ class TaskRowViewModel: TaskRowViewModelProtocol {
     // MARK: - Properties
     
     @Published var isComplete: Bool
-    @Published var subTasksCompletedText: String
     @Published var subTasksCompletionPercentage: Double?
     
     var id: UUID { task.unwrappedId }
@@ -32,15 +31,16 @@ class TaskRowViewModel: TaskRowViewModelProtocol {
         self.task = task
         self.managedObjectContext = managedObjectContext
         self.onChangeCompletion = onChangeCompletion
-        
         self.isComplete = task.status == .completed
-        self.subTasksCompletedText = "Completion:"
-        self.subTasksCompletionPercentage = task.subTasksCompletionPercentage
         
         addObservers()
     }
     
     // MARK: - Functions
+    
+    func viewAppeared() {
+        self.subTasksCompletionPercentage = task.subTasksCompletionPercentage
+    }
     
     private func addObservers() {
         $isComplete.dropFirst().sink { [weak self] isComplete in

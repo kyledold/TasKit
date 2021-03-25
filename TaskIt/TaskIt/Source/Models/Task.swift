@@ -120,7 +120,7 @@ public class Task: NSManagedObject {
         
         try? viewContext.save()
         
-        print("Task \"\(task.unwrappedTitle)\" title updated to \"\(title)\" ")
+        print("Task title updated to \"\(task.unwrappedTitle)\"")
     }
     
     public static func updateStatus(task: Task, newStatus: Status, viewContext: NSManagedObjectContext) {
