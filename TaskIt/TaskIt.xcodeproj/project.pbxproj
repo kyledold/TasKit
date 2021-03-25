@@ -10,7 +10,6 @@
 		D1034ADE25FA5E2900288A38 /* BottomSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1034ADD25FA5E2900288A38 /* BottomSheet.swift */; };
 		D1034AE225FA5E4500288A38 /* RoundedCorner.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1034AE125FA5E4500288A38 /* RoundedCorner.swift */; };
 		D1034AEB25FA66D800288A38 /* DimmedBackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1034AEA25FA66D800288A38 /* DimmedBackgroundView.swift */; };
-		D10CD69A260626ED0025851B /* EventKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D10CD699260626ED0025851B /* EventKit.framework */; };
 		D10CD6A226075CF80025851B /* DateFormatterExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D10CD6A126075CF80025851B /* DateFormatterExtension.swift */; };
 		D10F85B62603C53200B08A87 /* NewTaskViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D10F85B52603C53200B08A87 /* NewTaskViewModelTests.swift */; };
 		D10F85BA2603C87200B08A87 /* SubTaskListViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D10F85B92603C87200B08A87 /* SubTaskListViewModelTests.swift */; };
@@ -239,7 +238,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				D17FC98625D6E814002A5501 /* CloudKit.framework in Frameworks */,
-				D10CD69A260626ED0025851B /* EventKit.framework in Frameworks */,
 				D1FB562325F2926600F87AC4 /* Introspect in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
