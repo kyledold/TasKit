@@ -18,7 +18,8 @@ struct TaskRowView<ViewModel: TaskRowViewModelProtocol>: View {
     
     var body: some View {
         VStack {
-            HStack {
+            HStack(spacing: Layout.Spacing.compact) {
+                
                 Toggle(isOn: $viewModel.isComplete) {}
                     .toggleStyle(CheckboxToggleStyle())
                     .onChange(of: viewModel.isComplete) { _ in
@@ -32,7 +33,7 @@ struct TaskRowView<ViewModel: TaskRowViewModelProtocol>: View {
                 Spacer()
                 
                 if let time = viewModel.time {
-                    HStack(spacing: 4) {
+                    HStack(spacing: Layout.Spacing.tight) {
                         Image(systemName: Image.Icons.alarm)
                             .resizable()
                             .foregroundColor(.gray)
@@ -53,6 +54,7 @@ struct TaskRowView<ViewModel: TaskRowViewModelProtocol>: View {
             }
             
         }
+        .opacity(viewModel.isComplete ? 0.5 : 1)
         .padding(Layout.Spacing.compact)
         .onAppear {
             viewModel.viewAppeared()

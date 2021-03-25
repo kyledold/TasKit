@@ -40,6 +40,7 @@ struct SubTaskRowView<ViewModel: SubTaskRowViewModelProtocol>: View {
             
             Spacer()
         }
+        .opacity(viewModel.isComplete ? 0.5 : 1)
     }
 }
 
