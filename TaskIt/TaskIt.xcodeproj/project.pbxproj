@@ -37,7 +37,6 @@
 		D1529C7525C72C76003FC9D6 /* ColorExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1529C7425C72C76003FC9D6 /* ColorExtensions.swift */; };
 		D1542BAE25DD8997005FD7C7 /* TaskRowViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1542BAD25DD8997005FD7C7 /* TaskRowViewModelTests.swift */; };
 		D1542BB525DD8A74005FD7C7 /* MockTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1542BB425DD8A74005FD7C7 /* MockTask.swift */; };
-		D1542BBA25DD8D49005FD7C7 /* MockNSManagedObjectContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1542BB925DD8D49005FD7C7 /* MockNSManagedObjectContext.swift */; };
 		D1542BE925DFE9C5005FD7C7 /* SimpleTextFieldStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1542BE825DFE9C5005FD7C7 /* SimpleTextFieldStyle.swift */; };
 		D15D7BE625E9664000C380FA /* Nunito-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D15D7BE525E9664000C380FA /* Nunito-Bold.ttf */; };
 		D15D7BE925E966AC00C380FA /* Nunito-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D15D7BE825E966AC00C380FA /* Nunito-SemiBold.ttf */; };
@@ -163,7 +162,6 @@
 		D1529C7425C72C76003FC9D6 /* ColorExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorExtensions.swift; sourceTree = "<group>"; };
 		D1542BAD25DD8997005FD7C7 /* TaskRowViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskRowViewModelTests.swift; sourceTree = "<group>"; };
 		D1542BB425DD8A74005FD7C7 /* MockTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockTask.swift; sourceTree = "<group>"; };
-		D1542BB925DD8D49005FD7C7 /* MockNSManagedObjectContext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockNSManagedObjectContext.swift; sourceTree = "<group>"; };
 		D1542BE825DFE9C5005FD7C7 /* SimpleTextFieldStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleTextFieldStyle.swift; sourceTree = "<group>"; };
 		D15D7BE525E9664000C380FA /* Nunito-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Nunito-Bold.ttf"; sourceTree = "<group>"; };
 		D15D7BE825E966AC00C380FA /* Nunito-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Nunito-SemiBold.ttf"; sourceTree = "<group>"; };
@@ -414,7 +412,6 @@
 			children = (
 				D1542BB425DD8A74005FD7C7 /* MockTask.swift */,
 				D10F85BF2603C9A600B08A87 /* MockSubTask.swift */,
-				D1542BB925DD8D49005FD7C7 /* MockNSManagedObjectContext.swift */,
 			);
 			path = Mocks;
 			sourceTree = "<group>";
@@ -802,7 +799,6 @@
 				D17DA9FA25DAE35C00ED4A8C /* TasksListViewModelTests.swift in Sources */,
 				D1F02E932603BF1600E6B134 /* TaskDetailsViewModelTests.swift in Sources */,
 				D10F85C02603C9A600B08A87 /* MockSubTask.swift in Sources */,
-				D1542BBA25DD8D49005FD7C7 /* MockNSManagedObjectContext.swift in Sources */,
 				D1542BB525DD8A74005FD7C7 /* MockTask.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -10,8 +10,10 @@ import XCTest
 
 class SubTaskRowViewModelTests: XCTestCase {
     
-    private lazy var mockTask = Task.StubFactory.make(title: "Mock task")
-    private lazy var mockSubTask = SubTask.StubFactory.make(task: mockTask, title: "Mock sub-task")
+    private let mockPersistenceController = PersistenceController(inMemory: true)
+    private lazy var mockTask = Task.StubFactory.make(title: "Mock task", persistenceController: mockPersistenceController)
+    private lazy var mockSubTask = SubTask.StubFactory.make(task: mockTask, title: "Mock sub-task", persistenceController: mockPersistenceController)
+    
     private lazy var sut = SubTaskRowViewModel(
         subTask: mockSubTask,
         onChangeCompletion: { _ in }

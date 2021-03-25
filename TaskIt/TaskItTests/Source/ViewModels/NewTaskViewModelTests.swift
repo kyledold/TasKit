@@ -11,9 +11,11 @@ import XCTest
 class NewTaskViewModelTests: XCTestCase {
     
     private let mockSelectedDate = Date()
+    private let mockPersistantContainer = PersistenceController(inMemory: true)
+    
     private lazy var sut = NewTaskViewModel(
         selectedDate: mockSelectedDate,
-        managedObjectContext: MockNSManagedObjectContext()
+        managedObjectContext: mockPersistantContainer.container.viewContext
     )
     
     // MARK: - Properties

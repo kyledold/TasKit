@@ -16,9 +16,10 @@ extension Task {
             title: String = "",
             isComplete: Bool = false,
             dueDate: Date = Date(),
-            taskNotes: String = ""
+            taskNotes: String = "",
+            persistenceController: PersistenceController
         ) -> Task {
-            let task = Task(context: MockNSManagedObjectContext())
+            let task = Task(context: persistenceController.container.viewContext)
             task.id = UUID()
             task.title = title
             task.isComplete = isComplete

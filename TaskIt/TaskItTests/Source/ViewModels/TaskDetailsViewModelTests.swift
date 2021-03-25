@@ -10,10 +10,13 @@ import XCTest
 
 class TaskDetailsViewModelTests: XCTestCase {
     
-    private let mockTask = Task.StubFactory.make(title: "Mock task")
+    private let mockPersistenceController = PersistenceController(inMemory: true)
+    private lazy var mockTask = Task.StubFactory.make(title: "Mock task", persistenceController: mockPersistenceController)
+    private let mockPersistantContainer = PersistenceController(inMemory: true)
+    
     private lazy var sut = TaskDetailsViewModel(
         task: mockTask,
-        managedObjectContext: MockNSManagedObjectContext()
+        managedObjectContext: mockPersistantContainer.container.viewContext
     )
     
     // MARK: - Properties

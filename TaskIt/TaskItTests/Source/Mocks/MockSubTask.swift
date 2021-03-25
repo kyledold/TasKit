@@ -15,9 +15,10 @@ extension SubTask {
         static func make(
             task: Task,
             title: String = "",
-            isComplete: Bool = false
+            isComplete: Bool = false,
+            persistenceController: PersistenceController
         ) -> SubTask {
-            let subTask = SubTask(context: MockNSManagedObjectContext())
+            let subTask = SubTask(context: persistenceController.container.viewContext)
             subTask.task = task
             subTask.id = UUID()
             subTask.title = title

@@ -10,10 +10,13 @@ import XCTest
 
 class TaskRowViewModelTests: XCTestCase {
     
-    private let mockTask = Task.StubFactory.make(title: "Mock task")
+    private let mockPersistenceController = PersistenceController(inMemory: true)
+    private lazy var mockTask = Task.StubFactory.make(title: "Mock task", persistenceController: mockPersistenceController)
+    private let mockPersistantContainer = PersistenceController(inMemory: true)
+    
     private lazy var sut = TaskRowViewModel(
         task: mockTask,
-        managedObjectContext: MockNSManagedObjectContext(),
+        managedObjectContext: mockPersistantContainer.container.viewContext,
         onChangeCompletion: { _ in }
     )
     
