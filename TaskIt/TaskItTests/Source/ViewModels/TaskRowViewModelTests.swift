@@ -43,6 +43,6 @@ class TaskRowViewModelTests: XCTestCase {
         let result = sut.isComplete
         
         // then
-        XCTAssertEqual(result, mockTask.status == .completed)
+        XCTAssertEqual(result, mockTask.isComplete)
     }
 }

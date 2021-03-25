@@ -89,9 +89,9 @@ class TasksListViewModel: TasksListViewModelProtocol {
     }
     
     private func updateTaskCompletionStatus(_ task: Task, isComplete: Bool) {
-        Task.updateStatus(
+        Task.updateCompletionStatus(
             task: task,
-            newStatus: isComplete ? .completed : .todo,
+            isComplete: isComplete,
             viewContext: managedObjectContext
         )
     }

@@ -42,7 +42,7 @@ class TaskDetailsViewModelTests: XCTestCase {
         let result = sut.isComplete
         
         // then
-        XCTAssertEqual(result, mockTask.status == .completed)
+        XCTAssertEqual(result, mockTask.isComplete)
     }
     
     func test_givenDefaultInit_whenTaskNotesCalled_thenReturnsExpectedValue() {

@@ -14,14 +14,14 @@ extension Task {
         
         static func make(
             title: String = "",
-            status: Status = .todo,
+            isComplete: Bool = false,
             dueDate: Date = Date(),
             taskNotes: String = ""
         ) -> Task {
             let task = Task(context: MockNSManagedObjectContext())
             task.id = UUID()
             task.title = title
-            task.status = status
+            task.isComplete = isComplete
             task.dueDate = dueDate
             task.notes = taskNotes
             return task

@@ -38,7 +38,7 @@ class TaskRowViewModel: TaskRowViewModelProtocol {
     // MARK: - Functions
     
     func viewAppeared() {
-        self.isComplete = task.status == .completed
+        self.isComplete = task.isComplete
         self.subTasksCompletionPercentage = task.subTasksCompletionPercentage
     }
     

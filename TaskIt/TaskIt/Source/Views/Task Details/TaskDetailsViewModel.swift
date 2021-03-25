@@ -54,7 +54,7 @@ class TaskDetailsViewModel: TaskDetailsViewModelProtocol {
         taskName = task.unwrappedTitle
         dueDate = task.unwrappedDueDate
         dueTime = task.unwrappedDueTime
-        isComplete = task.status == .completed
+        isComplete = task.isComplete
         taskNotes = task.unwrappedNotes
         showCalendarView = false
         
@@ -140,9 +140,9 @@ class TaskDetailsViewModel: TaskDetailsViewModelProtocol {
     }
     
     private func updateCompletionStatus(_ isComplete: Bool) {
-        Task.updateStatus(
+        Task.updateCompletionStatus(
             task: task,
-            newStatus: isComplete ? .completed : .todo,
+            isComplete: isComplete,
             viewContext: managedObjectContext
         )
     }

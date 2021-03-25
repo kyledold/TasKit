@@ -15,7 +15,22 @@ public class SubTask: NSManagedObject {
     var unwrappedId: UUID { id ?? UUID() }
     var unwrappedTitle: String { title ?? "Unknown title"}
     
-    // MARK: - SubTask CoreData Operations
+    // MARK: - awake
+    
+    public override func awakeFromInsert() {
+        super.awakeFromInsert()
+        
+        id = UUID()
+        isComplete = false
+        index = Int16.max
+    }
+}
+
+// MARK: - CoreData Operations -
+
+extension SubTask {
+    
+    // MARK: - Create
     
     public static func createNewSubTask(task: Task, subTaskName: String, index: Int, viewContext: NSManagedObjectContext) {
         let subTask = SubTask(context: viewContext)
@@ -29,6 +44,8 @@ public class SubTask: NSManagedObject {
         try? viewContext.save()
     }
     
+    // MARK: - Delete
+    
     public static func deleteSubTasks(_ subTasks: [SubTask], viewContext: NSManagedObjectContext) {
         subTasks.forEach {
             viewContext.delete($0)
@@ -38,6 +55,8 @@ public class SubTask: NSManagedObject {
         
         try? viewContext.save()
     }
+    
+    // MARK: - Update
     
     public static func updateOrderOfSubTasks(_ revisedSubTasks: [SubTask], viewContext: NSManagedObjectContext) {
         
@@ -57,15 +76,5 @@ public class SubTask: NSManagedObject {
         try? viewContext.save()
         
         print("Sub-task \"\(subTask.unwrappedTitle)\" update completion status to \(isComplete)")
-    }
-    
-    // MARK: - awake
-    
-    public override func awakeFromInsert() {
-        super.awakeFromInsert()
-        
-        id = UUID()
-        isComplete = false
-        index = Int16.max
     }
 }
