@@ -9,7 +9,6 @@ import SwiftUI
 
 extension Color {
     
-    static let t_orange = Color("t_orange")
     static let t_dim_blue = Color("t_dim_blue")
     static let t_green = Color("t_green")
     static let t_gray = Color("t_gray")
@@ -18,4 +17,5 @@ extension Color {
     static let t_input_background_2 = Color("t_input_background_2")
     static let t_content_background = Color("t_content_background")
     static let t_background = Color("t_background")
+    static let t_action = Color("t_action")
 }

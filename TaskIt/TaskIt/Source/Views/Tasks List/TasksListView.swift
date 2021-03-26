@@ -150,7 +150,7 @@ extension TasksListView {
     private var createTaskFooterButton: some View {
         ButtonFooterView(
             buttonText: viewModel.createTaskButtonText,
-            buttonColor: .t_orange,
+            buttonColor: .t_action,
             onButtonTap: createTaskButtonTapped
         )
         .onNotification(.taskCreated) {

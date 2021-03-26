@@ -23,6 +23,7 @@ struct CalendarView<ViewModel: CalendarViewModelProtocol>: View {
             
             DatePicker(String.empty, selection: $viewModel.selectedDate, displayedComponents: .date)
                 .datePickerStyle(GraphicalDatePickerStyle())
+                .accentColor(.t_action)
                 .padding()
         }
     }
