@@ -53,8 +53,8 @@ class TaskDetailsViewModel: TaskDetailsViewModelProtocol {
         self.managedObjectContext = managedObjectContext
         self.subTaskListViewModel = SubTaskListViewModel(task: self.task, managedObjectContext: managedObjectContext)
         
-        taskName = task.unwrappedTitle
-        dueDate = task.unwrappedDueDate
+        taskName = task.title
+        dueDate = task.dueDate
         dueTime = task.unwrappedDueTime
         isComplete = task.isComplete
         taskNotes = task.unwrappedNotes
@@ -62,7 +62,7 @@ class TaskDetailsViewModel: TaskDetailsViewModelProtocol {
         
         isTimeToggledOn = task.dueTime != nil
         isReminderToggledOn = task.isReminderSet
-        formattedDueDate = task.unwrappedDueDate.shortDate
+        formattedDueDate = task.dueDate.shortDate
         
         addObservers()
     }
@@ -90,11 +90,11 @@ class TaskDetailsViewModel: TaskDetailsViewModelProtocol {
         )
     }
     
-    private func updateTaskDueDate(_ dueDate: Date?) {
+    private func updateTaskDueDate(_ dueDate: Date) {
         
         if isTimeToggledOn {
             // we update task time date but ignore the time component of the new date
-            let newDueTime = dueDate?.setTime(hour: dueTime.get(.hour), minute: dueTime.get(.minute))
+            let newDueTime = dueDate.setTime(hour: dueTime.get(.hour), minute: dueTime.get(.minute))
             updateTaskDueTime(newDueTime)
         }
         
@@ -182,11 +182,11 @@ extension TaskDetailsViewModel {
     
     private func setReminder() {
         let content = UNMutableNotificationContent()
-        content.title = String(format: reminderTitle, task.unwrappedTitle)
+        content.title = String(format: reminderTitle, task.title)
         content.body = task.unwrappedNotes
         
         let trigger = UNCalendarNotificationTrigger(dateMatching: calendar.dateComponents([.year, .month, .day, .hour, .minute, .second], from: dueTime), repeats: false)
-        let request = UNNotificationRequest(identifier: task.unwrappedId.uuidString, content: content, trigger: trigger)
+        let request = UNNotificationRequest(identifier: task.id.uuidString, content: content, trigger: trigger)
         
         userNotificationCenter.add(request, withCompletionHandler: { [weak self] error in
             if let error = error {
@@ -200,7 +200,7 @@ extension TaskDetailsViewModel {
     }
     
     private func deleteReminder() {
-        userNotificationCenter.removePendingNotificationRequests(withIdentifiers: [task.unwrappedId.uuidString])
+        userNotificationCenter.removePendingNotificationRequests(withIdentifiers: [task.id.uuidString])
         print("Reminder deleted")
         
         updateIsReminderSet(false)

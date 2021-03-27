@@ -8,26 +8,6 @@
 import Foundation
 import CoreData
 
-public class SubTask: NSManagedObject {
-    
-    // MARK: - Properties
-    
-    var unwrappedId: UUID { id ?? UUID() }
-    var unwrappedTitle: String { title ?? "Unknown title"}
-    
-    // MARK: - awake
-    
-    public override func awakeFromInsert() {
-        super.awakeFromInsert()
-        
-        id = UUID()
-        isComplete = false
-        index = Int16.max
-    }
-}
-
-// MARK: - CoreData Operations -
-
 extension SubTask {
     
     // MARK: - Create
@@ -39,7 +19,7 @@ extension SubTask {
         subTask.title = subTaskName
         subTask.index = Int16(index)
         
-        print("Sub-task \"\(subTask.unwrappedTitle)\" created")
+        print("Sub-task \"\(subTask.title)\" created")
         
         try? viewContext.save()
     }
@@ -50,7 +30,7 @@ extension SubTask {
         subTasks.forEach {
             viewContext.delete($0)
             
-            print("Sub-task \"\($0.unwrappedTitle)\" deleted")
+            print("Sub-task \"\($0.title)\" deleted")
         }
         
         try? viewContext.save()
@@ -64,7 +44,7 @@ extension SubTask {
             let subTask = revisedSubTasks[index]
             subTask.index = Int16(index)
             
-            print("Sub-task \"\(subTask.unwrappedTitle)\" update index to \(index)")
+            print("Sub-task \"\(subTask.title)\" update index to \(index)")
         }
         
         try? viewContext.save()
@@ -75,6 +55,16 @@ extension SubTask {
         
         try? viewContext.save()
         
-        print("Sub-task \"\(subTask.unwrappedTitle)\" update completion status to \(isComplete)")
+        print("Sub-task \"\(subTask.title)\" update completion status to \(isComplete)")
+    }
+    
+    // MARK: - awake
+    
+    public override func awakeFromInsert() {
+        super.awakeFromInsert()
+        
+        id = UUID()
+        isComplete = false
+        index = Int16.max
     }
 }

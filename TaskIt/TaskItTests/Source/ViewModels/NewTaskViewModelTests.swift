@@ -11,16 +11,20 @@ import XCTest
 class NewTaskViewModelTests: XCTestCase {
     
     private let mockSelectedDate = Date()
-    private let mockPersistantContainer = PersistenceController(inMemory: true)
+    private let mockIndex = 2
+    private let mockPersistenceContainer = PersistenceController(inMemory: true)
     
     private lazy var sut = NewTaskViewModel(
         selectedDate: mockSelectedDate,
-        managedObjectContext: mockPersistantContainer.container.viewContext
+        index: mockIndex,
+        managedObjectContext: mockPersistenceContainer.container.viewContext
     )
     
-    // MARK: - Properties
+    override func tearDown() {
+        Task.deleteAll(viewContext: mockPersistenceContainer.container.viewContext)
+    }
     
-    func test_givenDefaultInit_whenSelectedDateCalled_thenReturnsExpectedValue() {
+    func test_givenInit_whenSelectedDateCalled_thenReturnsExpectedValue() {
         // given
         // when
         let result = sut.selectedDate
@@ -29,7 +33,7 @@ class NewTaskViewModelTests: XCTestCase {
         XCTAssertEqual(result, mockSelectedDate)
     }
     
-    func test_givenDefaultInit_whenTaskNameCalled_thenReturnsEmptyString() {
+    func test_givenInit_whenTaskNameCalled_thenReturnsEmptyString() {
         // given
         // when
         let result = sut.taskName
@@ -38,7 +42,7 @@ class NewTaskViewModelTests: XCTestCase {
         XCTAssertEqual(result, "")
     }
     
-    func test_givenDefaultInit_whenTaskNamePlaceholderCalled_thenReturnsExpectedValue() {
+    func test_givenInit_whenTaskNamePlaceholderCalled_thenReturnsExpectedValue() {
         // given
         // when
         let result = sut.taskNamePlaceholder
@@ -47,7 +51,7 @@ class NewTaskViewModelTests: XCTestCase {
         XCTAssertEqual(result, "Type new task name here...")
     }
     
-    func test_givenDefaultInit_whenIsCreateButtonDisabledCalled_thenReturnsTrue() {
+    func test_givenEmptyTaskName_whenIsCreateButtonDisabledCalled_thenReturnsTrue() {
         // given
         // when
         let result = sut.isCreateButtonDisabled
@@ -65,5 +69,26 @@ class NewTaskViewModelTests: XCTestCase {
         
         // then
         XCTAssertEqual(result, false)
+    }
+    
+    func test_givenTaskNameEntered_whenCreateButtonTapped_thenTaskIsCreated() {
+        // given
+        var taskAddedCalled = 0
+        let taskName = "test name entry"
+        sut.taskName = taskName
+        sut.onTaskAdded = {
+            taskAddedCalled += 1
+        }
+        
+        // when
+        sut.createTaskButtonTapped { }
+        
+        // then
+        let result = Task.fetchAll(for: mockSelectedDate, viewContext: mockPersistenceContainer.container.viewContext).first
+        XCTAssertNotNil(result)
+        XCTAssertEqual(result?.title, taskName)
+        XCTAssertEqual(result?.dueDate, mockSelectedDate)
+        XCTAssertEqual(result?.index, Int16(mockIndex))
+        XCTAssertEqual(taskAddedCalled, 1)
     }
 }

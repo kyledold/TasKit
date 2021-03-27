@@ -1,6 +1,6 @@
 //
 //  Task.swift
-//  NetworkKit
+//  TaskIt
 //
 //  Created by Kyle Dold on 15/02/2021.
 //
@@ -8,14 +8,11 @@
 import Foundation
 import CoreData
 
-public class Task: NSManagedObject {
+extension Task {
     
     // MARK: - Properties
     
-    var unwrappedId: UUID { id ?? UUID() }
-    var unwrappedTitle: String { title ?? "Unknown title" }
-    var unwrappedDueDate: Date { dueDate ?? Date() }
-    var unwrappedDueTime: Date { dueTime ?? unwrappedDueDate.setTime(hour: 12, minute: 0) }
+    var unwrappedDueTime: Date { dueTime ?? dueDate.setTime(hour: 12, minute: 0) }
     var unwrappedNotes: String { notes ?? .empty }
     
     var subTasksArray: [SubTask]? {
@@ -30,21 +27,6 @@ public class Task: NSManagedObject {
     
         return Double(completedSubTasksCount) / Double(subTasksCount)
     }
-    
-    // MARK: - Awake
-    
-    public override func awakeFromInsert() {
-        super.awakeFromInsert()
-        
-        createdAt = Date()
-        id = UUID()
-        isComplete = false
-    }
-}
-
-// MARK: - CoreData Operations -
-
-extension Task {
     
     // MARK: - Fetch
     
@@ -84,7 +66,7 @@ extension Task {
         viewContext.delete(task)
         
         try? viewContext.save()
-        print("Task \"\(task.unwrappedTitle)\" deleted")
+        print("Task \"\(task.title)\" deleted")
     }
     
     // MARK: - Update
@@ -95,7 +77,7 @@ extension Task {
             let task = revisedTasks[index]
             task.index = Int16(index)
             
-            print("Task \"\(task.unwrappedTitle)\" update index to \(index)")
+            print("Task \"\(task.title)\" update index to \(index)")
         }
         
         try? viewContext.save()
@@ -105,42 +87,42 @@ extension Task {
         task.notes = notes
         
         try? viewContext.save()
-        print("Task \"\(task.unwrappedTitle)\" notes updated to \"\(notes)\" ")
+        print("Task \"\(task.title)\" notes updated to \"\(notes)\" ")
     }
     
-    public static func updateDueDate(task: Task, dueDate: Date?, viewContext: NSManagedObjectContext) {
+    public static func updateDueDate(task: Task, dueDate: Date, viewContext: NSManagedObjectContext) {
         task.dueDate = dueDate
         
         try? viewContext.save()
-        print("Task \"\(task.unwrappedTitle)\" dueDate updated to \"\(String(describing: dueDate))\" ")
+        print("Task \"\(task.title)\" dueDate updated to \"\(String(describing: dueDate))\" ")
     }
     
     public static func updateDueTime(task: Task, dueTime: Date?, viewContext: NSManagedObjectContext) {
         task.dueTime = dueTime
         
         try? viewContext.save()
-        print("Task \"\(task.unwrappedTitle)\" dueTime updated to \"\(String(describing: dueTime))\" ")
+        print("Task \"\(task.title)\" dueTime updated to \"\(String(describing: dueTime))\" ")
     }
     
     public static func updateTitle(task: Task, title: String, viewContext: NSManagedObjectContext) {
         task.title = title
         
         try? viewContext.save()
-        print("Task title updated to \"\(task.unwrappedTitle)\"")
+        print("Task title updated to \"\(task.title)\"")
     }
     
     public static func updateCompletionStatus(task: Task, isComplete: Bool, viewContext: NSManagedObjectContext) {
         task.isComplete = isComplete
         
         try? viewContext.save()
-        print("Task \"\(task.unwrappedTitle)\" status updated to \"\(isComplete)\"")
+        print("Task \"\(task.title)\" status updated to \"\(isComplete)\"")
     }
     
     public static func updateIsReminderSet(task: Task, isReminderSet: Bool, viewContext: NSManagedObjectContext) {
         task.isReminderSet = isReminderSet
         
         try? viewContext.save()
-        print("Task \"\(task.unwrappedTitle)\" isReminderSet updated to \"\(isReminderSet)\" ")
+        print("Task \"\(task.title)\" isReminderSet updated to \"\(isReminderSet)\" ")
     }
     
     // MARK: - Create
@@ -153,5 +135,16 @@ extension Task {
         
         try? viewContext.save()
         print("Task \"\(title)\" created")
+    }
+    
+    
+    // MARK: - Awake
+    
+    public override func awakeFromInsert() {
+        super.awakeFromInsert()
+        
+        createdAt = Date()
+        id = UUID()
+        isComplete = false
     }
 }

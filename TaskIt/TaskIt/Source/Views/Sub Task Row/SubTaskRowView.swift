@@ -33,7 +33,7 @@ struct SubTaskRowView<ViewModel: SubTaskRowViewModelProtocol>: View {
                     }
             }
             
-            Text(viewModel.subTaskTitle)
+            Text(viewModel.title)
                 .font(.regular_16)
                 .strikethrough(viewModel.isComplete, color: .primary)
                 .padding(.leading, isInEditingMode ? Layout.Spacing.compact : .zero)

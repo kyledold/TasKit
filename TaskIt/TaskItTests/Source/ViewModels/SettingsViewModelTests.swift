@@ -12,7 +12,7 @@ class SettingsViewModelTests: XCTestCase {
     
     private lazy var sut = SettingsViewModel()
     
-    func test_givenDefaultInit_whenTitleTextCalled_thenReturnsExpectedValue() {
+    func test_givenInit_whenTitleTextCalled_thenReturnsExpectedValue() {
         // given
         // when
         let result = sut.titleText
@@ -21,7 +21,7 @@ class SettingsViewModelTests: XCTestCase {
         XCTAssertEqual(result, "Settings")
     }
     
-    func test_givenDefaultInit_whenVersionNumberCalled_thenReturnsExpectedValue() {
+    func test_givenInit_whenVersionNumberCalled_thenReturnsExpectedValue() {
         // given
         // when
         let result = sut.versionNumber
@@ -30,7 +30,7 @@ class SettingsViewModelTests: XCTestCase {
         XCTAssertEqual(result, Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String)
     }
     
-    func test_givenDefaultInit_whenRowViewModelsCalled_thenReturnsExpectedValues() {
+    func test_givenInit_whenRowViewModelsCalled_thenReturnsExpectedValues() {
         // given
         // when
         let result = sut.rowViewModels

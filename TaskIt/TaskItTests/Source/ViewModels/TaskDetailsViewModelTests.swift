@@ -10,18 +10,18 @@ import XCTest
 
 class TaskDetailsViewModelTests: XCTestCase {
     
-    private let mockPersistenceController = PersistenceController(inMemory: true)
     private lazy var mockTask = Task.StubFactory.make(title: "Mock task", persistenceController: mockPersistenceController)
-    private let mockPersistantContainer = PersistenceController(inMemory: true)
+    private let mockPersistenceController = PersistenceController(inMemory: true)
     
     private lazy var sut = TaskDetailsViewModel(
         task: mockTask,
-        managedObjectContext: mockPersistantContainer.container.viewContext
+        onDateChanged: {},
+        managedObjectContext: mockPersistenceController.container.viewContext
     )
     
     // MARK: - Properties
     
-    func test_givenDefaultInit_whenTaskNameCalled_thenReturnsExpectedValue() {
+    func test_givenInit_whenTaskNameCalled_thenReturnsExpectedValue() {
         // given
         // when
         let result = sut.taskName
@@ -30,7 +30,7 @@ class TaskDetailsViewModelTests: XCTestCase {
         XCTAssertEqual(result, mockTask.title)
     }
     
-    func test_givenDefaultInit_whenDueDateCalled_thenReturnsExpectedValue() {
+    func test_givenInit_whenDueDateCalled_thenReturnsExpectedValue() {
         // given
         // when
         let result = sut.dueDate
@@ -39,7 +39,7 @@ class TaskDetailsViewModelTests: XCTestCase {
         XCTAssertEqual(result, mockTask.dueDate)
     }
     
-    func test_givenDefaultInit_whenIsCompleteCalled_thenReturnsExpectedValue() {
+    func test_givenInit_whenIsCompleteCalled_thenReturnsExpectedValue() {
         // given
         // when
         let result = sut.isComplete
@@ -48,7 +48,7 @@ class TaskDetailsViewModelTests: XCTestCase {
         XCTAssertEqual(result, mockTask.isComplete)
     }
     
-    func test_givenDefaultInit_whenTaskNotesCalled_thenReturnsExpectedValue() {
+    func test_givenInit_whenTaskNotesCalled_thenReturnsExpectedValue() {
         // given
         // when
         let result = sut.taskNotes
@@ -57,7 +57,7 @@ class TaskDetailsViewModelTests: XCTestCase {
         XCTAssertEqual(result, mockTask.notes)
     }
     
-    func test_givenDefaultInit_whenTaskNamePlaceholderTextCalled_thenReturnsExpectedValue() {
+    func test_givenInit_whenTaskNamePlaceholderTextCalled_thenReturnsExpectedValue() {
         // given
         // when
         let result = sut.taskNamePlaceholderText
@@ -66,7 +66,7 @@ class TaskDetailsViewModelTests: XCTestCase {
         XCTAssertEqual(result, "Task name")
     }
     
-    func test_givenDefaultInit_whenTaskNotesPlaceholderTextCalled_thenReturnsExpectedValue() {
+    func test_givenInit_whenTaskNotesPlaceholderTextCalled_thenReturnsExpectedValue() {
         // given
         // when
         let result = sut.taskNotesPlaceholderText
@@ -75,7 +75,7 @@ class TaskDetailsViewModelTests: XCTestCase {
         XCTAssertEqual(result, "Write any notes here...")
     }
     
-    func test_givenDefaultInit_whenTaskDateTextCalled_thenReturnsExpectedValue() {
+    func test_givenInit_whenTaskDateTextCalled_thenReturnsExpectedValue() {
         // given
         // when
         let result = sut.taskDateText
@@ -84,7 +84,7 @@ class TaskDetailsViewModelTests: XCTestCase {
         XCTAssertEqual(result, "Date")
     }
     
-    func test_givenDefaultInit_whenDeleteAlertTitleTextCalled_thenReturnsExpectedValue() {
+    func test_givenInit_whenDeleteAlertTitleTextCalled_thenReturnsExpectedValue() {
         // given
         // when
         let result = sut.deleteAlertTitleText
@@ -93,7 +93,7 @@ class TaskDetailsViewModelTests: XCTestCase {
         XCTAssertEqual(result, "Delete task")
     }
     
-    func test_givenDefaultInit_whenDeleteAlertMessageTextCalled_thenReturnsExpectedValue() {
+    func test_givenInit_whenDeleteAlertMessageTextCalled_thenReturnsExpectedValue() {
         // given
         // when
         let result = sut.deleteAlertMessageText
@@ -102,7 +102,7 @@ class TaskDetailsViewModelTests: XCTestCase {
         XCTAssertEqual(result, "Are you sure you want to delete this task?")
     }
     
-    func test_givenDefaultInit_whenDeleteButtonTextCalled_thenReturnsExpectedValue() {
+    func test_givenInit_whenDeleteButtonTextCalled_thenReturnsExpectedValue() {
         // given
         // when
         let result = sut.deleteButtonText

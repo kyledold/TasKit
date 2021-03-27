@@ -16,6 +16,7 @@ extension Task {
             title: String = "",
             isComplete: Bool = false,
             dueDate: Date = Date(),
+            dueTime: Date? = nil,
             taskNotes: String = "",
             persistenceController: PersistenceController
         ) -> Task {
@@ -24,6 +25,7 @@ extension Task {
             task.title = title
             task.isComplete = isComplete
             task.dueDate = dueDate
+            task.dueTime = dueTime
             task.notes = taskNotes
             return task
         }

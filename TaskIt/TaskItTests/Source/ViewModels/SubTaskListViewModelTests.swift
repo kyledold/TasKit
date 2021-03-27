@@ -21,7 +21,7 @@ class SubTaskListViewModelTests: XCTestCase {
     
     // MARK: - Properties
     
-    func test_givenDefaultInit_whenNewSubTaskNameCalled_thenReturnsExpectedValue() {
+    func test_givenInit_whenNewSubTaskNameCalled_thenReturnsExpectedValue() {
         // given
         // when
         let result = sut.newSubTaskName
@@ -30,7 +30,7 @@ class SubTaskListViewModelTests: XCTestCase {
         XCTAssertEqual(result, "")
     }
     
-    func test_givenDefaultInit_whenIsListInEditModeCalled_thenReturnsExpectedValue() {
+    func test_givenInit_whenIsListInEditModeCalled_thenReturnsExpectedValue() {
         // given
         // when
         let result = sut.isListInEditMode
@@ -39,7 +39,7 @@ class SubTaskListViewModelTests: XCTestCase {
         XCTAssertEqual(result, false)
     }
     
-    func test_givenDefaultInit_whenHeaderTextCalled_thenReturnsExpectedValue() {
+    func test_givenInit_whenHeaderTextCalled_thenReturnsExpectedValue() {
         // given
         // when
         let result = sut.headerText
@@ -48,7 +48,7 @@ class SubTaskListViewModelTests: XCTestCase {
         XCTAssertEqual(result, "Sub-tasks")
     }
     
-    func test_givenDefaultInit_whenSubTaskNamePlaceholderTextCalled_thenReturnsExpectedValue() {
+    func test_givenInit_whenSubTaskNamePlaceholderTextCalled_thenReturnsExpectedValue() {
         // given
         // when
         let result = sut.subTaskNamePlaceholderText
@@ -57,7 +57,7 @@ class SubTaskListViewModelTests: XCTestCase {
         XCTAssertEqual(result, "Enter sub-task name here...")
     }
     
-    func test_givenDefaultInit_whenAddSubTaskButtonTextCalled_thenReturnsExpectedValue() {
+    func test_givenInit_whenAddSubTaskButtonTextCalled_thenReturnsExpectedValue() {
         // given
         // when
         let result = sut.addSubTaskButtonText
@@ -66,7 +66,7 @@ class SubTaskListViewModelTests: XCTestCase {
         XCTAssertEqual(result, "Add a sub-task")
     }
     
-    func test_givenDefaultInit_whenAddButtonTextCalled_thenReturnsExpectedValue() {
+    func test_givenInit_whenAddButtonTextCalled_thenReturnsExpectedValue() {
         // given
         // when
         let result = sut.addButtonText
@@ -75,7 +75,7 @@ class SubTaskListViewModelTests: XCTestCase {
         XCTAssertEqual(result, "Add")
     }
     
-    func test_givenDefaultInit_whenCancelButtonTextCalled_thenReturnsExpectedValue() {
+    func test_givenInit_whenCancelButtonTextCalled_thenReturnsExpectedValue() {
         // given
         // when
         let result = sut.cancelButtonText
@@ -84,7 +84,7 @@ class SubTaskListViewModelTests: XCTestCase {
         XCTAssertEqual(result, "Cancel")
     }
     
-    func test_givenDefaultInit_whenDoneButtonTextCalled_thenReturnsExpectedValue() {
+    func test_givenInit_whenDoneButtonTextCalled_thenReturnsExpectedValue() {
         // given
         // when
         let result = sut.doneButtonText
@@ -93,7 +93,7 @@ class SubTaskListViewModelTests: XCTestCase {
         XCTAssertEqual(result, "Done")
     }
     
-    func test_givenDefaultInit_whenEditButtonTextCalled_thenReturnsExpectedValue() {
+    func test_givenInit_whenEditButtonTextCalled_thenReturnsExpectedValue() {
         // given
         // when
         let result = sut.editButtonText

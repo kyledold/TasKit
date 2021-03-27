@@ -11,7 +11,9 @@ import XCTest
 class SubTaskRowViewModelTests: XCTestCase {
     
     private let mockPersistenceController = PersistenceController(inMemory: true)
+    
     private lazy var mockTask = Task.StubFactory.make(title: "Mock task", persistenceController: mockPersistenceController)
+    
     private lazy var mockSubTask = SubTask.StubFactory.make(task: mockTask, title: "Mock sub-task", persistenceController: mockPersistenceController)
     
     private lazy var sut = SubTaskRowViewModel(
@@ -21,7 +23,7 @@ class SubTaskRowViewModelTests: XCTestCase {
     
     // MARK: - Properties
     
-    func test_givenDefaultInit_whenIsCompleteCalled_thenReturnsFalse() {
+    func test_givenInit_whenIsCompleteCalled_thenReturnsFalse() {
         // given
         // when
         let result = sut.isComplete
@@ -30,7 +32,7 @@ class SubTaskRowViewModelTests: XCTestCase {
         XCTAssertEqual(result, false)
     }
     
-    func test_givenDefaultInit_whenIdCalled_thenReturnsExpectedValue() {
+    func test_givenInit_whenIdCalled_thenReturnsExpectedValue() {
         // given
         // when
         let result = sut.id
@@ -39,12 +41,26 @@ class SubTaskRowViewModelTests: XCTestCase {
         XCTAssertEqual(result, mockSubTask.id)
     }
     
-    func test_givenDefaultInit_whenSubTaskTitleCalled_thenReturnsExpectedValue() {
+    func test_givenInit_whenTitleCalled_thenReturnsExpectedValue() {
         // given
         // when
-        let result = sut.subTaskTitle
+        let result = sut.title
         
         // then
         XCTAssertEqual(result, mockSubTask.title)
+    }
+    
+    func test_givenOnChangeCompletionClosure_whenIsCompletedChanged_thenClosureCalledWithCorrectValue() {
+        // given
+        var completionResult = false
+        sut.onChangeCompletion = { newValue in
+            completionResult = newValue
+        }
+        
+        // when
+        sut.isComplete = true
+        
+        // then
+        XCTAssertEqual(completionResult, true)
     }
 }

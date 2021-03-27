@@ -21,7 +21,7 @@ class TasksListViewModelTests: XCTestCase {
     
     // MARK: - Properties
     
-    func test_givenDefaultInit_whenSelectedDateCalled_thenValueEqualsCurrentDate() {
+    func test_givenInit_whenSelectedDateCalled_thenValueEqualsCurrentDate() {
         // given
         // when
         let result = sut.selectedDate
@@ -30,7 +30,7 @@ class TasksListViewModelTests: XCTestCase {
         XCTAssertEqual(result, mockSelectedDate)
     }
     
-    func test_givenDefaultInit_whenSelectedDateTextCalled_thenValueEqualsToday() {
+    func test_givenInit_whenSelectedDateTextCalled_thenValueEqualsToday() {
         // given
         // when
         let result = sut.selectedDateText
@@ -39,7 +39,7 @@ class TasksListViewModelTests: XCTestCase {
         XCTAssertEqual(result, "Today")
     }
     
-    func test_givenDefaultInit_whenShowNewTaskViewCalled_thenValueEqualsFalse() {
+    func test_givenInit_whenShowNewTaskViewCalled_thenValueEqualsFalse() {
         // given
         // when
         let result = sut.showNewTaskView
@@ -48,7 +48,7 @@ class TasksListViewModelTests: XCTestCase {
         XCTAssertEqual(result, false)
     }
     
-    func test_givenDefaultInit_whenShowCalendarViewCalled_thenValueEqualsFalse() {
+    func test_givenInit_whenShowCalendarViewCalled_thenValueEqualsFalse() {
         // given
         // when
         let result = sut.showCalendarView
@@ -57,7 +57,7 @@ class TasksListViewModelTests: XCTestCase {
         XCTAssertEqual(result, false)
     }
     
-    func test_givenDefaultInit_whenShowSortButtonCalled_thenValueEqualsFalse() {
+    func test_givenInit_whenShowSortButtonCalled_thenValueEqualsFalse() {
         // given
         // when
         let result = sut.showSortButton
@@ -66,7 +66,7 @@ class TasksListViewModelTests: XCTestCase {
         XCTAssertEqual(result, false)
     }
     
-    func test_givenDefaultInit_whenCreateTaskButtonTextCalled_thenReturnsExpectedString() {
+    func test_givenInit_whenCreateTaskButtonTextCalled_thenReturnsExpectedString() {
         // given
         // when
         let result = sut.createTaskButtonText
@@ -75,7 +75,7 @@ class TasksListViewModelTests: XCTestCase {
         XCTAssertEqual(result, "Create task")
     }
     
-    func test_givenDefaultInit_whenEmptyListTextCalled_thenReturnsExpectedString() {
+    func test_givenInit_whenEmptyListTextCalled_thenReturnsExpectedString() {
         // given
         // when
         let result = sut.emptyListText
