@@ -113,10 +113,11 @@ extension SubTaskListView {
             HStack(spacing: Layout.Spacing.cozy) {
                 Button(action: addButtonTapped, label: { Text(viewModel.addButtonText) })
                     .disabled(viewModel.newSubTaskName.isBlank)
-                    .foregroundColor(.t_action)
+                    .opacity(viewModel.newSubTaskName.isBlank ? 0.4 : 1)
                 
                 Button(action: cancelButtonTapped, label: { Text(viewModel.cancelButtonText) })
             }
+            .foregroundColor(.t_action)
         }
     }
     

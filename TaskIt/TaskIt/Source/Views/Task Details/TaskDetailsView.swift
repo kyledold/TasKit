@@ -16,9 +16,6 @@ struct TaskDetailsView<ViewModel: TaskDetailsViewModelProtocol>: View {
     @State private var showDeleteConfirmationAlert = false
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     
-    @State var hours: Int = 0
-    @State var minutes: Int = 0
-    
     // MARK: - View
     
     var body: some View {
@@ -97,7 +94,7 @@ extension TaskDetailsView {
                 }
                 .padding(Layout.Spacing.cozy)
                 .background(Color.t_input_background)
-                .cornerRadius(10)
+                .cornerRadius(Layout.Spacing.compact)
                 
                 TextBox(viewModel.taskNotesPlaceholderText, text: $viewModel.taskNotes)
             }
@@ -116,7 +113,7 @@ extension TaskDetailsView {
                     }
                     .padding(Layout.Spacing.compact)
                     .background(Color.t_input_background_2)
-                    .cornerRadius(10)
+                    .cornerRadius(Layout.Spacing.compact)
                 })
             }
         }
@@ -137,15 +134,14 @@ extension TaskDetailsView {
                         DatePicker(String.empty, selection: $viewModel.dueTime, displayedComponents: .hourAndMinute)
                             .datePickerStyle(GraphicalDatePickerStyle())
                             .scaleEffect(0.85)
-                            .padding(.trailing, -30)
-                            .padding(.vertical, -10)
+                            .padding(.trailing, -Layout.Spacing.spacious)
+                            .padding(.vertical, -Layout.Spacing.compact)
                     }
                     HStack {
                         Text(viewModel.reminderText)
                         Spacer()
                         Toggle(isOn: $viewModel.isReminderToggledOn, label: {}).toggleStyle(SwitchToggleStyle(tint: .t_action))
                             .padding(Layout.Spacing.tight)
-                        
                     }
                 }
             }

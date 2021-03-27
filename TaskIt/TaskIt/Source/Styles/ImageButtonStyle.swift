@@ -15,6 +15,6 @@ struct ImageButtonStyle: ButtonStyle {
     func makeBody(configuration: Configuration) -> some View {
         configuration.label
             .foregroundColor(buttonColor)
-            .opacity(isDisabled ? 0.4 : 1.0)
+            .opacity(isDisabled ? 0.4 : 1)
     }
 }
