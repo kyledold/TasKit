@@ -15,6 +15,7 @@ struct TasksListView<ViewModel: TasksListViewModelProtocol, SettingsModifier: Vi
     @ObservedObject var viewModel: ViewModel
     
     let settingsModifier: SettingsModifier
+    private let notificationCenter = NotificationCenter.default
     
     @State private var isListEditing = false
     
@@ -37,6 +38,9 @@ struct TasksListView<ViewModel: TasksListViewModelProtocol, SettingsModifier: Vi
         .navigationBarHidden(true)
         .bottomSheet(isPresented: $viewModel.showCalendarView, height: 450) {
             CalendarView(viewModel: viewModel.calendarViewModel)
+        }
+        .onReceive(notificationCenter.publisher(for: UIApplication.willEnterForegroundNotification)) { _ in
+            viewModel.viewWillEnterForeground()
         }
     }
     

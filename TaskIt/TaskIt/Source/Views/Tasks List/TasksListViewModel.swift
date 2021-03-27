@@ -51,7 +51,13 @@ class TasksListViewModel: TasksListViewModelProtocol {
         fetchTasks()
     }
     
-    // MARK: - Functions
+    // MARK: - View Events
+    
+    func viewWillEnterForeground() {
+        fetchTasks()
+    }
+    
+    // MARK: - Task Operations
     
     private func fetchTasks() {
         let selectedDatesTaskModels = Task.fetchAll(for: selectedDate, viewContext: managedObjectContext)
@@ -119,6 +125,7 @@ class TasksListViewModel: TasksListViewModelProtocol {
     // MARK: - Observers
     
     private func addObservers() {
+        
         $selectedDate.dropFirst().sink(receiveValue: { [weak self] newSelectedDate in
             guard let self = self else { return }
             self.selectedDateText = self.getReadableDate(from: newSelectedDate)
