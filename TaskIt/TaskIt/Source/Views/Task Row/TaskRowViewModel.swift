@@ -43,8 +43,10 @@ class TaskRowViewModel: TaskRowViewModelProtocol {
     }
     
     private func addObservers() {
-        $isComplete.dropFirst().sink { [weak self] isComplete in
-            self?.onChangeCompletion(isComplete)
+        $isComplete.dropFirst().sink { [weak self] newValue in
+            if newValue != self?.task.isComplete {
+                self?.onChangeCompletion(newValue)
+            }
         }.store(in: &subscribers)
     }
 }
