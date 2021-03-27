@@ -105,7 +105,9 @@ class TasksListViewModel: TasksListViewModelProtocol {
     // MARK: - Events
     
     func taskRowTapped(_ rowViewModel: RowViewModel) {
-        coordinator.showTaskDetails(rowViewModel)
+        coordinator.showTaskDetails(rowViewModel, onDateChanged: { [weak self] in
+            self?.fetchTasks()
+        })
     }
     
     func createTaskButtonTapped() {

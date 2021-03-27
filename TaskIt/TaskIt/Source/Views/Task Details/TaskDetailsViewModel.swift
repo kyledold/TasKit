@@ -36,6 +36,7 @@ class TaskDetailsViewModel: TaskDetailsViewModelProtocol {
     private let reminderTitle = NSLocalizedString("user_notification.title", comment: "Notification title")
     
     var subTaskListViewModel: SubTaskListViewModel
+    var onDateChanged: EmptyClosure
     
     private let calendar = Calendar.current
     private var subscribers: Set<AnyCancellable> = []
@@ -46,8 +47,9 @@ class TaskDetailsViewModel: TaskDetailsViewModelProtocol {
     
     // MARK: - Initialisation
     
-    init(task: Task, managedObjectContext: NSManagedObjectContext) {
+    init(task: Task, onDateChanged: @escaping EmptyClosure, managedObjectContext: NSManagedObjectContext) {
         self.task = task
+        self.onDateChanged = onDateChanged
         self.managedObjectContext = managedObjectContext
         self.subTaskListViewModel = SubTaskListViewModel(task: self.task, managedObjectContext: managedObjectContext)
         
@@ -101,6 +103,8 @@ class TaskDetailsViewModel: TaskDetailsViewModelProtocol {
             dueDate: dueDate,
             viewContext: managedObjectContext
         )
+        
+        onDateChanged()
     }
     
     private func updateTaskDueTime(_ dueTime: Date?) {
