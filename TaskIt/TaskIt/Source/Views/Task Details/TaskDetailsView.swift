@@ -19,15 +19,17 @@ struct TaskDetailsView<ViewModel: TaskDetailsViewModelProtocol>: View {
     // MARK: - View
     
     var body: some View {
-        ScrollView {
-            VStack {
-                navigationBarView
-                taskBasicDetailsView
-                SubTaskListView(viewModel: viewModel.subTaskListViewModel)
-                Spacer()
+        VStack {
+            navigationBarView
+            ScrollView {
+                VStack {
+                    taskBasicDetailsView
+                    SubTaskListView(viewModel: viewModel.subTaskListViewModel)
+                    Spacer()
+                }
             }
-            .padding(.horizontal)
         }
+        .padding(.horizontal)
         .navigationBarHidden(true)
         .alert(isPresented: $showDeleteConfirmationAlert, content: { deleteConfirmationAlert })
         .bottomSheet(isPresented: $viewModel.showCalendarView, height: 450) {
@@ -42,6 +44,7 @@ struct TaskDetailsView<ViewModel: TaskDetailsViewModelProtocol>: View {
     // MARK: - Events
     
     private func backButtonTapped() {
+        UIApplication.shared.endEditing()
         presentationMode.wrappedValue.dismiss()
     }
     
