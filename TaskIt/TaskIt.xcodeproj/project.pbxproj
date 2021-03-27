@@ -21,7 +21,6 @@
 		D11E734F25E6BC59006FD6CB /* NotificationExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D11E734E25E6BC59006FD6CB /* NotificationExtension.swift */; };
 		D11E7D1A25E1433F00EED79E /* ViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D11E7D1925E1433F00EED79E /* ViewExtension.swift */; };
 		D11E7D2825E14B8C00EED79E /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D11E7D2725E14B8C00EED79E /* Colors.xcassets */; };
-		D11E7D3025E14D8800EED79E /* Nunito-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D11E7D2D25E14D8800EED79E /* Nunito-Regular.ttf */; };
 		D11E7D3425E14DDE00EED79E /* FontExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D11E7D3325E14DDE00EED79E /* FontExtension.swift */; };
 		D11E7D4225E15B1600EED79E /* UIScreenExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D11E7D4125E15B1600EED79E /* UIScreenExtension.swift */; };
 		D1297F3925F5038400A3D20B /* CalendarViewModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1297F3825F5038400A3D20B /* CalendarViewModelProtocol.swift */; };
@@ -38,8 +37,6 @@
 		D1542BAE25DD8997005FD7C7 /* TaskRowViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1542BAD25DD8997005FD7C7 /* TaskRowViewModelTests.swift */; };
 		D1542BB525DD8A74005FD7C7 /* MockTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1542BB425DD8A74005FD7C7 /* MockTask.swift */; };
 		D1542BE925DFE9C5005FD7C7 /* SimpleTextFieldStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1542BE825DFE9C5005FD7C7 /* SimpleTextFieldStyle.swift */; };
-		D15D7BE625E9664000C380FA /* Nunito-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D15D7BE525E9664000C380FA /* Nunito-Bold.ttf */; };
-		D15D7BE925E966AC00C380FA /* Nunito-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D15D7BE825E966AC00C380FA /* Nunito-SemiBold.ttf */; };
 		D1783EBA25C9C9E500D8EFC3 /* TasksListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1783EB925C9C9E500D8EFC3 /* TasksListView.swift */; };
 		D1783EBD25C9C9F100D8EFC3 /* CalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1783EBC25C9C9F100D8EFC3 /* CalendarView.swift */; };
 		D17DA9C125DABB9100ED4A8C /* TaskDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D17DA9C025DABB9100ED4A8C /* TaskDetailsView.swift */; };
@@ -143,7 +140,6 @@
 		D11E734E25E6BC59006FD6CB /* NotificationExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationExtension.swift; sourceTree = "<group>"; };
 		D11E7D1925E1433F00EED79E /* ViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewExtension.swift; sourceTree = "<group>"; };
 		D11E7D2725E14B8C00EED79E /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
-		D11E7D2D25E14D8800EED79E /* Nunito-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Nunito-Regular.ttf"; sourceTree = "<group>"; };
 		D11E7D3325E14DDE00EED79E /* FontExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontExtension.swift; sourceTree = "<group>"; };
 		D11E7D4125E15B1600EED79E /* UIScreenExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIScreenExtension.swift; sourceTree = "<group>"; };
 		D1297F3825F5038400A3D20B /* CalendarViewModelProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewModelProtocol.swift; sourceTree = "<group>"; };
@@ -163,8 +159,6 @@
 		D1542BAD25DD8997005FD7C7 /* TaskRowViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskRowViewModelTests.swift; sourceTree = "<group>"; };
 		D1542BB425DD8A74005FD7C7 /* MockTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockTask.swift; sourceTree = "<group>"; };
 		D1542BE825DFE9C5005FD7C7 /* SimpleTextFieldStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleTextFieldStyle.swift; sourceTree = "<group>"; };
-		D15D7BE525E9664000C380FA /* Nunito-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Nunito-Bold.ttf"; sourceTree = "<group>"; };
-		D15D7BE825E966AC00C380FA /* Nunito-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Nunito-SemiBold.ttf"; sourceTree = "<group>"; };
 		D1783EB925C9C9E500D8EFC3 /* TasksListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasksListView.swift; sourceTree = "<group>"; };
 		D1783EBC25C9C9F100D8EFC3 /* CalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CalendarView.swift; path = TaskIt/Source/Views/Calendar/CalendarView.swift; sourceTree = SOURCE_ROOT; };
 		D17DA9C025DABB9100ED4A8C /* TaskDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskDetailsView.swift; sourceTree = "<group>"; };
@@ -370,7 +364,6 @@
 		D1529C4D25C70F10003FC9D6 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				D1529C6D25C72982003FC9D6 /* Fonts */,
 				D1529C5825C723C2003FC9D6 /* LaunchScreen.storyboard */,
 				D1529C6925C72886003FC9D6 /* Localizable.strings */,
 				D1529C4025C70460003FC9D6 /* Assets.xcassets */,
@@ -395,16 +388,6 @@
 				D1E91F5125F4E98E0036C1C4 /* Settings Row */,
 			);
 			path = Views;
-			sourceTree = "<group>";
-		};
-		D1529C6D25C72982003FC9D6 /* Fonts */ = {
-			isa = PBXGroup;
-			children = (
-				D11E7D2D25E14D8800EED79E /* Nunito-Regular.ttf */,
-				D15D7BE825E966AC00C380FA /* Nunito-SemiBold.ttf */,
-				D15D7BE525E9664000C380FA /* Nunito-Bold.ttf */,
-			);
-			path = Fonts;
 			sourceTree = "<group>";
 		};
 		D1542BB325DD8A5E005FD7C7 /* Mocks */ = {
@@ -683,9 +666,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D15D7BE925E966AC00C380FA /* Nunito-SemiBold.ttf in Resources */,
-				D15D7BE625E9664000C380FA /* Nunito-Bold.ttf in Resources */,
-				D11E7D3025E14D8800EED79E /* Nunito-Regular.ttf in Resources */,
 				D1529C5925C723C2003FC9D6 /* LaunchScreen.storyboard in Resources */,
 				D1529C6A25C72886003FC9D6 /* Localizable.strings in Resources */,
 				D11E7D2825E14B8C00EED79E /* Colors.xcassets in Resources */,

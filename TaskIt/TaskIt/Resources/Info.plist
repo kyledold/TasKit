@@ -26,12 +26,6 @@
 	<string>public.app-category.productivity</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
-	<key>UIAppFonts</key>
-	<array>
-		<string>Nunito-Regular.ttf</string>
-		<string>Nunito-SemiBold.ttf</string>
-		<string>Nunito-Bold.ttf</string>
-	</array>
 	<key>UIApplicationSceneManifest</key>
 	<dict>
 		<key>UIApplicationSupportsMultipleScenes</key>

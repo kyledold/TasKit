@@ -66,7 +66,7 @@ extension SubTaskListView {
     private var headerView: some View {
         HStack {
             Text(viewModel.headerText)
-                .font(.bold_20)
+                .font(.medium_22)
             
             Spacer()
             

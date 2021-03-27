@@ -72,7 +72,7 @@ extension TasksListView {
         HStack(alignment: .firstTextBaseline, spacing: Layout.Spacing.spacious) {
             
             Text(viewModel.selectedDateText)
-                .font(.semiBold_22)
+                .font(.medium_22)
             
             Spacer()
             

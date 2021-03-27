@@ -14,7 +14,7 @@ struct RoundedButtonStyle: ButtonStyle {
     func makeBody(configuration: Configuration) -> some View {
         configuration.label
             .frame(minWidth: 120).padding(.vertical, 5)
-            .font(.semiBold_20)
+            .font(.medium_22)
             .foregroundColor(.white)
             .padding(.vertical, Layout.Spacing.compact).padding(.horizontal)
             .background(buttonColor)
