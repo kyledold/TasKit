@@ -146,7 +146,12 @@ class TasksListViewModel: TasksListViewModelProtocol {
     // MARK: - Child ViewModels
     
     lazy var newTaskViewModel: NewTaskViewModel = {
-        let newTaskViewModel = NewTaskViewModel(selectedDate: selectedDate, managedObjectContext: managedObjectContext)
+        let newTaskViewModel = NewTaskViewModel(
+            selectedDate: selectedDate,
+            index: taskViewModels.count,
+            managedObjectContext: managedObjectContext
+        )
+        
         newTaskViewModel.onTaskAdded = { [weak self] in
             self?.fetchTasks()
         }

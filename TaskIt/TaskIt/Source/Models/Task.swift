@@ -39,7 +39,6 @@ public class Task: NSManagedObject {
         createdAt = Date()
         id = UUID()
         isComplete = false
-        index = Int16.max
     }
 }
 
@@ -146,10 +145,11 @@ extension Task {
     
     // MARK: - Create
     
-    public static func create(title: String, dueDate: Date, viewContext: NSManagedObjectContext) {
+    public static func create(title: String, dueDate: Date, index: Int, viewContext: NSManagedObjectContext) {
         let newTask = Task(context: viewContext)
         newTask.title = title
         newTask.dueDate = dueDate
+        newTask.index = Int16(index)
         
         try? viewContext.save()
         print("Task \"\(title)\" created")

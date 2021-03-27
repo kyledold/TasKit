@@ -55,6 +55,7 @@ struct TasksListView<ViewModel: TasksListViewModelProtocol, SettingsModifier: Vi
     }
     
     private func createTaskButtonTapped() {
+        isListEditing = false
         withAnimation {
             viewModel.createTaskButtonTapped()
         }
