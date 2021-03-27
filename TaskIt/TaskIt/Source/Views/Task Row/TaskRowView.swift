@@ -17,48 +17,60 @@ struct TaskRowView<ViewModel: TaskRowViewModelProtocol>: View {
     // MARK: - View
     
     var body: some View {
-        VStack {
-            HStack(spacing: Layout.Spacing.compact) {
-                
-                Toggle(isOn: $viewModel.isComplete) {}
-                    .toggleStyle(CheckboxToggleStyle())
-                    .onChange(of: viewModel.isComplete) { _ in
-                        feedback.notificationOccurred(.success)
-                    }
-                Text(viewModel.title)
-                    .strikethrough(viewModel.isComplete, color: .primary)
-                    .font(.regular_16)
-                    .foregroundColor(.primary)
-                
-                Spacer()
-                
-                if let time = viewModel.time {
-                    HStack(spacing: Layout.Spacing.tight) {
-                        Image(systemName: Image.Icons.alarm)
-                            .resizable()
-                            .foregroundColor(.gray)
-                            .frame(width: 12, height: 12)
-                        Text(time)
-                            .font(.footnote)
-                            .foregroundColor(.gray)
-                    }
-                }
-            }
+        VStack(spacing: 0) {
+            
+            basicDetailsView
             
             if let subTasksCompletionValue = viewModel.subTasksCompletionPercentage {
-                HStack {
-                    ProgressView(String.empty, value: subTasksCompletionValue)
-                        .font(.footnote)
-                    Spacer()
-                }.padding(.leading, Layout.Spacing.spacious)
+                subTaskProgressView(subTasksCompletionValue)
             }
-            
         }
         .opacity(viewModel.isComplete ? 0.5 : 1)
         .padding(Layout.Spacing.compact)
         .onAppear {
             viewModel.viewAppeared()
         }
+    }
+    
+    private var basicDetailsView: some View {
+        HStack(spacing: Layout.Spacing.compact) {
+            
+            Toggle(isOn: $viewModel.isComplete) {}
+                .toggleStyle(CheckboxToggleStyle())
+                .onChange(of: viewModel.isComplete) { _ in
+                    feedback.notificationOccurred(.success)
+                }
+            
+            Text(viewModel.title)
+                .strikethrough(viewModel.isComplete, color: .primary)
+                .font(.regular_16)
+                .foregroundColor(.primary)
+            
+            Spacer()
+            
+            if let time = viewModel.time {
+                HStack(spacing: Layout.Spacing.tight) {
+                    Image(systemName: Image.Icons.alarm)
+                        .resizable()
+                        .foregroundColor(.gray)
+                        .frame(width: 12, height: 12)
+                    Text(time)
+                        .font(.footnote)
+                        .foregroundColor(.gray)
+                }
+            }
+        }
+    }
+    
+    private func subTaskProgressView(_ subTasksCompletionValue: Double) -> some View {
+        HStack {
+            ProgressView(String.empty, value: subTasksCompletionValue)
+                .progressViewStyle(LinearProgressViewStyle(tint: .t_action))
+                .font(.footnote)
+            Spacer()
+        }
+        .padding([.top, .trailing], -Layout.Spacing.compact)
+        .padding(.leading, Layout.Spacing.spacious)
     }
 }
 
