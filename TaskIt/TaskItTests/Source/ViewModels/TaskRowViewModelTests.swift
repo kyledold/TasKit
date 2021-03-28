@@ -12,17 +12,21 @@ class TaskRowViewModelTests: XCTestCase {
     
     private let mockPersistenceController = PersistenceController(inMemory: true)
     private lazy var mockTask = Task.StubFactory.make(title: "Mock task", persistenceController: mockPersistenceController)
-    private let mockPersistantContainer = PersistenceController(inMemory: true)
     
     private lazy var sut = TaskRowViewModel(
         task: mockTask,
-        managedObjectContext: mockPersistantContainer.container.viewContext,
+        managedObjectContext: mockPersistenceController.container.viewContext,
         onChangeCompletion: { _ in }
     )
     
+    override func tearDown() {
+        mockPersistenceController.container.viewContext.rollback()
+        super.tearDown()
+    }
+    
     // MARK: - Properties
     
-    func test_givenInit_whenIdCalled_thenReturnsExpectedValue() {
+    func test_whenIdCalled_thenReturnsExpectedValue() {
         // given
         // when
         let result = sut.id
@@ -31,7 +35,7 @@ class TaskRowViewModelTests: XCTestCase {
         XCTAssertEqual(result, mockTask.id)
     }
     
-    func test_givenInit_whenTitleCalled_thenReturnsExpectedValue() {
+    func test_whenTitleCalled_thenReturnsExpectedValue() {
         // given
         // when
         let result = sut.title
@@ -40,7 +44,7 @@ class TaskRowViewModelTests: XCTestCase {
         XCTAssertEqual(result, mockTask.title)
     }
     
-    func test_givenInit_whenIsCompleteCalled_thenReturnsExpectedValue() {
+    func test_whenIsCompleteCalled_thenReturnsExpectedValue() {
         // given
         // when
         let result = sut.isComplete
@@ -64,7 +68,7 @@ class TaskRowViewModelTests: XCTestCase {
         let mockTask = Task.StubFactory.make(title: "Mock task", dueTime: mockDueTime, persistenceController: mockPersistenceController)
         let sut = TaskRowViewModel(
             task: mockTask,
-            managedObjectContext: mockPersistantContainer.container.viewContext,
+            managedObjectContext: mockPersistenceController.container.viewContext,
             onChangeCompletion: { _ in }
         )
         
@@ -88,4 +92,6 @@ class TaskRowViewModelTests: XCTestCase {
         // then
         XCTAssertEqual(completionResult, true)
     }
+    
+    // TODO: add tests for sub task completion progress
 }

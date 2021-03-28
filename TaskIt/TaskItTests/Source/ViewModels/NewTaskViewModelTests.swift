@@ -12,19 +12,20 @@ class NewTaskViewModelTests: XCTestCase {
     
     private let mockSelectedDate = Date()
     private let mockIndex = 2
-    private let mockPersistenceContainer = PersistenceController(inMemory: true)
+    private let mockPersistenceController = PersistenceController(inMemory: true)
     
     private lazy var sut = NewTaskViewModel(
         selectedDate: mockSelectedDate,
         index: mockIndex,
-        managedObjectContext: mockPersistenceContainer.container.viewContext
+        managedObjectContext: mockPersistenceController.container.viewContext
     )
     
     override func tearDown() {
-        Task.deleteAll(viewContext: mockPersistenceContainer.container.viewContext)
+        mockPersistenceController.container.viewContext.rollback()
+        super.tearDown()
     }
     
-    func test_givenInit_whenSelectedDateCalled_thenReturnsExpectedValue() {
+    func test_whenSelectedDateCalled_thenReturnsExpectedValue() {
         // given
         // when
         let result = sut.selectedDate
@@ -33,7 +34,7 @@ class NewTaskViewModelTests: XCTestCase {
         XCTAssertEqual(result, mockSelectedDate)
     }
     
-    func test_givenInit_whenTaskNameCalled_thenReturnsEmptyString() {
+    func test_whenTaskNameCalled_thenReturnsEmptyString() {
         // given
         // when
         let result = sut.taskName
@@ -42,7 +43,7 @@ class NewTaskViewModelTests: XCTestCase {
         XCTAssertEqual(result, "")
     }
     
-    func test_givenInit_whenTaskNamePlaceholderCalled_thenReturnsExpectedValue() {
+    func test_whenTaskNamePlaceholderCalled_thenReturnsExpectedValue() {
         // given
         // when
         let result = sut.taskNamePlaceholder
@@ -84,7 +85,7 @@ class NewTaskViewModelTests: XCTestCase {
         sut.createTaskButtonTapped { }
         
         // then
-        let result = Task.fetchAll(for: mockSelectedDate, viewContext: mockPersistenceContainer.container.viewContext).first
+        let result = Task.fetchAll(for: mockSelectedDate, viewContext: mockPersistenceController.container.viewContext).first
         XCTAssertNotNil(result)
         XCTAssertEqual(result?.title, taskName)
         XCTAssertEqual(result?.dueDate, mockSelectedDate)

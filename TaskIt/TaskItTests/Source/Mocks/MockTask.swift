@@ -5,8 +5,9 @@
 //  Created by Kyle Dold on 17/02/2021.
 //
 
-@testable import TaskIt
 import Foundation
+import CoreData
+@testable import TaskIt
 
 extension Task {
     
@@ -18,15 +19,23 @@ extension Task {
             dueDate: Date = Date(),
             dueTime: Date? = nil,
             taskNotes: String = "",
+            isReminderSet: Bool = false,
             persistenceController: PersistenceController
         ) -> Task {
-            let task = Task(context: persistenceController.container.viewContext)
+            
+            let task = NSEntityDescription.insertNewObject(
+                forEntityName: "Task",
+                into: persistenceController.container.viewContext
+            ) as! Task
+            
             task.id = UUID()
             task.title = title
             task.isComplete = isComplete
             task.dueDate = dueDate
             task.dueTime = dueTime
             task.notes = taskNotes
+            task.isReminderSet = isReminderSet
+            
             return task
         }
     }

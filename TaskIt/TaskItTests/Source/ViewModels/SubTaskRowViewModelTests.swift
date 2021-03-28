@@ -11,9 +11,7 @@ import XCTest
 class SubTaskRowViewModelTests: XCTestCase {
     
     private let mockPersistenceController = PersistenceController(inMemory: true)
-    
     private lazy var mockTask = Task.StubFactory.make(title: "Mock task", persistenceController: mockPersistenceController)
-    
     private lazy var mockSubTask = SubTask.StubFactory.make(task: mockTask, title: "Mock sub-task", persistenceController: mockPersistenceController)
     
     private lazy var sut = SubTaskRowViewModel(
@@ -21,9 +19,14 @@ class SubTaskRowViewModelTests: XCTestCase {
         onChangeCompletion: { _ in }
     )
     
+    override func tearDown() {
+        mockPersistenceController.container.viewContext.rollback()
+        super.tearDown()
+    }
+    
     // MARK: - Properties
     
-    func test_givenInit_whenIsCompleteCalled_thenReturnsFalse() {
+    func test_whenIsCompleteCalled_thenReturnsFalse() {
         // given
         // when
         let result = sut.isComplete
@@ -32,7 +35,7 @@ class SubTaskRowViewModelTests: XCTestCase {
         XCTAssertEqual(result, false)
     }
     
-    func test_givenInit_whenIdCalled_thenReturnsExpectedValue() {
+    func test_whenIdCalled_thenReturnsExpectedValue() {
         // given
         // when
         let result = sut.id
@@ -41,7 +44,7 @@ class SubTaskRowViewModelTests: XCTestCase {
         XCTAssertEqual(result, mockSubTask.id)
     }
     
-    func test_givenInit_whenTitleCalled_thenReturnsExpectedValue() {
+    func test_whenTitleCalled_thenReturnsExpectedValue() {
         // given
         // when
         let result = sut.title

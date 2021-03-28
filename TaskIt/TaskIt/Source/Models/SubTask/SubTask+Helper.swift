@@ -24,6 +24,16 @@ extension SubTask {
         try? viewContext.save()
     }
     
+    // MARK: - Fetch
+    
+    public static func fetchAll(viewContext: NSManagedObjectContext) -> [SubTask] {
+        print("Sub-task fetchAll called")
+        
+        let fetchRequest: NSFetchRequest<SubTask> = SubTask.fetchRequest()
+        guard let subTasks = try? viewContext.fetch(fetchRequest) else { return [] }
+        return subTasks
+    }
+    
     // MARK: - Delete
     
     public static func deleteSubTasks(_ subTasks: [SubTask], viewContext: NSManagedObjectContext) {
@@ -34,6 +44,13 @@ extension SubTask {
         }
         
         try? viewContext.save()
+    }
+    
+    public static func deleteAll(viewContext: NSManagedObjectContext) {
+        SubTask.fetchAll(viewContext: viewContext).forEach { viewContext.delete($0) }
+        
+        try? viewContext.save()
+        print("Sub-task deleteAll called")
     }
     
     // MARK: - Update
