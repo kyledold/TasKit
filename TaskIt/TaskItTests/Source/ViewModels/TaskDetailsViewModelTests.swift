@@ -10,21 +10,21 @@ import XCTest
 
 class TaskDetailsViewModelTests: XCTestCase {
     
-    private let mockPersistenceController = PersistenceController(inMemory: true)
+    private static let mockPersistenceController = PersistenceController(inMemory: true)
     private lazy var mockTask = Task.StubFactory.make(
         title: "Mock task",
         dueTime: Date(),
         isReminderSet: true,
-        persistenceController: mockPersistenceController
+        persistenceController: Self.mockPersistenceController
     )
     
     private lazy var sut = TaskDetailsViewModel(
         task: mockTask,
         onDateChanged: {},
-        managedObjectContext: mockPersistenceController.container.viewContext
+        managedObjectContext: Self.mockPersistenceController.container.viewContext
     )
     
-    override func tearDown() {
+    override class func tearDown() {
         mockPersistenceController.container.viewContext.rollback()
         super.tearDown()
     }
@@ -107,13 +107,13 @@ class TaskDetailsViewModelTests: XCTestCase {
         // given
         let mockTask = Task.StubFactory.make(
             title: "Mock task",
-            persistenceController: mockPersistenceController
+            persistenceController: Self.mockPersistenceController
         )
         
         let sut = TaskDetailsViewModel(
             task: mockTask,
             onDateChanged: {},
-            managedObjectContext: mockPersistenceController.container.viewContext
+            managedObjectContext: Self.mockPersistenceController.container.viewContext
         )
         
         // when
@@ -137,13 +137,13 @@ class TaskDetailsViewModelTests: XCTestCase {
         let mockTask = Task.StubFactory.make(
             title: "Mock task",
             isReminderSet: true,
-            persistenceController: mockPersistenceController
+            persistenceController: Self.mockPersistenceController
         )
         
         let sut = TaskDetailsViewModel(
             task: mockTask,
             onDateChanged: {},
-            managedObjectContext: mockPersistenceController.container.viewContext
+            managedObjectContext: Self.mockPersistenceController.container.viewContext
         )
         
         // when

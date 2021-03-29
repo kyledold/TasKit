@@ -10,16 +10,16 @@ import XCTest
 
 class TaskRowViewModelTests: XCTestCase {
     
-    private let mockPersistenceController = PersistenceController(inMemory: true)
-    private lazy var mockTask = Task.StubFactory.make(title: "Mock task", persistenceController: mockPersistenceController)
+    private static let mockPersistenceController = PersistenceController(inMemory: true)
+    private lazy var mockTask = Task.StubFactory.make(title: "Mock task", persistenceController: Self.mockPersistenceController)
     
     private lazy var sut = TaskRowViewModel(
         task: mockTask,
-        managedObjectContext: mockPersistenceController.container.viewContext,
+        managedObjectContext: Self.mockPersistenceController.container.viewContext,
         onChangeCompletion: { _ in }
     )
     
-    override func tearDown() {
+    override class func tearDown() {
         mockPersistenceController.container.viewContext.rollback()
         super.tearDown()
     }
@@ -65,10 +65,10 @@ class TaskRowViewModelTests: XCTestCase {
     func test_givenTaskWithDueTime_whenTimeCalled_thenReturnsExpectedValue() {
         // given
         let mockDueTime = Date().setTime(hour: 10, minute: 15)
-        let mockTask = Task.StubFactory.make(title: "Mock task", dueTime: mockDueTime, persistenceController: mockPersistenceController)
+        let mockTask = Task.StubFactory.make(title: "Mock task", dueTime: mockDueTime, persistenceController: Self.mockPersistenceController)
         let sut = TaskRowViewModel(
             task: mockTask,
-            managedObjectContext: mockPersistenceController.container.viewContext,
+            managedObjectContext: Self.mockPersistenceController.container.viewContext,
             onChangeCompletion: { _ in }
         )
         

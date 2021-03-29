@@ -10,19 +10,19 @@ import XCTest
 
 class SubTaskListViewModelTests: XCTestCase {
     
-    private let mockPersistenceController = PersistenceController(inMemory: true)
+    private static let mockPersistenceController = PersistenceController(inMemory: true)
 
     private lazy var mockTask = Task.StubFactory.make(
         title: "Mock task",
-        persistenceController: mockPersistenceController
+        persistenceController: Self.mockPersistenceController
     )
     
     private lazy var sut = SubTaskListViewModel(
         task: mockTask,
-        managedObjectContext: mockPersistenceController.container.viewContext
+        managedObjectContext: Self.mockPersistenceController.container.viewContext
     )
     
-    override func tearDown() {
+    override class func tearDown() {
         mockPersistenceController.container.viewContext.rollback()
         super.tearDown()
     }
@@ -42,17 +42,17 @@ class SubTaskListViewModelTests: XCTestCase {
             task: mockTask,
             title: "First subtask",
             index: 0,
-            persistenceController: mockPersistenceController
+            persistenceController: Self.mockPersistenceController
         )
         let mockSecondSubTask = SubTask.StubFactory.make(
             task: mockTask,
             title: "Second subtask",
             index: 1,
-            persistenceController: mockPersistenceController
+            persistenceController: Self.mockPersistenceController
         )
         let sut = SubTaskListViewModel(
             task: mockTask,
-            managedObjectContext: mockPersistenceController.container.viewContext
+            managedObjectContext: Self.mockPersistenceController.container.viewContext
         )
         
         // when
@@ -144,23 +144,23 @@ class SubTaskListViewModelTests: XCTestCase {
             task: mockTask,
             title: "First subtask",
             index: 0,
-            persistenceController: mockPersistenceController
+            persistenceController: Self.mockPersistenceController
         )
         _ = SubTask.StubFactory.make(
             task: mockTask,
             title: "Second subtask",
             index: 1,
-            persistenceController: mockPersistenceController
+            persistenceController: Self.mockPersistenceController
         )
         let mockThirdSubTask = SubTask.StubFactory.make(
             task: mockTask,
             title: "Third subtask",
             index: 2,
-            persistenceController: mockPersistenceController
+            persistenceController: Self.mockPersistenceController
         )
         let sut = SubTaskListViewModel(
             task: mockTask,
-            managedObjectContext: mockPersistenceController.container.viewContext
+            managedObjectContext: Self.mockPersistenceController.container.viewContext
         )
         let indexToBeDeleted: IndexSet = [1]
         
@@ -181,23 +181,23 @@ class SubTaskListViewModelTests: XCTestCase {
             task: mockTask,
             title: "First subtask",
             index: 0,
-            persistenceController: mockPersistenceController
+            persistenceController: Self.mockPersistenceController
         )
         let mockSecondSubTask = SubTask.StubFactory.make(
             task: mockTask,
             title: "Second subtask",
             index: 1,
-            persistenceController: mockPersistenceController
+            persistenceController: Self.mockPersistenceController
         )
         let mockThirdSubTask = SubTask.StubFactory.make(
             task: mockTask,
             title: "Third subtask",
             index: 2,
-            persistenceController: mockPersistenceController
+            persistenceController: Self.mockPersistenceController
         )
         let sut = SubTaskListViewModel(
             task: mockTask,
-            managedObjectContext: mockPersistenceController.container.viewContext
+            managedObjectContext: Self.mockPersistenceController.container.viewContext
         )
         let indexToBeMoved: IndexSet = [0]
         

@@ -10,16 +10,16 @@ import XCTest
 
 class SubTaskRowViewModelTests: XCTestCase {
     
-    private let mockPersistenceController = PersistenceController(inMemory: true)
-    private lazy var mockTask = Task.StubFactory.make(title: "Mock task", persistenceController: mockPersistenceController)
-    private lazy var mockSubTask = SubTask.StubFactory.make(task: mockTask, title: "Mock sub-task", persistenceController: mockPersistenceController)
+    private static let mockPersistenceController = PersistenceController(inMemory: true)
+    private lazy var mockTask = Task.StubFactory.make(title: "Mock task", persistenceController: Self.mockPersistenceController)
+    private lazy var mockSubTask = SubTask.StubFactory.make(task: mockTask, title: "Mock sub-task", persistenceController: Self.mockPersistenceController)
     
     private lazy var sut = SubTaskRowViewModel(
         subTask: mockSubTask,
         onChangeCompletion: { _ in }
     )
     
-    override func tearDown() {
+    override class func tearDown() {
         mockPersistenceController.container.viewContext.rollback()
         super.tearDown()
     }

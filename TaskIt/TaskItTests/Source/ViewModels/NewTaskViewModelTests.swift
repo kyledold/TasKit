@@ -12,15 +12,15 @@ class NewTaskViewModelTests: XCTestCase {
     
     private let mockSelectedDate = Date()
     private let mockIndex = 2
-    private let mockPersistenceController = PersistenceController(inMemory: true)
+    private static let mockPersistenceController = PersistenceController(inMemory: true)
     
     private lazy var sut = NewTaskViewModel(
         selectedDate: mockSelectedDate,
         index: mockIndex,
-        managedObjectContext: mockPersistenceController.container.viewContext
+        managedObjectContext: Self.mockPersistenceController.container.viewContext
     )
     
-    override func tearDown() {
+    override class func tearDown() {
         mockPersistenceController.container.viewContext.rollback()
         super.tearDown()
     }
@@ -85,7 +85,7 @@ class NewTaskViewModelTests: XCTestCase {
         sut.createTaskButtonTapped { }
         
         // then
-        let result = Task.fetchAll(for: mockSelectedDate, viewContext: mockPersistenceController.container.viewContext).first
+        let result = Task.fetchAll(for: mockSelectedDate, viewContext: Self.mockPersistenceController.container.viewContext).first
         XCTAssertNotNil(result)
         XCTAssertEqual(result?.title, taskName)
         XCTAssertEqual(result?.dueDate, mockSelectedDate)
