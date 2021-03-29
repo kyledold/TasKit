@@ -54,6 +54,7 @@ class TasksListViewModel: TasksListViewModelProtocol {
     // MARK: - View Events
     
     func viewWillEnterForeground() {
+        selectedDateText = getReadableDate(from: selectedDate)
         fetchTasks()
     }
     
