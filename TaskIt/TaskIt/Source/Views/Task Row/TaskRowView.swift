@@ -12,7 +12,6 @@ struct TaskRowView<ViewModel: TaskRowViewModelProtocol>: View {
     // MARK: - Properties
     
     @ObservedObject var viewModel: ViewModel
-    @State private var feedback = UINotificationFeedbackGenerator()
     
     // MARK: - View
     
@@ -27,9 +26,6 @@ struct TaskRowView<ViewModel: TaskRowViewModelProtocol>: View {
         }
         .opacity(viewModel.isComplete ? 0.5 : 1)
         .padding(Layout.Spacing.compact)
-        .onAppear {
-            viewModel.viewAppeared()
-        }
     }
     
     private var basicDetailsView: some View {
@@ -37,9 +33,6 @@ struct TaskRowView<ViewModel: TaskRowViewModelProtocol>: View {
             
             Toggle(isOn: $viewModel.isComplete) {}
                 .toggleStyle(CheckboxToggleStyle())
-                .onChange(of: viewModel.isComplete) { _ in
-                    feedback.notificationOccurred(.success)
-                }
             
             Text(viewModel.title)
                 .strikethrough(viewModel.isComplete, color: .primary)
