@@ -15,6 +15,4 @@ protocol TaskRowViewModelProtocol: ObservableObject, Identifiable {
     var time: String? { get }
     var subTasksCompletionPercentage: Double? { get }
     var task: Task { get }
-    
-    func viewAppeared()
 }

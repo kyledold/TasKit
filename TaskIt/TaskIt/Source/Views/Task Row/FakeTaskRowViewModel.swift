@@ -15,6 +15,4 @@ class FakeTaskRowViewModel: TaskRowViewModelProtocol {
     var time: String? = "17:00"
     var subTasksCompletionPercentage: Double? = 20
     var task = Task()
-    
-    func viewAppeared() { }
 }
