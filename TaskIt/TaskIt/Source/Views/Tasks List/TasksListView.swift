@@ -15,6 +15,7 @@ struct TasksListView<ViewModel: TasksListViewModelProtocol, SettingsModifier: Vi
     @ObservedObject var viewModel: ViewModel
     
     let settingsModifier: SettingsModifier
+    private let notificationCenter = NotificationCenter.default
     
     @State private var isListEditing = false
     
@@ -38,8 +39,8 @@ struct TasksListView<ViewModel: TasksListViewModelProtocol, SettingsModifier: Vi
         .bottomSheet(isPresented: $viewModel.showCalendarView, height: 450) {
             CalendarView(viewModel: viewModel.calendarViewModel)
         }
-        .onAppear {
-            viewModel.fetchTasks()
+        .onReceive(notificationCenter.publisher(for: UIApplication.willEnterForegroundNotification)) { _ in
+            viewModel.viewWillEnterForeground()
         }
     }
     
@@ -58,6 +59,7 @@ struct TasksListView<ViewModel: TasksListViewModelProtocol, SettingsModifier: Vi
     }
     
     private func createTaskButtonTapped() {
+        isListEditing = false
         withAnimation {
             viewModel.createTaskButtonTapped()
         }
@@ -70,7 +72,7 @@ extension TasksListView {
         HStack(alignment: .firstTextBaseline, spacing: Layout.Spacing.spacious) {
             
             Text(viewModel.selectedDateText)
-                .font(.semiBold_22)
+                .font(.medium_22)
             
             Spacer()
             
@@ -153,7 +155,7 @@ extension TasksListView {
     private var createTaskFooterButton: some View {
         ButtonFooterView(
             buttonText: viewModel.createTaskButtonText,
-            buttonColor: .t_orange,
+            buttonColor: .t_action,
             onButtonTap: createTaskButtonTapped
         )
         .onNotification(.taskCreated) {

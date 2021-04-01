@@ -15,7 +15,7 @@ class SubTaskListViewModel: SubTaskListViewModelProtocol {
     // MARK: - Properties
     
     @Published var newSubTaskName = String.empty
-    @Published var subTaskModels: [SubTaskRowViewModel]
+    @Published var subTaskModels: [SubTaskRowViewModel] = []
     @Published var isListInEditMode: Bool = false
     
     var headerText = NSLocalizedString("subtask_list.subtasks", comment: "Subtask header")
@@ -31,18 +31,14 @@ class SubTaskListViewModel: SubTaskListViewModelProtocol {
     
     // MARK: - Initialisation
     
-    init(
-        task: Task,
-        managedObjectContext: NSManagedObjectContext
-    ) {
+    init(task: Task, managedObjectContext: NSManagedObjectContext) {
         self.task = task
         self.managedObjectContext = managedObjectContext
-        self.subTaskModels = []
         
         fetchSubTasks()
     }
     
-    // MARK: - Functions
+    // MARK: - List Operations
     
     func deleteSubTask(at indexSet: IndexSet) {
         
@@ -63,7 +59,15 @@ class SubTaskListViewModel: SubTaskListViewModelProtocol {
         fetchSubTasks()
     }
     
+    // MARK: - Events
+    
     func addSubTaskButtonTapped(_ completion: @escaping EmptyClosure) {
+        
+        guard !newSubTaskName.isBlank else {
+            completion()
+            return
+        }
+        
         SubTask.createNewSubTask(
             task: task,
             subTaskName: newSubTaskName,
@@ -84,6 +88,8 @@ class SubTaskListViewModel: SubTaskListViewModelProtocol {
         newSubTaskName = .empty
     }
     
+    // MARK: - CoreData Operations
+    
     private func fetchSubTasks() {
         subTaskModels = task.subTasksArray?.compactMap { subTask in
             SubTaskRowViewModel(subTask: subTask, onChangeCompletion: { [weak self] isComplete in
@@ -92,17 +98,19 @@ class SubTaskListViewModel: SubTaskListViewModelProtocol {
         } ?? []
     }
     
-    private func resetListViewEditModeIfEmpty() {
-        if isListInEditMode {
-            isListInEditMode = !subTaskModels.isEmpty
-        }
-    }
-    
     private func updateSubTaskCompletionStatus(_ subTask: SubTask, isComplete: Bool) {
         SubTask.updateCompletionStatus(
             subTask,
             isComplete: isComplete,
             viewContext: managedObjectContext
         )
+    }
+    
+    // MARK: - Convienience
+    
+    private func resetListViewEditModeIfEmpty() {
+        if isListInEditMode {
+            isListInEditMode = !subTaskModels.isEmpty
+        }
     }
 }

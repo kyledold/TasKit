@@ -48,11 +48,19 @@ class TasksListViewModel: TasksListViewModelProtocol {
         self.showSortButton = false
         
         addObservers()
+        fetchTasks()
     }
     
-    // MARK: - Functions
+    // MARK: - View Events
     
-    func fetchTasks() {
+    func viewWillEnterForeground() {
+        selectedDateText = getReadableDate(from: selectedDate)
+        fetchTasks()
+    }
+    
+    // MARK: - Task Operations
+    
+    private func fetchTasks() {
         let selectedDatesTaskModels = Task.fetchAll(for: selectedDate, viewContext: managedObjectContext)
         taskViewModels = selectedDatesTaskModels.map { task in
             return TaskRowViewModel(
@@ -88,9 +96,9 @@ class TasksListViewModel: TasksListViewModelProtocol {
     }
     
     private func updateTaskCompletionStatus(_ task: Task, isComplete: Bool) {
-        Task.updateStatus(
+        Task.updateCompletionStatus(
             task: task,
-            newStatus: isComplete ? .completed : .todo,
+            isComplete: isComplete,
             viewContext: managedObjectContext
         )
     }
@@ -98,7 +106,9 @@ class TasksListViewModel: TasksListViewModelProtocol {
     // MARK: - Events
     
     func taskRowTapped(_ rowViewModel: RowViewModel) {
-        coordinator.showTaskDetails(rowViewModel)
+        coordinator.showTaskDetails(rowViewModel, onDateChanged: { [weak self] in
+            self?.fetchTasks()
+        })
     }
     
     func createTaskButtonTapped() {
@@ -118,6 +128,7 @@ class TasksListViewModel: TasksListViewModelProtocol {
     // MARK: - Observers
     
     private func addObservers() {
+        
         $selectedDate.dropFirst().sink(receiveValue: { [weak self] newSelectedDate in
             guard let self = self else { return }
             self.selectedDateText = self.getReadableDate(from: newSelectedDate)
@@ -145,7 +156,12 @@ class TasksListViewModel: TasksListViewModelProtocol {
     // MARK: - Child ViewModels
     
     lazy var newTaskViewModel: NewTaskViewModel = {
-        let newTaskViewModel = NewTaskViewModel(selectedDate: selectedDate, managedObjectContext: managedObjectContext)
+        let newTaskViewModel = NewTaskViewModel(
+            selectedDate: selectedDate,
+            index: taskViewModels.count,
+            managedObjectContext: managedObjectContext
+        )
+        
         newTaskViewModel.onTaskAdded = { [weak self] in
             self?.fetchTasks()
         }

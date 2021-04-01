@@ -21,7 +21,7 @@
                             </imageView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Bcu-3y-fUS"/>
-                        <color key="backgroundColor" name="AccentColor"/>
+                        <color key="backgroundColor" name="t_accent_inverse"/>
                         <constraints>
                             <constraint firstItem="Ppm-cQ-LuU" firstAttribute="leading" secondItem="Bcu-3y-fUS" secondAttribute="leading" constant="16" id="A2i-BY-6MQ"/>
                             <constraint firstItem="Ppm-cQ-LuU" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="V3C-JH-WGw"/>
@@ -35,9 +35,9 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Logo" width="600" height="280"/>
-        <namedColor name="AccentColor">
-            <color red="0.16862745098039217" green="0.36078431372549019" blue="0.6705882352941176" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        <image name="Logo" width="500" height="280"/>
+        <namedColor name="t_accent_inverse">
+            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
     </resources>
 </document>

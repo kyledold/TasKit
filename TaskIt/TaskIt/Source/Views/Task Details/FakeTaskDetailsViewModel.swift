@@ -12,6 +12,7 @@ class FakeTaskDetailsViewModel: TaskDetailsViewModelProtocol {
     
     var taskName = String.empty
     var dueDate = Date()
+    var dueTime = Date()
     var isComplete = false
     var taskNotes = "This is the task notes"
     var formattedDueDate = "25 March 2021"
@@ -21,7 +22,11 @@ class FakeTaskDetailsViewModel: TaskDetailsViewModelProtocol {
     var deleteAlertTitleText = "Delete task"
     var deleteAlertMessageText = "Are you sure you want to delete this task?"
     var deleteButtonText = "Delete"
+    var reminderText = "Reminder"
+    var timeText = "Time"
     var showCalendarView = false
+    var isTimeToggledOn = false
+    var isReminderToggledOn = false
     
     var calendarViewModel = CalendarViewModel(selectedDate: Date())
     var subTaskListViewModel = SubTaskListViewModel(

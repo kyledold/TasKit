@@ -1,7 +1,7 @@
 {
   "images" : [
     {
-      "filename" : "TaskIt_logo.png",
+      "filename" : "TaskIt_light.png",
       "idiom" : "universal"
     },
     {
@@ -11,6 +11,7 @@
           "value" : "dark"
         }
       ],
+      "filename" : "TaskIt_dark.png",
       "idiom" : "universal"
     }
   ],

@@ -19,17 +19,24 @@ class NewTaskViewModel: NewTaskViewModelProtocol {
     let taskNamePlaceholder = NSLocalizedString("new_task.task_name.placeholder", comment: "Task name placeholder")
     
     private var subscribers: Set<AnyCancellable> = []
+    private let index: Int
     private let managedObjectContext: NSManagedObjectContext
     
-    init(selectedDate: Date, managedObjectContext: NSManagedObjectContext) {
+    init(selectedDate: Date, index: Int, managedObjectContext: NSManagedObjectContext) {
         self.selectedDate = selectedDate
+        self.index = index
         self.managedObjectContext = managedObjectContext
         
         addObservers()
     }
     
     func createTaskButtonTapped(_ completion: @escaping EmptyClosure) {
-        Task.create(title: taskName, dueDate: selectedDate, viewContext: managedObjectContext)
+        Task.create(
+            title: taskName,
+            dueDate: selectedDate,
+            index: index,
+            viewContext: managedObjectContext
+        )
         
         onTaskAdded?()
         completion()

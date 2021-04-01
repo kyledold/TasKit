@@ -10,16 +10,23 @@ import XCTest
 
 class SubTaskRowViewModelTests: XCTestCase {
     
-    private lazy var mockTask = Task.StubFactory.make(title: "Mock task")
-    private lazy var mockSubTask = SubTask.StubFactory.make(task: mockTask, title: "Mock sub-task")
+    private static let mockPersistenceController = PersistenceController(inMemory: true)
+    private lazy var mockTask = Task.StubFactory.make(title: "Mock task", persistenceController: Self.mockPersistenceController)
+    private lazy var mockSubTask = SubTask.StubFactory.make(task: mockTask, title: "Mock sub-task", persistenceController: Self.mockPersistenceController)
+    
     private lazy var sut = SubTaskRowViewModel(
         subTask: mockSubTask,
         onChangeCompletion: { _ in }
     )
     
+    override class func tearDown() {
+        mockPersistenceController.container.viewContext.rollback()
+        super.tearDown()
+    }
+    
     // MARK: - Properties
     
-    func test_givenDefaultInit_whenIsCompleteCalled_thenReturnsFalse() {
+    func test_whenIsCompleteCalled_thenReturnsFalse() {
         // given
         // when
         let result = sut.isComplete
@@ -28,7 +35,7 @@ class SubTaskRowViewModelTests: XCTestCase {
         XCTAssertEqual(result, false)
     }
     
-    func test_givenDefaultInit_whenIdCalled_thenReturnsExpectedValue() {
+    func test_whenIdCalled_thenReturnsExpectedValue() {
         // given
         // when
         let result = sut.id
@@ -37,12 +44,26 @@ class SubTaskRowViewModelTests: XCTestCase {
         XCTAssertEqual(result, mockSubTask.id)
     }
     
-    func test_givenDefaultInit_whenSubTaskTitleCalled_thenReturnsExpectedValue() {
+    func test_whenTitleCalled_thenReturnsExpectedValue() {
         // given
         // when
-        let result = sut.subTaskTitle
+        let result = sut.title
         
         // then
         XCTAssertEqual(result, mockSubTask.title)
+    }
+    
+    func test_givenOnChangeCompletionClosure_whenIsCompletedChanged_thenClosureCalledWithCorrectValue() {
+        // given
+        var completionResult = false
+        sut.onChangeCompletion = { newValue in
+            completionResult = newValue
+        }
+        
+        // when
+        sut.isComplete = true
+        
+        // then
+        XCTAssertEqual(completionResult, true)
     }
 }

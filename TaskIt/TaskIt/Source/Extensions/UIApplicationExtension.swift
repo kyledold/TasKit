@@ -15,4 +15,8 @@ extension UIApplication {
         print("UIApplication: openURL \(url.absoluteString)")
         UIApplication.shared.open(url)
     }
+    
+    func endEditing() {
+        sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
+    }
 }

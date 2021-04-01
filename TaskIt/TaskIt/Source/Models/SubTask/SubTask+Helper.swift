@@ -8,14 +8,9 @@
 import Foundation
 import CoreData
 
-public class SubTask: NSManagedObject {
+extension SubTask {
     
-    // MARK: - Properties
-    
-    var unwrappedId: UUID { id ?? UUID() }
-    var unwrappedTitle: String { title ?? "Unknown title"}
-    
-    // MARK: - SubTask CoreData Operations
+    // MARK: - Create
     
     public static func createNewSubTask(task: Task, subTaskName: String, index: Int, viewContext: NSManagedObjectContext) {
         let subTask = SubTask(context: viewContext)
@@ -24,20 +19,41 @@ public class SubTask: NSManagedObject {
         subTask.title = subTaskName
         subTask.index = Int16(index)
         
-        print("Sub-task \"\(subTask.unwrappedTitle)\" created")
+        print("Sub-task \"\(subTask.title)\" created")
         
         try? viewContext.save()
     }
+    
+    // MARK: - Fetch
+    
+    public static func fetchAll(viewContext: NSManagedObjectContext) -> [SubTask] {
+        print("Sub-task fetchAll called")
+        
+        let fetchRequest: NSFetchRequest<SubTask> = SubTask.fetchRequest()
+        guard let subTasks = try? viewContext.fetch(fetchRequest) else { return [] }
+        return subTasks
+    }
+    
+    // MARK: - Delete
     
     public static func deleteSubTasks(_ subTasks: [SubTask], viewContext: NSManagedObjectContext) {
         subTasks.forEach {
             viewContext.delete($0)
             
-            print("Sub-task \"\($0.unwrappedTitle)\" deleted")
+            print("Sub-task \"\($0.title)\" deleted")
         }
         
         try? viewContext.save()
     }
+    
+    public static func deleteAll(viewContext: NSManagedObjectContext) {
+        SubTask.fetchAll(viewContext: viewContext).forEach { viewContext.delete($0) }
+        
+        try? viewContext.save()
+        print("Sub-task deleteAll called")
+    }
+    
+    // MARK: - Update
     
     public static func updateOrderOfSubTasks(_ revisedSubTasks: [SubTask], viewContext: NSManagedObjectContext) {
         
@@ -45,7 +61,7 @@ public class SubTask: NSManagedObject {
             let subTask = revisedSubTasks[index]
             subTask.index = Int16(index)
             
-            print("Sub-task \"\(subTask.unwrappedTitle)\" update index to \(index)")
+            print("Sub-task \"\(subTask.title)\" update index to \(index)")
         }
         
         try? viewContext.save()
@@ -56,7 +72,7 @@ public class SubTask: NSManagedObject {
         
         try? viewContext.save()
         
-        print("Sub-task \"\(subTask.unwrappedTitle)\" update completion status to \(isComplete)")
+        print("Sub-task \"\(subTask.title)\" update completion status to \(isComplete)")
     }
     
     // MARK: - awake

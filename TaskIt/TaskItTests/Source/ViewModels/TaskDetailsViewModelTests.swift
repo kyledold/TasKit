@@ -10,15 +10,28 @@ import XCTest
 
 class TaskDetailsViewModelTests: XCTestCase {
     
-    private let mockTask = Task.StubFactory.make(title: "Mock task")
+    private static let mockPersistenceController = PersistenceController(inMemory: true)
+    private lazy var mockTask = Task.StubFactory.make(
+        title: "Mock task",
+        dueTime: Date(),
+        isReminderSet: true,
+        persistenceController: Self.mockPersistenceController
+    )
+    
     private lazy var sut = TaskDetailsViewModel(
         task: mockTask,
-        managedObjectContext: MockNSManagedObjectContext()
+        onDateChanged: {},
+        managedObjectContext: Self.mockPersistenceController.container.viewContext
     )
+    
+    override class func tearDown() {
+        mockPersistenceController.container.viewContext.rollback()
+        super.tearDown()
+    }
     
     // MARK: - Properties
     
-    func test_givenDefaultInit_whenTaskNameCalled_thenReturnsExpectedValue() {
+    func test_whenTaskNameCalled_thenReturnsExpectedValue() {
         // given
         // when
         let result = sut.taskName
@@ -27,7 +40,7 @@ class TaskDetailsViewModelTests: XCTestCase {
         XCTAssertEqual(result, mockTask.title)
     }
     
-    func test_givenDefaultInit_whenDueDateCalled_thenReturnsExpectedValue() {
+    func test_whenDueDateCalled_thenReturnsExpectedValue() {
         // given
         // when
         let result = sut.dueDate
@@ -36,16 +49,25 @@ class TaskDetailsViewModelTests: XCTestCase {
         XCTAssertEqual(result, mockTask.dueDate)
     }
     
-    func test_givenDefaultInit_whenIsCompleteCalled_thenReturnsExpectedValue() {
+    func test_whenDueTimeCalled_thenReturnsExpectedValue() {
+        // given
+        // when
+        let result = sut.dueTime
+        
+        // then
+        XCTAssertEqual(result, mockTask.dueTime)
+    }
+    
+    func test_whenIsCompleteCalled_thenReturnsExpectedValue() {
         // given
         // when
         let result = sut.isComplete
         
         // then
-        XCTAssertEqual(result, mockTask.status == .completed)
+        XCTAssertEqual(result, mockTask.isComplete)
     }
     
-    func test_givenDefaultInit_whenTaskNotesCalled_thenReturnsExpectedValue() {
+    func test_whenTaskNotesCalled_thenReturnsExpectedValue() {
         // given
         // when
         let result = sut.taskNotes
@@ -54,34 +76,84 @@ class TaskDetailsViewModelTests: XCTestCase {
         XCTAssertEqual(result, mockTask.notes)
     }
     
-    func test_givenDefaultInit_whenTaskNamePlaceholderTextCalled_thenReturnsExpectedValue() {
+    func test_whenFormattedDueDateCalled_thenReturnsExpectedValue() {
         // given
         // when
-        let result = sut.taskNamePlaceholderText
+        let result = sut.formattedDueDate
         
         // then
-        XCTAssertEqual(result, "Task name")
+        XCTAssertEqual(result, mockTask.dueDate.shortDate)
     }
     
-    func test_givenDefaultInit_whenTaskNotesPlaceholderTextCalled_thenReturnsExpectedValue() {
+    func test_whenShowCalendarViewCalled_thenReturnsFalse() {
         // given
         // when
-        let result = sut.taskNotesPlaceholderText
+        let result = sut.showCalendarView
         
         // then
-        XCTAssertEqual(result, "Write any notes here...")
+        XCTAssertEqual(result, false)
     }
     
-    func test_givenDefaultInit_whenTaskDateTextCalled_thenReturnsExpectedValue() {
+    func test_givenTaskWithDueTime_whenIsTimeToggledOnCalled_thenReturnsTrue() {
         // given
         // when
-        let result = sut.taskDateText
+        let result = sut.isTimeToggledOn
         
         // then
-        XCTAssertEqual(result, "Date")
+        XCTAssertEqual(result, true)
     }
     
-    func test_givenDefaultInit_whenDeleteAlertTitleTextCalled_thenReturnsExpectedValue() {
+    func test_givenTaskWithoutDueTime_whenIsTimeToggledOnCalled_thenReturnsFalse() {
+        // given
+        let mockTask = Task.StubFactory.make(
+            title: "Mock task",
+            persistenceController: Self.mockPersistenceController
+        )
+        
+        let sut = TaskDetailsViewModel(
+            task: mockTask,
+            onDateChanged: {},
+            managedObjectContext: Self.mockPersistenceController.container.viewContext
+        )
+        
+        // when
+        let result = sut.isTimeToggledOn
+        
+        // then
+        XCTAssertEqual(result, false)
+    }
+    
+    func test_givenTaskWithReminderSet_whenIsReminderToggledOnCalled_thenReturnsTrue() {
+        // given
+        // when
+        let result = sut.isTimeToggledOn
+        
+        // then
+        XCTAssertEqual(result, true)
+    }
+    
+    func test_givenTaskWithoutReminderSet_whenIsReminderToggledOnCalled_thenReturnsFalse() {
+        // given
+        let mockTask = Task.StubFactory.make(
+            title: "Mock task",
+            isReminderSet: true,
+            persistenceController: Self.mockPersistenceController
+        )
+        
+        let sut = TaskDetailsViewModel(
+            task: mockTask,
+            onDateChanged: {},
+            managedObjectContext: Self.mockPersistenceController.container.viewContext
+        )
+        
+        // when
+        let result = sut.isReminderToggledOn
+        
+        // then
+        XCTAssertEqual(result, true)
+    }
+    
+    func test_whenDeleteAlertTitleTextCalled_thenReturnsExpectedValue() {
         // given
         // when
         let result = sut.deleteAlertTitleText
@@ -90,7 +162,7 @@ class TaskDetailsViewModelTests: XCTestCase {
         XCTAssertEqual(result, "Delete task")
     }
     
-    func test_givenDefaultInit_whenDeleteAlertMessageTextCalled_thenReturnsExpectedValue() {
+    func test_whenDeleteAlertMessageTextCalled_thenReturnsExpectedValue() {
         // given
         // when
         let result = sut.deleteAlertMessageText
@@ -99,12 +171,48 @@ class TaskDetailsViewModelTests: XCTestCase {
         XCTAssertEqual(result, "Are you sure you want to delete this task?")
     }
     
-    func test_givenDefaultInit_whenDeleteButtonTextCalled_thenReturnsExpectedValue() {
+    func test_whenDeleteButtonTextCalled_thenReturnsExpectedValue() {
         // given
         // when
         let result = sut.deleteButtonText
         
         // then
         XCTAssertEqual(result, "Delete")
+    }
+    
+    func test_whenReminderTextCalled_thenReturnsExpectedValue() {
+        // given
+        // when
+        let result = sut.reminderText
+        
+        // then
+        XCTAssertEqual(result, "Reminder")
+    }
+    
+    func test_whenTaskNamePlaceholderTextCalled_thenReturnsExpectedValue() {
+        // given
+        // when
+        let result = sut.taskNamePlaceholderText
+        
+        // then
+        XCTAssertEqual(result, "Task name")
+    }
+    
+    func test_whenTaskNotesPlaceholderTextCalled_thenReturnsExpectedValue() {
+        // given
+        // when
+        let result = sut.taskNotesPlaceholderText
+        
+        // then
+        XCTAssertEqual(result, "Write any notes here...")
+    }
+    
+    func test_whenTaskDateTextCalled_thenReturnsExpectedValue() {
+        // given
+        // when
+        let result = sut.taskDateText
+        
+        // then
+        XCTAssertEqual(result, "Date")
     }
 }

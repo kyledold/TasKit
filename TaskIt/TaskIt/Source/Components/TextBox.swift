@@ -35,8 +35,3 @@ struct TextBox: View {
         }
     }
 }
-
-extension String {
-
-}
-

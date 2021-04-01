@@ -45,7 +45,7 @@ struct SubTaskListView<ViewModel: SubTaskListViewModelProtocol>: View {
         showAddNewSubTaskRow.toggle()
     }
     
-    private func doneButtonTapped() {
+    private func addButtonTapped() {
         viewModel.addSubTaskButtonTapped() {
             showAddNewSubTaskRow.toggle()
         }
@@ -66,7 +66,7 @@ extension SubTaskListView {
     private var headerView: some View {
         HStack {
             Text(viewModel.headerText)
-                .font(.bold_20)
+                .font(.medium_22)
             
             Spacer()
             
@@ -74,6 +74,7 @@ extension SubTaskListView {
                 Button(action: editButtonTapped, label: {
                     Text(viewModel.isListInEditMode ? viewModel.doneButtonText : viewModel.editButtonText)
                 })
+                .foregroundColor(.t_action)
             }
         }
     }
@@ -110,11 +111,13 @@ extension SubTaskListView {
                 .textFieldStyle(SimpleTextFieldStyle())
             
             HStack(spacing: Layout.Spacing.cozy) {
-                Button(action: doneButtonTapped, label: { Text(viewModel.addButtonText) })
+                Button(action: addButtonTapped, label: { Text(viewModel.addButtonText) })
                     .disabled(viewModel.newSubTaskName.isBlank)
+                    .opacity(viewModel.newSubTaskName.isBlank ? 0.4 : 1)
                 
                 Button(action: cancelButtonTapped, label: { Text(viewModel.cancelButtonText) })
             }
+            .foregroundColor(.t_action)
         }
     }
     
@@ -124,6 +127,7 @@ extension SubTaskListView {
                 Image(systemName: Image.Icons.add)
                 Text(viewModel.addSubTaskButtonText)
             }
+            .foregroundColor(.t_action)
         })
         .padding(.leading, Layout.Spacing.squished)
         .padding(.vertical, Layout.Spacing.compact)

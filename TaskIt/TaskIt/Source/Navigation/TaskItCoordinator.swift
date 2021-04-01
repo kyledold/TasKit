@@ -33,8 +33,8 @@ class TaskItCoordinator: ObservableObject, Identifiable {
 
     // MARK: - Functions
 
-    func showTaskDetails(_ taskRowViewModel: TaskRowViewModel) {
-        taskDetailViewModel = makeTaskDetailsViewModel(task: taskRowViewModel.task)
+    func showTaskDetails(_ taskRowViewModel: TaskRowViewModel, onDateChanged: @escaping EmptyClosure) {
+        taskDetailViewModel = makeTaskDetailsViewModel(task: taskRowViewModel.task, onDateChanged: onDateChanged)
     }
     
     func showSettings() {
@@ -43,9 +43,10 @@ class TaskItCoordinator: ObservableObject, Identifiable {
     
     // MARK: - Make
     
-    private func makeTaskDetailsViewModel(task: Task) -> TaskDetailsViewModel {
+    private func makeTaskDetailsViewModel(task: Task, onDateChanged: @escaping EmptyClosure) -> TaskDetailsViewModel {
         return TaskDetailsViewModel(
             task: task,
+            onDateChanged: onDateChanged,
             managedObjectContext: managedObjectContext
         )
     }

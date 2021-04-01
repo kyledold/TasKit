@@ -19,15 +19,17 @@ struct TaskDetailsView<ViewModel: TaskDetailsViewModelProtocol>: View {
     // MARK: - View
     
     var body: some View {
-        ScrollView {
-            VStack {
-                navigationBarView
-                taskBasicDetailsView
-                SubTaskListView(viewModel: viewModel.subTaskListViewModel)
-                Spacer()
+        VStack {
+            navigationBarView
+            ScrollView {
+                VStack {
+                    taskBasicDetailsView
+                    SubTaskListView(viewModel: viewModel.subTaskListViewModel)
+                    Spacer()
+                }
             }
-            .padding(.horizontal)
         }
+        .padding(.horizontal)
         .navigationBarHidden(true)
         .alert(isPresented: $showDeleteConfirmationAlert, content: { deleteConfirmationAlert })
         .bottomSheet(isPresented: $viewModel.showCalendarView, height: 450) {
@@ -42,6 +44,7 @@ struct TaskDetailsView<ViewModel: TaskDetailsViewModelProtocol>: View {
     // MARK: - Events
     
     private func backButtonTapped() {
+        UIApplication.shared.endEditing()
         presentationMode.wrappedValue.dismiss()
     }
     
@@ -51,11 +54,6 @@ struct TaskDetailsView<ViewModel: TaskDetailsViewModelProtocol>: View {
     
     private func deleteButtonTapped() {
         showDeleteConfirmationAlert = true
-        /*
-        viewModel.deleteButtonTapped {
-            
-        }
-         */
     }
 }
 
@@ -85,32 +83,67 @@ extension TaskDetailsView {
                 HStack {
                     Toggle(isOn: $viewModel.isComplete) {}
                         .toggleStyle(CheckboxToggleStyle())
-                        .onChange(of: viewModel.isComplete) { _ in
-                            feedback.notificationOccurred(.success)
-                        }
                     
                     TextField(viewModel.taskNamePlaceholderText, text: $viewModel.taskName)
                         .textFieldStyle(SimpleTextFieldStyle())
                 }
                 
-                HStack {
-                    Text(viewModel.taskDateText)
-                    Spacer()
-                    Button(action: calendarButtonTapped, label: {
-                        HStack {
-                            Text(viewModel.formattedDueDate)
-                                .foregroundColor(.primary)
-                        }
-                        .padding(Layout.Spacing.compact)
-                        .background(Color.t_input_background_2)
-                        .cornerRadius(10)
-                    })
+                VStack(spacing: Layout.Spacing.compact) {
+                    dueDateRow
+                    timeRow
                 }
                 .padding(Layout.Spacing.cozy)
                 .background(Color.t_input_background)
-                .cornerRadius(10)
+                .cornerRadius(Layout.Spacing.compact)
                 
                 TextBox(viewModel.taskNotesPlaceholderText, text: $viewModel.taskNotes)
+            }
+        }
+    }
+
+    private var dueDateRow: some View {
+        VStack {
+            HStack {
+                Text(viewModel.taskDateText)
+                Spacer()
+                Button(action: calendarButtonTapped, label: {
+                    HStack {
+                        Text(viewModel.formattedDueDate)
+                            .foregroundColor(.primary)
+                    }
+                    .padding(Layout.Spacing.compact)
+                    .background(Color.t_input_background_2)
+                    .cornerRadius(Layout.Spacing.compact)
+                })
+            }
+        }
+    }
+    
+    private var timeRow: some View {
+        VStack {
+            HStack {
+                Text(viewModel.timeText)
+                Spacer()
+                Toggle(isOn: $viewModel.isTimeToggledOn, label: {}).toggleStyle(SwitchToggleStyle(tint: .t_action))
+                    .padding(Layout.Spacing.tight)
+            }
+            if viewModel.isTimeToggledOn {
+                VStack {
+                    HStack {
+                        Spacer()
+                        DatePicker(String.empty, selection: $viewModel.dueTime, displayedComponents: .hourAndMinute)
+                            .datePickerStyle(GraphicalDatePickerStyle())
+                            .scaleEffect(0.85)
+                            .padding(.trailing, -Layout.Spacing.spacious)
+                            .padding(.vertical, -Layout.Spacing.compact)
+                    }
+                    HStack {
+                        Text(viewModel.reminderText)
+                        Spacer()
+                        Toggle(isOn: $viewModel.isReminderToggledOn, label: {}).toggleStyle(SwitchToggleStyle(tint: .t_action))
+                            .padding(Layout.Spacing.tight)
+                    }
+                }
             }
         }
     }

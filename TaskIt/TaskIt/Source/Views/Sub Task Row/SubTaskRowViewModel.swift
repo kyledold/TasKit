@@ -14,8 +14,8 @@ class SubTaskRowViewModel: SubTaskRowViewModelProtocol {
     
     @Published var isComplete: Bool
     
-    var id: UUID { return subTask.unwrappedId }
-    var subTaskTitle: String { return subTask.unwrappedTitle}
+    var id: UUID { subTask.id }
+    var title: String { subTask.title}
     var onChangeCompletion: ValueClosure<Bool>
     
     private var subscribers: Set<AnyCancellable> = []
