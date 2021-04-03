@@ -53,6 +53,15 @@ extension Task {
         return tasks
     }
     
+    public static func fetchTask(with id: UUID, viewContext: NSManagedObjectContext) -> Task? {
+        print("Task fetchTask(for id:) called")
+        
+        let fetchRequest: NSFetchRequest<Task> = Task.fetchRequest()
+        fetchRequest.predicate = NSPredicate(format: "id = %@", id as CVarArg)
+        guard let tasks = try? viewContext.fetch(fetchRequest) else { return nil}
+        return tasks.first
+    }
+    
     // MARK: - Delete
     
     public static func deleteAll(viewContext: NSManagedObjectContext) {
