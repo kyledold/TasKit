@@ -16,7 +16,8 @@ class TaskRowViewModel: TaskRowViewModelProtocol {
     @Published var isComplete: Bool = false
     @Published var subTasksCompletionPercentage: Double?
     
-    var id: UUID { task.id }
+    var id: UUID
+    var taskId: UUID { task.id }
     var title: String { task.title }
     var time: String? { task.dueTime?.shortTime ?? nil }
     var onChangeCompletion: ValueClosure<Bool>
@@ -32,6 +33,7 @@ class TaskRowViewModel: TaskRowViewModelProtocol {
         self.task = task
         self.managedObjectContext = managedObjectContext
         self.onChangeCompletion = onChangeCompletion
+        self.id = UUID()
         
         self.isComplete = task.isComplete
         self.subTasksCompletionPercentage = task.subTasksCompletionPercentage

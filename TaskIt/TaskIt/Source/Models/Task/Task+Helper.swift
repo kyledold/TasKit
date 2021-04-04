@@ -72,10 +72,12 @@ extension Task {
     }
     
     public static func deleteTask(task: Task, viewContext: NSManagedObjectContext) {
+        
+        print("Task \"\(task.title)\" deleted")
+        
         viewContext.delete(task)
         
         try? viewContext.save()
-        print("Task \"\(task.title)\" deleted")
     }
     
     // MARK: - Update
