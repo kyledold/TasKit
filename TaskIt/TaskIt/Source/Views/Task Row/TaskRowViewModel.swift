@@ -51,7 +51,7 @@ class TaskRowViewModel: TaskRowViewModelProtocol {
         }.store(in: &subscribers)
         
         notificationCenter.publisher(for: Notification.Name.NSManagedObjectContextObjectsDidChange, object: managedObjectContext)
-            .sink(receiveValue: { [weak self] notification in
+            .sink { [weak self] notification in
                 guard let userInfo = notification.userInfo else { return }
                 guard let updates = userInfo[NSUpdatedObjectsKey] as? Set<NSManagedObject> else { return }
                 
@@ -64,6 +64,6 @@ class TaskRowViewModel: TaskRowViewModelProtocol {
                         self?.subTasksCompletionPercentage = subTask.task.subTasksCompletionPercentage
                     }
                 }
-            }).store(in: &subscribers)
+        }.store(in: &subscribers)
     }
 }

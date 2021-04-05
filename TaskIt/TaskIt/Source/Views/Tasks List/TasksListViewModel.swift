@@ -40,6 +40,7 @@ class TasksListViewModel: TasksListViewModelProtocol {
         return newTaskIndex
     }
     
+    private let notificationCenter = NotificationCenter.default
     private let calendar = Calendar.current
     private var subscribers: Set<AnyCancellable> = []
     private unowned let coordinator: TaskItCoordinator
@@ -144,11 +145,25 @@ class TasksListViewModel: TasksListViewModelProtocol {
     // MARK: - Observers
     
     private func addObservers() {
-        
-        $selectedDate.dropFirst().sink(receiveValue: { [weak self] newSelectedDate in
+        $selectedDate.dropFirst().sink { [weak self] newSelectedDate in
             guard let self = self else { return }
             self.selectedDateText = self.getReadableDate(from: newSelectedDate)
-        }).store(in: &subscribers)
+        }.store(in: &subscribers)
+        
+        notificationCenter.publisher(for: Notification.Name.NSManagedObjectContextObjectsDidChange, object: managedObjectContext)
+            .sink { [weak self] notification in
+                guard let userInfo = notification.userInfo else { return }
+                guard let updates = userInfo[NSDeletedObjectsKey] as? Set<NSManagedObject> else { return }
+                
+                for update in updates {
+                    if let updatedTask = update as? Task {
+                        
+                        if self?.taskViewModels.contains(where: { $0.taskId == updatedTask.id }) == true {
+                            self?.fetchTasks()
+                        }
+                    }
+                }
+        }.store(in: &subscribers)
     }
     
     private func getReadableDate(from date: Date) -> String {
