@@ -20,7 +20,9 @@ extension Image {
         static let minusCalendar = "calendar.badge.minus"
         static let settings = "gearshape.fill"
         static let sort = "arrow.up.arrow.down.square"
+        static let tickedCheckBox = "checkmark.square"
         static let tasks = "list.dash"
+        static let unTickedCheckBox = "square"
     }
     
     func iconStyle(imageColor: Color = .primary) -> some View {

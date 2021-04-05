@@ -10,6 +10,7 @@
 		D1034ADE25FA5E2900288A38 /* BottomSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1034ADD25FA5E2900288A38 /* BottomSheet.swift */; };
 		D1034AE225FA5E4500288A38 /* RoundedCorner.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1034AE125FA5E4500288A38 /* RoundedCorner.swift */; };
 		D1034AEB25FA66D800288A38 /* DimmedBackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1034AEA25FA66D800288A38 /* DimmedBackgroundView.swift */; };
+		D108BD06261B153C000F6D5A /* CheckBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = D108BD05261B153C000F6D5A /* CheckBox.swift */; };
 		D10CD6A226075CF80025851B /* DateFormatterExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D10CD6A126075CF80025851B /* DateFormatterExtension.swift */; };
 		D10F85B62603C53200B08A87 /* NewTaskViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D10F85B52603C53200B08A87 /* NewTaskViewModelTests.swift */; };
 		D10F85BA2603C87200B08A87 /* SubTaskListViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D10F85B92603C87200B08A87 /* SubTaskListViewModelTests.swift */; };
@@ -76,7 +77,6 @@
 		D1BC348925D5A92A0068A57A /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1BC348825D5A92A0068A57A /* SettingsView.swift */; };
 		D1BD687425E96EAA002C4518 /* RoundedButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1BD687325E96EAA002C4518 /* RoundedButtonStyle.swift */; };
 		D1BD687825E970A9002C4518 /* TextNavigationButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1BD687725E970A9002C4518 /* TextNavigationButtonStyle.swift */; };
-		D1BD688625EA81F3002C4518 /* CheckboxToggleStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1BD688525EA81F3002C4518 /* CheckboxToggleStyle.swift */; };
 		D1BD688C25EA8ECF002C4518 /* TextBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1BD688B25EA8ECF002C4518 /* TextBox.swift */; };
 		D1BD689125EB8E45002C4518 /* SubTask+Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1BD689025EB8E45002C4518 /* SubTask+Helper.swift */; };
 		D1C98B38260F5EB20077587F /* SubTask+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1C98B36260F5EB20077587F /* SubTask+CoreDataClass.swift */; };
@@ -132,6 +132,7 @@
 		D1034ADD25FA5E2900288A38 /* BottomSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomSheet.swift; sourceTree = "<group>"; };
 		D1034AE125FA5E4500288A38 /* RoundedCorner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedCorner.swift; sourceTree = "<group>"; };
 		D1034AEA25FA66D800288A38 /* DimmedBackgroundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DimmedBackgroundView.swift; sourceTree = "<group>"; };
+		D108BD05261B153C000F6D5A /* CheckBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckBox.swift; sourceTree = "<group>"; };
 		D10CD699260626ED0025851B /* EventKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = EventKit.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.1.sdk/System/Library/Frameworks/EventKit.framework; sourceTree = DEVELOPER_DIR; };
 		D10CD6A126075CF80025851B /* DateFormatterExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateFormatterExtension.swift; sourceTree = "<group>"; };
 		D10F85B52603C53200B08A87 /* NewTaskViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewTaskViewModelTests.swift; sourceTree = "<group>"; };
@@ -204,7 +205,6 @@
 		D1BC348825D5A92A0068A57A /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		D1BD687325E96EAA002C4518 /* RoundedButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedButtonStyle.swift; sourceTree = "<group>"; };
 		D1BD687725E970A9002C4518 /* TextNavigationButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextNavigationButtonStyle.swift; sourceTree = "<group>"; };
-		D1BD688525EA81F3002C4518 /* CheckboxToggleStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckboxToggleStyle.swift; sourceTree = "<group>"; };
 		D1BD688B25EA8ECF002C4518 /* TextBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextBox.swift; sourceTree = "<group>"; };
 		D1BD689025EB8E45002C4518 /* SubTask+Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SubTask+Helper.swift"; sourceTree = "<group>"; };
 		D1C98B34260F5EB20077587F /* Task+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Task+CoreDataProperties.swift"; path = "/Users/kyledold/Development/TaskIt/TaskIt/TaskIt/Source/Models/Task+CoreDataProperties.swift"; sourceTree = "<absolute>"; };
@@ -295,7 +295,6 @@
 		D13A6E3025C73559003A6759 /* Styles */ = {
 			isa = PBXGroup;
 			children = (
-				D1BD688525EA81F3002C4518 /* CheckboxToggleStyle.swift */,
 				D131DFA025E277980039D7E7 /* FooterStyle.swift */,
 				D1BD687725E970A9002C4518 /* TextNavigationButtonStyle.swift */,
 				D1F2066925F3A66B001780E7 /* ImageButtonStyle.swift */,
@@ -423,6 +422,7 @@
 			children = (
 				D131DF9A25E276770039D7E7 /* ButtonFooterView.swift */,
 				D1034ADD25FA5E2900288A38 /* BottomSheet.swift */,
+				D108BD05261B153C000F6D5A /* CheckBox.swift */,
 				D1034AEA25FA66D800288A38 /* DimmedBackgroundView.swift */,
 				D1034AE125FA5E4500288A38 /* RoundedCorner.swift */,
 				D1BD688B25EA8ECF002C4518 /* TextBox.swift */,
@@ -780,8 +780,8 @@
 				D1E91F5A25F4EDA20036C1C4 /* SheetModifier.swift in Sources */,
 				D1529C3D25C70457003FC9D6 /* TaskItApp.swift in Sources */,
 				D1783EBA25C9C9E500D8EFC3 /* TasksListView.swift in Sources */,
+				D108BD06261B153C000F6D5A /* CheckBox.swift in Sources */,
 				D17FC99E25D81450002A5501 /* SettingsItemExtension.swift in Sources */,
-				D1BD688625EA81F3002C4518 /* CheckboxToggleStyle.swift in Sources */,
 				D1BD687425E96EAA002C4518 /* RoundedButtonStyle.swift in Sources */,
 				D17FC98F25D8106F002A5501 /* SettingsViewModel.swift in Sources */,
 				D17FC9EC25D828F6002A5501 /* FakeSettingsRowViewModel.swift in Sources */,

@@ -56,11 +56,11 @@ class TaskRowViewModel: TaskRowViewModelProtocol {
                 guard let updates = userInfo[NSUpdatedObjectsKey] as? Set<NSManagedObject> else { return }
                 
                 for update in updates {
-                    if let task = update as? Task, task.id == self?.id {
+                    if let task = update as? Task, task.id == self?.taskId {
                         self?.isComplete = task.isComplete
                     }
                     
-                    if let subTask = update as? SubTask, subTask.task.id == self?.id {
+                    if let subTask = update as? SubTask, subTask.task.id == self?.taskId {
                         self?.subTasksCompletionPercentage = subTask.task.subTasksCompletionPercentage
                     }
                 }

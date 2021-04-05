@@ -25,8 +25,7 @@ struct SubTaskRowView<ViewModel: SubTaskRowViewModelProtocol>: View {
         HStack(spacing: Layout.Spacing.compact) {
             
             if !isInEditingMode {
-                Toggle(isOn: $viewModel.isComplete) {}
-                    .toggleStyle(CheckboxToggleStyle())
+                CheckBox(isChecked: $viewModel.isComplete)
             }
             
             Text(viewModel.title)

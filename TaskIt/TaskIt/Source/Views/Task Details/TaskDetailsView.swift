@@ -81,8 +81,8 @@ extension TaskDetailsView {
             VStack(spacing: Layout.Spacing.cozy) {
                 
                 HStack {
-                    Toggle(isOn: $viewModel.isComplete) {}
-                        .toggleStyle(CheckboxToggleStyle())
+                    
+                    CheckBox(isChecked: $viewModel.isComplete)
                     
                     TextField(viewModel.taskNamePlaceholderText, text: $viewModel.taskName)
                         .textFieldStyle(SimpleTextFieldStyle())
