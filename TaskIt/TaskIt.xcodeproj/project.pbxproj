@@ -59,7 +59,6 @@
 		D17FC98F25D8106F002A5501 /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D17FC98E25D8106F002A5501 /* SettingsViewModel.swift */; };
 		D17FC99425D8107C002A5501 /* SettingsViewModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = D17FC99325D8107C002A5501 /* SettingsViewModelProtocol.swift */; };
 		D17FC99925D8108B002A5501 /* FakeSettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D17FC99825D8108B002A5501 /* FakeSettingsViewModel.swift */; };
-		D17FC99E25D81450002A5501 /* SettingsItemExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D17FC99D25D81450002A5501 /* SettingsItemExtension.swift */; };
 		D17FC9A325D815EE002A5501 /* BundleExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D17FC9A225D815EE002A5501 /* BundleExtension.swift */; };
 		D17FC9A925D817BE002A5501 /* SettingsRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D17FC9A825D817BE002A5501 /* SettingsRowView.swift */; };
 		D17FC9AE25D817F4002A5501 /* ImageExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D17FC9AD25D817F4002A5501 /* ImageExtension.swift */; };
@@ -183,7 +182,6 @@
 		D17FC98E25D8106F002A5501 /* SettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
 		D17FC99325D8107C002A5501 /* SettingsViewModelProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModelProtocol.swift; sourceTree = "<group>"; };
 		D17FC99825D8108B002A5501 /* FakeSettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeSettingsViewModel.swift; sourceTree = "<group>"; };
-		D17FC99D25D81450002A5501 /* SettingsItemExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsItemExtension.swift; sourceTree = "<group>"; };
 		D17FC9A225D815EE002A5501 /* BundleExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BundleExtension.swift; sourceTree = "<group>"; };
 		D17FC9A825D817BE002A5501 /* SettingsRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsRowView.swift; sourceTree = "<group>"; };
 		D17FC9AD25D817F4002A5501 /* ImageExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageExtension.swift; sourceTree = "<group>"; };
@@ -283,7 +281,6 @@
 				D11E7D3325E14DDE00EED79E /* FontExtension.swift */,
 				D17FC9AD25D817F4002A5501 /* ImageExtension.swift */,
 				D11E734E25E6BC59006FD6CB /* NotificationExtension.swift */,
-				D17FC99D25D81450002A5501 /* SettingsItemExtension.swift */,
 				D17DAAA425DBE04900ED4A8C /* StringExtension.swift */,
 				D17FC9D025D81EBB002A5501 /* UIApplicationExtension.swift */,
 				D11E7D4125E15B1600EED79E /* UIScreenExtension.swift */,
@@ -781,7 +778,6 @@
 				D1529C3D25C70457003FC9D6 /* TaskItApp.swift in Sources */,
 				D1783EBA25C9C9E500D8EFC3 /* TasksListView.swift in Sources */,
 				D108BD06261B153C000F6D5A /* CheckBox.swift in Sources */,
-				D17FC99E25D81450002A5501 /* SettingsItemExtension.swift in Sources */,
 				D1BD687425E96EAA002C4518 /* RoundedButtonStyle.swift in Sources */,
 				D17FC98F25D8106F002A5501 /* SettingsViewModel.swift in Sources */,
 				D17FC9EC25D828F6002A5501 /* FakeSettingsRowViewModel.swift in Sources */,

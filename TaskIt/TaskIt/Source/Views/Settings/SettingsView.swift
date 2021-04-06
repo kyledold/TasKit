@@ -14,8 +14,13 @@ struct SettingsView<ViewModel: SettingsViewModelProtocol>: View {
     var body: some View {
         VStack(alignment: .leading, spacing: Layout.Spacing.cozy) {
             List {
+                Section {
+                    ForEach(viewModel.preferencesViewModels, id: \.id) { preferenceRowViewModel in
+                        SettingsRowView(viewModel: preferenceRowViewModel)
+                    }
+                }
                 Section(footer: footer) {
-                    ForEach(viewModel.rowViewModels, id: \.id) { settingsRowViewModel in
+                    ForEach(viewModel.footerViewModels, id: \.id) { settingsRowViewModel in
                         Button(action: { didTapSettingsRow(settingsRowViewModel) }) {
                             SettingsRowView(viewModel: settingsRowViewModel)
                         }
@@ -25,7 +30,12 @@ struct SettingsView<ViewModel: SettingsViewModelProtocol>: View {
             }
             .listStyle(InsetGroupedListStyle())
         }
-        .navigationBarTitle(viewModel.titleText, displayMode: .inline)
+        .navigationBarTitle(viewModel.titleText)
+        .navigationBarItems(leading:
+            Button(action: {
+                
+            }, label: { Text("Done") })
+        )
     }
     
     var footer: some View {
@@ -35,7 +45,7 @@ struct SettingsView<ViewModel: SettingsViewModelProtocol>: View {
     }
     
     private func didTapSettingsRow(_ rowViewModel: SettingsRowViewModel) {
-        UIApplication.openURL(rowViewModel.url)
+        //UIApplication.openURL(rowViewModel.url)
     }
 }
 

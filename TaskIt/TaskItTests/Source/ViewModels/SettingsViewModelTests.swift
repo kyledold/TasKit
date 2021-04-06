@@ -33,7 +33,7 @@ class SettingsViewModelTests: XCTestCase {
     func test_whenRowViewModelsCalled_thenReturnsExpectedValues() {
         // given
         // when
-        let result = sut.rowViewModels
+        let result = sut.footerViewModels
         
         // then
         XCTAssertEqual(result.count, 2)

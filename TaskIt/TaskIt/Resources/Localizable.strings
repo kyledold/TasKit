@@ -6,7 +6,7 @@
   
 */
 
-"app.version.%@" = "Version %@";
+"app.version.%@" = "TasKit Version %@";
 "general.add" = "Add";
 "general.cancel" = "Cancel";
 "general.done" = "Done";
@@ -15,8 +15,10 @@
 "calendar.title" = "Calendar";
 "new_task.task_name.placeholder" = "Type new task name here...";
 "settings.title" = "Settings";
-"settings.feedback.title" = "Feedback";
-"settings.feedback.subtitle" = "kdold02@gmail.com";
+"settings.list_behaviour.title" = "List Behaviour";
+"settings.list_behaviour.subtitle" = "List preferences";
+"settings.sync.title" = "TasKit Sync";
+"settings.sync.subtitle" = "iCloud sync settings";
 "settings.open_source.title" = "Source code";
 "settings.open_source.subtitle" = "Feel free to browse or contribute";
 "task_list.create_task" = "Create task";

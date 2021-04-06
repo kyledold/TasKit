@@ -12,7 +12,5 @@ class FakeSettingsRowViewModel: SettingsRowViewModelProtocol {
     var id = 0
     var titleText = "settings.feedback.title"
     var subtitleText = "settings.feedback.subtitle"
-    var systemImageName = "at"
-    var url = URL(string: "mailto:kdold02@gmail.com")!
-    var settingsItem: SettingsItem = .feedback
+    var settingsItem: SettingsItem = .openSource
 }
