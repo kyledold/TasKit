@@ -9,6 +9,6 @@ protocol SettingsViewModelProtocol: Identifiable {
     
     var titleText: String { get }
     var versionNumber: String? { get }
-    var preferencesViewModels: [SettingsRowViewModel] { get }
-    var footerViewModels: [SettingsRowViewModel] { get }
+    var preferencesViewModels: [SettingsItem] { get }
+    var footerViewModels: [SettingsItem] { get }
 }

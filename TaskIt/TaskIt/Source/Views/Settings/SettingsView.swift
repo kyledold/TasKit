@@ -10,20 +10,19 @@ import SwiftUI
 struct SettingsView<ViewModel: SettingsViewModelProtocol>: View {
     
     var viewModel: ViewModel
+    @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     
     var body: some View {
         VStack(alignment: .leading, spacing: Layout.Spacing.cozy) {
             List {
                 Section {
-                    ForEach(viewModel.preferencesViewModels, id: \.id) { preferenceRowViewModel in
-                        SettingsRowView(viewModel: preferenceRowViewModel)
+                    ForEach(viewModel.preferencesViewModels, id: \.self) { settingsItem in
+                        Text(settingsItem.text)
                     }
                 }
                 Section(footer: footer) {
-                    ForEach(viewModel.footerViewModels, id: \.id) { settingsRowViewModel in
-                        Button(action: { didTapSettingsRow(settingsRowViewModel) }) {
-                            SettingsRowView(viewModel: settingsRowViewModel)
-                        }
+                    ForEach(viewModel.footerViewModels, id: \.self) { settingsItem in
+                        Text(settingsItem.text)
                     }
                 }
                 
@@ -33,7 +32,7 @@ struct SettingsView<ViewModel: SettingsViewModelProtocol>: View {
         .navigationBarTitle(viewModel.titleText)
         .navigationBarItems(leading:
             Button(action: {
-                
+                presentationMode.wrappedValue.dismiss()
             }, label: { Text("Done") })
         )
     }
@@ -44,7 +43,7 @@ struct SettingsView<ViewModel: SettingsViewModelProtocol>: View {
             .modifier(FooterStyle())
     }
     
-    private func didTapSettingsRow(_ rowViewModel: SettingsRowViewModel) {
+    private func didTapSettingsRow(_ rowViewModel: SettingsItem) {
         //UIApplication.openURL(rowViewModel.url)
     }
 }

@@ -50,8 +50,7 @@ extension NewTaskView {
             Spacer()
             
             Button(action: createTaskButtonTapped, label: {
-                Image(systemName: Image.Icons.create).iconStyle(imageColor: .t_action)
-                
+                Image(systemName: Image.Icons.create).iconStyle(imageColor: .t_action)  
             })
             .buttonStyle(ImageButtonStyle(isDisabled: viewModel.isCreateButtonDisabled))
             .disabled(viewModel.isCreateButtonDisabled)

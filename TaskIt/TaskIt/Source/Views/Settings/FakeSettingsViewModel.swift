@@ -9,24 +9,7 @@ class FakeSettingsViewModel: SettingsViewModelProtocol {
     
     var titleText = "Settings"
     var versionNumber: String? = "1.0.0"
-    var preferencesViewModels: [SettingsRowViewModel] = [
-        SettingsRowViewModel(
-            settingsItem: .listBehaviour,
-            title: "",
-            subtitle: ""
-        ),
-        SettingsRowViewModel(
-            settingsItem: .sync,
-            title: "",
-            subtitle: ""
-        )
-    ]
+    var preferencesViewModels: [SettingsItem] = [.listBehaviour, .sync]
     
-    var footerViewModels: [SettingsRowViewModel] = [
-        SettingsRowViewModel(
-            settingsItem: .openSource,
-            title: "",
-            subtitle: ""
-        )
-    ]
+    var footerViewModels: [SettingsItem] = [.openSource]
 }

@@ -60,15 +60,9 @@
 		D17FC99425D8107C002A5501 /* SettingsViewModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = D17FC99325D8107C002A5501 /* SettingsViewModelProtocol.swift */; };
 		D17FC99925D8108B002A5501 /* FakeSettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D17FC99825D8108B002A5501 /* FakeSettingsViewModel.swift */; };
 		D17FC9A325D815EE002A5501 /* BundleExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D17FC9A225D815EE002A5501 /* BundleExtension.swift */; };
-		D17FC9A925D817BE002A5501 /* SettingsRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D17FC9A825D817BE002A5501 /* SettingsRowView.swift */; };
 		D17FC9AE25D817F4002A5501 /* ImageExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D17FC9AD25D817F4002A5501 /* ImageExtension.swift */; };
 		D17FC9B325D81810002A5501 /* SubTitleStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = D17FC9B225D81810002A5501 /* SubTitleStyle.swift */; };
 		D17FC9D125D81EBB002A5501 /* UIApplicationExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D17FC9D025D81EBB002A5501 /* UIApplicationExtension.swift */; };
-		D17FC9D925D8235F002A5501 /* SettingsRowViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D17FC9D825D8235F002A5501 /* SettingsRowViewModel.swift */; };
-		D17FC9E725D82863002A5501 /* SettingsRowViewModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = D17FC9E625D82863002A5501 /* SettingsRowViewModelProtocol.swift */; };
-		D17FC9EC25D828F6002A5501 /* FakeSettingsRowViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D17FC9EB25D828F6002A5501 /* FakeSettingsRowViewModel.swift */; };
-		D17FC9F125D82AC7002A5501 /* SettingsViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D17FC9F025D82AC7002A5501 /* SettingsViewModelTests.swift */; };
-		D17FC9F625D82B9C002A5501 /* SettingsRowViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D17FC9F525D82B9C002A5501 /* SettingsRowViewModelTests.swift */; };
 		D17FCA5B25D98986002A5501 /* TasksListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D17FCA5A25D98986002A5501 /* TasksListViewModel.swift */; };
 		D1BB98ED25F506F700591E69 /* FakeSheetModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1BB98EC25F506F700591E69 /* FakeSheetModifier.swift */; };
 		D1BC33C225D455F50068A57A /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1BC33C125D455F50068A57A /* Constants.swift */; };
@@ -183,15 +177,9 @@
 		D17FC99325D8107C002A5501 /* SettingsViewModelProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModelProtocol.swift; sourceTree = "<group>"; };
 		D17FC99825D8108B002A5501 /* FakeSettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeSettingsViewModel.swift; sourceTree = "<group>"; };
 		D17FC9A225D815EE002A5501 /* BundleExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BundleExtension.swift; sourceTree = "<group>"; };
-		D17FC9A825D817BE002A5501 /* SettingsRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsRowView.swift; sourceTree = "<group>"; };
 		D17FC9AD25D817F4002A5501 /* ImageExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageExtension.swift; sourceTree = "<group>"; };
 		D17FC9B225D81810002A5501 /* SubTitleStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubTitleStyle.swift; sourceTree = "<group>"; };
 		D17FC9D025D81EBB002A5501 /* UIApplicationExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIApplicationExtension.swift; sourceTree = "<group>"; };
-		D17FC9D825D8235F002A5501 /* SettingsRowViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsRowViewModel.swift; sourceTree = "<group>"; };
-		D17FC9E625D82863002A5501 /* SettingsRowViewModelProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsRowViewModelProtocol.swift; sourceTree = "<group>"; };
-		D17FC9EB25D828F6002A5501 /* FakeSettingsRowViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeSettingsRowViewModel.swift; sourceTree = "<group>"; };
-		D17FC9F025D82AC7002A5501 /* SettingsViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModelTests.swift; sourceTree = "<group>"; };
-		D17FC9F525D82B9C002A5501 /* SettingsRowViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsRowViewModelTests.swift; sourceTree = "<group>"; };
 		D17FCA5A25D98986002A5501 /* TasksListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasksListViewModel.swift; sourceTree = "<group>"; };
 		D187C07025DA6B4D00A5B09A /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
 		D1BB6D4A25D0104F00B1ED10 /* TaskIt.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = TaskIt.entitlements; sourceTree = "<group>"; };
@@ -389,7 +377,6 @@
 				D1E91F4E25F4E94D0036C1C4 /* Sub Task Row */,
 				D11E7D3A25E155A800EED79E /* Calendar */,
 				D17FC9A725D817A6002A5501 /* Settings */,
-				D1E91F5125F4E98E0036C1C4 /* Settings Row */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -468,8 +455,6 @@
 		D1BC33F925D595CD0068A57A /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
-				D17FC9F025D82AC7002A5501 /* SettingsViewModelTests.swift */,
-				D17FC9F525D82B9C002A5501 /* SettingsRowViewModelTests.swift */,
 				D17DA9F925DAE35C00ED4A8C /* TasksListViewModelTests.swift */,
 				D1542BAD25DD8997005FD7C7 /* TaskRowViewModelTests.swift */,
 				D1F02E922603BF1600E6B134 /* TaskDetailsViewModelTests.swift */,
@@ -573,17 +558,6 @@
 				D1F2066425F39E09001780E7 /* FakeNewTaskViewModel.swift */,
 			);
 			path = "New Task";
-			sourceTree = "<group>";
-		};
-		D1E91F5125F4E98E0036C1C4 /* Settings Row */ = {
-			isa = PBXGroup;
-			children = (
-				D17FC9A825D817BE002A5501 /* SettingsRowView.swift */,
-				D17FC9E625D82863002A5501 /* SettingsRowViewModelProtocol.swift */,
-				D17FC9D825D8235F002A5501 /* SettingsRowViewModel.swift */,
-				D17FC9EB25D828F6002A5501 /* FakeSettingsRowViewModel.swift */,
-			);
-			path = "Settings Row";
 			sourceTree = "<group>";
 		};
 		D1E91F5725F4ED190036C1C4 /* Navigation */ = {
@@ -748,7 +722,6 @@
 				D17FC9B325D81810002A5501 /* SubTitleStyle.swift in Sources */,
 				D1F2066A25F3A66B001780E7 /* ImageButtonStyle.swift in Sources */,
 				D17DAAA125DBDF8400ED4A8C /* TaskIt.xcdatamodeld in Sources */,
-				D17FC9E725D82863002A5501 /* SettingsRowViewModelProtocol.swift in Sources */,
 				D1783EBD25C9C9F100D8EFC3 /* CalendarView.swift in Sources */,
 				D17DA9E525DAC51700ED4A8C /* TaskDetailsViewModelProtocol.swift in Sources */,
 				D1BD688C25EA8ECF002C4518 /* TextBox.swift in Sources */,
@@ -760,14 +733,12 @@
 				D1BD689125EB8E45002C4518 /* SubTask+Helper.swift in Sources */,
 				D1C98B3B260F5EB20077587F /* Task+CoreDataProperties.swift in Sources */,
 				D1F2066225F39DF8001780E7 /* NewTaskViewModelProtocol.swift in Sources */,
-				D17FC9D925D8235F002A5501 /* SettingsRowViewModel.swift in Sources */,
 				D17DAABB25DBFD3300ED4A8C /* TaskRowViewModel.swift in Sources */,
 				D1034ADE25FA5E2900288A38 /* BottomSheet.swift in Sources */,
 				D1DCF69025EBD7EA006305E7 /* SubTaskListView.swift in Sources */,
 				D17DAAB225DBFC9E00ED4A8C /* TaskRowView.swift in Sources */,
 				D1DCF68C25EB9600006305E7 /* FakeSubTaskRowViewModel.swift in Sources */,
 				D17DA9D725DABECB00ED4A8C /* FakeTasksListViewModel.swift in Sources */,
-				D17FC9A925D817BE002A5501 /* SettingsRowView.swift in Sources */,
 				D11E7D1A25E1433F00EED79E /* ViewExtension.swift in Sources */,
 				D1F2065A25F39A4C001780E7 /* NewTaskView.swift in Sources */,
 				D17FC99925D8108B002A5501 /* FakeSettingsViewModel.swift in Sources */,
@@ -780,7 +751,6 @@
 				D108BD06261B153C000F6D5A /* CheckBox.swift in Sources */,
 				D1BD687425E96EAA002C4518 /* RoundedButtonStyle.swift in Sources */,
 				D17FC98F25D8106F002A5501 /* SettingsViewModel.swift in Sources */,
-				D17FC9EC25D828F6002A5501 /* FakeSettingsRowViewModel.swift in Sources */,
 				D17FC99425D8107C002A5501 /* SettingsViewModelProtocol.swift in Sources */,
 				D1DCF68325EB9497006305E7 /* SubTaskRowView.swift in Sources */,
 				D11E7D4225E15B1600EED79E /* UIScreenExtension.swift in Sources */,
@@ -799,8 +769,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				D10F85BA2603C87200B08A87 /* SubTaskListViewModelTests.swift in Sources */,
-				D17FC9F625D82B9C002A5501 /* SettingsRowViewModelTests.swift in Sources */,
-				D17FC9F125D82AC7002A5501 /* SettingsViewModelTests.swift in Sources */,
 				D10F85BD2603C96300B08A87 /* SubTaskRowViewModelTests.swift in Sources */,
 				D10F85B62603C53200B08A87 /* NewTaskViewModelTests.swift in Sources */,
 				D1542BAE25DD8997005FD7C7 /* TaskRowViewModelTests.swift in Sources */,
