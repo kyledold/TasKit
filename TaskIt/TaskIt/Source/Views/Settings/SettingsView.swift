@@ -15,17 +15,14 @@ struct SettingsView<ViewModel: SettingsViewModelProtocol>: View {
     var body: some View {
         VStack(alignment: .leading, spacing: Layout.Spacing.cozy) {
             List {
-                Section {
-                    ForEach(viewModel.preferencesViewModels, id: \.self) { settingsItem in
-                        Text(settingsItem.text)
-                    }
-                }
                 Section(footer: footer) {
-                    ForEach(viewModel.footerViewModels, id: \.self) { settingsItem in
-                        Text(settingsItem.text)
-                    }
+                    NavigationLink(destination: ListBehaviourView(), label: {
+                        Text(viewModel.listBehaviourText)
+                    })
+                    NavigationLink(destination: SyncSettingsView(), label: {
+                        Text(viewModel.syncText)
+                    })
                 }
-                
             }
             .listStyle(InsetGroupedListStyle())
         }
@@ -41,10 +38,6 @@ struct SettingsView<ViewModel: SettingsViewModelProtocol>: View {
         viewModel.versionNumber
             .map { Text("app.version.\($0)") }
             .modifier(FooterStyle())
-    }
-    
-    private func didTapSettingsRow(_ rowViewModel: SettingsItem) {
-        //UIApplication.openURL(rowViewModel.url)
     }
 }
 
