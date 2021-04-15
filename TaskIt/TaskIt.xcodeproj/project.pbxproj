@@ -73,6 +73,9 @@
 		D1BD689125EB8E45002C4518 /* SubTask+Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1BD689025EB8E45002C4518 /* SubTask+Helper.swift */; };
 		D1BE786F26233EEE0094634A /* ListBehaviourView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1BE786E26233EEE0094634A /* ListBehaviourView.swift */; };
 		D1BE7873262341C00094634A /* SyncSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1BE7872262341C00094634A /* SyncSettingsView.swift */; };
+		D1BE78772628BC750094634A /* ListBehaviourViewModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1BE78762628BC750094634A /* ListBehaviourViewModelProtocol.swift */; };
+		D1BE787A2628BC870094634A /* ListBehaviourViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1BE78792628BC870094634A /* ListBehaviourViewModel.swift */; };
+		D1BE787D2628BC980094634A /* FakeListBehaviourViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1BE787C2628BC980094634A /* FakeListBehaviourViewModel.swift */; };
 		D1C98B38260F5EB20077587F /* SubTask+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1C98B36260F5EB20077587F /* SubTask+CoreDataClass.swift */; };
 		D1C98B39260F5EB20077587F /* Task+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1C98B37260F5EB20077587F /* Task+CoreDataClass.swift */; };
 		D1C98B3A260F5EB20077587F /* SubTask+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1C98B35260F5EB20077587F /* SubTask+CoreDataProperties.swift */; };
@@ -195,6 +198,9 @@
 		D1BD689025EB8E45002C4518 /* SubTask+Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SubTask+Helper.swift"; sourceTree = "<group>"; };
 		D1BE786E26233EEE0094634A /* ListBehaviourView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListBehaviourView.swift; sourceTree = "<group>"; };
 		D1BE7872262341C00094634A /* SyncSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SyncSettingsView.swift; sourceTree = "<group>"; };
+		D1BE78762628BC750094634A /* ListBehaviourViewModelProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListBehaviourViewModelProtocol.swift; sourceTree = "<group>"; };
+		D1BE78792628BC870094634A /* ListBehaviourViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListBehaviourViewModel.swift; sourceTree = "<group>"; };
+		D1BE787C2628BC980094634A /* FakeListBehaviourViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeListBehaviourViewModel.swift; sourceTree = "<group>"; };
 		D1C98B34260F5EB20077587F /* Task+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Task+CoreDataProperties.swift"; path = "/Users/kyledold/Development/TaskIt/TaskIt/TaskIt/Source/Models/Task+CoreDataProperties.swift"; sourceTree = "<absolute>"; };
 		D1C98B35260F5EB20077587F /* SubTask+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "SubTask+CoreDataProperties.swift"; path = "/Users/kyledold/Development/TaskIt/TaskIt/TaskIt/Source/Models/SubTask+CoreDataProperties.swift"; sourceTree = "<absolute>"; };
 		D1C98B36260F5EB20077587F /* SubTask+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "SubTask+CoreDataClass.swift"; path = "/Users/kyledold/Development/TaskIt/TaskIt/TaskIt/Source/Models/SubTask+CoreDataClass.swift"; sourceTree = "<absolute>"; };
@@ -472,6 +478,9 @@
 			isa = PBXGroup;
 			children = (
 				D1BE786E26233EEE0094634A /* ListBehaviourView.swift */,
+				D1BE78762628BC750094634A /* ListBehaviourViewModelProtocol.swift */,
+				D1BE78792628BC870094634A /* ListBehaviourViewModel.swift */,
+				D1BE787C2628BC980094634A /* FakeListBehaviourViewModel.swift */,
 			);
 			path = "List Behaviour";
 			sourceTree = "<group>";
@@ -712,6 +721,7 @@
 				D10CD6A226075CF80025851B /* DateFormatterExtension.swift in Sources */,
 				D1DCF68625EB9511006305E7 /* SubTaskRowViewModel.swift in Sources */,
 				D11E7D3425E14DDE00EED79E /* FontExtension.swift in Sources */,
+				D1BE78772628BC750094634A /* ListBehaviourViewModelProtocol.swift in Sources */,
 				D11E733125E53781006FD6CB /* DateExtension.swift in Sources */,
 				D1DCF69425EBD8F3006305E7 /* SubTaskListViewModel.swift in Sources */,
 				D11E734725E571BA006FD6CB /* ToastMessage.swift in Sources */,
@@ -723,6 +733,7 @@
 				D11E734F25E6BC59006FD6CB /* NotificationExtension.swift in Sources */,
 				D17DA9CD25DABE4600ED4A8C /* TaskDetailsViewModel.swift in Sources */,
 				D1F2066525F39E09001780E7 /* FakeNewTaskViewModel.swift in Sources */,
+				D1BE787D2628BC980094634A /* FakeListBehaviourViewModel.swift in Sources */,
 				D1DCF68925EB9527006305E7 /* SubTaskRowViewModelProtocol.swift in Sources */,
 				D11E734A25E571FF006FD6CB /* ToastView.swift in Sources */,
 				D1BD687825E970A9002C4518 /* TextNavigationButtonStyle.swift in Sources */,
@@ -781,6 +792,7 @@
 				D17FC9A325D815EE002A5501 /* BundleExtension.swift in Sources */,
 				D131DF9B25E276770039D7E7 /* ButtonFooterView.swift in Sources */,
 				D1297F3925F5038400A3D20B /* CalendarViewModelProtocol.swift in Sources */,
+				D1BE787A2628BC870094634A /* ListBehaviourViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

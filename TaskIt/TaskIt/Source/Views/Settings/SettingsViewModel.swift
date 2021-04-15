@@ -16,4 +16,6 @@ class SettingsViewModel: SettingsViewModelProtocol {
     
     let listBehaviourText = NSLocalizedString("settings.list_behaviour.title", comment: "list behaviour title")
     let syncText = NSLocalizedString("settings.sync.title", comment: "sync title")
+    
+    let listBehaviourViewModel = ListBehaviourViewModel()
 }

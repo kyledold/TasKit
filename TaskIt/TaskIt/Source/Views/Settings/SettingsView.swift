@@ -16,7 +16,7 @@ struct SettingsView<ViewModel: SettingsViewModelProtocol>: View {
         VStack(alignment: .leading, spacing: Layout.Spacing.cozy) {
             List {
                 Section(footer: footer) {
-                    NavigationLink(destination: ListBehaviourView(), label: {
+                    NavigationLink(destination: ListBehaviourView(viewModel: viewModel.listBehaviourViewModel), label: {
                         Text(viewModel.listBehaviourText)
                     })
                     NavigationLink(destination: SyncSettingsView(), label: {

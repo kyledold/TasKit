@@ -16,6 +16,9 @@
 "new_task.task_name.placeholder" = "Type new task name here...";
 "settings.title" = "Settings";
 "settings.list_behaviour.title" = "List Behaviour";
+"settings.list_behaviour.show_sub_tasks" = "Show Sub-tasks";
+"settings.list_behaviour.show_sub_tasks.description" = "If enabled this will show the sub tasks under the related task in the list up to a maximum of 8.";
+
 "settings.sync.title" = "TasKit Sync";
 "task_list.create_task" = "Create task";
 "task_list.today" = "Today";

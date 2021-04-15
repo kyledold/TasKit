@@ -7,8 +7,9 @@
 
 import SwiftUI
 
-struct ListBehaviourView: View {
+struct ListBehaviourView<ViewModel: ListBehaviourViewModelProtocol>: View {
     
+    @ObservedObject var viewModel: ViewModel
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     
     var body: some View {
@@ -21,14 +22,17 @@ struct ListBehaviourView: View {
             }
             .listStyle(InsetGroupedListStyle())
         }
-        .navigationBarTitle("List Behaviour")
+        .navigationBarTitle(viewModel.titleText)
     }
+}
+    
+extension ListBehaviourView {
     
     private var subTaskSection: some View {
         Section(footer: subTaskSectionFooter) {
             HStack {
-                Toggle(isOn: .constant(false)) {
-                    Text("Show Sub-tasks")
+                Toggle(isOn: $viewModel.isShowSubTasksEnabled) {
+                    Text(viewModel.showSubTasksText)
                         .frame(maxWidth: .infinity, alignment: .leading)
                 }
                 .toggleStyle(SwitchToggleStyle(tint: .t_action))
@@ -38,7 +42,7 @@ struct ListBehaviourView: View {
     }
     
     private var subTaskSectionFooter: some View {
-        Text("If enabled this will show the sub tasks under the related task in the list up to a maximum of 8.")
+        Text(viewModel.showSubTasksDescription)
             .padding(.horizontal)
     }
     
@@ -99,6 +103,6 @@ struct ListBehaviourView: View {
 
 struct ListBehaviourView_Previews: PreviewProvider {
     static var previews: some View {
-        ListBehaviourView()
+        ListBehaviourView(viewModel: FakeListBehaviourViewModel())
     }
 }

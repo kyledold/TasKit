@@ -11,4 +11,5 @@ class FakeSettingsViewModel: SettingsViewModelProtocol {
     var versionNumber: String? = "1.0.0"
     let listBehaviourText = "List Behaviour"
     let syncText = "Sync"
+    let listBehaviourViewModel = ListBehaviourViewModel()
 }

@@ -11,4 +11,6 @@ protocol SettingsViewModelProtocol: Identifiable {
     var versionNumber: String? { get }
     var listBehaviourText: String { get }
     var syncText: String { get }
+    
+    var listBehaviourViewModel: ListBehaviourViewModel { get }
 }
