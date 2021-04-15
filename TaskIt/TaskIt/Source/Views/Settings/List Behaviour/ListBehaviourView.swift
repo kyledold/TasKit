@@ -27,11 +27,11 @@ struct ListBehaviourView: View {
     private var subTaskSection: some View {
         Section(footer: subTaskSectionFooter) {
             HStack {
-                Text("Show Sub-tasks")
-                Spacer()
-                Toggle(isOn: .constant(false), label: {})
-                    .toggleStyle(SwitchToggleStyle(tint: .t_action))
-                    .padding(Layout.Spacing.tight)
+                Toggle(isOn: .constant(false)) {
+                    Text("Show Sub-tasks")
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                }
+                .toggleStyle(SwitchToggleStyle(tint: .t_action))
             }
             .frame(height: 40)
         }
@@ -45,11 +45,11 @@ struct ListBehaviourView: View {
     private var reminderSection: some View {
         Section(footer: reminderSectionFooter) {
             HStack {
-                Text("Show reminder")
-                Spacer()
-                Toggle(isOn: .constant(false), label: {})
-                    .toggleStyle(SwitchToggleStyle(tint: .t_action))
-                    .padding(Layout.Spacing.tight)
+                Toggle(isOn: .constant(false)) {
+                    Text("Show reminder")
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                }
+                .toggleStyle(SwitchToggleStyle(tint: .t_action))
             }
             .frame(height: 40)
         }
@@ -63,11 +63,11 @@ struct ListBehaviourView: View {
     private var unfinishedTasksSection: some View {
         Section(footer: unfinishedTasksSectionFooter) {
             HStack {
-                Text("Carry forward incomplete tasks")
-                Spacer()
-                Toggle(isOn: .constant(false), label: {})
-                    .toggleStyle(SwitchToggleStyle(tint: .t_action))
-                    .padding(Layout.Spacing.tight)
+                Toggle(isOn: .constant(false)) {
+                    Text("Carry forward incomplete tasks")
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                }
+                .toggleStyle(SwitchToggleStyle(tint: .t_action))
             }
             .frame(height: 40)
         }
@@ -81,11 +81,11 @@ struct ListBehaviourView: View {
     private var completeSubTasksSection: some View {
         Section(footer: completeSubTasksSectionFooter) {
             HStack {
-                Text("Auto complete task")
-                Spacer()
-                Toggle(isOn: .constant(false), label: {})
-                    .toggleStyle(SwitchToggleStyle(tint: .t_action))
-                    .padding(Layout.Spacing.tight)
+                Toggle(isOn: .constant(false)) {
+                    Text("Auto complete task")
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                }
+                .toggleStyle(SwitchToggleStyle(tint: .t_action))
             }
             .frame(height: 40)
         }
