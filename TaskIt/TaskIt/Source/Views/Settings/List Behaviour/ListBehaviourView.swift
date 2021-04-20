@@ -49,8 +49,8 @@ extension ListBehaviourView {
     private var reminderSection: some View {
         Section(footer: reminderSectionFooter) {
             HStack {
-                Toggle(isOn: .constant(false)) {
-                    Text("Show reminder")
+                Toggle(isOn: $viewModel.isReminderEnabled) {
+                    Text(viewModel.showReminderText)
                         .frame(maxWidth: .infinity, alignment: .leading)
                 }
                 .toggleStyle(SwitchToggleStyle(tint: .t_action))

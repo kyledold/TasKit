@@ -13,4 +13,7 @@ class FakeListBehaviourViewModel: ListBehaviourViewModelProtocol {
     var showSubTasksText = "Some setting"
     var showSubTasksDescription = "Some setting description"
     var isShowSubTasksEnabled = true
+    var showReminderText = "Show reminder"
+    var showReminderDescription = "Show reminder description"
+    var isReminderEnabled = true
 }
