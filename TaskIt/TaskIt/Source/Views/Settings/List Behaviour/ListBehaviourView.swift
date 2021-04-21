@@ -81,24 +81,6 @@ extension ListBehaviourView {
         Text(viewModel.moveIncompleteTasksDescription)
             .padding(.horizontal)
     }
-    
-    private var completeSubTasksSection: some View {
-        Section(footer: completeSubTasksSectionFooter) {
-            HStack {
-                Toggle(isOn: .constant(false)) {
-                    Text("Auto complete task")
-                        .frame(maxWidth: .infinity, alignment: .leading)
-                }
-                .toggleStyle(SwitchToggleStyle(tint: .t_action))
-            }
-            .frame(height: 40)
-        }
-    }
-    
-    private var completeSubTasksSectionFooter: some View {
-        Text("If enabled this automatically complete task when all sub-tasks are completed.")
-            .padding(.horizontal)
-    }
 }
 
 struct ListBehaviourView_Previews: PreviewProvider {
