@@ -18,7 +18,10 @@ class ListBehaviourViewModel: ListBehaviourViewModelProtocol {
     var showReminderText = NSLocalizedString("settings.list_behaviour.show_reminder.title", comment: "show reminder text")
     var showReminderDescription = NSLocalizedString("settings.list_behaviour.show_reminder.description", comment: "show_reminder description")
     
+    var moveIncompleteTasksText = NSLocalizedString("settings.list_behaviour.move_incomplete_tasks.title", comment: "move incomplete tasks text")
+    var moveIncompleteTasksDescription = NSLocalizedString("settings.list_behaviour.move_incomplete_tasks.description", comment: "move incomplete tasks description")
     
-    @Published var isShowSubTasksEnabled: Bool = false
-    @Published var isReminderEnabled: Bool = false
+    @Published var isShowSubTasksEnabled = false
+    @Published var isReminderEnabled = false
+    @Published var isMoveInompleteTasksEnabled = false
 }

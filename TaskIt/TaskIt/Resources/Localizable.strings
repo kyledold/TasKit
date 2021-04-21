@@ -20,6 +20,8 @@
 "settings.list_behaviour.show_sub_tasks.description" = "If enabled this will show the sub tasks under the related task in the list up to a maximum of 8.";
 "settings.list_behaviour.show_reminder.title" = "Show Reminders";
 "settings.list_behaviour.show_reminder.description" = "If enabled this will show the reminder time next to the task name in the list.";
+"settings.list_behaviour.move_incomplete_tasks.title" = "Carry forward incomplete tasks";
+"settings.list_behaviour.move_incomplete_tasks.description" = "If enabled this will carry forward any uncompleted tasks to the current date.";
 
 "settings.sync.title" = "TasKit Sync";
 "task_list.create_task" = "Create task";

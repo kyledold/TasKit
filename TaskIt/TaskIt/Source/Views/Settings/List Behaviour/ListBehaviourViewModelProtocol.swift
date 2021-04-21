@@ -18,4 +18,8 @@ protocol ListBehaviourViewModelProtocol: ObservableObject {
     var showReminderText: String { get }
     var showReminderDescription: String { get }
     var isReminderEnabled: Bool { get set }
+    
+    var moveIncompleteTasksText: String { get }
+    var moveIncompleteTasksDescription: String { get }
+    var isMoveInompleteTasksEnabled: Bool { get set }
 }

@@ -60,15 +60,15 @@ extension ListBehaviourView {
     }
     
     private var reminderSectionFooter: some View {
-        Text("If enabled this will show the reminder time next to the task name in the list.")
+        Text(viewModel.showReminderDescription)
             .padding(.horizontal)
     }
     
     private var unfinishedTasksSection: some View {
         Section(footer: unfinishedTasksSectionFooter) {
             HStack {
-                Toggle(isOn: .constant(false)) {
-                    Text("Carry forward incomplete tasks")
+                Toggle(isOn: $viewModel.isMoveInompleteTasksEnabled) {
+                    Text(viewModel.moveIncompleteTasksText)
                         .frame(maxWidth: .infinity, alignment: .leading)
                 }
                 .toggleStyle(SwitchToggleStyle(tint: .t_action))
@@ -78,7 +78,7 @@ extension ListBehaviourView {
     }
     
     private var unfinishedTasksSectionFooter: some View {
-        Text("If enabled this will carry forward any uncompleted tasks to the current date.")
+        Text(viewModel.moveIncompleteTasksDescription)
             .padding(.horizontal)
     }
     

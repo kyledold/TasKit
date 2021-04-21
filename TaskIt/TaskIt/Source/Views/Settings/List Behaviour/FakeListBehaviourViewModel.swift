@@ -16,4 +16,7 @@ class FakeListBehaviourViewModel: ListBehaviourViewModelProtocol {
     var showReminderText = "Show reminder"
     var showReminderDescription = "Show reminder description"
     var isReminderEnabled = true
+    var moveIncompleteTasksText = "Move incomplete tasks"
+    var moveIncompleteTasksDescription = "Move incomplete tasks description"
+    var isMoveInompleteTasksEnabled = true
 }
