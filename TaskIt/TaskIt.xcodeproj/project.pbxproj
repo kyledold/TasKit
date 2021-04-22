@@ -383,11 +383,8 @@
 			isa = PBXGroup;
 			children = (
 				D1E91F4925F4E8F30036C1C4 /* Tasks List */,
-				D1E91F4A25F4E9070036C1C4 /* Task Row */,
 				D1E91F4C25F4E9220036C1C4 /* Task Details */,
-				D1E91F5025F4E97E0036C1C4 /* New Task */,
 				D1E91F4D25F4E9350036C1C4 /* Sub Task List */,
-				D1E91F4E25F4E94D0036C1C4 /* Sub Task Row */,
 				D11E7D3A25E155A800EED79E /* Calendar */,
 				D17FC9A725D817A6002A5501 /* Settings */,
 			);
@@ -538,6 +535,8 @@
 				D17DA9D125DABEA600ED4A8C /* TasksListViewModelProtocol.swift */,
 				D17FCA5A25D98986002A5501 /* TasksListViewModel.swift */,
 				D17DA9D625DABECB00ED4A8C /* FakeTasksListViewModel.swift */,
+				D1E91F5025F4E97E0036C1C4 /* New Task */,
+				D1E91F4A25F4E9070036C1C4 /* Task Row */,
 			);
 			path = "Tasks List";
 			sourceTree = "<group>";
@@ -571,6 +570,7 @@
 				D1DCF69625EBD908006305E7 /* SubTaskListViewModelProtocol.swift */,
 				D1DCF69325EBD8F3006305E7 /* SubTaskListViewModel.swift */,
 				D1DCF69A25EBD918006305E7 /* FakeSubTaskListViewModel.swift */,
+				D1E91F4E25F4E94D0036C1C4 /* Sub Task Row */,
 			);
 			path = "Sub Task List";
 			sourceTree = "<group>";
