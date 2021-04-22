@@ -18,7 +18,6 @@ struct ListBehaviourView<ViewModel: ListBehaviourViewModelProtocol>: View {
                 subTaskSection
                 reminderSection
                 unfinishedTasksSection
-                completeSubTasksSection
             }
             .listStyle(InsetGroupedListStyle())
         }

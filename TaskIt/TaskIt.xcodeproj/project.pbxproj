@@ -495,8 +495,8 @@
 			isa = PBXGroup;
 			children = (
 				D1BE7872262341C00094634A /* SyncSettingsView.swift */,
-				D1BE78812631D8720094634A /* SyncSettingsViewModel.swift */,
 				D1BE78842631D8810094634A /* SyncSettingsViewModelProtocol.swift */,
+				D1BE78812631D8720094634A /* SyncSettingsViewModel.swift */,
 				D1BE78872631D8900094634A /* FakeSyncSettingsViewModel.swift */,
 			);
 			path = Sync;

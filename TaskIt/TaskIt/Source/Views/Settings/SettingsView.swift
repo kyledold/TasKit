@@ -19,7 +19,7 @@ struct SettingsView<ViewModel: SettingsViewModelProtocol>: View {
                     NavigationLink(destination: ListBehaviourView(viewModel: viewModel.listBehaviourViewModel), label: {
                         Text(viewModel.listBehaviourText)
                     })
-                    NavigationLink(destination: SyncSettingsView(), label: {
+                    NavigationLink(destination: SyncSettingsView(viewModel: viewModel.syncSettingsViewModel), label: {
                         Text(viewModel.syncText)
                     })
                 }

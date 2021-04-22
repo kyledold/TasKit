@@ -6,3 +6,12 @@
 //
 
 import Foundation
+
+protocol SyncSettingsViewModelProtocol: ObservableObject {
+    
+    var titleText: String { get }
+    
+    var iCloudSyncText: String { get }
+    var iCloudSyncDescription: String { get }
+    var isICloudSyncEnabled: Bool { get set }
+}

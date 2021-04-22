@@ -12,4 +12,5 @@ class FakeSettingsViewModel: SettingsViewModelProtocol {
     let listBehaviourText = "List Behaviour"
     let syncText = "Sync"
     let listBehaviourViewModel = ListBehaviourViewModel()
+    let syncSettingsViewModel = SyncSettingsViewModel()
 }

@@ -13,4 +13,5 @@ protocol SettingsViewModelProtocol: Identifiable {
     var syncText: String { get }
     
     var listBehaviourViewModel: ListBehaviourViewModel { get }
+    var syncSettingsViewModel: SyncSettingsViewModel { get }
 }
