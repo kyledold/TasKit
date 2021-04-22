@@ -10,32 +10,34 @@ import SwiftUI
 struct SettingsView<ViewModel: SettingsViewModelProtocol>: View {
     
     var viewModel: ViewModel
+    @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     
     var body: some View {
         VStack(alignment: .leading, spacing: Layout.Spacing.cozy) {
             List {
                 Section(footer: footer) {
-                    ForEach(viewModel.rowViewModels, id: \.id) { settingsRowViewModel in
-                        Button(action: { didTapSettingsRow(settingsRowViewModel) }) {
-                            SettingsRowView(viewModel: settingsRowViewModel)
-                        }
-                    }
+                    NavigationLink(destination: ListBehaviourView(viewModel: viewModel.listBehaviourViewModel), label: {
+                        Text(viewModel.listBehaviourText)
+                    })
+                    NavigationLink(destination: SyncSettingsView(viewModel: viewModel.syncSettingsViewModel), label: {
+                        Text(viewModel.syncText)
+                    })
                 }
-                
             }
             .listStyle(InsetGroupedListStyle())
         }
-        .navigationBarTitle(viewModel.titleText, displayMode: .inline)
+        .navigationBarTitle(viewModel.titleText)
+        .navigationBarItems(leading:
+            Button(action: {
+                presentationMode.wrappedValue.dismiss()
+            }, label: { Text("Done") })
+        )
     }
     
     var footer: some View {
         viewModel.versionNumber
             .map { Text("app.version.\($0)") }
             .modifier(FooterStyle())
-    }
-    
-    private func didTapSettingsRow(_ rowViewModel: SettingsRowViewModel) {
-        UIApplication.openURL(rowViewModel.url)
     }
 }
 

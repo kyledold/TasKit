@@ -14,13 +14,9 @@ class SettingsViewModel: SettingsViewModelProtocol {
     let titleText = NSLocalizedString("settings.title", comment: "title")
     var versionNumber = Bundle.version
     
-    private(set) var rowViewModels: [SettingsRowViewModel] = [
-        SettingsRowViewModel(settingItem: .feedback),
-        SettingsRowViewModel(settingItem: .openSource)
-    ]
-}
-
-enum SettingsItem: Int {
-    case feedback
-    case openSource
+    let listBehaviourText = NSLocalizedString("settings.list_behaviour.title", comment: "list behaviour title")
+    let syncText = NSLocalizedString("settings.sync.title", comment: "sync title")
+    
+    let listBehaviourViewModel = ListBehaviourViewModel()
+    let syncSettingsViewModel = SyncSettingsViewModel()
 }

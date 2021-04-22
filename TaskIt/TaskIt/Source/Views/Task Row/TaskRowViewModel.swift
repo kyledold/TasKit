@@ -16,7 +16,8 @@ class TaskRowViewModel: TaskRowViewModelProtocol {
     @Published var isComplete: Bool = false
     @Published var subTasksCompletionPercentage: Double?
     
-    var id: UUID { task.id }
+    var id: UUID
+    var taskId: UUID { task.id }
     var title: String { task.title }
     var time: String? { task.dueTime?.shortTime ?? nil }
     var onChangeCompletion: ValueClosure<Bool>
@@ -32,6 +33,7 @@ class TaskRowViewModel: TaskRowViewModelProtocol {
         self.task = task
         self.managedObjectContext = managedObjectContext
         self.onChangeCompletion = onChangeCompletion
+        self.id = UUID()
         
         self.isComplete = task.isComplete
         self.subTasksCompletionPercentage = task.subTasksCompletionPercentage
@@ -49,19 +51,19 @@ class TaskRowViewModel: TaskRowViewModelProtocol {
         }.store(in: &subscribers)
         
         notificationCenter.publisher(for: Notification.Name.NSManagedObjectContextObjectsDidChange, object: managedObjectContext)
-            .sink(receiveValue: { [weak self] notification in
+            .sink { [weak self] notification in
                 guard let userInfo = notification.userInfo else { return }
                 guard let updates = userInfo[NSUpdatedObjectsKey] as? Set<NSManagedObject> else { return }
                 
                 for update in updates {
-                    if let task = update as? Task, task.id == self?.id {
+                    if let task = update as? Task, task.id == self?.taskId {
                         self?.isComplete = task.isComplete
                     }
                     
-                    if let subTask = update as? SubTask, subTask.task.id == self?.id {
+                    if let subTask = update as? SubTask, subTask.task.id == self?.taskId {
                         self?.subTasksCompletionPercentage = subTask.task.subTasksCompletionPercentage
                     }
                 }
-            }).store(in: &subscribers)
+        }.store(in: &subscribers)
     }
 }

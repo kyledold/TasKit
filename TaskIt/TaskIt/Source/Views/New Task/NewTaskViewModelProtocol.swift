@@ -13,6 +13,7 @@ protocol NewTaskViewModelProtocol: ObservableObject {
     var isCreateButtonDisabled: Bool { get }
     var taskNamePlaceholder: String { get }
     var selectedDate: Date { get }
+    var index: Int { get }
     
     func createTaskButtonTapped(_ completion: @escaping EmptyClosure)
 }

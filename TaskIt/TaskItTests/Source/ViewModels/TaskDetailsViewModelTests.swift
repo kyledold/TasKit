@@ -215,4 +215,60 @@ class TaskDetailsViewModelTests: XCTestCase {
         // then
         XCTAssertEqual(result, "Date")
     }
+    
+    func test_whenTimeTextCalled_thenReturnsExpectedValue() {
+        // given
+        // when
+        let result = sut.timeText
+        
+        // then
+        XCTAssertEqual(result, "Time")
+    }
+    
+    func test_whenTaskDateChanged_thenOnDateChangedClosureCalled() {
+        // given
+        var onDateChangedNumberOfCalls = 0
+        sut.onDateChanged = {
+            onDateChangedNumberOfCalls += 1
+        }
+        
+        // when
+        sut.dueDate = Date().addDays(numberOfDays: 1)
+        
+        // then
+        XCTAssertEqual(onDateChangedNumberOfCalls, 1)
+    }
+    
+    func test_whenDeleteButtonTapped_thenTaskIsDeleted() {
+        // given
+        let mockTaskToBeDeleted = Task.StubFactory.make(
+            title: "Mock task",
+            dueTime: Date(),
+            isReminderSet: true,
+            persistenceController: Self.mockPersistenceController
+        )
+        let mockTaskToBeDeletedId = mockTaskToBeDeleted.id
+        
+        let sut = TaskDetailsViewModel(
+            task: mockTaskToBeDeleted,
+            onDateChanged: {},
+            managedObjectContext: Self.mockPersistenceController.container.viewContext
+        )
+        
+        // when
+        sut.deleteButtonTapped { }
+        
+        // then
+        let task = Task.fetchTask(with: mockTaskToBeDeletedId, viewContext: Self.mockPersistenceController.container.viewContext)
+        XCTAssertNil(task)
+    }
+    
+    func test_whenCalendarButtonTapped_thenShowCalendarViewIsTrue() {
+        // given
+        // when
+        sut.calendarButtonTapped()
+        
+        // then
+        XCTAssertEqual(sut.showCalendarView, true)
+    }
 }

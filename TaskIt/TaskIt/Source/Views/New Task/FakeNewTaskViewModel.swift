@@ -11,6 +11,7 @@ class FakeNewTaskViewModel: NewTaskViewModelProtocol {
     
     var taskName = ""
     var selectedDate = Date()
+    var index = 0
     var isCreateButtonDisabled = false
     var taskNamePlaceholder = "Type new task name here..."
     

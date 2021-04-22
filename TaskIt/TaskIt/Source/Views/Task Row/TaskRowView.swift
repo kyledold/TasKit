@@ -18,7 +18,7 @@ struct TaskRowView<ViewModel: TaskRowViewModelProtocol>: View {
     var body: some View {
         VStack(spacing: 0) {
             
-            basicDetailsView
+            taskDetails
             
             if let subTasksCompletionValue = viewModel.subTasksCompletionPercentage {
                 subTaskProgressView(subTasksCompletionValue)
@@ -28,11 +28,10 @@ struct TaskRowView<ViewModel: TaskRowViewModelProtocol>: View {
         .padding(Layout.Spacing.compact)
     }
     
-    private var basicDetailsView: some View {
+    private var taskDetails: some View {
         HStack(spacing: Layout.Spacing.compact) {
             
-            Toggle(isOn: $viewModel.isComplete) {}
-                .toggleStyle(CheckboxToggleStyle())
+            CheckBox(isChecked: $viewModel.isComplete)
             
             Text(viewModel.title)
                 .strikethrough(viewModel.isComplete, color: .primary)

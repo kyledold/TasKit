@@ -6,7 +6,7 @@
   
 */
 
-"app.version.%@" = "Version %@";
+"app.version.%@" = "TasKit Version %@";
 "general.add" = "Add";
 "general.cancel" = "Cancel";
 "general.done" = "Done";
@@ -15,10 +15,17 @@
 "calendar.title" = "Calendar";
 "new_task.task_name.placeholder" = "Type new task name here...";
 "settings.title" = "Settings";
-"settings.feedback.title" = "Feedback";
-"settings.feedback.subtitle" = "kdold02@gmail.com";
-"settings.open_source.title" = "Source code";
-"settings.open_source.subtitle" = "Feel free to browse or contribute";
+"settings.list_behaviour.title" = "List Behaviour";
+"settings.list_behaviour.show_sub_tasks.title" = "Show Sub-tasks";
+"settings.list_behaviour.show_sub_tasks.description" = "If enabled this will show the sub tasks under the related task in the list up to a maximum of 8.";
+"settings.list_behaviour.show_reminder.title" = "Show Reminders";
+"settings.list_behaviour.show_reminder.description" = "If enabled this will show the reminder time next to the task name in the list.";
+"settings.list_behaviour.move_incomplete_tasks.title" = "Carry forward incomplete tasks";
+"settings.list_behaviour.move_incomplete_tasks.description" = "If enabled this will carry forward any uncompleted tasks to the current date.";
+"settings.sync_settings.title" = "TasKit Sync";
+"settings.sync_settings.icloud.title" = "iCloud sync";
+"settings.sync_settings.icloud.description" = "Use iCloud to sync tasks between your devices";
+"settings.sync.title" = "TasKit Sync";
 "task_list.create_task" = "Create task";
 "task_list.today" = "Today";
 "task_list.tomorrow" = "Tomorrow";
