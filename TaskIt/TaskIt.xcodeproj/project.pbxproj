@@ -76,6 +76,9 @@
 		D1BE78772628BC750094634A /* ListBehaviourViewModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1BE78762628BC750094634A /* ListBehaviourViewModelProtocol.swift */; };
 		D1BE787A2628BC870094634A /* ListBehaviourViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1BE78792628BC870094634A /* ListBehaviourViewModel.swift */; };
 		D1BE787D2628BC980094634A /* FakeListBehaviourViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1BE787C2628BC980094634A /* FakeListBehaviourViewModel.swift */; };
+		D1BE78822631D8720094634A /* SyncSettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1BE78812631D8720094634A /* SyncSettingsViewModel.swift */; };
+		D1BE78852631D8810094634A /* SyncSettingsViewModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1BE78842631D8810094634A /* SyncSettingsViewModelProtocol.swift */; };
+		D1BE78882631D8900094634A /* FakeSyncSettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1BE78872631D8900094634A /* FakeSyncSettingsViewModel.swift */; };
 		D1C98B38260F5EB20077587F /* SubTask+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1C98B36260F5EB20077587F /* SubTask+CoreDataClass.swift */; };
 		D1C98B39260F5EB20077587F /* Task+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1C98B37260F5EB20077587F /* Task+CoreDataClass.swift */; };
 		D1C98B3A260F5EB20077587F /* SubTask+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1C98B35260F5EB20077587F /* SubTask+CoreDataProperties.swift */; };
@@ -201,6 +204,9 @@
 		D1BE78762628BC750094634A /* ListBehaviourViewModelProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListBehaviourViewModelProtocol.swift; sourceTree = "<group>"; };
 		D1BE78792628BC870094634A /* ListBehaviourViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListBehaviourViewModel.swift; sourceTree = "<group>"; };
 		D1BE787C2628BC980094634A /* FakeListBehaviourViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeListBehaviourViewModel.swift; sourceTree = "<group>"; };
+		D1BE78812631D8720094634A /* SyncSettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SyncSettingsViewModel.swift; sourceTree = "<group>"; };
+		D1BE78842631D8810094634A /* SyncSettingsViewModelProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SyncSettingsViewModelProtocol.swift; sourceTree = "<group>"; };
+		D1BE78872631D8900094634A /* FakeSyncSettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeSyncSettingsViewModel.swift; sourceTree = "<group>"; };
 		D1C98B34260F5EB20077587F /* Task+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Task+CoreDataProperties.swift"; path = "/Users/kyledold/Development/TaskIt/TaskIt/TaskIt/Source/Models/Task+CoreDataProperties.swift"; sourceTree = "<absolute>"; };
 		D1C98B35260F5EB20077587F /* SubTask+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "SubTask+CoreDataProperties.swift"; path = "/Users/kyledold/Development/TaskIt/TaskIt/TaskIt/Source/Models/SubTask+CoreDataProperties.swift"; sourceTree = "<absolute>"; };
 		D1C98B36260F5EB20077587F /* SubTask+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "SubTask+CoreDataClass.swift"; path = "/Users/kyledold/Development/TaskIt/TaskIt/TaskIt/Source/Models/SubTask+CoreDataClass.swift"; sourceTree = "<absolute>"; };
@@ -489,6 +495,9 @@
 			isa = PBXGroup;
 			children = (
 				D1BE7872262341C00094634A /* SyncSettingsView.swift */,
+				D1BE78812631D8720094634A /* SyncSettingsViewModel.swift */,
+				D1BE78842631D8810094634A /* SyncSettingsViewModelProtocol.swift */,
+				D1BE78872631D8900094634A /* FakeSyncSettingsViewModel.swift */,
 			);
 			path = Sync;
 			sourceTree = "<group>";
@@ -755,6 +764,7 @@
 				D1783EBD25C9C9F100D8EFC3 /* CalendarView.swift in Sources */,
 				D17DA9E525DAC51700ED4A8C /* TaskDetailsViewModelProtocol.swift in Sources */,
 				D1BD688C25EA8ECF002C4518 /* TextBox.swift in Sources */,
+				D1BE78882631D8900094634A /* FakeSyncSettingsViewModel.swift in Sources */,
 				D1F2065E25F39DD6001780E7 /* NewTaskViewModel.swift in Sources */,
 				D1C98B3A260F5EB20077587F /* SubTask+CoreDataProperties.swift in Sources */,
 				D17FCA5B25D98986002A5501 /* TasksListViewModel.swift in Sources */,
@@ -773,6 +783,7 @@
 				D11E7D1A25E1433F00EED79E /* ViewExtension.swift in Sources */,
 				D1F2065A25F39A4C001780E7 /* NewTaskView.swift in Sources */,
 				D17FC99925D8108B002A5501 /* FakeSettingsViewModel.swift in Sources */,
+				D1BE78822631D8720094634A /* SyncSettingsViewModel.swift in Sources */,
 				D1034AEB25FA66D800288A38 /* DimmedBackgroundView.swift in Sources */,
 				D17FC9AE25D817F4002A5501 /* ImageExtension.swift in Sources */,
 				D1E91F5D25F4EE650036C1C4 /* TaskItCoordinator.swift in Sources */,
@@ -788,6 +799,7 @@
 				D17DAAB825DBFD0F00ED4A8C /* FakeTaskRowViewModel.swift in Sources */,
 				D1BC33C225D455F50068A57A /* Constants.swift in Sources */,
 				D1BC348925D5A92A0068A57A /* SettingsView.swift in Sources */,
+				D1BE78852631D8810094634A /* SyncSettingsViewModelProtocol.swift in Sources */,
 				D17FC9D125D81EBB002A5501 /* UIApplicationExtension.swift in Sources */,
 				D17FC9A325D815EE002A5501 /* BundleExtension.swift in Sources */,
 				D131DF9B25E276770039D7E7 /* ButtonFooterView.swift in Sources */,
