@@ -5,6 +5,7 @@
 //  Created by Kyle Dold on 15/04/2021.
 //
 
+import Combine
 import Foundation
 
 class ListBehaviourViewModel: ListBehaviourViewModelProtocol {
@@ -24,4 +25,29 @@ class ListBehaviourViewModel: ListBehaviourViewModelProtocol {
     @Published var isShowSubTasksEnabled = false
     @Published var isReminderEnabled = false
     @Published var isMoveInompleteTasksEnabled = false
+    
+    private var subscribers: Set<AnyCancellable> = []
+    
+    // MARK: - Initialisation
+    
+    init() {
+        addObservers()
+    }
+    
+    // MARK: - Observers
+    
+    private func addObservers() {
+        
+        $isShowSubTasksEnabled.dropFirst().sink { [weak self] newValue in
+            
+        }.store(in: &subscribers)
+        
+        $isReminderEnabled.dropFirst().sink { [weak self] newValue in
+            
+        }.store(in: &subscribers)
+        
+        $isMoveInompleteTasksEnabled.dropFirst().sink { [weak self] newValue in
+            
+        }.store(in: &subscribers)
+    }
 }

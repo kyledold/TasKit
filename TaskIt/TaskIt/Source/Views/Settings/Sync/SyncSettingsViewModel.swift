@@ -5,6 +5,7 @@
 //  Created by Kyle Dold on 22/04/2021.
 //
 
+import Combine
 import Foundation
 
 class SyncSettingsViewModel: SyncSettingsViewModelProtocol {
@@ -17,4 +18,21 @@ class SyncSettingsViewModel: SyncSettingsViewModelProtocol {
     var iCloudSyncDescription = NSLocalizedString("settings.sync_settings.icloud.description", comment: "icloud sync description")
     
     @Published var isICloudSyncEnabled = false
+    
+    private var subscribers: Set<AnyCancellable> = []
+    
+    // MARK: - Initialisation
+    
+    init() {
+        addObservers()
+    }
+    
+    // MARK: - Observers
+    
+    private func addObservers() {
+        
+        $isICloudSyncEnabled.dropFirst().sink { [weak self] newValue in
+            
+        }.store(in: &subscribers)
+    }
 }
