@@ -79,6 +79,7 @@
 		D1BE78822631D8720094634A /* SyncSettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1BE78812631D8720094634A /* SyncSettingsViewModel.swift */; };
 		D1BE78852631D8810094634A /* SyncSettingsViewModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1BE78842631D8810094634A /* SyncSettingsViewModelProtocol.swift */; };
 		D1BE78882631D8900094634A /* FakeSyncSettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1BE78872631D8900094634A /* FakeSyncSettingsViewModel.swift */; };
+		D1BE788D2635CFDF0094634A /* AppSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1BE788C2635CFDF0094634A /* AppSettings.swift */; };
 		D1C98B38260F5EB20077587F /* SubTask+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1C98B36260F5EB20077587F /* SubTask+CoreDataClass.swift */; };
 		D1C98B39260F5EB20077587F /* Task+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1C98B37260F5EB20077587F /* Task+CoreDataClass.swift */; };
 		D1C98B3A260F5EB20077587F /* SubTask+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1C98B35260F5EB20077587F /* SubTask+CoreDataProperties.swift */; };
@@ -207,6 +208,7 @@
 		D1BE78812631D8720094634A /* SyncSettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SyncSettingsViewModel.swift; sourceTree = "<group>"; };
 		D1BE78842631D8810094634A /* SyncSettingsViewModelProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SyncSettingsViewModelProtocol.swift; sourceTree = "<group>"; };
 		D1BE78872631D8900094634A /* FakeSyncSettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeSyncSettingsViewModel.swift; sourceTree = "<group>"; };
+		D1BE788C2635CFDF0094634A /* AppSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSettings.swift; sourceTree = "<group>"; };
 		D1C98B34260F5EB20077587F /* Task+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Task+CoreDataProperties.swift"; path = "/Users/kyledold/Development/TaskIt/TaskIt/TaskIt/Source/Models/Task+CoreDataProperties.swift"; sourceTree = "<absolute>"; };
 		D1C98B35260F5EB20077587F /* SubTask+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "SubTask+CoreDataProperties.swift"; path = "/Users/kyledold/Development/TaskIt/TaskIt/TaskIt/Source/Models/SubTask+CoreDataProperties.swift"; sourceTree = "<absolute>"; };
 		D1C98B36260F5EB20077587F /* SubTask+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "SubTask+CoreDataClass.swift"; path = "/Users/kyledold/Development/TaskIt/TaskIt/TaskIt/Source/Models/SubTask+CoreDataClass.swift"; sourceTree = "<absolute>"; };
@@ -524,6 +526,7 @@
 			children = (
 				D1D74EF325C96DA400E8EC77 /* Layout.swift */,
 				D1BC346525D5A11E0068A57A /* Closure.swift */,
+				D1BE788C2635CFDF0094634A /* AppSettings.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -768,6 +771,7 @@
 				D1F2065E25F39DD6001780E7 /* NewTaskViewModel.swift in Sources */,
 				D1C98B3A260F5EB20077587F /* SubTask+CoreDataProperties.swift in Sources */,
 				D17FCA5B25D98986002A5501 /* TasksListViewModel.swift in Sources */,
+				D1BE788D2635CFDF0094634A /* AppSettings.swift in Sources */,
 				D17DAAA525DBE04900ED4A8C /* StringExtension.swift in Sources */,
 				D1542BE925DFE9C5005FD7C7 /* SimpleTextFieldStyle.swift in Sources */,
 				D1BD689125EB8E45002C4518 /* SubTask+Helper.swift in Sources */,

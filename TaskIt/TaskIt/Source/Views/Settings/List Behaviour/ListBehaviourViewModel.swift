@@ -22,15 +22,19 @@ class ListBehaviourViewModel: ListBehaviourViewModelProtocol {
     var moveIncompleteTasksText = NSLocalizedString("settings.list_behaviour.move_incomplete_tasks.title", comment: "move incomplete tasks text")
     var moveIncompleteTasksDescription = NSLocalizedString("settings.list_behaviour.move_incomplete_tasks.description", comment: "move incomplete tasks description")
     
-    @Published var isShowSubTasksEnabled = false
-    @Published var isReminderEnabled = false
-    @Published var isMoveInompleteTasksEnabled = false
+    @Published var isShowSubTasksEnabled: Bool
+    @Published var isReminderEnabled: Bool
+    @Published var isMoveInompleteTasksEnabled: Bool
     
     private var subscribers: Set<AnyCancellable> = []
     
     // MARK: - Initialisation
     
     init() {
+        isShowSubTasksEnabled = AppSettings.boolValue(.showSubTasks)
+        isReminderEnabled = AppSettings.boolValue(.reminder)
+        isMoveInompleteTasksEnabled = AppSettings.boolValue(.moveInompleteTasks)
+         
         addObservers()
     }
     
@@ -38,16 +42,16 @@ class ListBehaviourViewModel: ListBehaviourViewModelProtocol {
     
     private func addObservers() {
         
-        $isShowSubTasksEnabled.dropFirst().sink { [weak self] newValue in
-            
+        $isShowSubTasksEnabled.dropFirst().sink { newValue in
+            AppSettings[.showSubTasks] = newValue
         }.store(in: &subscribers)
         
-        $isReminderEnabled.dropFirst().sink { [weak self] newValue in
-            
+        $isReminderEnabled.dropFirst().sink { newValue in
+            AppSettings[.reminder] = newValue
         }.store(in: &subscribers)
         
-        $isMoveInompleteTasksEnabled.dropFirst().sink { [weak self] newValue in
-            
+        $isMoveInompleteTasksEnabled.dropFirst().sink { newValue in
+            AppSettings[.moveInompleteTasks] = newValue
         }.store(in: &subscribers)
     }
 }

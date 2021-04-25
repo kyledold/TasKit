@@ -17,13 +17,15 @@ class SyncSettingsViewModel: SyncSettingsViewModelProtocol {
     var iCloudSyncText = NSLocalizedString("settings.sync_settings.icloud.title", comment: "icloud sync title")
     var iCloudSyncDescription = NSLocalizedString("settings.sync_settings.icloud.description", comment: "icloud sync description")
     
-    @Published var isICloudSyncEnabled = false
+    @Published var isICloudSyncEnabled: Bool
     
     private var subscribers: Set<AnyCancellable> = []
     
     // MARK: - Initialisation
     
     init() {
+        isICloudSyncEnabled = AppSettings.boolValue(.iCloudSync)
+        
         addObservers()
     }
     
@@ -31,8 +33,8 @@ class SyncSettingsViewModel: SyncSettingsViewModelProtocol {
     
     private func addObservers() {
         
-        $isICloudSyncEnabled.dropFirst().sink { [weak self] newValue in
-            
+        $isICloudSyncEnabled.dropFirst().sink { newValue in
+            AppSettings[.iCloudSync] = newValue
         }.store(in: &subscribers)
     }
 }
