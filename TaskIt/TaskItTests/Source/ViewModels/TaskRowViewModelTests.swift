@@ -26,15 +26,6 @@ class TaskRowViewModelTests: XCTestCase {
     
     // MARK: - Properties
     
-    func test_whenIdCalled_thenReturnsExpectedValue() {
-        // given
-        // when
-        let result = sut.id
-        
-        // then
-        XCTAssertEqual(result, mockTask.id)
-    }
-    
     func test_whenTitleCalled_thenReturnsExpectedValue() {
         // given
         // when
