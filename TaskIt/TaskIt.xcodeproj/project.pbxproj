@@ -16,6 +16,9 @@
 		D10F85BA2603C87200B08A87 /* SubTaskListViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D10F85B92603C87200B08A87 /* SubTaskListViewModelTests.swift */; };
 		D10F85BD2603C96300B08A87 /* SubTaskRowViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D10F85BC2603C96300B08A87 /* SubTaskRowViewModelTests.swift */; };
 		D10F85C02603C9A600B08A87 /* MockSubTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = D10F85BF2603C9A600B08A87 /* MockSubTask.swift */; };
+		D110A80C2639B39E0067FB90 /* SettingsViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D110A80B2639B39E0067FB90 /* SettingsViewModelTests.swift */; };
+		D110A80F2639B3B00067FB90 /* SyncSettingsViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D110A80E2639B3B00067FB90 /* SyncSettingsViewModelTests.swift */; };
+		D110A8122639B3C40067FB90 /* ListBehaviourViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D110A8112639B3C40067FB90 /* ListBehaviourViewModelTests.swift */; };
 		D11E733125E53781006FD6CB /* DateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D11E733025E53781006FD6CB /* DateExtension.swift */; };
 		D11E734725E571BA006FD6CB /* ToastMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = D11E734625E571BA006FD6CB /* ToastMessage.swift */; };
 		D11E734A25E571FF006FD6CB /* ToastView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D11E734925E571FF006FD6CB /* ToastView.swift */; };
@@ -140,6 +143,9 @@
 		D10F85B92603C87200B08A87 /* SubTaskListViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubTaskListViewModelTests.swift; sourceTree = "<group>"; };
 		D10F85BC2603C96300B08A87 /* SubTaskRowViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubTaskRowViewModelTests.swift; sourceTree = "<group>"; };
 		D10F85BF2603C9A600B08A87 /* MockSubTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockSubTask.swift; sourceTree = "<group>"; };
+		D110A80B2639B39E0067FB90 /* SettingsViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModelTests.swift; sourceTree = "<group>"; };
+		D110A80E2639B3B00067FB90 /* SyncSettingsViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SyncSettingsViewModelTests.swift; sourceTree = "<group>"; };
+		D110A8112639B3C40067FB90 /* ListBehaviourViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListBehaviourViewModelTests.swift; sourceTree = "<group>"; };
 		D11E733025E53781006FD6CB /* DateExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateExtension.swift; sourceTree = "<group>"; };
 		D11E734625E571BA006FD6CB /* ToastMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToastMessage.swift; sourceTree = "<group>"; };
 		D11E734925E571FF006FD6CB /* ToastView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToastView.swift; sourceTree = "<group>"; };
@@ -475,6 +481,9 @@
 				D10F85B52603C53200B08A87 /* NewTaskViewModelTests.swift */,
 				D10F85B92603C87200B08A87 /* SubTaskListViewModelTests.swift */,
 				D10F85BC2603C96300B08A87 /* SubTaskRowViewModelTests.swift */,
+				D110A80B2639B39E0067FB90 /* SettingsViewModelTests.swift */,
+				D110A80E2639B3B00067FB90 /* SyncSettingsViewModelTests.swift */,
+				D110A8112639B3C40067FB90 /* ListBehaviourViewModelTests.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -816,14 +825,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D110A80F2639B3B00067FB90 /* SyncSettingsViewModelTests.swift in Sources */,
 				D10F85BA2603C87200B08A87 /* SubTaskListViewModelTests.swift in Sources */,
 				D10F85BD2603C96300B08A87 /* SubTaskRowViewModelTests.swift in Sources */,
 				D10F85B62603C53200B08A87 /* NewTaskViewModelTests.swift in Sources */,
 				D1542BAE25DD8997005FD7C7 /* TaskRowViewModelTests.swift in Sources */,
+				D110A8122639B3C40067FB90 /* ListBehaviourViewModelTests.swift in Sources */,
 				D17DA9FA25DAE35C00ED4A8C /* TasksListViewModelTests.swift in Sources */,
 				D1F02E932603BF1600E6B134 /* TaskDetailsViewModelTests.swift in Sources */,
 				D10F85C02603C9A600B08A87 /* MockSubTask.swift in Sources */,
 				D1542BB525DD8A74005FD7C7 /* MockTask.swift in Sources */,
+				D110A80C2639B39E0067FB90 /* SettingsViewModelTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
