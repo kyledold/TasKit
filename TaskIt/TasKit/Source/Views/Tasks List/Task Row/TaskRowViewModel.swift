@@ -19,7 +19,10 @@ class TaskRowViewModel: TaskRowViewModelProtocol {
     var id: UUID
     var taskId: UUID { task.id }
     var title: String { task.title }
-    var time: String? { task.dueTime?.shortTime ?? nil }
+    var time: String? {
+        guard AppSettings.boolValue(.reminder) else { return nil }
+        return task.dueTime?.shortTime ?? nil
+    }
     var onChangeCompletion: ValueClosure<Bool>
     
     private var subscribers: Set<AnyCancellable> = []
