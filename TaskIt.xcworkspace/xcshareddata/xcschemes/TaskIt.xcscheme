@@ -15,8 +15,8 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "D1529C3825C70457003FC9D6"
-               BuildableName = "TaskIt.app"
-               BlueprintName = "TaskIt"
+               BuildableName = "TasKit.app"
+               BlueprintName = "TasKit"
                ReferencedContainer = "container:TaskIt/TaskIt.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -33,29 +33,9 @@
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "D14E119825D3004D00FC27E3"
-               BuildableName = "NetworkKitTests.xctest"
-               BlueprintName = "NetworkKitTests"
-               ReferencedContainer = "container:TaskIt/TaskIt.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
-         <TestableReference
-            skipped = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
                BlueprintIdentifier = "D1BC33DD25D594DE0068A57A"
-               BuildableName = "TaskItTests.xctest"
-               BlueprintName = "TaskItTests"
-               ReferencedContainer = "container:TaskIt/TaskIt.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
-         <TestableReference
-            skipped = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "D1BC341125D59E2C0068A57A"
-               BuildableName = "FoundationKitTests.xctest"
-               BlueprintName = "FoundationKitTests"
+               BuildableName = "TasKitTests.xctest"
+               BlueprintName = "TasKitTests"
                ReferencedContainer = "container:TaskIt/TaskIt.xcodeproj">
             </BuildableReference>
          </TestableReference>
@@ -76,8 +56,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "D1529C3825C70457003FC9D6"
-            BuildableName = "TaskIt.app"
-            BlueprintName = "TaskIt"
+            BuildableName = "TasKit.app"
+            BlueprintName = "TasKit"
             ReferencedContainer = "container:TaskIt/TaskIt.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
@@ -93,8 +73,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "D1529C3825C70457003FC9D6"
-            BuildableName = "TaskIt.app"
-            BlueprintName = "TaskIt"
+            BuildableName = "TasKit.app"
+            BlueprintName = "TasKit"
             ReferencedContainer = "container:TaskIt/TaskIt.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
