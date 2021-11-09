@@ -25,21 +25,6 @@ class TasksListViewModel: TasksListViewModelProtocol {
     let createTaskButtonText = NSLocalizedString("task_list.create_task", comment: "Create button title")
     let emptyListText = NSLocalizedString("task_list.no_tasks", comment: "Empty list text")
     
-    private var indexForNewTask: Int {
-        let sortedTasksByIndex = taskViewModels.sorted(by: { (task1, task2) in
-            task1.task.index > task2.task.index
-        })
-        
-        var newTaskIndex = 0
-        if let currentLastIndex = sortedTasksByIndex.first?.task.index {
-            newTaskIndex = Int(currentLastIndex) + 1
-        } else {
-            newTaskIndex = taskViewModels.count
-        }
-    
-        return newTaskIndex
-    }
-    
     private let notificationCenter = NotificationCenter.default
     private let calendar = Calendar.current
     private var subscribers: Set<AnyCancellable> = []
@@ -129,7 +114,7 @@ class TasksListViewModel: TasksListViewModelProtocol {
     
     func createTaskButtonTapped() {
         newTaskViewModel.selectedDate = selectedDate
-        newTaskViewModel.index = indexForNewTask
+        newTaskViewModel.index = indexForNewTask()
         showNewTaskView = true
     }
     
@@ -140,6 +125,23 @@ class TasksListViewModel: TasksListViewModelProtocol {
     
     func settingsButtonTapped() {
         coordinator.showSettings()
+    }
+    
+    // MARK: - Convenience
+    
+    private func indexForNewTask() -> Int {
+        let sortedTasksByIndex = taskViewModels.sorted(by: { (task1, task2) in
+            task1.task.index > task2.task.index
+        })
+        
+        var newTaskIndex = 0
+        if let currentLastIndex = sortedTasksByIndex.first?.task.index {
+            newTaskIndex = Int(currentLastIndex) + 1
+        } else {
+            newTaskIndex = taskViewModels.count
+        }
+
+        return newTaskIndex
     }
     
     // MARK: - Observers
@@ -189,7 +191,7 @@ class TasksListViewModel: TasksListViewModelProtocol {
     lazy var newTaskViewModel: NewTaskViewModel = {
         let newTaskViewModel = NewTaskViewModel(
             selectedDate: selectedDate,
-            index: indexForNewTask,
+            index: indexForNewTask(),
             managedObjectContext: managedObjectContext
         )
         

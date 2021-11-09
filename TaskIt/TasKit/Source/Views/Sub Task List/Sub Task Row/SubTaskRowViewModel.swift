@@ -14,7 +14,8 @@ class SubTaskRowViewModel: SubTaskRowViewModelProtocol {
     
     @Published var isComplete: Bool
     
-    var id: UUID { subTask.id }
+    var id: UUID
+    var subTaskId: UUID { subTask.id }
     var title: String { subTask.title}
     var onChangeCompletion: ValueClosure<Bool>
     
@@ -25,6 +26,7 @@ class SubTaskRowViewModel: SubTaskRowViewModelProtocol {
     
     init(subTask: SubTask, onChangeCompletion: @escaping ValueClosure<Bool>) {
         self.subTask = subTask
+        self.id = UUID()
         self.isComplete = subTask.isComplete
         self.onChangeCompletion = onChangeCompletion
         

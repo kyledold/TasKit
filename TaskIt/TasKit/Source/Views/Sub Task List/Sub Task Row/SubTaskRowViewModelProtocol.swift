@@ -10,6 +10,7 @@ import Foundation
 protocol SubTaskRowViewModelProtocol: ObservableObject, Identifiable {
     
     var id: UUID { get }
+    var subTaskId: UUID { get }
     var title: String { get }
     var isComplete: Bool { get set }
     var subTask: SubTask { get }

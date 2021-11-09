@@ -10,6 +10,7 @@ import Foundation
 class FakeSubTaskRowViewModel: SubTaskRowViewModelProtocol {
     
     var id = UUID()
+    var subTaskId = UUID()
     var title = "This is a fake sub task title"
     var isComplete = false
     var subTask = SubTask()

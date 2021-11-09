@@ -63,8 +63,12 @@ class TaskRowViewModel: TaskRowViewModelProtocol {
                         self?.isComplete = task.isComplete
                     }
                     
-                    if let subTask = update as? SubTask, subTask.task.id == self?.taskId {
-                        self?.subTasksCompletionPercentage = subTask.task.subTasksCompletionPercentage
+                    if let subTask = update as? SubTask {
+                        guard subTask.task != nil else { return }
+                        
+                        if subTask.task.id == self?.taskId {
+                            self?.subTasksCompletionPercentage = subTask.task.subTasksCompletionPercentage
+                        }
                     }
                 }
         }.store(in: &subscribers)
